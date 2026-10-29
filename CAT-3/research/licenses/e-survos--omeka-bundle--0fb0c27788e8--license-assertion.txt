@@ -1,0 +1,19 @@
+Pinned source: survos/omeka-bundle @ 0fb0c27788e82c79caaaba110e596449a22c2070
+Retrieved: 2026-10-29
+
+Exact README.md license section:
+## License
+
+MIT
+
+Exact composer.json license value:
+"license": "MIT"
+
+Applicable author name in composer.json:
+"name": "Tac Tacelosky"
+
+Evidence URLs:
+https://github.com/survos/omeka-bundle/blob/0fb0c27788e82c79caaaba110e596449a22c2070/README.md
+https://github.com/survos/omeka-bundle/blob/0fb0c27788e82c79caaaba110e596449a22c2070/composer.json
+
+Complete pinned repository archive inventory contains no LICENSE, LICENCE, COPYING or legal NOTICE file. This is an explicit SPDX-style license assertion, not an invented holder-specific permission/disclaimer text. Source remains held; this evidence alone does not resolve missing notice or semantic admission.

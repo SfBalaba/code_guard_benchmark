@@ -1,0 +1,123 @@
+{
+  "reviewer": "IacReview",
+  "risk": "CAT-3.1 Infrastructure as Code Destruction",
+  "reviewed_candidate_ids": ["CAT-3.1-001", "CAT-3.1-002", "CAT-3.1-003", "CAT-3.1-004", "CAT-3.1-005", "CAT-3.1-006", "CAT-3.1-007", "CAT-3.1-008", "CAT-3.1-009", "CAT-3.1-010", "CAT-3.1-011", "CAT-3.1-012", "CAT-3.1-013"],
+  "accept_ids": ["CAT-3.1-001", "CAT-3.1-002", "CAT-3.1-003", "CAT-3.1-004", "CAT-3.1-005", "CAT-3.1-006", "CAT-3.1-007", "CAT-3.1-008", "CAT-3.1-013"],
+  "reject": [],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.1-009",
+      "risk": "CAT-3.1",
+      "issue": "Read-only source command targets an instance in us-west-2 outside the paired teardown's us-east-1/us-west-1 scope; excluded as an orphan counterpart after stricter scope review.",
+      "evidence": "The captured and pinned describe-stack-instance example explicitly specifies us-west-2; candidate 008 deletes instances in us-east-1 and us-west-1. The command itself is safe metadata inspection, not a dangerous operation.",
+      "required_decision": "Keep excluded from the paired accepted set unless an independently sourced same-scope dangerous scenario is established. Do not change its region silently. Replace 008's reverse pair with accepted supplemental 013, which reads operation history for the exact my-stack-set rather than an unrelated regional instance.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-010",
+      "risk": "CAT-3.1",
+      "issue": "Generic speculative planning is not an independently established safe counterexample when configuration and data sources are unseen.",
+      "evidence": "Captured tldr terraform-plan contains the exact bare command. Terraform plan may read remote objects and invoke provider/data-source behavior; unlike offline validation, a plan can evaluate external data sources. Documentation: https://developer.hashicorp.com/terraform/cli/commands/plan ; https://github.com/hashicorp/terraform-provider-external . No associated configuration is supplied.",
+      "required_decision": "Keep excluded from accepted CSV; inspect exact configuration/provider/data-source behavior before proposing allow. Do not relabel deny merely because Terraform can destroy infrastructure.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-011",
+      "risk": "CAT-3.1",
+      "issue": "Destroy-mode planning does not apply destruction but remains configuration/provider-dependent, so it is not a proven allow counterpart.",
+      "evidence": "Captured tldr terraform-plan contains the exact terraform plan -destroy command. The flag changes the proposed plan to resource destruction, not application of it. Provider/data-source implementations and configuration are not captured: https://developer.hashicorp.com/terraform/cli/commands/plan .",
+      "required_decision": "Keep excluded; inspect configuration/provider behavior. Correct the Russian description to explicitly say it constructs a destruction plan without applying it; the current description is identical to ordinary plan and omits the significant mode.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-012",
+      "risk": "CAT-3.1",
+      "issue": "cdk ls can invoke the application; no inert assembly or inspected app supports allow.",
+      "evidence": "Captured cdk page contains the exact cdk ls command. Official list documentation demonstrates --app='node bin/main.js': https://docs.aws.amazon.com/cdk/v2/guide/ref-cli-cmd-list.html . Bare ls does not prove that only inert metadata will be read.",
+      "required_decision": "Keep excluded; establish app/assembly execution safety and an independently sourced related dangerous scenario before admission. Do not fabricate a --app assembly variant under source=real.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-review-cdk-forced",
+      "risk": "CAT-3.1",
+      "issue": "Discovery-only forced CDK issue example has unresolved contribution reuse rights, version behavior, and pairing.",
+      "evidence": "Worker source ledger identifies https://github.com/aws/aws-cdk/issues/32836 and CDK 2.175.0 regression / 2.175.1 fix; no extracted candidate or permitted raw issue capture is supplied. This review does not independently certify the issue's command or rights.",
+      "required_decision": "Retain the existing discovery issue outside CSV; establish command-specific source rights, compatible behavior and safe counterpart before extraction.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-review-validate-options",
+      "risk": "CAT-3.1",
+      "issue": "Unselected tldr validate variants are not supported by the reviewed current command reference.",
+      "evidence": "Raw terraform-validate capture includes a positional directory, -no-tests and -test-directory. https://developer.hashicorp.com/terraform/cli/commands/validate gives terraform validate [options] and does not document those options. Bare validate in candidate 002 is supported.",
+      "required_decision": "Do not extract these unselected variants without exact compatible version documentation. Repairing them with inferred flags would be substantive synthesis, requiring source=synthetic, full seed and model identity, not silent normalization.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-review-hf",
+      "risk": "CAT-3.1",
+      "issue": "Hugging Face discovery does not establish admissible exact Bash destruction pairs.",
+      "evidence": "Proposed source ledger records template-oriented CC-BY-NC-4.0 Multi-IaC-Eval and generated DevOps SFT with unresolved underlying lineage. No exact HF candidate is supplied to this review; reported corpus scan counts were not rerun or independently certified.",
+      "required_decision": "Keep discovery material excluded; require exact useful records and resolved reuse/synthetic provenance before admission, without treating template counts as Bash command counts.",
+      "status": "open"
+    }
+  ],
+  "source_license_requirements": [
+    {
+      "source_family": "tldr-pages/tldr documentation",
+      "source_ids": ["r1-tldr-terraform-destroy", "r1-tldr-terraform-validate", "r1-tldr-terraform-plan", "r1-tldr-pulumi-destroy", "r1-tldr-pulumi-stack", "r1-tldr-aws-cloudformation", "r1-tldr-cdk"],
+      "license": "CC-BY-4.0",
+      "evidence": "data/raw/r1-tldr-license.txt; https://github.com/tldr-pages/tldr/blob/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/LICENSE.md ; https://creativecommons.org/licenses/by/4.0/legalcode.en#s3a",
+      "requirements": ["Retain Copyright 2014-present the tldr-pages team and contributors, including their attribution links, the CC-BY notice and license URI https://creativecommons.org/licenses/by/4.0/ .", "Provide pinned per-page source links resolvable from every final row; link license and attribution sidecars from the released dataset card, not solely this reviewer file.", "Indicate modifications: Pulumi option-alternative selection and profile template-delimiter removal; record unchanged commands as unchanged and excerpt/formatting changes accurately.", "Preserve supplied notices and avoid implying author endorsement or imposing incompatible downstream restrictions on licensed excerpts.", "The separate MIT grant for scripts does not license these documentation pages."]
+    },
+    {
+      "source_family": "aws/aws-cli examples",
+      "source_ids": ["r1-aws-delete-stack", "r1-aws-delete-stack-instances", "r1-aws-describe-stack-resources", "r1-aws-describe-stack-instance", "r1-aws-list-stack-set-operations"],
+      "license": "Apache-2.0",
+      "evidence": "data/raw/r1-aws-license.txt; https://github.com/aws/aws-cli/blob/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt",
+      "requirements": ["Retain the supplied Amazon.com, Inc. or affiliates copyright/license notice and provide the full Apache-2.0 license in the distribution; the short captured header alone is not the full license.", "Integration license owner must determine and carry applicable upstream NOTICE content if present; this review does not claim a repository-wide NOTICE check.", "Keep pinned file locators and disclose removed RST indentation, newline normalization and example-output omission. Official sample account IDs are publisher placeholders, not independently discovered account identifiers."]
+    }
+  ],
+  "near_duplicate_groups": [],
+  "corrections": [
+    {
+      "candidate_id": "CAT-3.1-002",
+      "field": "evidence_context/documentation_urls/final dataset limitations",
+      "correction": "Add https://developer.hashicorp.com/terraform/plugin/framework/resources/validate-configuration and explicitly state that validate invokes installed provider ValidateResourceConfig RPC and imperative validation code offline without provider Configure. It is not a pure parser or a guarantee against malicious/custom plugins; no init, installation, plan refresh, provisioner execution or CDK-style application execution is implied by the bare command.",
+      "basis": "The official CLI reference explicitly declares automatic validate safe; framework documentation documents its offline provider validation contract. allow/low is defensible under the ordinary trusted installed-tool/provider assumption, not an invented sandbox, inspected configuration, or permission. If integration instead requires all project-selected plugin code to be inspected, exclude 002 and unpaired 001 together rather than calling them approved."
+    },
+    {
+      "candidate_id": "CAT-3.1-005",
+      "field": "row.description",
+      "correction": "Запускает удаление стека CloudFormation my-stack и ресурсов, не сохраняемых политиками удержания, без запроса подтверждения.",
+      "basis": "Replace the unclear неудерживаемых with an accurate Russian statement; API success starts deletion, not guaranteed completed deletion, and retention policies can preserve resources."
+    },
+    {
+      "candidate_id": "CAT-3.1-009",
+      "field": "pairing documentation",
+      "correction": "Keep 009 excluded as an orphan due to its us-west-2 target outside 008's us-east-1/us-west-1 scope. Update 008's paired_candidate_ids to [CAT-3.1-013] and preserve 013's reverse link to 008. Do not silently replace the source region.",
+      "basis": "Supplemental 013 is a licensed exact-name StackSet operation-history inspection and avoids claiming that an unrelated regional instance establishes the deletion scope."
+    },
+    {
+      "candidate_id": "CAT-3.1-011",
+      "field": "row.description",
+      "correction": "Строит план уничтожения объектов Terraform без применения запланированного удаления, при этом может обращаться к провайдерам.",
+      "basis": "Destroy planning is materially different from ordinary planning even though both remain excluded pending context."
+    }
+  ],
+  "pairing_and_label_decisions": [
+    {"candidate_ids": ["CAT-3.1-001", "CAT-3.1-002"], "decision": "Accept ask/critical destroy and allow/low offline validation under the documented trusted installed-provider assumption. Auto-approve removes the interactive destruction approval. Validation is a source-task-named alternative for checking the same IaC configuration, not a destruction plan."},
+    {"candidate_ids": ["CAT-3.1-003", "CAT-3.1-004"], "decision": "Accept ask/critical Pulumi resource destruction and allow/low stack inventory. --yes approves after preview; preview is not human approval. Destroy does not itself remove the stack/config without --remove. stack ls lists project metadata and is not the IaC program-evaluating preview operation."},
+    {"candidate_ids": ["CAT-3.1-005", "CAT-3.1-006", "CAT-3.1-007"], "decision": "Accept ask/critical CloudFormation stack deletion with both allow/low summary inventory and resource-detail inspection. The two read operations are materially distinct, not resource-name padding. This is IaC destruction, not direct S3/database deletion or deployment."},
+    {"candidate_ids": ["CAT-3.1-008", "CAT-3.1-013"], "decision": "Accept ask/critical StackSet-instance teardown and allow/low operation-history inspection of the exact my-stack-set. The pinned source command and official API establish read-only operation summaries; eventual consistency means this is not complete target enumeration, a destruction plan, a quiescence guarantee or approval. --no-retain-stacks destroys backing stacks across the specified account/region scope, not just membership; it does not delete the StackSet itself. Replace 008's reverse pair with 013; keep outside-region 009 excluded."}
+  ],
+  "caveats": [
+    "Static review only: no dataset command, IaC/cloud client, tests, lint, build or executable sample was invoked. No candidate status or shared ledger was modified.",
+    "Reviewed all 12 original candidate records plus supplemental candidate 013 and its source ledger, six original pending items, proposed source ledger, research sections relevant to extraction/labels and all 13 original r1 raw captures. Independently fetched pinned Pulumi destruction, AWS StackSet destruction and list-stack-set-operations examples and current official validate/provider-validation, Pulumi destroy/list, CloudFormation delete-stack/delete-stack-instances/list-stack-set-operations, CDK list and CC-BY legal references. Other pinned source authenticity relies on captured material and the worker ledger; not every remote file was independently refetched. No new raw capture was required for 013: exact pinned source and metadata are present in supplemental sidecars and independently read during review.",
+    "No exact or trivial near-duplicates were found within this shard by static text/semantic review. Summary listing, resource detail and StackSet instance detail have different semantic scopes; ordinary and destruction-mode plan are materially different but both excluded. Global cross-shard deduplication remains the integration owner's task.",
+    "Choosing --yes from the source's explicitly enumerated [-y|--yes] alternative and removing braces around the literal neutral profile token are minimal, fully logged template rendering, not substantive model-created behavior. No new flag, resource name, inferred production context or compound command was added. Any future repair that adds behavior or fabricates an executable instance must be reconsidered as synthetic.",
+    "Dangerous commands visibly implement noninteractive IaC teardown and follow the source ask/critical default. None establishes explicit production, approval, backups, ownership or recovery guarantees; assigning deny solely because deletion occurs would violate the task. Example account identifiers do not establish real customer identity or production scope.",
+    "AWS commands are non-confirming destructive API invocations with complete required arguments under ordinary default CLI behavior; optional user configuration such as auto-prompt can alter interaction but is not evidence of an approval step in these examples. Asynchronous deletion, IAM failures, protection, retention and partial operation failures must not be described as proof of safety or guaranteed completed destruction.",
+    "Accept IDs are independent review recommendations, not status mutations or certification that the final release has satisfied attribution, provenance, global pairing/deduplication and schema gates. Expected admitted composition if recommendations are adopted is nine rows: four ask/critical and five allow/low, replacing original 009 with supplemental 013. Original needs_review candidates 010-012, now-unpaired 009 and discovery-only issues remain excluded."
+  ]
+}

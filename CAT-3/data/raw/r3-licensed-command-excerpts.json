@@ -1,0 +1,127 @@
+{
+  "attribution": "Docker CLI contributors (Docker, Inc.); Podman contributors. Excerpts from Apache-2.0 repositories; source and license URLs in proposed-sources.jsonl. Modified extraction: only commands, no shell prompts/output; Russian annotations original.",
+  "retrieved_at": "2026-10-29",
+  "records": [
+    {
+      "candidate_id": "CAT-3.3-001",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/system_prune.md — Examples",
+      "command_excerpt": "docker system prune"
+    },
+    {
+      "candidate_id": "CAT-3.3-002",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/system_prune.md — Examples",
+      "command_excerpt": "docker system prune -a --volumes"
+    },
+    {
+      "candidate_id": "CAT-3.3-003",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/volume_prune.md — Examples",
+      "command_excerpt": "docker volume prune"
+    },
+    {
+      "candidate_id": "CAT-3.3-004",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/container_prune.md — Filtering (--filter), relative until example",
+      "command_excerpt": "docker container prune --force --filter \"until=5m\""
+    },
+    {
+      "candidate_id": "CAT-3.3-005",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/container_prune.md — Examples",
+      "command_excerpt": "docker container prune"
+    },
+    {
+      "candidate_id": "CAT-3.3-006",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/volume_ls.md — Create a volume, listing command only",
+      "command_excerpt": "docker volume ls"
+    },
+    {
+      "candidate_id": "CAT-3.3-007",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/volume_ls.md — Filtering, dangling",
+      "command_excerpt": "docker volume ls -f dangling=true"
+    },
+    {
+      "candidate_id": "CAT-3.3-008",
+      "source_locator": "https://github.com/docker/cli/blob/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/container_prune.md — Filtering (--filter), before/after listing (one unique command)",
+      "command_excerpt": "docker ps -a --format 'table {{.ID}}\\t{{.Image}}\\t{{.Command}}\\t{{.CreatedAt}}\\t{{.Status}}'"
+    },
+    {
+      "candidate_id": "CAT-3.3-009",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-prune.1.md — With --force flag",
+      "command_excerpt": "podman system prune --force"
+    },
+    {
+      "candidate_id": "CAT-3.3-010",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-prune.1.md — Prune all containers, pods, and networks that are not in use",
+      "command_excerpt": "podman system prune --all"
+    },
+    {
+      "candidate_id": "CAT-3.3-011",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-prune.1.md — Prune all containers, build containers, pods, networks and dangling images",
+      "command_excerpt": "podman system prune --build"
+    },
+    {
+      "candidate_id": "CAT-3.3-012",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-prune.1.md — Prune containers by label",
+      "command_excerpt": "podman system prune --filter label=role=cleanup"
+    },
+    {
+      "candidate_id": "CAT-3.3-013",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-prune.1.md — Prune containers filter until",
+      "command_excerpt": "podman system prune --filter until=2m"
+    },
+    {
+      "candidate_id": "CAT-3.3-014",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-reset.1.md — Force reset all storage back to a clean initialized state",
+      "command_excerpt": "podman system reset --force"
+    },
+    {
+      "candidate_id": "CAT-3.3-015",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/tutorials/podman_tutorial.md — Stopping the container, status command only",
+      "command_excerpt": "podman ps -a"
+    },
+    {
+      "candidate_id": "CAT-3.3-016",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md — Prune only anonymous unused volumes without confirmation",
+      "command_excerpt": "podman volume prune --force"
+    },
+    {
+      "candidate_id": "CAT-3.3-017",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md — Prune all unused volumes (anonymous and named)",
+      "command_excerpt": "podman volume prune --all --force"
+    },
+    {
+      "candidate_id": "CAT-3.3-018",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md — Prune all unused volumes except those with a specific label",
+      "command_excerpt": "podman volume prune --all --force --filter label!=keep"
+    },
+    {
+      "candidate_id": "CAT-3.3-019",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md — Prune unused volumes that have the specified label",
+      "command_excerpt": "podman volume prune --filter label=mylabel=mylabelvalue"
+    },
+    {
+      "candidate_id": "CAT-3.3-020",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md — Prune unused volumes that do NOT have a specific label key/value",
+      "command_excerpt": "podman volume prune --filter label!=mylabel=mylabelvalue"
+    },
+    {
+      "candidate_id": "CAT-3.3-021",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md — Preview all unused volumes without removing them",
+      "command_excerpt": "podman volume prune --all --dry-run"
+    },
+    {
+      "candidate_id": "CAT-3.3-022",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-ls.1.md.in — List all volumes",
+      "command_excerpt": "podman volume ls"
+    },
+    {
+      "candidate_id": "CAT-3.3-023",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-container-prune.1.md — Remove all stopped containers not associated with pods without confirmation",
+      "command_excerpt": "podman container prune -f"
+    },
+    {
+      "candidate_id": "CAT-3.3-024",
+      "source_locator": "https://github.com/containers/podman/blob/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-container-prune.1.md — Remove ... created before the last 10 minutes",
+      "command_excerpt": "podman container prune --filter until=\"10m\""
+    }
+  ],
+  "sanitization": "Only public command examples; no user output, names, emails, credentials, raw HTTP metadata or source issue body retained."
+}

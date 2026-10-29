@@ -1,0 +1,4 @@
+Source: https://raw.githubusercontent.com/oracle/oci-cli/de516910cd09d6e21647b3363fecf63d5f563fae/NOTICE.txt
+Retrieved: 2026-10-29
+
+Copyright (c) 2016, 2021, Oracle and/or its affiliates.

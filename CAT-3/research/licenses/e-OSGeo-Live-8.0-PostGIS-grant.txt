@@ -1,0 +1,16 @@
+Source: https://live.osgeo.org/archive/8.0/en/copyright.html
+Retrieved: 2026-10-29
+The following source grant and applicable contributor-table fields are transcribed from rendered HTML; layout only is normalized.
+
+Quickstarts and Quickstart Translations, are provided under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+
+As per the terms of the Creative Commons license, if you include OSGeo-Live documentation into a new document, you will need to attribute the contributors.
+Further, if Quickstarts are included, which are licenced under the CC By-SA license, then the new document will also need to be licenced under the CC By-SA.
+
+Document: postgis_quickstart
+Author(s): Barry Rowlingson; Astrid Emde; Regina Obe
+Reviewers(s): Argyros Argyridis; Cameron Shorter, LISAsoft
+License(s): Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
+
+Source document: https://live.osgeo.org/archive/8.0/en/quickstart/postgis_quickstart.html
+License URI: https://creativecommons.org/licenses/by-sa/3.0/

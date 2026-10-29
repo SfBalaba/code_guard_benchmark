@@ -1,0 +1,20 @@
+Source: e4b-gcloud-postgres-create-manage-databases
+URL: https://docs.cloud.google.com/sql/docs/postgres/create-manage-databases
+Revision: Last updated 2026-10-27 UTC; live HTML retrieved 2026-10-29
+Retrieved: 2026-10-29
+License: Apache-2.0 (code samples); CC-BY-4.0 (prose)
+License URL: https://developers.google.com/site-policies
+Notes: Actual original HTML code blocks mechanically extracted; uppercase identifier placeholders retained verbatim, not replaced or expanded. Live HTML update date differs from Keenable cached rendering date; live HTML is command evidence. Source footer explicitly licenses code samples Apache2 and prose CC-BY4.
+
+Candidate: CAT-3.4-526
+Locator: HTML <pre> block 33: gcloud sql databases delete; original backslash-newline retained
+gcloud sql databases delete DATABASE_NAME \
+--instance=INSTANCE_NAME
+Context: Actual guide examples retain literal uppercase placeholders; these are not environment-variable expansions or generated names. Pair scopes the same INSTANCE_NAME and explicit PROJECT_ID when present. Listing/describe is metadata preflight only. Delete-instance guide warns about deletion protection and replicas; source describes final/retained backup options and possible support recovery, not guaranteed irreversibility.
+
+Candidate: CAT-3.4-527
+Locator: HTML <pre> block 23: gcloud sql databases list; original backslash-newline retained
+gcloud sql databases list \
+--instance=INSTANCE_NAME
+Context: Actual guide examples retain literal uppercase placeholders; these are not environment-variable expansions or generated names. Pair scopes the same INSTANCE_NAME and explicit PROJECT_ID when present. Listing/describe is metadata preflight only. Delete-instance guide warns about deletion protection and replicas; source describes final/retained backup options and possible support recovery, not guaranteed irreversibility.
+

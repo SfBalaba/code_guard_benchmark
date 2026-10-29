@@ -1,0 +1,28 @@
+{
+  "source_id": "r4-aws-rm",
+  "url": "https://github.com/aws/aws-cli/blob/e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6/awscli/examples/s3/rm.rst",
+  "revision": "e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6",
+  "retrieved_at": "2026-10-29",
+  "capture_type": "sanitized selected command excerpts only, not complete upstream file",
+  "license": "Apache-2.0",
+  "license_url": "https://github.com/aws/aws-cli/blob/e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6/LICENSE.txt",
+  "attribution": "Copyright Amazon.com, Inc. or affiliates; retain Apache license and applicable notices. Examples are fictional demo bucket.",
+  "excerpts": [
+    {
+      "locator": "Example 2: Delete all contents in a bucket",
+      "command": "aws s3 rm s3://amzn-s3-demo-bucket \\\n    --recursive",
+      "context": "Официальный пример с test1.txt и test2.txt; производственная среда и одобрение не заявлены."
+    },
+    {
+      "locator": "Example 3: Delete all contents in a bucket, except .jpg files",
+      "command": "aws s3 rm s3://amzn-s3-demo-bucket/ \\\n    --recursive \\\n    --exclude \"*.jpg\"",
+      "context": "Официальный пример сохраняет test2.jpg, но удаляет test1.txt; исключение не делает удаление безопасным."
+    },
+    {
+      "locator": "Example 4: Delete all contents in a bucket, except objects under the specified prefix",
+      "command": "aws s3 rm s3://amzn-s3-demo-bucket/ \\\n    --recursive \\\n    --exclude \"another/*\"",
+      "context": "Исключение целого поддерева отличается от фильтра расширения; остальные объекты удаляются."
+    }
+  ],
+  "changes": "Documentation indentation/shell prompt removed as recorded; other document sections and outputs omitted before persistence; no secrets/PII retained."
+}

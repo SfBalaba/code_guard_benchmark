@@ -1,0 +1,55 @@
+Source ID: e4-oci-bulk
+URL: https://raw.githubusercontent.com/oracle/oci-cli/de516910cd09d6e21647b3363fecf63d5f563fae/services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py
+Revision: de516910cd09d6e21647b3363fecf63d5f563fae
+Retrieved: 2026-10-29
+License: Apache-2.0 OR UPL-1.0
+License evidence: https://raw.githubusercontent.com/oracle/oci-cli/de516910cd09d6e21647b3363fecf63d5f563fae/LICENSE.txt
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2048
+oci os object bulk-delete -ns mynamespace -bn mybucket --force
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2037
+oci os object bulk-delete -ns mynamespace -bn mybucket --dry-run
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2049
+oci os object bulk-delete -ns mynamespace -bn mybucket --prefix level1/level2/ --force
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2038
+oci os object bulk-delete -ns mynamespace -bn mybucket --prefix level1/level2/ --dry-run
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2050
+oci os object bulk-delete -ns mynamespace -bn mybucket --prefix level1/level2/ --delimiter / --force
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2039
+oci os object bulk-delete -ns mynamespace -bn mybucket --prefix level1/level2/ --delimiter / --dry-run
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2197
+oci os object bulk-delete-versions -ns mynamespace -bn mybucket --force
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2186
+oci os object bulk-delete-versions -ns mynamespace -bn mybucket --dry-run
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2198
+oci os object bulk-delete-versions -ns mynamespace -bn mybucket --prefix level1/level2/ --force
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2187
+oci os object bulk-delete-versions -ns mynamespace -bn mybucket --prefix level1/level2/ --dry-run
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2199
+oci os object bulk-delete-versions -ns mynamespace -bn mybucket --prefix level1/level2/ --delimiter / --force
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.
+
+Locator: services/object_storage/src/oci_cli_object_storage/objectstorage_cli_extended.py line 2188
+oci os object bulk-delete-versions -ns mynamespace -bn mybucket --prefix level1/level2/ --delimiter / --dry-run
+Context: Исходные условные mynamespace/mybucket; --force явно подавляет prompt; dry_run ветвь получает список и формирует отчёт без delete API; delimiter ограничивает уровень и не считается полной рекурсией. Версии — отдельная семантика удаления старых данных, не вариация имени.

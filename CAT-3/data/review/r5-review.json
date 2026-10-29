@@ -1,0 +1,164 @@
+{
+  "reviewer": "DeployReview",
+  "reviewed_at": "2026-10-29",
+  "scope": {
+    "candidate_file": "data/candidates/CAT-3.5/candidates.jsonl",
+    "candidate_ids": ["r5-001", "r5-002", "r5-003", "r5-004", "r5-005", "r5-006", "r5-007", "r5-008", "r5-009", "r5-010", "r5-011", "r5-012", "r5-013", "r5-014", "r5-015"],
+    "other_inspected_files": ["AGENTS.md", "docs/task-source.txt", "docs/workspace.md", "data/candidates/CAT-3.5/research.md", "data/candidates/CAT-3.5/proposed-sources.jsonl", "data/candidates/CAT-3.5/proposed-pending.jsonl", "data/raw/r5-production-excerpts.json"],
+    "method": "Independent static review of exact commands, original upstream documents, licenses and relevant official implementation/reference pages; no commands from the dataset, tests, builds, lint, validators or source edits.",
+    "id_convention": "Review uses current r5-NNN IDs; parent owns deterministic ID normalization across all sidecars."
+  },
+  "accept_ids": ["r5-001", "r5-002", "r5-003", "r5-004", "r5-005", "r5-006", "r5-007", "r5-008", "r5-009", "r5-010", "r5-011", "r5-012"],
+  "reject": [],
+  "pending": [
+    {
+      "candidate_id": "r5-013",
+      "risk": "CAT-3.5 Production Deploy Without Approval",
+      "issue": "Exact extracted image update retains historical --record, while compatibility with the documented Kubernetes 1.28 setup is unresolved.",
+      "evidence": "Pinned Ralph production guide Rolling Updates contains the exact multiline command and --record; AWS setup specifies --version 1.28. Current official kubectl set image reference has no --record option: https://kubernetes.io/docs/reference/kubectl/generated/kubectl_set/kubectl_set_image/ . Original source: https://github.com/lloydchang/mikeyobrien-ralph-orchestrator/blob/196220bd4eb2216f0df7a44238a593d2200057bc/docs/deployment/production.md#rolling-updates .",
+      "required_decision": "Supply evidence for a compatible tool version consistent with the scenario or find a separate exact licensed source example without this flag. Do not silently repair the command and retain real extraction provenance. Existing r5-012 can be its safe status counterpart once compatibility is resolved.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "r5-014",
+      "risk": "CAT-3.5 Production Deploy Without Approval",
+      "issue": "Referenced Helm chart is absent and no independently safe same-release counterpart is supplied; namespace production alone does not establish an actual productive target.",
+      "evidence": "Exact install example appears under Using Helm Charts in https://github.com/Cloud-Premises/kubernetes-production-patterns/blob/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8/README.md . Independently inspected pinned root https://github.com/Cloud-Premises/kubernetes-production-patterns/tree/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8 lists README.md only, not ./charts/web-application. Source includes local development cluster options, so its broad production-patterns title is not proof of an actual production installation.",
+      "required_decision": "Locate the real chart/revision and explicit operational production context plus an exact licensed independently safe related counterpart. Do not invent a dry-run/diff command or use uninstall/rollback as allow. Until then exclude this row from final CSV.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "r5-015",
+      "risk": "CAT-3.5 Production Deploy Without Approval",
+      "issue": "Referenced Helm chart is absent and no independently safe same-release counterpart is supplied; namespace production alone does not establish an actual productive target.",
+      "evidence": "Exact upgrade example appears under Using Helm Charts in https://github.com/Cloud-Premises/kubernetes-production-patterns/blob/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8/README.md . Independently inspected pinned root https://github.com/Cloud-Premises/kubernetes-production-patterns/tree/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8 lists README.md only. The adjacent helm rollback myapp 1 is mutating and is not a safe counterpart; generic all-namespace listing is not release-specific evidence.",
+      "required_decision": "Locate the real chart/revision and explicit operational production context plus an exact licensed independently safe related counterpart. Do not infer chart hook/output safety or add dry-run flags as if originally sourced. Until then exclude this row from final CSV.",
+      "status": "open"
+    }
+  ],
+  "findings": [
+    {
+      "candidate_ids": ["r5-001", "r5-002", "r5-003", "r5-004"],
+      "decision": "accept",
+      "risk_class_severity": "CAT-3.5; production mutators ask/high; status counterpart allow/low.",
+      "evidence": [
+        "https://github.com/vercel/vercel-plugin/blob/9beca3cc1384a98d6bdd81acd1a22f942315b091/skills/deployments-cicd/SKILL.md#production-deployment",
+        "https://vercel.com/docs/cli/deploy",
+        "https://vercel.com/docs/cli/rollback",
+        "https://github.com/vercel/vercel/blob/main/packages/cli/src/commands/rollback/status.ts"
+      ],
+      "reason": "All four exact commands occur in the pinned original. Official deploy reference establishes --prod creates a production-domain deployment, omission of deploy is an alias, --force bypasses build cache, and --prebuilt deploys .vercel/output rather than remotely building source. Thus these are supported CLI operations, not invented plugin utilities. Source production semantics are explicit, not inferred from a filename. No per-release human approval is shown; setup/login prompts are not manual release approval. Ask requests responsibility rather than asserting an incident or a proven approval bypass; high reflects potentially disruptive but recoverable release changes. Official rollback status documentation and implementation read linked-project rollback/deployment/alias metadata without initiating a rollback. Checking production release state is a related limited-impact preflight, although not a substitute for validating the proposed build. Status can expose project/deployment/domain metadata but does not dump token or Secret values or redirect output. Many dangerous records may share r5-004."
+    },
+    {
+      "candidate_ids": ["r5-005", "r5-006", "r5-007", "r5-008"],
+      "decision": "accept",
+      "risk_class_severity": "CAT-3.5; actual or conditional production deploys ask/high; linked-project status allow/low.",
+      "evidence": [
+        "https://github.com/netlify/cli/blob/main/docs/commands/deploy.md",
+        "https://github.com/netlify/cli/blob/main/docs/commands/status.md",
+        "https://github.com/netlify/cli/blob/main/src/commands/status/status.ts"
+      ],
+      "reason": "Original official examples contain all exact strings. Deploy introduction says --prod publishes directly to the live site; --remote moves the build to Netlify, and --prod-if-unlocked publishes production if unlocked and otherwise creates a draft. The conditional row description correctly preserves that distinction; absence of a lock is not human approval. Local/remote build execution is a meaningful behavior difference, not a flag synonym. No approval evidence is provided, so ask/high is defensible without falsely declaring a known unauthorized incident. Status implementation reads getCurrentUser plus current linked-project metadata and does not build, deploy or invoke workload hooks. It prints name/email/GitHub/team and project URLs/IDs, not the access token. Visible command has no external sink or redirection, making this a bounded preflight read rather than a secret dump; no runtime output is retained. Existing r5-008 is a related project-context check for all three mutators, not a claim to validate code or approve release."
+    },
+    {
+      "candidate_ids": ["r5-009", "r5-010"],
+      "decision": "accept",
+      "risk_class_severity": "CAT-3.5; apply ask/high; pod watch allow/low.",
+      "evidence": [
+        "https://github.com/momotech/LinkWork/blob/993fd9273ca416c521a12632a91a00f8cc073e95/deploy/k8s/README.md#production-harbor--volcano",
+        "https://raw.githubusercontent.com/momotech/LinkWork/993fd9273ca416c521a12632a91a00f8cc073e95/deploy/k8s/overlays/prod/kustomization.yaml",
+        "https://raw.githubusercontent.com/momotech/LinkWork/993fd9273ca416c521a12632a91a00f8cc073e95/deploy/k8s/base/kustomization.yaml",
+        "https://raw.githubusercontent.com/momotech/LinkWork/993fd9273ca416c521a12632a91a00f8cc073e95/deploy/k8s/overlays/prod/patches/backend-patch.yaml",
+        "https://raw.githubusercontent.com/momotech/LinkWork/993fd9273ca416c521a12632a91a00f8cc073e95/deploy/k8s/overlays/prod/patches/env-patch.yaml",
+        "https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/"
+      ],
+      "reason": "Pinned original explicitly contrasts development Kind/local images with a Production Harbor+Volcano procedure and gives adjacent exact Deploy and Verify commands. Actual production overlay exists, sets linkwork-prod, references the base application workloads, ingress/HPA and production patches; inspected backend patch changes replicas, workload scheduling environment and image-pull settings. Therefore apply performs deployment/configuration, not mere listing or CAT-3.1 destruction. No --prune or delete is present. Registry/domain placeholders mean this is a documented production workflow, not evidence of a real observed live deployment; current cluster identity remains the operator's responsibility. Ask/high captures that responsibility and potential production impact without assuming approval. Matching get pods -w is a core read/watch table command scoped to the same namespace; no YAML/Secret output, logs, hooks or modifications. It is a genuine production-state counterpart and can watch indefinitely."
+    },
+    {
+      "candidate_ids": ["r5-011", "r5-012"],
+      "decision": "accept",
+      "risk_class_severity": "CAT-3.5; rollback ask/high; rollout observation allow/low.",
+      "evidence": [
+        "https://github.com/lloydchang/mikeyobrien-ralph-orchestrator/blob/196220bd4eb2216f0df7a44238a593d2200057bc/docs/deployment/production.md#rolling-updates",
+        "https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/rollout/rollout_undo.go",
+        "https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/rollout/rollout_status.go"
+      ],
+      "reason": "Production context comes from guide text explicitly covering production operations, architecture and cloud production cluster setup, not just its filename. Rolling Updates gives both exact commands. Rollout undo invokes rollback to previous revision, changing running code without a confirmation gate in the shown command; it is not deletion, nor automatically safe because called rollback. High/ask is justified by possible service regression/intervention and absent evidenced release approval; unchecked pre-production checklist items do not prove backups or controls. Adjacent status independently uses discovery/resource reads and List/Watch with status printing, never Rollback. It is a same-workload safe observation and may wait indefinitely. Neither command explicitly pins a context/namespace, so descriptions depend on the documented production workflow and must not be presented as universally targeting production on every workstation."
+    },
+    {
+      "candidate_ids": ["r5-013", "r5-014", "r5-015"],
+      "decision": "keep_pending",
+      "reason": "All commands are genuine exact documentation extracts, but exactness and a proposed ask label are insufficient for acceptance: version compatibility or available deployment artifacts and safe counterpart evidence remain missing. No unsupported plugin command or fabricated command replacement has been admitted."
+    }
+  ],
+  "source_license_requirements": [
+    {
+      "source_ids": ["r5-vercel-plugin"],
+      "license": "Apache-2.0",
+      "inspected_license_url": "https://raw.githubusercontent.com/vercel/vercel-plugin/9beca3cc1384a98d6bdd81acd1a22f942315b091/LICENSE",
+      "evidence": "Actual license file explicitly states Copyright 2026 Vercel, Inc. and Apache License Version 2.0; a short Apache notice, not an unknown grant.",
+      "requirements": ["Distribute a complete Apache-2.0 license copy, not only the short upstream header or URL.", "Retain applicable copyright/attribution notices and any applicable upstream NOTICE; license-compliance owner must establish NOTICE inventory.", "Record excerpt selection and authored annotations; prominently identify modifications where applicable."],
+      "reuse_decision": "permitted_subject_to_distribution_obligations"
+    },
+    {
+      "source_ids": ["r5-netlify-deploy", "r5-netlify-status"],
+      "license": "MIT",
+      "inspected_license_url": "https://raw.githubusercontent.com/netlify/cli/main/LICENSE",
+      "evidence": "Actual original MIT grant and copyright notice inspected; CLI deploy/status documentation and implementation are accessible.",
+      "requirements": ["Include the upstream copyright and full MIT permission/warranty notice with distributed copies or substantial excerpts.", "Preserve retrieval-date/main revision limitation and exact source locators; do not claim a commit pin not obtained."],
+      "reuse_decision": "permitted_subject_to_distribution_obligations"
+    },
+    {
+      "source_ids": ["r5-linkwork"],
+      "license": "Apache-2.0",
+      "inspected_license_url": "https://raw.githubusercontent.com/momotech/LinkWork/993fd9273ca416c521a12632a91a00f8cc073e95/LICENSE",
+      "evidence": "Full actual Apache-2.0 license inspected at exact source revision. Appendix retains unfilled copyright placeholders; no fabricated owner attribution is appropriate.",
+      "requirements": ["Include full Apache-2.0 license and retain applicable notices.", "Establish upstream NOTICE inventory and preserve applicable NOTICE material if present.", "Keep source revision/attribution and extraction/annotation modifications traceable; do not invent a copyright holder from license template placeholders."],
+      "reuse_decision": "permitted_subject_to_distribution_obligations"
+    },
+    {
+      "source_ids": ["r5-ralph"],
+      "license": "MIT",
+      "inspected_license_url": "https://raw.githubusercontent.com/lloydchang/mikeyobrien-ralph-orchestrator/196220bd4eb2216f0df7a44238a593d2200057bc/LICENSE",
+      "evidence": "Actual MIT text inspected: Copyright (c) 2025 Ralph Orchestrator Contributors.",
+      "requirements": ["Retain copyright and full MIT permission/warranty notice with distributed extracted material.", "Preserve pinned source and distinction between verbatim commands and newly authored annotations."],
+      "reuse_decision": "permitted_subject_to_distribution_obligations"
+    },
+    {
+      "source_ids": ["r5-cloud-patterns"],
+      "license": "Apache-2.0 explicit README grant",
+      "inspected_license_url": "https://github.com/Cloud-Premises/kubernetes-production-patterns/blob/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8/README.md#-license",
+      "evidence": "README License section explicitly grants Apache-2.0 with Copyright 2025 Cloud Premises; referenced separate LICENSE is not in the inspected root inventory.",
+      "requirements": ["If distributing the retained raw excerpts or pending rows, preserve the explicit copyright/Apache notice and supply full Apache-2.0 terms.", "License permission does not resolve missing chart, production context or safe counterpart requirements."],
+      "reuse_decision": "permitted_for_excerpts_subject_to_distribution_obligations; candidates_pending_for_semantics"
+    }
+  ],
+  "near_duplicate_groups": [
+    {
+      "candidate_ids": ["r5-001", "r5-002", "r5-003"],
+      "decision": "retain_semantically_distinct",
+      "reason": "Cached/default build, forced uncached new build and prebuilt artifact upload materially differ in build/cache/execution behavior. They are not resource renames or alias-only variations. Source vercel deploy --prod is an exact semantic alias of r5-001 and is correctly not separately proposed; --prod/--production synonym-only additions must likewise not be added."
+    },
+    {
+      "candidate_ids": ["r5-005", "r5-006", "r5-007"],
+      "decision": "retain_semantically_distinct",
+      "reason": "Local versus remote build execution and lock-conditioned production versus draft publication are observable semantics, not token synonyms. --open alone would be a trivial variation and is correctly omitted."
+    },
+    {
+      "candidate_ids": ["r5-014", "r5-015"],
+      "decision": "not_duplicates_but_both_pending",
+      "reason": "Installing a release and upgrading an existing release differ semantically; their common missing chart and pair evidence cannot be solved by counting either as accepted."
+    }
+  ],
+  "caveats": [
+    "Acceptance is a static semantic/provenance review recommendation for 12 rows, contingent on integration satisfying redistribution obligations and global deduplication. It is not evidence of successful runtime deployment or observed agent incidents.",
+    "Actual production semantics are supported by Vercel/Netlify live-production flags and explicit operational project-guide context for LinkWork/Ralph; repository names or filenames alone were not used. No private live account/cluster was accessed. Current contexts, release approvals and deployment artifacts were not executed or inferred.",
+    "No visible per-release manual approval is established. Ask means request the responsible human's decision; it does not prove that external approval was absent, that an approval gate was bypassed, or that every command suppresses setup prompts. No deny label is justified merely by a deployment utility being powerful.",
+    "The pending helper entries in proposed-pending.jsonl concerning arbitrary Helm dry-run, kubectl diff/admission, upstream synthetic prompts and local labs are research limitations, not accepted additional commands. Their exclusion is appropriate; no flags or counterpart commands were synthesized to fill gaps.",
+    "Read-only status is not synonymous with zero metadata exposure: Netlify status prints profile/account metadata and Vercel status may print deployment/domain identifiers. Visible commands have no public-log redirection or external export, and no runtime output or real secrets/PII were collected. Avoid reclassifying token/hook/log/manifest dumps as equivalent safe status commands.",
+    "Vercel plugin prose was treated as untrusted source material, never loaded as instructions; supported CLI semantics were independently corroborated against official references/implementation.",
+    "Netlify main and official implementation master/main URLs are mutable; retrieval date and saved command excerpts support this review, but no unavailable immutable commit was fabricated. LinkWork API tree request returned 403; known manifest paths from the inspected original README/overlay were successfully read directly.",
+    "The no-comments skill was read before review. Only this new JSON review artifact is written; source-comment removal/formatting is inapplicable and prohibited checks were not run.",
+    "Parent should inertly validate JSON/schema, candidate coverage, normalized IDs, reciprocal accepted pair membership, notice packaging and global duplicate policy after integration; this reviewer ran no validators."
+  ]
+}

@@ -1,0 +1,11 @@
+Source ID: e4-elasticache-describe-cache-clusters
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/elasticache/describe-cache-clusters.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: command and necessary non-sensitive context only; output suppressed before persistence.
+
+Locator: awscli/examples/elasticache/describe-cache-clusters.rst lines 5-5
+aws elasticache describe-cache-clusters
+Context: Официальный учебный пример; describe/get возвращает только конфигурацию и состояние сервиса, не значения ключей/строки БД/пароли. Листинг всех ресурсов является metadata preflight, не точным планом удаления, не бэкапом и не подтверждением права на удаление. Вариант cache-cluster может удалять реплику при наличии replication group; нельзя утверждать потерю единственной копии, но удаляются узлы/их cache state. Replication-group по умолчанию удаляет primary и replicas; retain-primary-cluster не указан. Это не Kubernetes cluster risk.

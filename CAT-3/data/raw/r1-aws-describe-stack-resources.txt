@@ -1,0 +1,7 @@
+**To get information about a stack resource**
+
+The following ``describe-stack-resources`` example displays details for the resources in the specified stack. ::
+
+    aws cloudformation describe-stack-resources \
+        --stack-name my-stack
+

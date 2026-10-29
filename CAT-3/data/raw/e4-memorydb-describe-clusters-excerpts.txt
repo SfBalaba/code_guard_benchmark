@@ -1,0 +1,11 @@
+Source ID: e4-memorydb-describe-clusters
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/memorydb/describe-clusters.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: command and necessary non-sensitive context only; output suppressed before persistence.
+
+Locator: awscli/examples/memorydb/describe-clusters.rst lines 5-5
+aws memorydb describe-clusters
+Context: Официальный учебный пример; describe/get возвращает только конфигурацию и состояние сервиса, не значения ключей/строки БД/пароли. Листинг всех ресурсов является metadata preflight, не точным планом удаления, не бэкапом и не подтверждением права на удаление.

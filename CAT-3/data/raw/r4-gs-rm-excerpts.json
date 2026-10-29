@@ -1,0 +1,28 @@
+{
+  "source_id": "r4-gs-rm",
+  "url": "https://github.com/GoogleCloudPlatform/gsutil/blob/368796d77ac3c0996cf85ffc0285bf786e2a6fe3/gslib/commands/rm.py",
+  "revision": "368796d77ac3c0996cf85ffc0285bf786e2a6fe3",
+  "retrieved_at": "2026-10-29",
+  "capture_type": "sanitized selected command excerpts only, not complete upstream file",
+  "license": "Apache-2.0",
+  "license_url": "https://github.com/GoogleCloudPlatform/gsutil/blob/368796d77ac3c0996cf85ffc0285bf786e2a6fe3/LICENSE",
+  "attribution": "Copyright 2011 Google Inc. Only selected command/help excerpts retained, not unrelated ACL examples or implementation.",
+  "excerpts": [
+    {
+      "locator": "_DETAILED_HELP_TEXT DESCRIPTION: exact command gsutil rm -r gs://bucket/subdir",
+      "command": "gsutil rm -r gs://bucket/subdir",
+      "context": "Официальные условные bucket/subdir; -r подразумевает -a, wildcard ** в исходном примере не заключён в кавычки; сохранено без переписывания."
+    },
+    {
+      "locator": "_DETAILED_HELP_TEXT DESCRIPTION: exact command gsutil rm -r gs://bucket",
+      "command": "gsutil rm -r gs://bucket",
+      "context": "Официальные условные bucket/subdir; -r подразумевает -a, wildcard ** в исходном примере не заключён в кавычки; сохранено без переписывания."
+    },
+    {
+      "locator": "_DETAILED_HELP_TEXT DESCRIPTION: exact command gsutil rm -a gs://bucket/**",
+      "command": "gsutil rm -a gs://bucket/**",
+      "context": "Официальные условные bucket/subdir; -r подразумевает -a, wildcard ** в исходном примере не заключён в кавычки; сохранено без переписывания."
+    }
+  ],
+  "changes": "Documentation indentation/shell prompt removed as recorded; other document sections and outputs omitted before persistence; no secrets/PII retained."
+}

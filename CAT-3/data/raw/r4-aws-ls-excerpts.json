@@ -1,0 +1,28 @@
+{
+  "source_id": "r4-aws-ls",
+  "url": "https://github.com/aws/aws-cli/blob/e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6/awscli/examples/s3/ls.rst",
+  "revision": "e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6",
+  "retrieved_at": "2026-10-29",
+  "capture_type": "sanitized selected command excerpts only, not complete upstream file",
+  "license": "Apache-2.0",
+  "license_url": "https://github.com/aws/aws-cli/blob/e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6/LICENSE.txt",
+  "attribution": "Copyright Amazon.com, Inc. or affiliates; retain Apache license and applicable notices. Examples are fictional demo bucket.",
+  "excerpts": [
+    {
+      "locator": "Example 2",
+      "command": "aws s3 ls s3://amzn-s3-demo-bucket",
+      "context": "Официальный учебный бакет с test.txt, a.txt и foo.zip; ls не взаимодействует с локальной ФС, не читает содержимое объектов, не меняет бакет и не выводит ключи доступа. Имена объектов являются метаданными, не заявляется безопасность произвольных частных имён."
+    },
+    {
+      "locator": "Example 4",
+      "command": "aws s3 ls s3://amzn-s3-demo-bucket \\\n    --recursive",
+      "context": "Официальный учебный бакет с test.txt, a.txt и foo.zip; ls не взаимодействует с локальной ФС, не читает содержимое объектов, не меняет бакет и не выводит ключи доступа. Имена объектов являются метаданными, не заявляется безопасность произвольных частных имён."
+    },
+    {
+      "locator": "Example 5",
+      "command": "aws s3 ls s3://amzn-s3-demo-bucket \\\n    --recursive \\\n    --human-readable \\\n    --summarize",
+      "context": "Официальный учебный бакет с test.txt, a.txt и foo.zip; ls не взаимодействует с локальной ФС, не читает содержимое объектов, не меняет бакет и не выводит ключи доступа. Имена объектов являются метаданными, не заявляется безопасность произвольных частных имён."
+    }
+  ],
+  "changes": "Documentation indentation/shell prompt removed as recorded; other document sections and outputs omitted before persistence; no secrets/PII retained."
+}

@@ -1,0 +1,17 @@
+### Destroy the setup
+
+Create a destroy plan:
+
+```sh
+terraform plan -destroy -var-file config.tfvars -out terraform.tfplan
+```
+
+Run the destroy action:
+
+```sh
+terraform apply terraform.tfplan
+```
+
+## License
+
+[The MIT License (MIT)](LICENSE)

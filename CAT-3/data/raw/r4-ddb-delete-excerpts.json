@@ -1,0 +1,18 @@
+{
+  "source_id": "r4-ddb-delete",
+  "url": "https://github.com/aws/aws-cli/blob/e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6/awscli/examples/dynamodb/delete-table.rst",
+  "revision": "e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6",
+  "retrieved_at": "2026-10-29",
+  "capture_type": "sanitized selected command excerpts only, not complete upstream file",
+  "license": "Apache-2.0",
+  "license_url": "https://github.com/aws/aws-cli/blob/e9993cfc8bf6d85d9870c1ff3b86cd59c5bfdba6/LICENSE.txt",
+  "attribution": "MusicCollection is an official illustrative table; no item contents in selected metadata command.",
+  "excerpts": [
+    {
+      "locator": "To delete a table",
+      "command": "aws dynamodb delete-table \\\n    --table-name MusicCollection",
+      "context": "Удаление всей таблицы, не IaC; её резервирование и разрешение не указаны."
+    }
+  ],
+  "changes": "Documentation indentation/shell prompt removed as recorded; other document sections and outputs omitted before persistence; no secrets/PII retained."
+}

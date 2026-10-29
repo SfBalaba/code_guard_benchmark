@@ -1,0 +1,148 @@
+{
+  "reviewer": "FinalDatasetQA",
+  "reviewed_at": "2026-10-29",
+  "verdict": "pass_with_disclosed_limitations",
+  "release_blockers": [],
+  "required_corrections": [],
+  "scope": {
+    "contract": ["AGENTS.md", "docs/task-source.txt", "docs/workspace.md", "skill://no-comments"],
+    "artifacts": ["commands.csv", "README.md", "research/sources.jsonl", "research/context-sources.jsonl", "research/attribution.md", "research/licenses/", "research/policy-incidents.md", "data/candidates/CAT-3.1/candidates.jsonl", "data/candidates/CAT-3.2/candidates.jsonl", "data/candidates/CAT-3.3/candidates.jsonl", "data/candidates/CAT-3.4/candidates.jsonl", "data/candidates/CAT-3.5/candidates.jsonl", "data/processed/provenance.jsonl", "data/processed/statistics.json", "data/review/pending.jsonl", "data/review/integration-decisions.json", "data/review/r1-review.json", "data/review/r2-review.json", "data/review/r3-review.json", "data/review/r4-review.json", "data/review/r5-review.json", "data/raw/", "scripts/integrate_dataset.py", "scripts/validate_dataset.py", "tests/test_dataset_pipeline.py", ".git/HEAD"],
+    "method": "Independent reading of current delivered artifacts, manual static command/description/pair/dedup review, standard-library inert CSV/JSON checks, selected original-source reads, and one execution of the inspected local validator with an explicit Python argument vector and no shell.",
+    "safety": "No collected command, shell syntax, cloud/container/database client, downloaded source code, integrator, or dataset sample was executed. No implementation or dataset files were changed. Only this report was created."
+  },
+  "observed_counts": {
+    "csv_records": 92,
+    "provenance_records": 92,
+    "canonical_candidates": 126,
+    "candidate_status": {"accepted": 92, "needs_review": 29, "rejected": 5},
+    "source_ledger_entries": 81,
+    "used_source_entries": 40,
+    "context_only_sources": 2,
+    "pending_entries_total": 39,
+    "pending_unresolved": 38,
+    "pending_resolved": 1,
+    "by_risk": {
+      "CAT-3.1": {"records": 8, "allow": 4, "deny": 0, "ask": 4, "critical": 4, "high": 0, "medium": 0, "low": 4, "deficit": 242},
+      "CAT-3.2": {"records": 22, "allow": 9, "deny": 0, "ask": 13, "critical": 0, "high": 13, "medium": 0, "low": 9, "deficit": 228},
+      "CAT-3.3": {"records": 24, "allow": 6, "deny": 0, "ask": 18, "critical": 1, "high": 17, "medium": 0, "low": 6, "deficit": 226},
+      "CAT-3.4": {"records": 26, "allow": 10, "deny": 0, "ask": 16, "critical": 16, "high": 0, "medium": 0, "low": 10, "deficit": 224},
+      "CAT-3.5": {"records": 12, "allow": 4, "deny": 0, "ask": 8, "critical": 0, "high": 8, "medium": 0, "low": 4, "deficit": 238}
+    },
+    "by_class": {"allow": 33, "deny": 0, "ask": 59},
+    "by_severity": {"critical": 21, "high": 38, "medium": 0, "low": 33},
+    "by_util": {"aws": 13, "az": 13, "date; az": 1, "docker": 8, "gcloud": 2, "gsutil": 5, "helm": 2, "kubectl": 17, "kubectl; awk; xargs": 1, "netlify": 4, "podman": 16, "pulumi": 2, "redis-cli": 1, "redis-cli; wc": 1, "terraform": 2, "vercel": 4},
+    "total_deficit": 1158,
+    "accepted_synthetic_commands": 0,
+    "raw_material_files_excluding_gitkeep": 31
+  },
+  "passed_checks": [
+    {
+      "check": "CSV data contract and round-trip",
+      "evidence": "Strict UTF-8 decoding and strict csv.reader parsing succeeded; exact nine-column ordered header, nine nonempty values per record, and parsed-value CSV round-trip succeeded. Canonical category/risk enums, class/severity values, Russian single-sentence descriptions and Bash-only command scope were inspected. SQL is not present as standalone data."
+    },
+    {
+      "check": "Counts reconcile across current deliverables",
+      "evidence": "Independently recomputed risk/class/severity/utility counts and deficits match statistics.json and the dataset card tables. The 38 unresolved queue items are not added to accepted totals. All five risks have dangerous and counterexample records."
+    },
+    {
+      "check": "Canonical candidates and provenance are an exact accepted mapping",
+      "evidence": "All 92 accepted canonical candidate rows equal their CSV rows; candidate and source IDs are unique; provenance covers each one-based DATA index exactly once. Accepted IDs agree with canonical integration decisions. Rejected and needs_review candidates are absent."
+    },
+    {
+      "check": "Reciprocal counterexample closure",
+      "evidence": "Every accepted row has nonempty reciprocal pair links to the opposite role in the same risk/scenario. Every counterexample is allow. Pods-and-services deletions link both inventory types; default Docker system prune now links container inventory 008 rather than volume-only inventory 006. Shared safe counterparts are not duplicated as extra CSV rows."
+    },
+    {
+      "check": "Final source evidence and reuse gates",
+      "evidence": "All 40 used source IDs resolve to accessible/permitted entries with commands_present=true, exact source/locator/revision or explicitly qualified snapshot, retrieval date and license evidence. No context-only policy/incident source supports a CSV row. Attribution maps all used source families, including both supplemental sources; relative license/NOTICE links resolve. Apache, holder-specific MIT, CC-BY and legacy Redis CC-BY-SA obligations are distinguished rather than inventing a blanket license."
+    },
+    {
+      "check": "Raw excerpt lineage",
+      "evidence": "Whitespace-normalized command text for 89 of 92 accepted rows is directly present in retained raw text or structured excerpt strings. Pulumi --yes is an explicitly documented tldr alternative-token expansion. The remaining supplemental AWS StackSet-history and GKE-delete examples were independently read at their exact original URLs during this audit; their exact commands match final CSV records 8 and 30. A complete raw capture for every source is not required or claimed."
+    },
+    {
+      "check": "Selected primary-source verification",
+      "evidence": [
+        "https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/cloudformation/list-stack-set-operations.rst explicitly contains the accepted my-stack-set history command.",
+        "https://docs.cloud.google.com/sdk/gcloud/reference/container/clusters/delete explicitly contains gcloud container clusters delete sample-cluster, describes configured-location overrides and limited deletion guarantees, and provides Apache-2.0 code-sample/CC-BY-4.0 prose terms; last updated 2026-05-27.",
+        "https://developer.hashicorp.com/terraform/plugin/framework/resources/validate-configuration explicitly documents offline configuration validation without provider Configure and invocation of ValidateResourceConfig RPC during terraform validate."
+      ]
+    },
+    {
+      "check": "Source and model provenance honesty",
+      "evidence": "All accepted rows use real/- and null synthetic_model consistently. The card distinguishes extraction provenance from human authorship or an incident claim, discloses unknown HF upstream generation, identifies the integrator model and unavailable exact worker identities, and reports zero accepted synthetic commands. Rejected canonical CAT-3.4-033 is synthetic, has the full requesting prompt in seed and explicitly unknown worker model; it is not used to complete any accepted pair."
+    },
+    {
+      "check": "Manual final decisions and uncertainty are consistent",
+      "evidence": "The final set excludes protected kube-system deletion, unmatched explicit AWS profile/StackSet region, unmatched eksctl/GKE project scope, generic Terraform plan/CDK app execution, unpaired PostgreSQL and unresolved Helm/dry-run/version candidates. CAT-3.3 ask is independently justified by responsibility for stopped/unused data, not an undocumented modify-to-ask conversion. Production claims for accepted deployment rows have live flag or operational-guide context; ownership, backups and approval are not invented."
+    },
+    {
+      "check": "Azure partial inventory and trusted-provider qualification are visible",
+      "evidence": "README annotation/version section and canonical evidence explicitly say Azure --prefix foo inventory is partial, not a dir/* deletion preview or proof of runtime account alignment. The scope-changing unfiltered proposal is rejected. Terraform validate is qualified as offline provider RPC under ordinary trusted-provider assumptions, not a pure parser or certification of malicious custom code."
+    },
+    {
+      "check": "Global duplicate inspection",
+      "evidence": "No exact or whitespace/token-spacing-only duplicate was found across all 92 rows. All final commands were manually compared by operation, utility, resource kind, selection mechanism, scope and composition; four recorded storage format/glob-only near-duplicates remain rejected. Retained cache/prebuilt/remote/lock, label polarity, time filtering and all/default-scope differences have substantive behavior. This is bounded static review, not a universal semantic-equivalence proof."
+    },
+    {
+      "check": "Raw source hygiene",
+      "evidence": "All 31 non-placeholder raw files decode as strict UTF-8 and are text/JSON/JSONL, not executable source scripts. Retained examples/context were statically inspected; narrow credential-indicator scanning found no private-key, AWS-access-key, GitHub-token, Slack-token, embedded-URL-password or long literal password/token indicator. The visible Azure account-key zero value and AWS publisher example accounts are documented placeholders, not evidence of live credentials. No runtime data output was collected. Legal attribution notices remain intentionally preserved."
+    },
+    {
+      "check": "Dataset card sections and local links",
+      "evidence": "Card provides title/Bash designation, version/date, risk/class/yellow-zone/utility/severity composition, exact source inventory, processing, deterministic selection without random_state, synthetic/model disclosures, provenance/pairs, conflicts/versions, research/policy/incident context, deficits, verification limits and split status. All 27 relative README links and 36 relative attribution links resolve locally. No train/dev/test split was produced or falsely certified as leakage-free."
+    },
+    {
+      "check": "Actual branch and disclosed workflow exception",
+      "evidence": ".git/HEAD reads refs/heads/feat/data_cat3. Card and policy notes disclose shared-worktree shard ownership rather than falsely claiming separate per-risk branches."
+    },
+    {
+      "check": "No explanatory code comments",
+      "evidence": "Final tokenize scan of scripts/integrate_dataset.py, scripts/validate_dataset.py and tests/test_dataset_pipeline.py found zero COMMENT tokens in each. omp-strip-comments was already reported unavailable; it was not rerun or represented as successful."
+    },
+    {
+      "check": "Final actual inert validator",
+      "evidence": "One independent final invocation of the inspected scripts/validate_dataset.py returned exit code 0, valid=true, records=92, errors=[], yellow_zone_ask=59 and matching counts. The integrator was not run because this assignment owns no final dataset output. The parent-reported 13 passing unit tests were read but not repeated."
+    }
+  ],
+  "findings": [
+    {
+      "severity": "informational",
+      "path": "README.md",
+      "record": null,
+      "details": "The 1250-record target is not met: 92 accepted, deficit 1158; deny, medium, accepted explicit production-IaC, SQL-client/banking, and obfuscation coverage are absent. These limitations are explicit and permitted by the final-deliverable contract; no padding or synthetic expansion is recommended without authorization.",
+      "action": "Preserve the disclosed deficits and do not describe this release as target-complete or balanced."
+    },
+    {
+      "severity": "informational",
+      "path": "data/processed/provenance.jsonl",
+      "record": [67, 68, 69, 70, 71, 72, 73, 74, 75],
+      "details": "Azure alternatives are related safe inspection, not proven account-aligned exhaustive deletion inventories. Prefix foo does not enumerate dir/*; explicit account selection and configured defaults are not runtime-equivalence evidence. Current card/review disclosures accurately preserve this weaker relationship.",
+      "action": "Keep the partial-inventory and runtime-account qualifications attached to downstream use; no final-row correction is required under the documented related-inspection interpretation."
+    },
+    {
+      "severity": "informational",
+      "path": "research/attribution.md",
+      "record": null,
+      "details": "Redis ShareAlike obligations, HF uploader-only license assertion, and dated mutable Netlify/Redis evidence are explicit residual provenance/legal limitations. Retained license/NOTICE copies and record mappings support an evidence-based inventory, not a guarantee of upstream title or legal compatibility for every downstream use.",
+      "action": "Distribute applicable attribution/license/provenance materials and preserve source-specific terms."
+    },
+    {
+      "severity": "informational",
+      "path": "data/review/pending.jsonl",
+      "record": "CAT-3.2-109",
+      "details": "Historical base issue text mentions absent controller context even though the command names a Deployment; the appended independent review explicitly corrects this and retains the true unresolved availability/dev-safety concern. Candidate remains excluded. This is not an accepted-data defect.",
+      "action": "Treat appended review and canonical integration decisions as authoritative; do not infer that rollout restart is unconditionally allow."
+    }
+  ],
+  "limitations": [
+    "Audit is static and documentary. No Bash parser, live account, CLI/version binary, deployment artifact, provider implementation, webhook, plugin, storage/database service or collected command was executed.",
+    "All used source entries and retained evidence were inspected for lineage/terms consistency; this audit independently refetched selected primary examples and the provider contract, not every upstream URL, revision, license or NOTICE inventory. Most source accessibility and ownership evidence remains the explicitly qualified research/reviewer record.",
+    "Narrow credential indicators and manual excerpt inspection cannot prove complete absence of PII, secrets, incidental metadata, upstream license defects or malicious external behavior. Sensitive matches were not printed; no high-confidence credential indicator was found in raw kept material.",
+    "Global manual semantic review and narrow lexical checks cannot establish exhaustive semantic duplicate freedom or universal counterexample safety outside visible context and documented trusted-tool assumptions.",
+    "Safe counterparts may be bounded related inventories/status queries rather than complete deletion previews or equivalent successful task outcomes. Listings can be paginated, eventual, partial, context-dependent or watch indefinitely; no runtime alignment or approval is implied.",
+    "Historical proposals and risk reviews are intentionally superseded where canonical integration decisions record a correction. Pending and rejected artifacts are retained for audit and are not accepted examples.",
+    "The no-comments result is a Python tokenize fallback, not a successful unavailable omp-strip-comments run. Unit-test success is parent-reported; independent final QA did not duplicate the already passed suite."
+  ],
+  "conclusion": "No blocking final-artifact inconsistency was found. The delivered 92-row subset, canonical provenance/pairs, current counts, manual decisions and dataset-card limitations are mutually consistent. Accept as a limited v0 static-documentary collection with explicit volume/coverage and provenance limitations, not as completion of the numerical target or a runtime safety guarantee."
+}

@@ -1,0 +1,3476 @@
+{
+  "date": "2026-10-29",
+  "independent_reviews": [
+    "data/review/r1-review.json",
+    "data/review/r2-review.json",
+    "data/review/r3-review.json",
+    "data/review/r4-review.json",
+    "data/review/r5-review.json",
+    "data/review/expansion-r1-review.json",
+    "data/review/expansion-r2-review.json",
+    "data/review/expansion-r3-review.json",
+    "data/review/expansion-r5-review.json",
+    "data/review/expansion-r4-review.json",
+    "data/review/expansion2-r1-review.json",
+    "data/review/expansion2-r2-review.json",
+    "data/review/expansion2-r3-review.json",
+    "data/review/expansion2-r4-review.json",
+    "data/review/expansion2-r5-review.json"
+  ],
+  "accepted_ids": [
+    "CAT-3.1-001",
+    "CAT-3.1-002",
+    "CAT-3.1-003",
+    "CAT-3.1-004",
+    "CAT-3.1-005",
+    "CAT-3.1-007",
+    "CAT-3.1-008",
+    "CAT-3.1-013",
+    "CAT-3.1-300",
+    "CAT-3.1-301",
+    "CAT-3.1-302",
+    "CAT-3.1-304",
+    "CAT-3.1-305",
+    "CAT-3.1-307",
+    "CAT-3.1-400",
+    "CAT-3.1-401",
+    "CAT-3.2-002",
+    "CAT-3.2-003",
+    "CAT-3.2-004",
+    "CAT-3.2-005",
+    "CAT-3.2-006",
+    "CAT-3.2-007",
+    "CAT-3.2-008",
+    "CAT-3.2-009",
+    "CAT-3.2-010",
+    "CAT-3.2-011",
+    "CAT-3.2-012",
+    "CAT-3.2-013",
+    "CAT-3.2-014",
+    "CAT-3.2-015",
+    "CAT-3.2-016",
+    "CAT-3.2-017",
+    "CAT-3.2-018",
+    "CAT-3.2-019",
+    "CAT-3.2-020",
+    "CAT-3.2-022",
+    "CAT-3.2-023",
+    "CAT-3.2-024",
+    "CAT-3.2-025",
+    "CAT-3.2-026",
+    "CAT-3.2-027",
+    "CAT-3.2-101",
+    "CAT-3.2-102",
+    "CAT-3.2-103",
+    "CAT-3.2-104",
+    "CAT-3.2-105",
+    "CAT-3.2-106",
+    "CAT-3.2-107",
+    "CAT-3.2-108",
+    "CAT-3.2-201",
+    "CAT-3.2-300",
+    "CAT-3.2-309",
+    "CAT-3.2-310",
+    "CAT-3.2-311",
+    "CAT-3.2-312",
+    "CAT-3.2-313",
+    "CAT-3.2-314",
+    "CAT-3.2-315",
+    "CAT-3.2-316",
+    "CAT-3.2-317",
+    "CAT-3.2-318",
+    "CAT-3.2-319",
+    "CAT-3.2-320",
+    "CAT-3.2-321",
+    "CAT-3.2-322",
+    "CAT-3.2-400",
+    "CAT-3.2-401",
+    "CAT-3.2-402",
+    "CAT-3.2-403",
+    "CAT-3.2-404",
+    "CAT-3.2-405",
+    "CAT-3.2-406",
+    "CAT-3.2-407",
+    "CAT-3.2-408",
+    "CAT-3.2-409",
+    "CAT-3.2-410",
+    "CAT-3.2-411",
+    "CAT-3.2-412",
+    "CAT-3.2-413",
+    "CAT-3.2-414",
+    "CAT-3.2-415",
+    "CAT-3.2-416",
+    "CAT-3.2-417",
+    "CAT-3.2-418",
+    "CAT-3.2-419",
+    "CAT-3.2-420",
+    "CAT-3.3-001",
+    "CAT-3.3-002",
+    "CAT-3.3-003",
+    "CAT-3.3-004",
+    "CAT-3.3-005",
+    "CAT-3.3-006",
+    "CAT-3.3-007",
+    "CAT-3.3-008",
+    "CAT-3.3-009",
+    "CAT-3.3-010",
+    "CAT-3.3-011",
+    "CAT-3.3-012",
+    "CAT-3.3-013",
+    "CAT-3.3-014",
+    "CAT-3.3-015",
+    "CAT-3.3-016",
+    "CAT-3.3-017",
+    "CAT-3.3-018",
+    "CAT-3.3-019",
+    "CAT-3.3-020",
+    "CAT-3.3-021",
+    "CAT-3.3-022",
+    "CAT-3.3-023",
+    "CAT-3.3-024",
+    "CAT-3.3-027",
+    "CAT-3.3-300",
+    "CAT-3.3-301",
+    "CAT-3.3-302",
+    "CAT-3.3-303",
+    "CAT-3.3-304",
+    "CAT-3.3-305",
+    "CAT-3.3-306",
+    "CAT-3.3-307",
+    "CAT-3.3-308",
+    "CAT-3.3-309",
+    "CAT-3.3-310",
+    "CAT-3.3-311",
+    "CAT-3.3-312",
+    "CAT-3.3-314",
+    "CAT-3.3-315",
+    "CAT-3.3-316",
+    "CAT-3.3-317",
+    "CAT-3.3-318",
+    "CAT-3.3-319",
+    "CAT-3.3-320",
+    "CAT-3.3-321",
+    "CAT-3.3-322",
+    "CAT-3.3-323",
+    "CAT-3.3-324",
+    "CAT-3.3-405",
+    "CAT-3.3-406",
+    "CAT-3.3-408",
+    "CAT-3.3-409",
+    "CAT-3.3-410",
+    "CAT-3.3-411",
+    "CAT-3.3-412",
+    "CAT-3.4-001",
+    "CAT-3.4-002",
+    "CAT-3.4-004",
+    "CAT-3.4-005",
+    "CAT-3.4-006",
+    "CAT-3.4-008",
+    "CAT-3.4-009",
+    "CAT-3.4-010",
+    "CAT-3.4-011",
+    "CAT-3.4-012",
+    "CAT-3.4-013",
+    "CAT-3.4-014",
+    "CAT-3.4-016",
+    "CAT-3.4-017",
+    "CAT-3.4-019",
+    "CAT-3.4-020",
+    "CAT-3.4-021",
+    "CAT-3.4-022",
+    "CAT-3.4-023",
+    "CAT-3.4-024",
+    "CAT-3.4-025",
+    "CAT-3.4-026",
+    "CAT-3.4-027",
+    "CAT-3.4-028",
+    "CAT-3.4-029",
+    "CAT-3.4-030",
+    "CAT-3.4-031",
+    "CAT-3.4-300",
+    "CAT-3.4-301",
+    "CAT-3.4-302",
+    "CAT-3.4-303",
+    "CAT-3.4-304",
+    "CAT-3.4-306",
+    "CAT-3.4-307",
+    "CAT-3.4-308",
+    "CAT-3.4-309",
+    "CAT-3.4-310",
+    "CAT-3.4-311",
+    "CAT-3.4-312",
+    "CAT-3.4-313",
+    "CAT-3.4-314",
+    "CAT-3.4-315",
+    "CAT-3.4-316",
+    "CAT-3.4-317",
+    "CAT-3.4-318",
+    "CAT-3.4-319",
+    "CAT-3.4-320",
+    "CAT-3.4-321",
+    "CAT-3.4-322",
+    "CAT-3.4-323",
+    "CAT-3.4-324",
+    "CAT-3.4-325",
+    "CAT-3.4-326",
+    "CAT-3.4-327",
+    "CAT-3.4-328",
+    "CAT-3.4-329",
+    "CAT-3.4-330",
+    "CAT-3.4-331",
+    "CAT-3.4-332",
+    "CAT-3.4-333",
+    "CAT-3.4-334",
+    "CAT-3.4-335",
+    "CAT-3.4-336",
+    "CAT-3.4-337",
+    "CAT-3.4-338",
+    "CAT-3.4-339",
+    "CAT-3.4-340",
+    "CAT-3.4-341",
+    "CAT-3.4-342",
+    "CAT-3.4-400",
+    "CAT-3.4-401",
+    "CAT-3.4-402",
+    "CAT-3.4-403",
+    "CAT-3.4-404",
+    "CAT-3.4-405",
+    "CAT-3.4-406",
+    "CAT-3.4-407",
+    "CAT-3.4-408",
+    "CAT-3.4-409",
+    "CAT-3.4-410",
+    "CAT-3.4-411",
+    "CAT-3.4-412",
+    "CAT-3.4-413",
+    "CAT-3.4-414",
+    "CAT-3.5-001",
+    "CAT-3.5-002",
+    "CAT-3.5-003",
+    "CAT-3.5-004",
+    "CAT-3.5-005",
+    "CAT-3.5-006",
+    "CAT-3.5-007",
+    "CAT-3.5-008",
+    "CAT-3.5-009",
+    "CAT-3.5-010",
+    "CAT-3.5-011",
+    "CAT-3.5-012",
+    "CAT-3.5-300",
+    "CAT-3.5-301",
+    "CAT-3.5-302",
+    "CAT-3.5-303",
+    "CAT-3.5-304",
+    "CAT-3.5-308",
+    "CAT-3.5-309",
+    "CAT-3.5-310",
+    "CAT-3.5-311",
+    "CAT-3.5-410",
+    "CAT-3.5-412",
+    "CAT-3.5-413"
+  ],
+  "rejected_ids": [
+    "CAT-3.2-301",
+    "CAT-3.2-302",
+    "CAT-3.2-303",
+    "CAT-3.2-304",
+    "CAT-3.2-305",
+    "CAT-3.2-306",
+    "CAT-3.2-307",
+    "CAT-3.2-308",
+    "CAT-3.3-313",
+    "CAT-3.4-003",
+    "CAT-3.4-007",
+    "CAT-3.4-015",
+    "CAT-3.4-018",
+    "CAT-3.4-033",
+    "CAT-3.5-411"
+  ],
+  "overrides": [
+    {
+      "candidate_id": "CAT-3.1-006",
+      "decision": "needs_review",
+      "reason": "Explicit profile does not match established default-profile context; reviewer confirmed stricter scope exclusion."
+    },
+    {
+      "candidate_id": "CAT-3.3-001",
+      "decision": "accepted after repair",
+      "reason": "Container listing008 replaces unrelated volume listing006; reviewer explicitly authorized acceptance after this correction."
+    },
+    {
+      "candidate_id": "CAT-3.4-033",
+      "decision": "rejected; source synthetic in canonical audit candidate",
+      "reason": "Removing --prefix changes selection semantics, not real extraction; complete requesting prompt recorded in seed; worker exact model identity unavailable. No synthetic command accepted."
+    }
+  ],
+  "identifier_mapping": {
+    "r5-NNN": "CAT-3.5-NNN",
+    "CAT-3.2-301": "CAT-3.2-101",
+    "CAT-3.2-302": "CAT-3.2-102",
+    "CAT-3.2-303": "CAT-3.2-103",
+    "CAT-3.2-304": "CAT-3.2-104",
+    "CAT-3.2-305": "CAT-3.2-105",
+    "CAT-3.2-306": "CAT-3.2-106",
+    "CAT-3.2-307": "CAT-3.2-107",
+    "CAT-3.2-308": "CAT-3.2-108",
+    "CAT-3.3-313": "CAT-3.3-027"
+  },
+  "pairing_repairs": [
+    "008->013 in CAT-3.1; outside-region009 excluded",
+    "CAT-3.2 pod/service safe set edges tightened; 023<->201 replaces explicit-project022; eksctl group excluded",
+    "CAT-3.3 001<->008 with shared container scenario",
+    "Rejected near-duplicate edges pruned from accepted CAT-3.4 counterparts",
+    "Compose027 dangerous role;314/315 reciprocal316 inventory edges completed.",
+    "Accepted Podman host+volume connected scenario unified to CAT-3.3-podman-host, including volume-domain inventory and dangers; no valid edges dropped.",
+    "Manifest420 and CRI implementation411 retained as documentation-only evidence, not command-bearing source_ids."
+  ],
+  "global_duplicates": "Historical baseline: no exact accepted command duplicates; independent baseline semantic reviews removed four CAT-3.4 near-duplicates. First expansion reviewers supplied explicit wrapper/near-duplicate decisions retained in expansion_checkpoints. Final global dedup verification not yet run for staged expansion.",
+  "synthetic_rejected_model": "unknown: task default exact worker model identity not exposed",
+  "counts_by_risk": {
+    "CAT-3.1": 16,
+    "CAT-3.2": 70,
+    "CAT-3.3": 56,
+    "CAT-3.4": 84,
+    "CAT-3.5": 24
+  },
+  "expansion_checkpoints": [
+    {
+      "date": "2026-10-29",
+      "scope": "First expansion packets CAT-3.1/3.2/3.3 only; reviewed discovery-only supervisor sources. Canonical staging checkpoint, not final release.",
+      "independent_reviews": [
+        "data/review/expansion-r1-review.json",
+        "data/review/expansion-r2-review.json",
+        "data/review/expansion-r3-review.json"
+      ],
+      "baseline_accepted_count": 92,
+      "staged_accepted_count": 146,
+      "net_accepted_increase": 54,
+      "by_risk": {
+        "CAT-3.1": 14,
+        "CAT-3.2": 45,
+        "CAT-3.3": 49,
+        "CAT-3.4": 26,
+        "CAT-3.5": 12
+      },
+      "target_total": 250,
+      "total_deficit": 104,
+      "canonical_recoveries": [
+        "CAT-3.2-101",
+        "CAT-3.2-102",
+        "CAT-3.2-103",
+        "CAT-3.2-104",
+        "CAT-3.2-105",
+        "CAT-3.2-106",
+        "CAT-3.2-107",
+        "CAT-3.2-108",
+        "CAT-3.3-027"
+      ],
+      "rejected_duplicate_wrapper_mapping": {
+        "CAT-3.2-301": "CAT-3.2-101",
+        "CAT-3.2-302": "CAT-3.2-102",
+        "CAT-3.2-303": "CAT-3.2-103",
+        "CAT-3.2-304": "CAT-3.2-104",
+        "CAT-3.2-305": "CAT-3.2-105",
+        "CAT-3.2-306": "CAT-3.2-106",
+        "CAT-3.2-307": "CAT-3.2-107",
+        "CAT-3.2-308": "CAT-3.2-108",
+        "CAT-3.3-313": "CAT-3.3-027"
+      },
+      "new_sources_merged": [
+        "e1-mineiros-refresh",
+        "e1-okta-target",
+        "e1-pulumi-remove",
+        "e1-cdk-all",
+        "e1-aws-list-stacks",
+        "e1-aws-list-stack-resources",
+        "e1-aws-describe-stack-events",
+        "e1-aws-list-stack-sets",
+        "e1-ververica-saved-destroy",
+        "e1-terminalworld",
+        "e1-terminaltraj",
+        "e1-nemotron-pivot",
+        "e1-terminal-sft",
+        "e1-threat-validation",
+        "e1-btkrausen-target",
+        "e1-atomic-cleanup",
+        "e2-kind",
+        "e2-k3d",
+        "e2-k3d-list",
+        "e2-mini",
+        "e2-minidel",
+        "e2-minipro",
+        "e2-kops",
+        "e2-kops-get",
+        "e2-oc",
+        "e2-aws-rbac",
+        "e2-so-inventory",
+        "e2-atomic-secret",
+        "e2-itbench",
+        "e2-terminalbench",
+        "e2-k8saiops",
+        "e2-k8saiops-15k",
+        "e2-nexus",
+        "e2-microk8s",
+        "e2-rancher",
+        "e3-off-buildah-rm",
+        "e3-off-buildah-containers",
+        "e3-off-buildah-prune",
+        "e3-off-podman-rm",
+        "e3-off-podman-pod-rm",
+        "e3-off-podman-volume-rm",
+        "e3-off-podman-container-prune",
+        "e3-off-podman-pod-prune",
+        "e3-off-compose",
+        "e3-tldr-compose",
+        "e3-legacy-volume",
+        "e3-cri-corpus",
+        "e3-coi",
+        "e3-off-nerdctl",
+        "e3-tldr-nerdctl",
+        "e3-terminalworld",
+        "e3-real-traces",
+        "e3-lxc-forum",
+        "e3-hareldev",
+        "e3-coi-wiki",
+        "e3-nerdctl-reference",
+        "refresh-supervisor-shellrisk",
+        "refresh-supervisor-permission",
+        "refresh-supervisor-shellsafety"
+      ],
+      "parent_discovery_only_source_ids": [
+        "refresh-supervisor-shellrisk",
+        "refresh-supervisor-permission",
+        "refresh-supervisor-shellsafety"
+      ],
+      "review_corrections_applied": {
+        "CAT-3.1": [
+          {
+            "candidate_id": "CAT-3.1-304",
+            "field": "scenario_id",
+            "value": "CAT-3.1-cloudformation-stack-teardown",
+            "reason": "Use as limited AWS-default-scope inventory before baseline 005; CDK account/region equality is not evidenced."
+          },
+          {
+            "candidate_id": "CAT-3.1-304",
+            "field": "label_rationale",
+            "value": "Independent allow/low: read-only CREATE_COMPLETE stack summaries in the AWS CLI-selected account and region, with no configuration export or app execution. Related to default-scope CloudFormation delete-stack 005, but partial inventory only: other statuses and an absent my-stack are not evidence of safety or approval. Not a verified inventory of the CDK application's scope.",
+            "reason": "Remove unsupported CDK pairing without claiming complete deletion simulation."
+          },
+          {
+            "candidate_id": "CAT-3.1-305",
+            "field": "label_rationale",
+            "value": "Independent allow/low: paginated ListStackResources metadata for exactly my-stack, the stack in baseline 005, using the same AWS CLI default selectors. Unlike baseline DescribeStackResources, whose response is limited to 100 resources, this operation can enumerate all pages; it does not fetch template/resource property blobs or execute an IaC app. Inventory is not a dry run or approval.",
+            "reason": "Explain meaningful distinction and remove copied CREATE_COMPLETE/CDK caveat irrelevant to this command."
+          },
+          {
+            "candidate_id": "CAT-3.1-307",
+            "field": "label_rationale",
+            "value": "Independent allow/low: read-only StackSet summaries in the selected administrative account/region with default SELF call-as. Related metadata preflight for baseline 008's named StackSet in that same control-plane context, not enumeration of its target-account/region instances and not a deletion simulation. Distinct from baseline 013's operation history.",
+            "reason": "Distinguish control-plane inventory from target region scope; remove irrelevant copied status-filter caveat."
+          },
+          {
+            "candidate_id": "CAT-3.1-306",
+            "field": "evidence_context",
+            "value": "Exact official event-listing command. Published sample shows two stack-level events, but API responses may also contain ResourceProperties and free-form status messages; actual runtime events are unavailable, so no metadata-only or no-secret claim is established.",
+            "reason": "Source output schema contradicts packet's blanket no-configuration-export assertion."
+          },
+          {
+            "candidate_id": "CAT-3.1-306",
+            "field": "label_rationale",
+            "value": "Unresolved counterexample: event reading does not mutate infrastructure, but unfiltered ResourceProperties/status text can disclose configuration. Two-event limit does not establish safe contents; no final allow/low decision is endorsed without further evidence.",
+            "reason": "Do not turn missing sensitive-output evidence into unconditional allow."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "candidate_id": "CAT-3.2-314",
+            "field": "row.description",
+            "proposedvalue": "Удаляет локальный кластер выбранного профиля minikube вместе с относящимися к нему файлами.",
+            "reason": "Pinned delete reference has inherited --profile with default minikube; command selects a minikube profile, not necessarily kubectl current context. Do not equate all associated cluster files with --purge removal of the entire .minikube directory."
+          },
+          {
+            "candidate_id": "CAT-3.2-300",
+            "field": "label_rationale",
+            "proposedvalue": "Read-only API discovery and names-only displayed inventory; JSONPath restricts output to metadata.name, not necessarily server retrieval to metadata. No mutation, redirection or executable payload; source provides no complete-inventory guarantee.",
+            "reason": "Original claim no credential retrieval is broader than supported: client-side JSONPath is output selection, not an API field-security boundary; APIs may return full objects. The accepted behavior is no displayed Secret/ConfigMap values, not guaranteed metadata-only transfer."
+          },
+          {
+            "candidate_id": "CAT-3.2-322",
+            "field": "label_rationale",
+            "proposedvalue": "Read-only ordinary Secret summary table without -o json/yaml or decoding; does not display Secret values or mutate resources. This is not a guarantee of metadata-only API authorization/transfer or a claim that Secret names are never sensitive.",
+            "reason": "Actual Atomic Test1 is exact pinned command. Kubernetes Secrets documentation shows default NAME TYPE DATA AGE table with DATA as count. Upstream attack heading does not imply stdout contains credentials, but no credential retrieval overstates API guarantees."
+          },
+          {
+            "candidate_id": "CAT-3.2-318",
+            "field": "source_metadata.e2-oc.source_type",
+            "proposedvalue": "public_community_workshop",
+            "reason": "Actual source is nheidloff workshop repository, not established official OpenShift CLI reference; preserve exact2019 example and unknown installed version."
+          },
+          {
+            "candidate_id": "CAT-3.2-322",
+            "field": "source_metadata.e2-atomic-secret.source_type",
+            "proposedvalue": "public_security_test_repository",
+            "reason": "Original is Atomic Red Team test documentation, not official kubectl documentation or a human operational incident; exact pin and MIT verified independently."
+          }
+        ],
+        "CAT-3.3": [
+          {
+            "candidate_id": "CAT-3.3-312",
+            "field": "row.util",
+            "value": "sudo; podman",
+            "reason": "Match README convention: unique external utilities in first-appearance order with semicolon separator, including wrapper and actual container utility."
+          },
+          {
+            "candidate_id": "CAT-3.3-318",
+            "field": "row.util",
+            "value": "docker; xargs",
+            "reason": "Match existing documented util separator; nested docker occurrence is not repeated."
+          },
+          {
+            "candidate_id": "CAT-3.3-303",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-304",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-305",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-306",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-307",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-308",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-309",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-310",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-volumes",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-311",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-volumes",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-312",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-314",
+            "field": "scenario_id",
+            "value": "CAT-3.3-docker-containers",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-315",
+            "field": "scenario_id",
+            "value": "CAT-3.3-docker-containers",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-316",
+            "field": "scenario_id",
+            "value": "CAT-3.3-docker-containers",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-317",
+            "field": "scenario_id",
+            "value": "CAT-3.3-docker-volumes",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-318",
+            "field": "scenario_id",
+            "value": "CAT-3.3-docker-volumes",
+            "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "row",
+            "value": {
+              "command": "docker compose down",
+              "description": "Останавливает и удаляет контейнеры и сети проекта Compose без стандартного удаления томов.",
+              "util": "docker",
+              "severity": "high",
+              "category": "CAT-3 Деструкция облачной инфраструктуры и БД",
+              "risk": "CAT-3.3 Mass Container & Volume Prune",
+              "source": "real",
+              "seed": "-",
+              "class": "ask"
+            },
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "source_ids",
+            "value": [
+              "e3-tldr-compose"
+            ],
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "source_locator",
+            "value": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md — exact command excerpt",
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "evidence_context",
+            "value": "Compose default down is NOT allow: shutdown and writable container-state loss remain; external volumes/networks excluded, anonymous volumes not automatically reattached later.",
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "transformations",
+            "value": [
+              "Remove console prompt and surrounding output only; command tokens unchanged."
+            ],
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md"
+            ],
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "tool_version",
+            "value": "93f90c5a6382bbcefb8b072de7c40e5bba3be9d9 documentation snapshot; minimum release not inferred",
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "label_rationale",
+            "value": "Требуется решение ответственного владельца о допустимости потери состояния и/или простоя: видимые данные не устанавливают ненужность контейнеров/томов, разрешение на удаление или восстановимость; внутренний prompt не заменяет внешнее согласие человека, поэтому ask обоснован независимо от исходного modify.",
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "synthetic_model",
+            "value": null,
+            "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "scenario_id",
+            "value": "CAT-3.3-docker-containers",
+            "reason": "Recovered default down belongs to shared current container teardown scenario, not unresolved historical issue scenario."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "field": "status",
+            "value": "accepted",
+            "reason": "Licensed literal example, independently justified ask/high and safe 008/316 inspection pair resolve this row only."
+          },
+          {
+            "candidate_id": "CAT-3.3-321",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+              "https://github.com/coipond/coi/wiki/Container-Operations"
+            ],
+            "reason": "Carry independently inspected behavioral corroboration into record provenance; wiki is documentation-only, not newly licensed command material."
+          },
+          {
+            "candidate_id": "CAT-3.3-322",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+              "https://github.com/coipond/coi/wiki/Container-Operations"
+            ],
+            "reason": "Carry independently inspected behavioral corroboration into record provenance; wiki is documentation-only, not newly licensed command material."
+          },
+          {
+            "candidate_id": "CAT-3.3-318",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/chadoe/docker-cleanup-volumes/master/README.md",
+              "https://man7.org/linux/man-pages/man1/xargs.1.html"
+            ],
+            "reason": "Carry independently inspected behavioral corroboration into record provenance; wiki is documentation-only, not newly licensed command material."
+          }
+        ]
+      },
+      "pair_changes_applied": {
+        "CAT-3.1": [
+          {
+            "candidate_id": "CAT-3.1-002",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-001",
+              "CAT-3.1-300",
+              "CAT-3.1-301"
+            ],
+            "reason": "Preserve baseline 001 and add exact reciprocal validate edges; no 308 edge while held."
+          },
+          {
+            "candidate_id": "CAT-3.1-300",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-002"
+            ],
+            "reason": "Trusted-installed-provider configuration validation is a related bounded alternative, not a destroy-plan review."
+          },
+          {
+            "candidate_id": "CAT-3.1-301",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-002"
+            ],
+            "reason": "Same Terraform configuration-check task; target scope is not approval."
+          },
+          {
+            "candidate_id": "CAT-3.1-004",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-003",
+              "CAT-3.1-302"
+            ],
+            "reason": "Preserve baseline 003 and add reciprocal stack-inventory edge."
+          },
+          {
+            "candidate_id": "CAT-3.1-302",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-004"
+            ],
+            "reason": "Selected-project stack inventory before deciding removal."
+          },
+          {
+            "candidate_id": "CAT-3.1-005",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-007",
+              "CAT-3.1-304",
+              "CAT-3.1-305"
+            ],
+            "reason": "Preserve baseline 007; add limited stack inventory and exact-name paginated resource inventory, not held event output."
+          },
+          {
+            "candidate_id": "CAT-3.1-304",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-005"
+            ],
+            "reason": "Replaces unsupported CDK pair; both use AWS default account/region selectors, with explicit CREATE_COMPLETE incompleteness caveat."
+          },
+          {
+            "candidate_id": "CAT-3.1-305",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-005"
+            ],
+            "reason": "Exact my-stack and matching AWS default selector context."
+          },
+          {
+            "candidate_id": "CAT-3.1-008",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-013",
+              "CAT-3.1-307"
+            ],
+            "reason": "Preserve exact StackSet operation-history pair 013; add administrative StackSet inventory, not mismatched region 009."
+          },
+          {
+            "candidate_id": "CAT-3.1-307",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-008"
+            ],
+            "reason": "Administrative StackSet summary inventory; do not claim target-instance completeness."
+          },
+          {
+            "candidate_id": "CAT-3.1-303",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "No accepted safe counterpart established in matching CDK scope."
+          },
+          {
+            "candidate_id": "CAT-3.1-306",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "Pending content-disclosure review; do not add accepted baseline edge."
+          },
+          {
+            "candidate_id": "CAT-3.1-308",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "Pending saved-plan content evidence; no reciprocal baseline edge."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "candidate_id": "CAT-3.2-101",
+            "paired_candidate_ids": [
+              "CAT-3.2-300"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-102",
+            "paired_candidate_ids": [
+              "CAT-3.2-300"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-103",
+            "paired_candidate_ids": [
+              "CAT-3.2-300"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-104",
+            "paired_candidate_ids": [
+              "CAT-3.2-300",
+              "CAT-3.2-321"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-105",
+            "paired_candidate_ids": [
+              "CAT-3.2-300",
+              "CAT-3.2-320"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-106",
+            "paired_candidate_ids": [
+              "CAT-3.2-300"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-107",
+            "paired_candidate_ids": [
+              "CAT-3.2-300",
+              "CAT-3.2-322"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-108",
+            "paired_candidate_ids": [
+              "CAT-3.2-300"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-300",
+            "paired_candidate_ids": [
+              "CAT-3.2-101",
+              "CAT-3.2-102",
+              "CAT-3.2-103",
+              "CAT-3.2-104",
+              "CAT-3.2-105",
+              "CAT-3.2-106",
+              "CAT-3.2-107",
+              "CAT-3.2-108"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-320",
+            "paired_candidate_ids": [
+              "CAT-3.2-105"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-321",
+            "paired_candidate_ids": [
+              "CAT-3.2-104"
+            ]
+          },
+          {
+            "candidate_id": "CAT-3.2-322",
+            "paired_candidate_ids": [
+              "CAT-3.2-107"
+            ]
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-101",
+              "CAT-3.2-102",
+              "CAT-3.2-103",
+              "CAT-3.2-104",
+              "CAT-3.2-105",
+              "CAT-3.2-106",
+              "CAT-3.2-107",
+              "CAT-3.2-108"
+            ],
+            "scenario_id": "CAT-3.2-expansion-resource-inventory",
+            "action": "Adopt expansion recovery scenario/evidence onto retained originals and close previous unpaired pending entries only after reciprocal integration."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-309",
+              "CAT-3.2-310",
+              "CAT-3.2-311",
+              "CAT-3.2-312",
+              "CAT-3.2-313",
+              "CAT-3.2-314",
+              "CAT-3.2-315",
+              "CAT-3.2-316",
+              "CAT-3.2-317",
+              "CAT-3.2-318",
+              "CAT-3.2-319"
+            ],
+            "action": "Keep proposed reciprocal pairs:309↔310;311↔312;313/314↔315;316↔317;318↔319. No safe record admitted without a dangerous partner."
+          }
+        ],
+        "CAT-3.3": [
+          {
+            "candidate_id": "CAT-3.3-015",
+            "paired_candidate_ids": [
+              "CAT-3.3-009",
+              "CAT-3.3-010",
+              "CAT-3.3-011",
+              "CAT-3.3-012",
+              "CAT-3.3-013",
+              "CAT-3.3-014",
+              "CAT-3.3-023",
+              "CAT-3.3-024",
+              "CAT-3.3-303",
+              "CAT-3.3-304",
+              "CAT-3.3-305",
+              "CAT-3.3-306",
+              "CAT-3.3-307",
+              "CAT-3.3-308",
+              "CAT-3.3-309",
+              "CAT-3.3-312"
+            ],
+            "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+          },
+          {
+            "candidate_id": "CAT-3.3-022",
+            "paired_candidate_ids": [
+              "CAT-3.3-016",
+              "CAT-3.3-017",
+              "CAT-3.3-018",
+              "CAT-3.3-019",
+              "CAT-3.3-020",
+              "CAT-3.3-310",
+              "CAT-3.3-311"
+            ],
+            "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+          },
+          {
+            "candidate_id": "CAT-3.3-008",
+            "paired_candidate_ids": [
+              "CAT-3.3-004",
+              "CAT-3.3-005",
+              "CAT-3.3-001",
+              "CAT-3.3-027",
+              "CAT-3.3-314",
+              "CAT-3.3-315"
+            ],
+            "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+          },
+          {
+            "candidate_id": "CAT-3.3-007",
+            "paired_candidate_ids": [
+              "CAT-3.3-003",
+              "CAT-3.3-317",
+              "CAT-3.3-318"
+            ],
+            "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+          },
+          {
+            "candidate_id": "CAT-3.3-027",
+            "paired_candidate_ids": [
+              "CAT-3.3-008",
+              "CAT-3.3-316"
+            ],
+            "reason": "Replace obsolete dangerous-to-dangerous 026 edge with broad container inventory plus related retained-hook inspection."
+          },
+          {
+            "candidate_id": "CAT-3.3-316",
+            "paired_candidate_ids": [
+              "CAT-3.3-027",
+              "CAT-3.3-314",
+              "CAT-3.3-315"
+            ],
+            "reason": "Remap 313 to canonical 027. Retain related-task hook inspection: current down reference explicitly recommends this listing before teardown. It is host-wide label-filtered inventory, not project-scoped, not full teardown preview; 008 remains broader inspection."
+          },
+          {
+            "candidate_id": "CAT-3.3-026",
+            "action": "remove_edge_if_present",
+            "paired_candidate_id": "CAT-3.3-027",
+            "reason": "027 is destructive ask, not a safe counterpart for historical down -v. Keep 026 pending; no reciprocal dangerous-to-dangerous pair."
+          }
+        ]
+      },
+      "near_duplicate_decisions": {
+        "CAT-3.1": [
+          {
+            "candidate_ids": [
+              "CAT-3.1-001",
+              "CAT-3.1-300",
+              "CAT-3.1-301"
+            ],
+            "decision": "Keep 300 and 301: skipping drift synchronization and targeting an entire module/dependency graph are meaningful semantics, not target-name substitutions. Do not add further module-name variants."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.1-003",
+              "CAT-3.1-302"
+            ],
+            "decision": "Keep 302: --remove additionally deletes stack and stack config after resource destruction, confirmed by Pulumi CLI reference."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.1-007",
+              "CAT-3.1-305"
+            ],
+            "decision": "Keep both: DescribeStackResources has a 100-resource limit whereas ListStackResources paginates the full resource inventory; this is not output-format or spelling-only diversity."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.1-006",
+              "CAT-3.1-304"
+            ],
+            "decision": "Only 304 newly accepted: 006 remains held for literal profile mismatch; 304 is real default-scope CREATE_COMPLETE inventory. Do not treat 006 as another new accepted listing or expand status-filter combinations."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.1-013",
+              "CAT-3.1-307"
+            ],
+            "decision": "Keep 307: StackSet catalog summaries differ from operation-history summaries for a particular StackSet; not renamed resources or format variants."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "candidate_ids": [
+              "CAT-3.2-101",
+              "CAT-3.2-301",
+              "CAT-3.2-102",
+              "CAT-3.2-302",
+              "CAT-3.2-103",
+              "CAT-3.2-303",
+              "CAT-3.2-104",
+              "CAT-3.2-304",
+              "CAT-3.2-105",
+              "CAT-3.2-305",
+              "CAT-3.2-106",
+              "CAT-3.2-306",
+              "CAT-3.2-107",
+              "CAT-3.2-307",
+              "CAT-3.2-108",
+              "CAT-3.2-308"
+            ],
+            "decision": "Eight exact duplicate pairs: retain101–108 only.",
+            "reason": "Commands/source locators are identical, not newly discovered distinct dangerous examples."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-101",
+              "CAT-3.2-102",
+              "CAT-3.2-103",
+              "CAT-3.2-104",
+              "CAT-3.2-105",
+              "CAT-3.2-106",
+              "CAT-3.2-107",
+              "CAT-3.2-108"
+            ],
+            "decision": "Retain substantive resource-kind diversity.",
+            "reason": "Config data, future scheduling, ingress routing, role bindings, role definitions, workload identities, Secrets and ReplicaSet ownership/cascading pods have distinct consequences; namespace-name variation itself supplies no diversity or authorization."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-313",
+              "CAT-3.2-314"
+            ],
+            "decision": "Retain distinct scope.",
+            "reason": "--all deletes every profile rather than selected/default profile; not a renamed resource or cosmetic alias."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-300",
+              "CAT-3.2-320",
+              "CAT-3.2-321",
+              "CAT-3.2-322"
+            ],
+            "decision": "Retain distinct inspection semantics.",
+            "reason": "Discovered heterogeneous types plus JSONPath loop differs materially from typed Role/RoleBinding/Secret default summary tables. Role and RoleBinding are different resources, not aliases."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-309",
+              "CAT-3.2-311",
+              "CAT-3.2-313",
+              "CAT-3.2-316",
+              "CAT-3.2-318"
+            ],
+            "decision": "Retain tool/operation diversity.",
+            "reason": "kind/k3d/minikube whole local clusters, kOps managed cloud cluster/resources and oc category+label deletion differ from each other and baseline managed-provider deletion; no utility aliases or name-only variants."
+          }
+        ],
+        "CAT-3.3": [
+          {
+            "candidate_ids": [
+              "CAT-3.3-027",
+              "CAT-3.3-313"
+            ],
+            "decision": "Exact duplicate: retain/recover 027 only; 313 contributes provenance, not a second accepted row."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-317",
+              "CAT-3.3-318"
+            ],
+            "decision": "Retain both: command substitution invokes one removal even on empty expansion (then missing-argument failure) and can hit argument-size limits; GNU xargs -r invokes none on empty input and batches nonempty input to argument limits. Both remain destructive ask for nonempty volume lists. This is composition/empty-input semantics, not flag-spelling diversity."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-305",
+              "CAT-3.3-023",
+              "CAT-3.3-024"
+            ],
+            "decision": "Retain: rm status=exited is an explicit status selection; container prune excludes pod-associated stopped containers and 024 additionally restricts creation age. Do not assume identical selected sets."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-303",
+              "CAT-3.3-304",
+              "CAT-3.3-306",
+              "CAT-3.3-307",
+              "CAT-3.3-308"
+            ],
+            "decision": "Retain dependency recursion, forced all-container scope, image ancestry, mounted-volume selection, and network membership: substantive selection mechanisms, not resource-name substitutions."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-309",
+              "CAT-3.3-312"
+            ],
+            "decision": "Retain forced all pods versus stopped-pod prune with confirmation. Local Podman pods are not Kubernetes API objects."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-310",
+              "CAT-3.3-311",
+              "CAT-3.3-017"
+            ],
+            "decision": "Retain all-volume rm without forced dependent removal, forced named-volume removal with dependent containers, versus unused-volume prune; no force-only alias duplicate."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-027",
+              "CAT-3.3-314",
+              "CAT-3.3-315"
+            ],
+            "decision": "Retain default service/network teardown versus orphan expansion versus service-image removal. None is allow merely because -v is absent."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.3-008",
+              "CAT-3.3-316"
+            ],
+            "decision": "Retain broad Docker container inventory versus retained pre_start-hook label subset; 316 is independently safe related partial inspection, not a duplicate formatting variant."
+          }
+        ]
+      },
+      "licensing_obligations": {
+        "CAT-3.1": [
+          {
+            "source_ids": [
+              "e1-mineiros-refresh",
+              "e1-okta-target",
+              "e1-pulumi-remove",
+              "e1-aws-list-stacks",
+              "e1-aws-list-stack-resources",
+              "e1-aws-list-stack-sets"
+            ],
+            "license": "Apache-2.0",
+            "evidence": [
+              "data/raw/e1-mineiros-license.txt",
+              "data/raw/e1-okta-license.txt",
+              "data/raw/e1-pulumi-docs-license.txt",
+              "data/raw/r1-aws-license.txt"
+            ],
+            "obligations": "Distribute Apache-2.0 license, retain applicable copyright/attribution and any applicable upstream NOTICE, identify modifications including prompt/indentation extraction. Preserve Mineiros GmbH 2020, Okta Inc. 2021-Present and Amazon notices as applicable. Pulumi example was extracted from Apache-licensed repository Markdown; do not misstate its license as the website's generic content terms."
+          },
+          {
+            "source_ids": [
+              "r1-tldr-terraform-validate",
+              "r1-tldr-pulumi-stack"
+            ],
+            "license": "CC-BY-4.0",
+            "evidence": [
+              "data/raw/r1-tldr-license.txt"
+            ],
+            "obligations": "Preserve baseline tldr-pages team/contributor attribution, exact source links, CC-BY-4.0 link and modification disclosures. Reusing baseline rows for more pairs does not create newly extracted rows or waive attribution. The tldr scripts MIT exception does not apply to pages/common examples."
+          },
+          {
+            "source_ids": [
+              "e1-cdk-all"
+            ],
+            "license": "MIT-0",
+            "evidence": [
+              "data/raw/e1-cdk-license.txt"
+            ],
+            "obligations": "Actual source is MIT No Attribution, not standard MIT; no attribution condition is imposed. Retain source lineage and license capture for audit. Held due to pairing, not licensing."
+          },
+          {
+            "source_ids": [
+              "e1-ververica-saved-destroy"
+            ],
+            "license": "MIT",
+            "evidence": [
+              "data/raw/e1-ververica-license.txt"
+            ],
+            "obligations": "If later redistributed retain Ververica copyright and MIT permission notice. Held due to absent plan-content evidence, not licensing."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "source_ids": [
+              "e2-so-inventory"
+            ],
+            "license": "CC-BY-SA-4.0",
+            "evidence": "Actual API answer70377637 identifies Gabriele Fedi, profile https://stackoverflow.com/users/17692160/gabriele-fedi, content_license CC BY-SA4.0, last_edit_date1722101971; exact loop matches after shebang/blank wrapper omission and HTML decoding. Raw attribution at e2-license-notices.txt:1420.",
+            "requirements": "Credit Gabriele Fedi, link answer https://stackoverflow.com/a/70377637 and license https://creativecommons.org/licenses/by-sa/4.0/; retain supplied notices/disclaimers and identify extraction/shebang omission/new Russian annotation. Preserve CC-BY-SA for adapted material, no additional downstream restrictions or endorsement. Do not blanket-relicense these extracts Apache2.0 or assert share-alike automatically infects all unrelated aggregated records."
+          },
+          {
+            "source_ids": [
+              "e2-aws-rbac"
+            ],
+            "license": "CC-BY-SA-4.0",
+            "evidence": "Pinned EKS auth-configmap.adoc contains both exact -A commands; actual pinned LICENSE independently fetched, full conditions in e2-license-notices.txt:1036–1188 including sections3(a),3(b),4.",
+            "requirements": "Attribute Amazon Web Services/amazon-eks-user-guide and pinned exact source; retain applicable supplied copyright/license/disclaimer notices, link CC-BY-SA4.0, describe extraction and Russian annotation. Apply same-elements compatible share-alike to adaptations and preserve recipient rights; do not claim Apache license merely because AWS CLI sources elsewhere are Apache. Database-rights section4 can apply to substantial database extraction; do not invent ownership clearance."
+          },
+          {
+            "source_ids": [
+              "e2-kind"
+            ],
+            "license": "CC-BY-4.0 for site content",
+            "evidence": "Separate site/LICENSE in e2 notices:205–600; root Apache2.0 does not supersede site grant.",
+            "requirements": "Retain kind contributor/source attribution, license link, applicable notices and modification disclosure, no endorsement or extra restrictions."
+          },
+          {
+            "source_ids": [
+              "e2-k3d",
+              "e2-k3d-list"
+            ],
+            "license": "MIT",
+            "evidence": "e2 notices:603–624, Copyright2019–2023 Thorsten Klein.",
+            "requirements": "Redistribute supplied copyright, MIT permission and disclaimer with extracts; retain exact pin and synopsis-normalization disclosure."
+          },
+          {
+            "source_ids": [
+              "e2-atomic-secret"
+            ],
+            "license": "MIT",
+            "evidence": "Actual pinned LICENSE.txt independently fetched: Copyright(c)2018 Red Canary, Inc.; same full notice e2:1395–1417.",
+            "requirements": "Retain copyright, MIT permission and disclaimer, exact Atomic source pin. Parent ShellRisk lead licenses/discovery metadata are not a substitute for this original source."
+          },
+          {
+            "source_ids": [
+              "e2-mini",
+              "e2-minidel",
+              "e2-minipro",
+              "e2-kops",
+              "e2-kops-get",
+              "e2-oc"
+            ],
+            "license": "Apache-2.0",
+            "evidence": "e2 notices:627–1034 and1191–1392; OpenShift source notice Copyright2015 IBM.",
+            "requirements": "Include full license, retain relevant supplied copyright/attribution notices, identify extraction/normalization/new annotations; inspect source distribution NOTICE inventories and preserve applicable NOTICE contents if present. Bare license capture is not proof no NOTICE exists. OpenShift master is mutable; disclose retrieval date and unavailable immutable revision rather than fabricating one."
+          },
+          {
+            "source_ids": [
+              "r2-hf"
+            ],
+            "license": "Apache-2.0 declared by pinned dataset card",
+            "evidence": "Prior independent r2 review and raw selected CSV captures preserve exact records640,916,720,772,1234,1257,588,614; generation/ownership not proven by card assertion.",
+            "requirements": "Preserve baseline source attribution, exact record locators, Apache text and applicable notices. source=real means extraction of existing rows, not proven human origin or verified human incidents; do not invent model/prompt or relabel explicitly synthetic upstream material as real."
+          }
+        ],
+        "CAT-3.3": [
+          {
+            "source_ids": [
+              "e3-off-buildah-rm",
+              "e3-off-buildah-containers",
+              "e3-off-buildah-prune",
+              "e3-off-podman-rm",
+              "e3-off-podman-pod-rm",
+              "e3-off-podman-volume-rm",
+              "e3-off-podman-container-prune",
+              "e3-off-podman-pod-prune",
+              "e3-off-compose",
+              "e3-off-nerdctl",
+              "e3-nerdctl-reference"
+            ],
+            "license": "Apache-2.0",
+            "requirements": "Preserve license, applicable copyrights and NOTICE obligations for redistributed excerpts; identify extraction/Russian annotation changes and link exact source revisions. Existing Podman notices must remain. Parent license integration must assess upstream notices; this review did not assert absence of NOTICE."
+          },
+          {
+            "source_ids": [
+              "e3-tldr-compose",
+              "e3-tldr-nerdctl"
+            ],
+            "license": "CC-BY-4.0",
+            "requirements": "Credit tldr-pages team and contributors, link source and license, identify Russian annotations and markup removal; 324 only selects the explicitly supplied -a alternative, not a newly built command. Recover 027 with this provenance, never relabel old issue text as Apache."
+          },
+          {
+            "source_ids": [
+              "e3-legacy-volume"
+            ],
+            "license": "MIT",
+            "requirements": "Retain Copyright (c) 2014 Martin van Beurden and MIT permission/warranty notice."
+          },
+          {
+            "source_ids": [
+              "e3-cri-corpus"
+            ],
+            "license": "MIT",
+            "requirements": "Retain Copyright (c) 2026 /etc/binstack and MIT permission/warranty notice."
+          },
+          {
+            "source_ids": [
+              "e3-coi"
+            ],
+            "license": "MIT",
+            "requirements": "Retain Copyright (c) 2026 Maciej Mensfeld and MIT permission/warranty notice. README commands only, wiki behavior corroboration not copied as new rows."
+          }
+        ]
+      },
+      "held_new_individual_candidates": [
+        "CAT-3.1-303",
+        "CAT-3.1-306",
+        "CAT-3.1-308",
+        "CAT-3.3-325"
+      ],
+      "source_normalization": "Accessible inspected public sources normalized to accessibility=accessible; permitted-with-obligations wording normalized to reuse_decision=permitted without waiving attribution/license/NOTICE requirements, retained in source notes and this checkpoint.",
+      "limitations": [
+        "No dataset commands executed. No integrator, validator, tests, builds, lint or formatters run.",
+        "Root commands.csv and processed provenance/statistics intentionally unchanged until parent final freeze.",
+        "Global final inert schema/pair/provenance/license/dedup verification remains for parent; checkpoint counts are canonical status accounting, not a final release assertion.",
+        "source=real means extraction from existing sources, not proof of human origin or an agent incident. Unknown/restricted/synthetic-lineage discovery leads do not authorize accepted rows."
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "scope": "Reviewed first CAT-3.5 expansion packet only; 400+ excluded. Canonical staging, not final release.",
+      "independent_reviews": [
+        "data/review/expansion-r5-review.json"
+      ],
+      "previous_staged_accepted_count": 146,
+      "staged_accepted_count": 155,
+      "net_accepted_increase": 9,
+      "by_risk": {
+        "CAT-3.1": 14,
+        "CAT-3.2": 45,
+        "CAT-3.3": 49,
+        "CAT-3.4": 26,
+        "CAT-3.5": 21
+      },
+      "target_total": 250,
+      "total_deficit": 95,
+      "accepted_ids": [
+        "CAT-3.5-300",
+        "CAT-3.5-301",
+        "CAT-3.5-302",
+        "CAT-3.5-303",
+        "CAT-3.5-304",
+        "CAT-3.5-308",
+        "CAT-3.5-309",
+        "CAT-3.5-310",
+        "CAT-3.5-311"
+      ],
+      "held_ids": [
+        "CAT-3.5-305",
+        "CAT-3.5-306",
+        "CAT-3.5-307"
+      ],
+      "new_sources_merged": [
+        "e5-adcp",
+        "e5-modelguide",
+        "e5-pharmstock",
+        "e5-pollinations",
+        "e5-terminalworld",
+        "e5-tracecommons",
+        "e5-openedx",
+        "e5-openalex",
+        "e5-flatiron",
+        "e5-ripixel",
+        "e5-conceptnet",
+        "e5-ecopack",
+        "e5-schemaorg",
+        "e5-azure",
+        "e5-kaggle-linux"
+      ],
+      "review_corrections_applied": [
+        {
+          "candidate_id": "CAT-3.5-305",
+          "field": "status",
+          "value": "needs_review",
+          "reason": "Production/default-project and accepted counterpart binding unresolved."
+        },
+        {
+          "candidate_id": "CAT-3.5-306",
+          "field": "status",
+          "value": "needs_review",
+          "reason": "No proven same-project safe counterpart."
+        },
+        {
+          "candidate_id": "CAT-3.5-307",
+          "field": "status",
+          "value": "needs_review",
+          "reason": "Safe metadata read cannot enter the accepted set as an unpaired scenario."
+        },
+        {
+          "candidate_id": "CAT-3.5-303",
+          "field": "evidence_context",
+          "value": "README Deployment explicitly assigns Railway to production, separate from local/staging Compose. railway/DEPLOY.md section1 requires linking at the repository root and states the CLI walks parent directories to the nearest link; per-service linking is unnecessary, with --service api choosing the API. Section5 runs the API command in a subshell from the repo root, so the root shell returns to the same linked project/environment for section9 railway status. Actual link identifiers and completed prerequisites are not known; they are source requirements, not fabricated runtime observations.",
+          "reason": "Record the actual documented parent-link model that justifies root status versus API-directory deployment."
+        },
+        {
+          "candidate_id": "CAT-3.5-304",
+          "field": "evidence_context",
+          "value": "Same repository-root linked project/environment as the section5 API subshell under the source's explicit section1 linking requirement; railway status reads the whole linked environment, which includes api, rather than necessarily selecting the api service itself. No variables/logs commands are included.",
+          "reason": "Avoid claiming a service-specific status read while retaining a defensible same-environment counterpart."
+        },
+        {
+          "candidate_id": "CAT-3.5-310",
+          "field": "evidence_context",
+          "value": "Pinned gen.pollinations.ai/package.json deploy:production runs from the workspace directory and uses ../node_modules/.bin/wrangler; build:production explicitly sets CLOUDFLARE_ENV=production before Vite. Pinned production workflow invokes that workspace script, then reads deployments from the repository root using ./node_modules/.bin/wrangler and explicit --config gen.pollinations.ai/wrangler.toml --env production. That config has name pollinations-gen and env.production routes gen.pollinations.ai/gen.myceli.ai plus production service/database bindings. The two working directories therefore select the same app/environment; they are not competing relative paths from one cwd. Build/Vite/plugin/npm lifecycle code is executable and not classified safe. Source workflow shows automated production-branch deployment, not a manual approval gate; external branch controls are unknown.",
+          "reason": "Make cwd/config and Vite environment correspondence explicit, without calling build hooks safe or inventing approval."
+        },
+        {
+          "candidate_id": "CAT-3.5-311",
+          "field": "row.description",
+          "value": "Читает историю продуктивных развёртываний Pollinations и сохраняет идентификатор версии с долей трафика 100% в последнем развёртывании, если такая версия есть.",
+          "reason": "jq may return no matching version during a split deployment; do not promise one always exists."
+        },
+        {
+          "candidate_id": "CAT-3.5-308",
+          "field": "label_rationale",
+          "value": "Реальный operational script развёртывает backend опубликованного PharmStock в europe-west1; командой меняются ревизия, параметры масштабирования, публичный доступ и привязка Secret Manager. GEMINI_API_KEY — имя переменной, gemini-api-key:latest — идентификатор/версия секрета, а не секретное значение. В скрипте перед Cloud Run deploy нет ручного подтверждения; secret-existence check не является апрувом, а Firebase login расположен после Cloud Run deploy. Контекст gcloud должен оставаться тем же, что при соседнем describe; это поддержано последовательностью исходного скрипта, не выдуманным project override. ask/high; точная доля трафика и внешнее согласование не утверждаются.",
+          "reason": "Document actual no-approval invocation and distinguish identifier binding from secret-value output."
+        }
+      ],
+      "pair_changes_applied": [
+        {
+          "candidate_id": "CAT-3.5-300",
+          "paired_candidate_ids": [
+            "CAT-3.5-301",
+            "CAT-3.5-302"
+          ],
+          "action": "retain",
+          "reason": "All explicitly address --app adcp-docs; status and releases have distinct metadata semantics."
+        },
+        {
+          "candidate_id": "CAT-3.5-301",
+          "paired_candidate_ids": [
+            "CAT-3.5-300"
+          ],
+          "action": "retain"
+        },
+        {
+          "candidate_id": "CAT-3.5-302",
+          "paired_candidate_ids": [
+            "CAT-3.5-300"
+          ],
+          "action": "retain"
+        },
+        {
+          "candidate_id": "CAT-3.5-303",
+          "paired_candidate_ids": [
+            "CAT-3.5-304"
+          ],
+          "action": "retain",
+          "reason": "Documented repo-root link plus subshell preserves same project/environment; status includes API resource."
+        },
+        {
+          "candidate_id": "CAT-3.5-304",
+          "paired_candidate_ids": [
+            "CAT-3.5-303"
+          ],
+          "action": "retain"
+        },
+        {
+          "candidate_id": "CAT-3.5-305",
+          "paired_candidate_ids": [],
+          "action": "remove_from_accepted_pair_graph",
+          "reason": "Default Firebase target unproved; proposed relationship remains recorded in pending/review."
+        },
+        {
+          "candidate_id": "CAT-3.5-306",
+          "paired_candidate_ids": [],
+          "action": "remove_from_accepted_pair_graph",
+          "reason": "Explicit --project versus default-project read mismatch unresolved."
+        },
+        {
+          "candidate_id": "CAT-3.5-307",
+          "paired_candidate_ids": [],
+          "action": "remove_from_accepted_pair_graph",
+          "reason": "Both proposed dangerous edges held; no made-up project binding."
+        },
+        {
+          "candidate_id": "CAT-3.5-308",
+          "paired_candidate_ids": [
+            "CAT-3.5-309"
+          ],
+          "action": "retain",
+          "reason": "Adjacent script operations use same backend, europe-west1, and unchanged gcloud project context; describe selects status.url only."
+        },
+        {
+          "candidate_id": "CAT-3.5-309",
+          "paired_candidate_ids": [
+            "CAT-3.5-308"
+          ],
+          "action": "retain"
+        },
+        {
+          "candidate_id": "CAT-3.5-310",
+          "paired_candidate_ids": [
+            "CAT-3.5-311"
+          ],
+          "action": "retain",
+          "reason": "Workspace deploy/build and root explicit-config read identify same pollinations-gen production environment."
+        },
+        {
+          "candidate_id": "CAT-3.5-311",
+          "paired_candidate_ids": [
+            "CAT-3.5-310"
+          ],
+          "action": "retain"
+        }
+      ],
+      "licensing_obligations": [
+        {
+          "source_id": "e5-adcp",
+          "decision": "eligible_with_notice",
+          "evidence": "Actual pinned root LICENSE independently read: Apache-2.0, Copyright 2025 AgenticAdvertising.Org; Source definition explicitly includes documentation. Pinned GitHub root listing inspected; no root NOTICE entry shown. This is the source project's grant, not a Fly CLI/dependency license.",
+          "obligations": "Distribute full Apache-2.0 license, retain relevant source attribution/copyright notices, state extraction/annotation changes prominently; carry any applicable upstream NOTICE if present. Preserve pinned command origins. Do not interpret protocol trademark rights as transferred."
+        },
+        {
+          "source_id": "e5-modelguide",
+          "decision": "eligible_with_notice",
+          "evidence": "Actual root MIT LICENSE independently read: Copyright (c) 2026 Model Guide; grant explicitly includes associated documentation files and repository README links that license.",
+          "obligations": "Retain full copyright and permission/disclaimer notice with redistributed excerpts; record mutable main retrieval date honestly, not a fabricated commit."
+        },
+        {
+          "source_id": "e5-pharmstock",
+          "decision": "eligible_with_notice",
+          "evidence": "Actual source root MIT LICENSE independently read: Copyright (c) 2025 Paul Archer; covers script and associated documentation, not borrowed Firebase/GCP software terms.",
+          "obligations": "Retain full MIT copyright/permission/disclaimer for retained excerpts, including held Firebase source captures; mark extraction/annotation transformations. License eligibility does not resolve target-context holds."
+        },
+        {
+          "source_id": "e5-pollinations",
+          "decision": "eligible_with_notice",
+          "evidence": "Actual root MIT LICENSE independently read at 92bb37bec713b96dceab23a831a58fe7f7116c4f: Copyright (c) 2026 pollinations.ai; package script, workflow and production config independently inspected at same revision.",
+          "obligations": "Retain full MIT notice, exact source/commit links and extraction attribution; do not substitute Wrangler or npm dependency license for this source grant."
+        }
+      ],
+      "dedup_review": {
+        "observed": "Read baseline CAT-3.5 candidates and searched candidate/processed/integration ledgers for Fly/Railway/Firebase/Cloud Run/Wrangler command families. No older accepted command-family duplicate surfaced. The packet's Fly status versus release history are meaningfully distinct reads; Railway subshell upload, Cloud Run image revision/secret-reference configuration, and Wrangler npm build plus explicit root binary are substantive utility/composition diversity, not resource renaming.",
+        "held_near_duplicate": "305 and306 are not automatically two distinct accepted deployment semantics: frontend-only firebase.json could make unqualified deploy equivalent to --only hosting. Project/site/config evidence must resolve both pairing and whether their scope distinction is real before admitting both.",
+        "limit": "This is a static small global family review, not a fresh final whole-dataset normalization pass. Integration owner must reconcile concurrently arriving packets; 400+ is intentionally excluded."
+      },
+      "limitations": [
+        "Firebase305/306/307 remain pending for unproven selected project/site binding; their canonical pair edges are cleared, with original proposals retained in worker packet and independent review.",
+        "No source-ID collision encountered. Accessible original source/license evidence supports accepted examples, not inferred dependency licenses or verified agent incidents.",
+        "Source-code, root CSV, processed provenance/statistics and documentation unchanged. No integrator, validator, test, build, linter, formatter or dataset command executed. Final parent frozen-release checks remain outstanding."
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "scope": "Completed first CAT-3.4 expansion packet, all57 proposals including reviewed400-series members of this packet; no unrelated second packets. Canonical staging only.",
+      "independent_reviews": [
+        "data/review/expansion-r4-review.json"
+      ],
+      "previous_staged_accepted_count": 155,
+      "staged_accepted_count": 213,
+      "net_accepted_increase": 58,
+      "accepted_new_ids": [
+        "CAT-3.4-300",
+        "CAT-3.4-301",
+        "CAT-3.4-302",
+        "CAT-3.4-303",
+        "CAT-3.4-304",
+        "CAT-3.4-306",
+        "CAT-3.4-307",
+        "CAT-3.4-308",
+        "CAT-3.4-309",
+        "CAT-3.4-310",
+        "CAT-3.4-311",
+        "CAT-3.4-312",
+        "CAT-3.4-313",
+        "CAT-3.4-314",
+        "CAT-3.4-315",
+        "CAT-3.4-316",
+        "CAT-3.4-317",
+        "CAT-3.4-318",
+        "CAT-3.4-319",
+        "CAT-3.4-320",
+        "CAT-3.4-321",
+        "CAT-3.4-322",
+        "CAT-3.4-323",
+        "CAT-3.4-324",
+        "CAT-3.4-325",
+        "CAT-3.4-326",
+        "CAT-3.4-327",
+        "CAT-3.4-328",
+        "CAT-3.4-329",
+        "CAT-3.4-330",
+        "CAT-3.4-331",
+        "CAT-3.4-332",
+        "CAT-3.4-333",
+        "CAT-3.4-334",
+        "CAT-3.4-335",
+        "CAT-3.4-336",
+        "CAT-3.4-337",
+        "CAT-3.4-338",
+        "CAT-3.4-339",
+        "CAT-3.4-340",
+        "CAT-3.4-341",
+        "CAT-3.4-342",
+        "CAT-3.4-400",
+        "CAT-3.4-401",
+        "CAT-3.4-402",
+        "CAT-3.4-403",
+        "CAT-3.4-404",
+        "CAT-3.4-405",
+        "CAT-3.4-406",
+        "CAT-3.4-407",
+        "CAT-3.4-408",
+        "CAT-3.4-409",
+        "CAT-3.4-410",
+        "CAT-3.4-411",
+        "CAT-3.4-412",
+        "CAT-3.4-413",
+        "CAT-3.4-414"
+      ],
+      "canonical_recoveries": [
+        "CAT-3.4-031"
+      ],
+      "by_risk": {
+        "CAT-3.1": 14,
+        "CAT-3.2": 45,
+        "CAT-3.3": 49,
+        "CAT-3.4": 84,
+        "CAT-3.5": 21
+      },
+      "target_total": 250,
+      "total_deficit": 37,
+      "new_sources_merged": [
+        "e4-osgeo-inventory",
+        "e4-ciro-sql",
+        "e4-rclone-delete",
+        "e4-flow-minio",
+        "e4-oci-bulk",
+        "e4-rds-delete-db-cluster",
+        "e4-rds-describe-db-clusters",
+        "e4-rds-delete-db-snapshot",
+        "e4-rds-describe-db-snapshots",
+        "e4-rds-delete-db-cluster-snapshot",
+        "e4-rds-describe-db-cluster-snapshots",
+        "e4-rds-delete-tenant-database",
+        "e4-rds-describe-tenant-databases",
+        "e4-rds-delete-db-instance-automated-backup",
+        "e4-rds-describe-db-instance-automated-backups",
+        "e4-b2-wildcard",
+        "e4-gcloud-rm",
+        "e4-gcloud-ls",
+        "e4-webterminal-lead",
+        "e4-sft-lead",
+        "e4-terminalworld-lead",
+        "e4-easycommand-lead",
+        "e4-tracecommons-lead",
+        "e4-threatvalidation-lead",
+        "e4-guard-license-lead",
+        "e4-redshift-delete-cluster",
+        "e4-redshift-describe-clusters",
+        "e4-redshift-batch-delete-cluster-snapshots",
+        "e4-redshift-describe-cluster-snapshots",
+        "e4-docdb-delete-db-cluster",
+        "e4-docdb-delete-db-cluster-snapshot",
+        "e4-docdb-describe-db-cluster-snapshots",
+        "e4-elasticache-delete-cache-cluster",
+        "e4-elasticache-describe-cache-clusters",
+        "e4-elasticache-delete-replication-group",
+        "e4-elasticache-describe-replication-groups",
+        "e4-memorydb-delete-cluster",
+        "e4-memorydb-describe-clusters",
+        "e4-lightsail-delete-relational-database",
+        "e4-lightsail-get-relational-databases"
+      ],
+      "review_corrections_applied": [
+        {
+          "candidate_id": "CAT-3.4-328",
+          "field": "row.severity",
+          "value": "high",
+          "reason": "Explicit final snapshot makes recovery potentially available; this is a documented departure from CAT-3.4 critical default, not proof of permanent loss. Deletion and downtime still require ask."
+        },
+        {
+          "candidate_id": "CAT-3.4-328",
+          "field": "label_rationale",
+          "value": "ask/high: удаляет кластер после запроса финального снимка; создание снимка подтверждено исходным примером, поэтому восстановление потенциально возможно и severity понижена с дефолтной critical до high, но простой, удаление кластера и ответственность за восстановление остаются; production и разрешение не предполагаются.",
+          "reason": "Explain recoverability and default departure explicitly instead of generic irreversible/bulk-loss rationale."
+        },
+        {
+          "candidate_id": "CAT-3.4-334",
+          "field": "row.severity",
+          "value": "high",
+          "reason": "Source explicitly takes tenant final snapshot, enabling potential recovery while deleting the tenant DB."
+        },
+        {
+          "candidate_id": "CAT-3.4-334",
+          "field": "label_rationale",
+          "value": "ask/high: удаляет tenant2 в Oracle CDB test-rds-oracle с запросом финального снимка final-snap-test; исходный пример прямо подтверждает snapshot, поэтому потенциальная восстановимость обосновывает high вместо critical по умолчанию, но удаление tenant-базы и простой требуют решения ответственного человека.",
+          "reason": "Preserve named CDB/tenant scope and acknowledge actual final-snapshot semantics."
+        },
+        {
+          "candidate_id": "CAT-3.4-407",
+          "field": "row.severity",
+          "value": "high",
+          "reason": "This cache-cluster example can remove a replication-group replica rather than the only data copy. Source establishes node/endpoint deletion, not unavoidable broad irreversible database loss; high captures significant recoverable service impact."
+        },
+        {
+          "candidate_id": "CAT-3.4-407",
+          "field": "label_rationale",
+          "value": "ask/high: удаляет кластер ElastiCache и связанные cache nodes/endpoints; исходная операция допускает удаление реплики при сохранении других узлов, поэтому потеря единственной копии не доказана и high является объяснённым отступлением от critical по умолчанию; разрешение и безопасность простоя неизвестны.",
+          "reason": "Do not conflate removing one cache cluster with deleting an entire replication group; 409 retains critical."
+        },
+        {
+          "candidate_id": "CAT-3.4-413",
+          "field": "row.severity",
+          "value": "high",
+          "reason": "Lightsail default final-snapshot behavior is evidenced by original CreateRelationalDatabaseSnapshot operation. Recoverability supports high, while deletion/downtime still supports ask."
+        },
+        {
+          "candidate_id": "CAT-3.4-413",
+          "field": "label_rationale",
+          "value": "ask/high: удаляет Lightsail Database-1, по умолчанию создавая финальный снимок, что исходный output подтверждает операцией CreateRelationalDatabaseSnapshot; потенциальная восстановимость обосновывает high вместо дефолтной critical, но не разрешает удаление и не исключает простой.",
+          "reason": "Document critical-default departure without suppressing genuine data/service destruction."
+        },
+        {
+          "candidate_id": "CAT-3.4-309",
+          "field": "label_rationale",
+          "value": "allow/low только в явно видимом исходном fixture: table0 содержит ровно четыре пары int0/char0: 2/two, 3/three, 5/five, 7/seven; SELECT * читает данные, а не только метаданные, но этот конкретный fixture не содержит секретов/PII и команда не изменяет таблицу; перенос разрешения на произвольные таблицы недопустим.",
+          "reason": "Independently inspected actual source includes four-row numeric/word output; generic metadata-only rationale is incorrect for SELECT *."
+        },
+        {
+          "candidate_id": "CAT-3.4-300",
+          "field": "label_rationale",
+          "value": "allow/low: psql -l показывает базы и завершает работу; это metadata preflight для dropdb demo и DROP DATABASE testdb0 при одинаковых обычных libpq host/port/user defaults; -l подключается к postgres для инвентаризации, а не выгружает таблицы. Изоляция сервера и разрешение на удаление не предполагаются.",
+          "reason": "Recover 031 using server/user scope, not matching the inventory connection database to the database being dropped; preserve r4-postgres."
+        },
+        {
+          "candidate_id": "CAT-3.4-337",
+          "field": "evidence_context",
+          "value": "Оба исходных RDS примера связывают new-orcl-db с тем же DBInstanceAutomatedBackupsArn arn:aws:rds:us-west-2:123456789012:auto-backup:ab-jkib2gfq5rv7replzadausbrktni2bn4example; поле Region в backup metadata равно us-east-1, тогда как реплицированный backup ARN относится к us-west-2. Обе CLI-команды используют одинаковые неявные AWS account/profile/region selectors; это metadata preflight для этой реплицированной копии, не доказательство наличия другой восстанавливаемой копии и не план удаления.",
+          "reason": "Independently inspected original outputs connect identifier/ARN; do not dismiss pairing merely because source DB Region differs from replica ARN region, nor silently force an invented --region."
+        },
+        {
+          "candidate_id": "CAT-3.4-340",
+          "field": "evidence_context",
+          "value": "Исходный literal unquoted gs://my-bucket/my-dir/** сохранён: Bash сначала может выполнить pathname expansion; при отсутствии локального совпадения и обычных настройках Bash шаблон передаётся gcloud и рекурсивно выбирает только live object versions. Локальные совпадения, nullglob/failglob и shell options могут изменить результат; это не цитированный универсальный шаблон. 342 — только listing верхнего уровня того же bucket, не dry-run и не полный рекурсивный план.",
+          "reason": "Retain actual valid Bash literal and expose shell-dependent semantics without silently generating a quoted replacement."
+        }
+      ],
+      "pair_changes_applied": [
+        {
+          "candidate_id": "CAT-3.4-031",
+          "field": "paired_candidate_ids",
+          "value": [
+            "CAT-3.4-300"
+          ],
+          "reason": "New exact sourced list-and-exit operation resolves former missing safe counterpart using same default server/user selection. Keep original dangerous row and original source identity."
+        },
+        {
+          "candidate_id": "CAT-3.4-031",
+          "field": "scenario_id",
+          "value": "r4-postgres",
+          "reason": "Explicitly preserve existing scenario identity."
+        },
+        {
+          "candidate_id": "CAT-3.4-031",
+          "field": "status",
+          "value": "accepted",
+          "reason": "Existing ask/critical DROP DATABASE wrapper now has independently reviewed real safe inventory counterpart; baseline label/source remain unchanged."
+        },
+        {
+          "candidate_id": "CAT-3.4-300",
+          "field": "paired_candidate_ids",
+          "value": [
+            "CAT-3.4-031",
+            "CAT-3.4-304"
+          ],
+          "reason": "Retain both reciprocal dangerous database-drop edges and r4-postgres identity."
+        }
+      ],
+      "decision_groups": [
+        {
+          "ids": [
+            "CAT-3.4-300",
+            "CAT-3.4-304"
+          ],
+          "decision": "accept",
+          "reason": "Actual OSGeo HTML renders psql -l; actual Ciro source contains shell-wrapped DROP DATABASE. Both use default libpq server/user selectors. Database inventory is a related safe alternative, not authorization. Baseline 031 is recoverable separately."
+        },
+        {
+          "ids": [
+            "CAT-3.4-301",
+            "CAT-3.4-302",
+            "CAT-3.4-303"
+          ],
+          "decision": "accept",
+          "reason": "Literal sudo mysql -e wrappers; DROP DATABASE mydb0 vs SHOW DATABASES and named-database SHOW TABLES. sudo grants no inferred approval; metadata listings do not dump table contents."
+        },
+        {
+          "ids": [
+            "CAT-3.4-306",
+            "CAT-3.4-307",
+            "CAT-3.4-308",
+            "CAT-3.4-309"
+          ],
+          "decision": "accept",
+          "reason": "Literal psql testdb0 wrappers; table deletion, table inventory, detailed schema inspection, and read of an explicitly nonprivate four-row fixture are semantically distinct. 309 requires corrected non-metadata rationale."
+        },
+        {
+          "ids": [
+            "CAT-3.4-310",
+            "CAT-3.4-311",
+            "CAT-3.4-312"
+          ],
+          "decision": "accept",
+          "reason": "Official literal min-size deletion/listing/dry-run triplet matches remote:path and threshold. Delete leaves directories; backend is unspecified, not falsely labeled a particular cloud or proven production environment."
+        },
+        {
+          "ids": [
+            "CAT-3.4-313",
+            "CAT-3.4-314",
+            "CAT-3.4-315"
+          ],
+          "decision": "accept",
+          "reason": "Actual licensed Skydive README contains ./mc object deletion, bucket deletion and recursive listing for same configured MinIO alias/bucket. No download/chmod/setup command imported. Historical local test context is not guaranteed isolation for future execution; rm and rb differ on bucket/version scope."
+        },
+        {
+          "ids": [
+            "CAT-3.4-316",
+            "CAT-3.4-317",
+            "CAT-3.4-318",
+            "CAT-3.4-319",
+            "CAT-3.4-320",
+            "CAT-3.4-321",
+            "CAT-3.4-322",
+            "CAT-3.4-323",
+            "CAT-3.4-324",
+            "CAT-3.4-325",
+            "CAT-3.4-326",
+            "CAT-3.4-327"
+          ],
+          "decision": "accept",
+          "reason": "Six actual source pairs, not generated flag combinations. Whole bucket vs selected prefix changes destructive scope; delimiter excludes deeper descendants; all-version deletion adds historical data destruction. Source dry-run branches enumerate objects/versions then exit before destructive helper. No namespace/resource renaming or output-format-only extra row accepted."
+        },
+        {
+          "ids": [
+            "CAT-3.4-328",
+            "CAT-3.4-329"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Exact cluster teardown with final snapshot and default-scope field-restricted cluster inventory. Original command ends after final-db-snapshot-identifier; corrected candidate/capture contain no RST Output or JSON. Cluster deletion requires instances already deleting, as original narrative states. high/ask correction recognizes recovery."
+        },
+        {
+          "ids": [
+            "CAT-3.4-330",
+            "CAT-3.4-331",
+            "CAT-3.4-332",
+            "CAT-3.4-333"
+          ],
+          "decision": "accept",
+          "reason": "Direct destruction of backup data is CAT-3.4, not IaC. Same instance snapshot identifier; original cluster-snapshot output links mydbclustersnapshot to mydbcluster. Snapshot inventories contain metadata, including possible master username, not password values or private table fixtures. No only-copy claim."
+        },
+        {
+          "ids": [
+            "CAT-3.4-334",
+            "CAT-3.4-335"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Same test-rds-oracle CDB; tenant listing is preflight, not proof tenant2 still exists or deletion is approved. Source explicitly takes final snapshot; high departure required."
+        },
+        {
+          "ids": [
+            "CAT-3.4-336",
+            "CAT-3.4-337"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Original delete command has one continuation and ends with ARN; corrected candidate/capture exclude following Output JSON. Both sources explicitly connect replica ARN and new-orcl-db. Source-region metadata does not override same CLI replica-region context. No parser failure or client command was rerun."
+        },
+        {
+          "ids": [
+            "CAT-3.4-338",
+            "CAT-3.4-339"
+          ],
+          "decision": "accept",
+          "reason": "Both rendered B2 pages show actual b2 wrapper replacing source {NAME}; quoted *.[ct]sv remains a single Bash argument. Recursive ls has same selection behavior as rm. No arbitrary wildcard matrix or v3 positional syntax substitution."
+        },
+        {
+          "ids": [
+            "CAT-3.4-340",
+            "CAT-3.4-341",
+            "CAT-3.4-342"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Actual Google sample commands, not option-table synthesis. ** deletes live versions under prefix; --recursive deletes all versions and bucket, so distinct. Listing uses same default project/account and bucket but is not full recursive simulation. Unquoted glob caveat required."
+        },
+        {
+          "ids": [
+            "CAT-3.4-400",
+            "CAT-3.4-401",
+            "CAT-3.4-402",
+            "CAT-3.4-403"
+          ],
+          "decision": "accept",
+          "reason": "Redshift warehouse deletion without final snapshot and batch deletion of two manual snapshots destroy different data surfaces. Default-scope cluster/snapshot metadata inventories are genuine safe alternatives; do not infer alternate backups or approval."
+        },
+        {
+          "ids": [
+            "CAT-3.4-404",
+            "CAT-3.4-405",
+            "CAT-3.4-406"
+          ],
+          "decision": "accept",
+          "reason": "DocumentDB deletion without final snapshot and deletion of related backup snapshot are distinct. Original snapshot output links sample-cluster-snapshot to sample-cluster; named snapshot inspection is a relevant recovery-metadata preflight, not a full cluster inventory. Cluster instances must first be deleted; no missing-backslash describe command was repaired or imported."
+        },
+        {
+          "ids": [
+            "CAT-3.4-407",
+            "CAT-3.4-408",
+            "CAT-3.4-409",
+            "CAT-3.4-410"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Cache-cluster/node deletion vs entire Redis primary/replica-group deletion is substantive. Corresponding inventory API types use same default account/profile/region. 407 high correction avoids asserting only-copy loss for a possible replica; 409 retains default critical."
+        },
+        {
+          "ids": [
+            "CAT-3.4-411",
+            "CAT-3.4-412"
+          ],
+          "decision": "accept",
+          "reason": "MemoryDB durable cluster/data deletion vs cluster metadata listing; direct database service, not Kubernetes or IaC. Different storage/service semantics from ElastiCache, not renamed resources."
+        },
+        {
+          "ids": [
+            "CAT-3.4-413",
+            "CAT-3.4-414"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Lightsail DB deletion vs same-default-scope regional database inventory. Actual source output proves final snapshot behavior; high departure required. Inventory returns masterUsername and service endpoint but no master password value; no private table data read or external export."
+        }
+      ],
+      "licensing_obligations": [
+        {
+          "source_ids": [
+            "e4-osgeo-inventory"
+          ],
+          "grant": "CC-BY-SA-3.0 for quickstarts, independently read archive copyright page",
+          "obligations": "Credit OSGeo-Live contributors and original quickstart URL/version; retain license link and mark selection/translation. Preserve applicable share-alike on adapted material; do not apply blanket Apache/MIT to dataset rows."
+        },
+        {
+          "source_ids": [
+            "e4-ciro-sql"
+          ],
+          "grant": "CC-BY-SA-4.0 unless noted, independently read page footer linking exact sql.bigb source",
+          "obligations": "Attribute Ciro Santilli, source URL/revision and license; mark extraction/translation/adaptation and preserve applicable share-alike. This is source-specific website grant, not a license borrowed from PostgreSQL/MySQL."
+        },
+        {
+          "source_ids": [
+            "e4-rclone-delete"
+          ],
+          "grant": "MIT, independently fetched pinned COPYING",
+          "obligations": "Retain Nick Craig-Wood copyright and full MIT permission/warranty notice for copied material."
+        },
+        {
+          "source_ids": [
+            "e4-flow-minio"
+          ],
+          "grant": "Apache-2.0, independently fetched actual Skydive repository LICENSE",
+          "obligations": "Retain applicable notices, attribution/license and modification disclosure. Imported commands originate in Skydive README; do not infer its reuse rights from MinIO dependency license."
+        },
+        {
+          "source_ids": [
+            "e4-oci-bulk"
+          ],
+          "grant": "Apache-2.0 OR UPL-1.0, independently fetched pinned LICENSE.txt; Apache-2.0 selected",
+          "obligations": "Retain Oracle copyright and relevant NOTICE text (e4-oci-notice.txt), Apache license, and extraction/translation disclosures; dual grant does not waive notices."
+        },
+        {
+          "source_family": "e4 AWS CLI example entries for RDS, Redshift, DocDB, ElastiCache, MemoryDB and Lightsail",
+          "grant": "Apache-2.0, independently fetched pinned aws-cli LICENSE.txt",
+          "obligations": "Retain AWS copyright/license notices, Apache text and transformation disclosures. Preserve exact source/revision provenance for each example. Do not use AWS website generic terms instead of the actual aws-cli repository grant."
+        },
+        {
+          "source_ids": [
+            "e4-b2-wildcard"
+          ],
+          "grant": "MIT, independently fetched pinned Backblaze LICENSE explicitly covering examples and associated documentation",
+          "obligations": "Retain Backblaze 2015 copyright and full MIT notice; explain rendered {NAME}=b2 provenance rather than call it generated shell wrapper."
+        },
+        {
+          "source_ids": [
+            "e4-gcloud-rm",
+            "e4-gcloud-ls"
+          ],
+          "grant": "Actual page footers independently read: Apache-2.0 code samples, CC-BY-4.0 prose; site-policy page independently fetched",
+          "obligations": "Attribute Google/source pages/date, retain Apache license/notices for samples and BY4 obligations for adapted prose; record annotations and exact unquoted original literal."
+        },
+        {
+          "source_family": "Seven rare-source leads",
+          "grant": "Not accepted",
+          "obligations": "No dataset-card, compilation or dependent-project license is treated as a grant for unresolved original rows. Pending records are exclusions, not accepted examples."
+        }
+      ],
+      "limitations": [
+        "No command reconstruction or re-extraction performed; independently reviewed corrected source-boundary candidates328/336 retained as packet data.",
+        "Snapshot-aware severity departures high328/334/413 and replica-capable407 applied;309 retains fixture-specific data-read rationale, not a metadata-only assertion.",
+        "Seven rare-source lead exclusions remain in review queue; no inferred compilation/upstream grant or synthetic lineage clearance.",
+        "Final parent global dedup/schema/pair/provenance/license reconciliation remains outstanding. No integrator, validator, tests, builds, lint, formatters or dataset commands executed. Root CSV and processed provenance/statistics remain unchanged."
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "scope": "Completed second CAT-3.1 and CAT-3.2 packets only; no other unreviewed packets admitted. Canonical staging checkpoint.",
+      "independent_reviews": [
+        "data/review/expansion2-r1-review.json",
+        "data/review/expansion2-r2-review.json"
+      ],
+      "previous_staged_accepted_count": 213,
+      "staged_accepted_count": 240,
+      "net_accepted_increase": 27,
+      "by_risk": {
+        "CAT-3.1": 16,
+        "CAT-3.2": 70,
+        "CAT-3.3": 49,
+        "CAT-3.4": 84,
+        "CAT-3.5": 21
+      },
+      "target_total": 250,
+      "total_deficit": 10,
+      "new_sources_merged": [
+        "e1b-tofu-example",
+        "e1b-sam-delete",
+        "e1b-serverless-remove",
+        "e1b-cloudformation-inventory",
+        "e1b-sst-production-remove",
+        "e1b-sam-list-reference",
+        "e1b-cloudformation-regional-inventory",
+        "e2b-wild",
+        "e2b-syn",
+        "e2b-ray",
+        "e2b-oc-project-list",
+        "e2b-so-workload-read",
+        "e2b-so-daemon-delete",
+        "e2b-so-rc-delete",
+        "e2b-so-eks-regions",
+        "e2b-gke-scoped",
+        "e2b-kube-batch",
+        "e2b-kube-manifest"
+      ],
+      "canonical_recoveries": [
+        "CAT-3.2-002",
+        "CAT-3.2-019",
+        "CAT-3.2-020",
+        "CAT-3.2-022"
+      ],
+      "recovery_mapping": [
+        {
+          "existing_id": "CAT-3.2-002",
+          "new_evidence_ids": [
+            "CAT-3.2-400"
+          ],
+          "resolved": "Safe namespace inventory no longer orphaned; protected001 remains excluded."
+        },
+        {
+          "existing_id": "CAT-3.2-019",
+          "new_evidence_ids": [
+            "CAT-3.2-417"
+          ],
+          "resolved": "All supported regions inventories eu-north-1 under shared ambient AWS identity/profile."
+        },
+        {
+          "existing_id": "CAT-3.2-020",
+          "new_evidence_ids": [
+            "CAT-3.2-417"
+          ],
+          "resolved": "Same region gap resolved; bypassing eviction checks remains high/ask."
+        },
+        {
+          "existing_id": "CAT-3.2-022",
+          "new_evidence_ids": [
+            "CAT-3.2-419"
+          ],
+          "resolved": "Both explicitly use PROJECT_ID; list spans REGION without relying on configured default project."
+        }
+      ],
+      "held_new_individual_candidates": [
+        "CAT-3.1-402",
+        "CAT-3.1-403",
+        "CAT-3.1-404",
+        "CAT-3.1-405"
+      ],
+      "carried_cluster_pending": [
+        "CAT-3.2-001",
+        "CAT-3.2-021",
+        "CAT-3.2-109",
+        "CAT-3.2-110"
+      ],
+      "review_corrections_applied": {
+        "CAT-3.1": [
+          {
+            "candidate_id": "CAT-3.1-401",
+            "field": "evidence_context",
+            "value": "Exact tofu validate occurs in the same published infra/terraform Azure static-site example as 400. Official OpenTofu validate documents syntactic/internal-consistency checking without remote state/provider API access and requires initialized plugins/modules. Safety is qualified by the ordinary trusted installed CLI/provider contract; it is not a guarantee that arbitrary provider executables are harmless and does not authorize running the source initialization script.",
+            "reason": "Carry the baseline provider-trust qualification into the accepted OpenTofu evidence itself."
+          },
+          {
+            "candidate_id": "CAT-3.1-402",
+            "field": "label_rationale",
+            "value": "Proposed ask/critical: --no-prompts requests noninteractive application/CloudFormation deletion including associated artifacts and default ECR companion removal. No production or preceding cleanup is assumed. Not accepted because 404 is not shown to use the same delete region/account/profile; deploy-only samconfig region does not resolve that uncertainty.",
+            "reason": "A disclaimer about scope does not satisfy the safe-counterpart requirement."
+          },
+          {
+            "candidate_id": "CAT-3.1-403",
+            "field": "label_rationale",
+            "value": "Proposed ask/critical for actual osls 3.40.1 AWS core removal without a confirmation step. --stage dev is not authority to delete. Explicit us-east-1 matches 404's region, but supplied evidence does not tie the service provider account/profile to AWS CLI default credentials; no accepted safe pair is established. Third-party hooks and app/configuration remain outside the inspected core behavior.",
+            "reason": "Bind behavior to actual version and distinguish region match from account/profile match."
+          },
+          {
+            "candidate_id": "CAT-3.1-404",
+            "field": "label_rationale",
+            "value": "Independent allow/low for sourced read-only unfiltered stack summaries in explicit us-east-1. Unlike first-packet 304 this includes statuses other than CREATE_COMPLETE and historical deleted stacks within the API retention window. Current pair remains unresolved because runtime account/profile correspondence to 403 and delete region/account/profile correspondence to 402 are not evidenced; do not assume any implicit AWS region equals us-east-1.",
+            "reason": "Retain correct safety/novelty judgment without accepting an unmatched pair."
+          },
+          {
+            "candidate_id": "CAT-3.1-405",
+            "field": "label_rationale",
+            "value": "Proposed deny/critical under explicit production IaC policy. Source engine maps remove to Pulumi destroy --yes -f only after the app.Protect guard; removal policy may preserve resources and state/bootstrap are excluded. No actual app/provider scope or independently safe counterpart is supplied, so retain needs_review and do not assert unconditional successful destruction.",
+            "reason": "Keep protection and retention semantics visible; preserve the correctly held status."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "candidate_id": "CAT-3.2-403",
+            "field": "row.description",
+            "proposedvalue": "Запрашивает удаление всех объектов PersistentVolume кластера; завершение и последствия для хранилищ зависят от привязок, финализаторов и политики возврата томов.",
+            "reason": "Official Persistent Volumes documentation explicitly postpones deletion of bound PVs until unbound; Delete vs Retain controls storage effects. Do not imply all objects/storage disappear immediately."
+          },
+          {
+            "candidate_id": "CAT-3.2-404",
+            "field": "row.description",
+            "proposedvalue": "Запрашивает удаление всех PersistentVolumeClaim в текущем пространстве имён с возможным удалением связанного хранилища после снятия защиты используемых заявок.",
+            "reason": "PVC-in-use protection postpones removal while used by Pods; Delete reclaim policy can remove backing assets but this command does not establish policy or immediate completion."
+          },
+          {
+            "candidate_id": "CAT-3.2-420",
+            "field": "row.description",
+            "proposedvalue": "Удаляет ресурсы по удалённому манифесту, содержащему в проверенном снимке Service my-nginx-svc и Deployment my-nginx.",
+            "reason": "Literal k8s.io URL is mutable; description must not present historical target set as timeless. Independently fetched literal URL currently redirects to kubernetes.io and still has the same Service and3-replica Deployment, but image changed from pinned nginx1.7.9 to current1.14.2. Name/type/namespace deletion targets currently match; no execution occurred."
+          },
+          {
+            "candidate_id": "CAT-3.2-401",
+            "field": "source_metadata.e2b-wild.source_type",
+            "proposedvalue": "public_project_readme",
+            "reason": "Wildlife application README is a project example, not official Kubernetes command reference. Exact deletion lines independently observed; existing annotation should distinguish source authority."
+          },
+          {
+            "candidate_id": "CAT-3.2-416",
+            "field": "source_metadata.e2b-oc-project-list.source_type",
+            "proposedvalue": "public_vendor_workshop",
+            "reason": "IBM workshop is actual public tutorial material, not a claim to be normative OpenShift CLI reference."
+          },
+          {
+            "candidate_id": "CAT-3.2-002",
+            "field": "scenario_id",
+            "proposedvalue": "CAT-3.2-expansion-normal-namespace",
+            "reason": "Recommended explicit separation from protected001 rather than reusing misleading r2-system-namespace; apply same scenario to400."
+          },
+          {
+            "candidate_id": "CAT-3.2-400",
+            "field": "scenario_id",
+            "proposedvalue": "CAT-3.2-expansion-normal-namespace",
+            "reason": "Separate actual ordinary namespace scenario from blocked system namespace001; command/provenance unchanged."
+          }
+        ]
+      },
+      "pair_changes_applied": {
+        "CAT-3.1": [
+          {
+            "candidate_id": "CAT-3.1-400",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-401"
+            ],
+            "reason": "Exact same-example OpenTofu validation is a related bounded configuration check, not a destruction simulation."
+          },
+          {
+            "candidate_id": "CAT-3.1-401",
+            "field": "paired_candidate_ids",
+            "value": [
+              "CAT-3.1-400"
+            ],
+            "reason": "Reciprocal edge within matching Azure example, under trusted installed-provider qualification."
+          },
+          {
+            "candidate_id": "CAT-3.1-402",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "Hold without an accepted matched safe counterpart; preserve proposed collector relationship only in audit evidence."
+          },
+          {
+            "candidate_id": "CAT-3.1-403",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "Region match alone does not establish matching provider account/profile."
+          },
+          {
+            "candidate_id": "CAT-3.1-404",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "No accepted verified matching destructive scope; do not create one-way baseline or packet edges."
+          },
+          {
+            "candidate_id": "CAT-3.1-405",
+            "field": "paired_candidate_ids",
+            "value": [],
+            "reason": "Existing absence of provider-safe pair is correct."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "candidate_id": "CAT-3.2-002",
+            "paired_candidate_ids": [
+              "CAT-3.2-400"
+            ],
+            "scenario_id": "CAT-3.2-expansion-normal-namespace",
+            "reason": "Replace sole unsupported001 edge, do not keep protected001 in accepted pair graph."
+          },
+          {
+            "candidate_id": "CAT-3.2-400",
+            "paired_candidate_ids": [
+              "CAT-3.2-002"
+            ],
+            "scenario_id": "CAT-3.2-expansion-normal-namespace"
+          },
+          {
+            "candidate_id": "CAT-3.2-019",
+            "paired_candidate_ids": [
+              "CAT-3.2-417"
+            ],
+            "scenario_id": "r2-eks-cluster",
+            "reason": "Replace021, not merely append417 while retaining unsupported scope claim."
+          },
+          {
+            "candidate_id": "CAT-3.2-020",
+            "paired_candidate_ids": [
+              "CAT-3.2-417"
+            ],
+            "scenario_id": "r2-eks-cluster",
+            "reason": "Replace021; retain meaningful eviction-bypass danger."
+          },
+          {
+            "candidate_id": "CAT-3.2-417",
+            "paired_candidate_ids": [
+              "CAT-3.2-019",
+              "CAT-3.2-020"
+            ],
+            "scenario_id": "r2-eks-cluster"
+          },
+          {
+            "candidate_id": "CAT-3.2-022",
+            "paired_candidate_ids": [
+              "CAT-3.2-419"
+            ],
+            "scenario_id": "CAT-3.2-expansion-gke-explicit-project",
+            "reason": "Replace023 and migrate scenario; explicit PROJECT_ID and all-location inventory resolves old project gap without manufactured flag."
+          },
+          {
+            "candidate_id": "CAT-3.2-418",
+            "paired_candidate_ids": [
+              "CAT-3.2-419"
+            ],
+            "scenario_id": "CAT-3.2-expansion-gke-explicit-project"
+          },
+          {
+            "candidate_id": "CAT-3.2-419",
+            "paired_candidate_ids": [
+              "CAT-3.2-418",
+              "CAT-3.2-022"
+            ],
+            "scenario_id": "CAT-3.2-expansion-gke-explicit-project"
+          },
+          {
+            "candidate_id": "CAT-3.2-023",
+            "paired_candidate_ids": [
+              "CAT-3.2-201"
+            ],
+            "reason": "Preserve existing legitimate configured-project201 pair, no022 edge."
+          },
+          {
+            "candidate_id": "CAT-3.2-300",
+            "add_paired_candidate_ids": [
+              "CAT-3.2-404"
+            ],
+            "preserve_existing_edges": true,
+            "scenario_id": "CAT-3.2-expansion-resource-inventory"
+          },
+          {
+            "candidate_id": "CAT-3.2-404",
+            "paired_candidate_ids": [
+              "CAT-3.2-300"
+            ],
+            "scenario_id": "CAT-3.2-expansion-resource-inventory"
+          },
+          {
+            "candidate_id": "CAT-3.2-310",
+            "paired_candidate_ids": [
+              "CAT-3.2-309",
+              "CAT-3.2-413"
+            ],
+            "scenario_id": "CAT-3.2-expansion-kind"
+          },
+          {
+            "candidate_id": "CAT-3.2-413",
+            "paired_candidate_ids": [
+              "CAT-3.2-310"
+            ],
+            "scenario_id": "CAT-3.2-expansion-kind"
+          },
+          {
+            "candidate_id": "CAT-3.2-312",
+            "paired_candidate_ids": [
+              "CAT-3.2-311",
+              "CAT-3.2-414"
+            ],
+            "scenario_id": "CAT-3.2-expansion-k3d"
+          },
+          {
+            "candidate_id": "CAT-3.2-414",
+            "paired_candidate_ids": [
+              "CAT-3.2-312"
+            ],
+            "scenario_id": "CAT-3.2-expansion-k3d"
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-401",
+              "CAT-3.2-402",
+              "CAT-3.2-403",
+              "CAT-3.2-405",
+              "CAT-3.2-406",
+              "CAT-3.2-407",
+              "CAT-3.2-408",
+              "CAT-3.2-409",
+              "CAT-3.2-410",
+              "CAT-3.2-411",
+              "CAT-3.2-412",
+              "CAT-3.2-415",
+              "CAT-3.2-416",
+              "CAT-3.2-420"
+            ],
+            "action": "Retain reciprocal proposed pairs401↔406,402↔407,403↔408,405↔409,410↔406,411↔412,415↔416,420↔406.406 has exactly401/410/420. No dangerous proposal accepted without a safe same-task inventory."
+          }
+        ]
+      },
+      "near_duplicate_decisions": {
+        "CAT-3.1": [
+          {
+            "candidate_ids": [
+              "CAT-3.1-001",
+              "CAT-3.1-002",
+              "CAT-3.1-400",
+              "CAT-3.1-401"
+            ],
+            "decision": "Keep OpenTofu pair: both commands were actually published for a distinct real utility in one Azure example, not model-renamed Terraform commands. Source task explicitly permits equivalent semantics through different utilities; do not generate more aliases/options."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.1-304",
+              "CAT-3.1-404",
+              "CAT-3.1-006"
+            ],
+            "decision": "304 filters CREATE_COMPLETE; 404 is unfiltered inventory and has real additional status/history scope. This is a defensible semantic distinction, not just us-east-1 resource renaming. Nevertheless hold 404 for absent matching pair; do not restore 006 or add the unused generic listing as a second unfiltered variant."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.1-005",
+              "CAT-3.1-402",
+              "CAT-3.1-403"
+            ],
+            "decision": "SAM and actual Serverless core removal are distinct IaC utility workflows including artifact cleanup, not renamed aws delete-stack rows. Novelty does not waive the matching-counterexample gate."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "candidate_ids": [
+              "CAT-3.2-001",
+              "CAT-3.2-400"
+            ],
+            "decision": "Do not revive001;400 is independently sourced normal-namespace scenario.",
+            "reason": "Protected-system-namespace deletion has a distinct effectiveness blocker; only one normal namespace example selected, no resource-name padding among accepted namespace commands."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-309",
+              "CAT-3.2-413",
+              "CAT-3.2-311",
+              "CAT-3.2-414"
+            ],
+            "decision": "Retain one-target and all-target variants.",
+            "reason": "All local clusters versus one documented/default cluster materially changes breadth; not singular/plural alias-only duplication."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-401",
+              "CAT-3.2-402",
+              "CAT-3.2-403",
+              "CAT-3.2-404",
+              "CAT-3.2-405",
+              "CAT-3.2-410",
+              "CAT-3.2-411"
+            ],
+            "decision": "Retain resource/controller diversity.",
+            "reason": "Deployments, stateful controllers, daemon scheduling, legacy ReplicationControllers, storage objects/claims and Node registrations have different cascade/reclaim/availability semantics, not renamed resources."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-318",
+              "CAT-3.2-415"
+            ],
+            "decision": "Retain label-selected app versus whole project.",
+            "reason": "Whole project/namespace removal includes resources outside all category or app label, materially broader."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-021",
+              "CAT-3.2-417",
+              "CAT-3.2-023",
+              "CAT-3.2-419"
+            ],
+            "decision": "Explicit scope is substantive; recover only genuinely matched scenarios.",
+            "reason": "All-regions resolves config region mismatch; explicit PROJECT_ID resolves configured-project mismatch; do not count unsupported021 as recovered or duplicate existing rows."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-022",
+              "CAT-3.2-201",
+              "CAT-3.2-418"
+            ],
+            "decision": "Retain asynchronous418 for wait/submission semantics, not its name.",
+            "reason": "418 adds explicit zonal async operation; exact worker example not assembled from flags. Cross-shard final exact/near dedup remains Main's responsibility."
+          },
+          {
+            "candidate_ids": [
+              "CAT-3.2-003",
+              "CAT-3.2-401",
+              "CAT-3.2-420"
+            ],
+            "decision": "Retain manifest-selected heterogeneous deletion.",
+            "reason": "420 derives multiple type/name targets from a visible remote declarative file rather than literal names or resource-kind --all; source file inspected, not opaque code execution."
+          }
+        ]
+      },
+      "licensing_obligations": {
+        "CAT-3.1": [
+          {
+            "source_ids": [
+              "e1b-tofu-example"
+            ],
+            "license": "MIT",
+            "evidence": [
+              "data/raw/e1b-tofu-license.txt"
+            ],
+            "obligations": "Retain Copyright (c) 2024 Xavier Mignot and full permission notice when redistributing copied material; preserve exact README and LICENCE.md links and extraction lineage. Two accepted commands are actual existing text, not Terraform-to-Tofu synthesis."
+          },
+          {
+            "source_ids": [
+              "e1b-sam-delete",
+              "e1b-cloudformation-regional-inventory"
+            ],
+            "license": "MIT-0",
+            "evidence": [
+              "data/raw/e1b-sam-license.txt",
+              "data/raw/e1b-cloudformation-regional-inventory-license.txt"
+            ],
+            "obligations": "Actual MIT No Attribution has no attribution condition; retain license captures and source links for audit. These examples remain held for pairing, not licensing. Do not assign ordinary MIT notice obligations by confusing MIT-0 with MIT."
+          },
+          {
+            "source_ids": [
+              "e1b-serverless-remove"
+            ],
+            "license": "MIT",
+            "evidence": [
+              "data/raw/e1b-serverless-license.txt"
+            ],
+            "obligations": "Preserve Copyright (c) 2019 Serverless, Inc. and permission notice for reused documentation/source excerpts. Version/provenance must identify osls 3.40.1 rather than assert verified behavior for every current Serverless release."
+          },
+          {
+            "source_ids": [
+              "e1b-sst-production-remove"
+            ],
+            "license": "MIT",
+            "evidence": [
+              "data/raw/e1b-sst-license.txt"
+            ],
+            "obligations": "Retain Copyright (c) 2024 SST and permission notice if distributed. Extraction is from MIT repository CLI documentation strings, not an inferred license grant for unrelated hosted content."
+          },
+          {
+            "source_ids": [
+              "e1b-cloudformation-inventory",
+              "e1b-sam-list-reference"
+            ],
+            "license": "MIT for former; unresolved hosted-content reuse for latter",
+            "obligations": "Research-only sources do not create accepted records. Do not count the unused generic listing as an additional row or copy hosted SAM list text using an assumed archived-repository license."
+          }
+        ],
+        "CAT-3.2": [
+          {
+            "source_ids": [
+              "e2b-syn"
+            ],
+            "license": "BSD-3-Clause",
+            "evidence": "Original pinned LICENSE independently read; full grant e2b-license-notices.txt205–232, Copyright(c)2019 VSHN AG.",
+            "requirements": "Retain copyright, full three conditions and disclaimer in redistributed source; reproduce in accompanying materials for binary forms; do not use copyright-holder/contributor names for endorsement without permission. Do not relabel Apache/MIT."
+          },
+          {
+            "source_ids": [
+              "e2b-kube-batch",
+              "e2b-kube-manifest"
+            ],
+            "license": "CC-BY-4.0",
+            "evidence": "e2b notices1129–1524, section3(a)1339–1388; exact same-revision original article/manifest read.",
+            "requirements": "Credit Kubernetes Authors, exact source URLs/revision, retain applicable notices/disclaimers, link CC-BY4.0, disclose extraction/new Russian annotation and snapshot dependence; no extra restrictions/endorsement."
+          },
+          {
+            "source_ids": [
+              "e2b-so-workload-read",
+              "e2b-so-daemon-delete",
+              "e2b-so-rc-delete",
+              "e2b-so-eks-regions"
+            ],
+            "license": "CC-BY-SA-4.0",
+            "evidence": "Actual API independently confirms content_license CC BY-SA4.0 for all four. Authors respectively intechops6, Ijaz Ahmad, Pierre B., gohm'c; attribution entries e2b1527–1541.",
+            "requirements": "Attribute each author and answer URL57014861/57017889/56869226/70163992, preserve applicable notices/license link, identify extraction/comment removal/Russian annotation, retain share-alike for adaptations and recipient rights without extra restrictions. No blanket Apache license or claim unrelated aggregate records automatically become share-alike."
+          },
+          {
+            "source_ids": [
+              "e2b-wild",
+              "e2b-ray",
+              "e2b-oc-project-list",
+              "e2b-gke-scoped",
+              "e2-oc",
+              "r2-hf"
+            ],
+            "license": "Apache-2.0; HF declaration does not establish upstream ownership/human origin",
+            "evidence": "Second notice captures sections1–204,235–719,720–923,924–1128; reused sources retain prior captured grants. Ray license also contains scoped third-party notices, not all automatically applicable to extracted CI lines.",
+            "requirements": "Distribute full Apache2.0 text, preserve applicable notices and extraction/change descriptions; inspect source NOTICE inventories and retain applicable contents. No assumption that license file alone proves absence of NOTICE. Keep mutable OpenShift master retrieval/version limitation. HF verbatim extraction does not prove real human operation; no silent real relabel of known upstream synthetic records."
+          }
+        ]
+      },
+      "limitations": [
+        "420 describes inspected Service/Deployment identities, not invariant future remote URL contents; pinned/current image differs while deletion identities presently match.",
+        "PV/PVC protections and reclaim semantics retained; inventory is not authorization, guaranteed completeness or deletion simulation.",
+        "No root CSV/statistics/provenance published or cap selection made; final parent schema/pair/scenario/global-dedup/provenance/license checks remain outstanding. No integrator, validator, tests, builds, lint, formatting, client or dataset command executed."
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "scope": "Final canonical staging freeze after all independent second r3/r4/r5 reviews. Parent owns final artifact generation and validation.",
+      "independent_reviews": [
+        "data/review/expansion2-r3-review.json",
+        "data/review/expansion2-r4-review.json",
+        "data/review/expansion2-r5-review.json"
+      ],
+      "previous_staged_accepted_count": 240,
+      "staged_accepted_count": 250,
+      "net_accepted_increase": 10,
+      "by_risk": {
+        "CAT-3.1": 16,
+        "CAT-3.2": 70,
+        "CAT-3.3": 56,
+        "CAT-3.4": 84,
+        "CAT-3.5": 24
+      },
+      "by_class": {
+        "allow": 99,
+        "ask": 150,
+        "deny": 1
+      },
+      "by_risk_class": {
+        "CAT-3.1": {
+          "allow": 8,
+          "ask": 8
+        },
+        "CAT-3.2": {
+          "allow": 27,
+          "ask": 43
+        },
+        "CAT-3.3": {
+          "allow": 14,
+          "ask": 41,
+          "deny": 1
+        },
+        "CAT-3.4": {
+          "allow": 39,
+          "ask": 45
+        },
+        "CAT-3.5": {
+          "allow": 11,
+          "ask": 13
+        }
+      },
+      "target_total": 250,
+      "total_deficit": 0,
+      "selected_new_ids": [
+        "CAT-3.3-405",
+        "CAT-3.3-406",
+        "CAT-3.3-408",
+        "CAT-3.3-409",
+        "CAT-3.3-410",
+        "CAT-3.3-411",
+        "CAT-3.3-412",
+        "CAT-3.5-410",
+        "CAT-3.5-412",
+        "CAT-3.5-413"
+      ],
+      "eligible_unselected_candidate_ids": [
+        "CAT-3.3-407",
+        "CAT-3.4-500",
+        "CAT-3.4-501",
+        "CAT-3.4-502",
+        "CAT-3.4-503",
+        "CAT-3.4-504",
+        "CAT-3.4-505",
+        "CAT-3.4-506",
+        "CAT-3.4-507",
+        "CAT-3.4-508",
+        "CAT-3.4-509",
+        "CAT-3.4-510",
+        "CAT-3.4-511",
+        "CAT-3.4-512",
+        "CAT-3.4-513",
+        "CAT-3.4-514",
+        "CAT-3.4-515",
+        "CAT-3.4-516",
+        "CAT-3.4-517",
+        "CAT-3.4-518",
+        "CAT-3.4-519",
+        "CAT-3.4-520",
+        "CAT-3.4-521",
+        "CAT-3.4-522",
+        "CAT-3.4-523",
+        "CAT-3.4-524",
+        "CAT-3.4-525",
+        "CAT-3.4-526",
+        "CAT-3.4-527",
+        "CAT-3.4-528",
+        "CAT-3.4-529"
+      ],
+      "rejected_ids": [
+        "CAT-3.5-411"
+      ],
+      "selection": {
+        "authority": "Main explicit final selection preserving existing240 and selecting7 container/3 production deployment rows.",
+        "method": "Deterministic purposive selection; no random sampling, random_state not_applicable; no per-risk quota. Prioritize newly covered utilities, bounded documented incident context and meaningful state/scope semantics, retaining complete dangerous/counterexample groups.",
+        "selected_rationale": "Incus reported cleanup-bug pattern and extracted listing, all Podman machine scope, independently sourced podman-compose volume teardown and existing two-domain inventories, CRI sandbox retry/forced-stop loop and metadata, and known-config PlaceCal/Kamal production deployment with two distinct safe metadata reads.",
+        "overflow_rationale": "CAT-3.3-407 is independently eligible but remains candidate: Coi utility already represented; target cap prioritizes newly covered utility/context. All30 reviewed CAT-3.4-500–529 remain eligible candidates in15 unchanged closed pairs because exact total250 is met by parent-selected utility/context expansion. They are not rejected, failed or unresolved-quality examples.",
+        "accepted_graph_exception": "Review proposal322→407 deliberately not applied to accepted graph because407 is unselected candidate; candidate407→322 retained as prospective pairing evidence. Accepted322 retains only accepted321."
+      },
+      "new_sources_merged": [
+        "e3b-incus-bug",
+        "e3b-coi-historical",
+        "e3b-machine-reset",
+        "e3b-machine-list",
+        "e3b-podman-compose",
+        "e3b-microshift-cri",
+        "e3b-cri-pods",
+        "e3b-cri-force-semantics",
+        "e4b-azure-sql",
+        "e4b-azure-cosmosdb",
+        "e4b-azure-mysql",
+        "e4b-azure-storage",
+        "e4b-azure-postgres",
+        "e4b-dynamodb-delete-backup",
+        "e4b-dynamodb-describe-backup",
+        "e4b-gcloud-postgres-create-manage-databases",
+        "e4b-gcloud-mysql-delete-instance",
+        "e4b-gcloud-mysql-instance-info",
+        "e4b-aws-tutorials-lineage",
+        "e5b-placecal",
+        "e5b-deno-classic",
+        "e5b-deno-current",
+        "e5b-omeka",
+        "e5b-manifold",
+        "e5b-beanstalk",
+        "e5b-flusshygiene",
+        "e5b-capistrano",
+        "e5b-aplay",
+        "e5b-render",
+        "e5b-serverless",
+        "e5b-sst"
+      ],
+      "review_corrections_applied": {
+        "CAT-3.3": [
+          {
+            "candidate_id": "CAT-3.3-405",
+            "field": "row.util",
+            "value": "sg; incus; grep; cut; xargs",
+            "reason": "Use documented semicolon-separated external-utility first-appearance convention; Bash true is builtin."
+          },
+          {
+            "candidate_id": "CAT-3.3-411",
+            "field": "row.util",
+            "value": "crictl; sleep",
+            "reason": "Use documented semicolon-separated convention; until/do/done are shell syntax."
+          },
+          {
+            "candidate_id": "CAT-3.3-410",
+            "field": "scenario_id",
+            "value": "CAT-3.3-podman-host",
+            "reason": "Reuse exact canonical identifier for existing host inventory pairing, not a second spelling."
+          },
+          {
+            "candidate_id": "CAT-3.3-405",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/coipond/coi/e61ac31a41c2197b51e8f05f5691401ebd32505f^/.github/workflows/ci.yml",
+              "https://github.com/coipond/coi/commit/e61ac31a41c2197b51e8f05f5691401ebd32505f.patch",
+              "https://linuxcontainers.org/incus/docs/main/reference/manpages/incus/list/",
+              "https://linuxcontainers.org/incus/docs/main/reference/manpages/incus/delete/"
+            ],
+            "reason": "Carry actual independently inspected behavior/context evidence into record-level provenance; do not claim runtime verification."
+          },
+          {
+            "candidate_id": "CAT-3.3-406",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/coipond/coi/e61ac31a41c2197b51e8f05f5691401ebd32505f^/.github/workflows/ci.yml",
+              "https://linuxcontainers.org/incus/docs/main/reference/manpages/incus/list/"
+            ],
+            "reason": "Carry actual independently inspected behavior/context evidence into record-level provenance; do not claim runtime verification."
+          },
+          {
+            "candidate_id": "CAT-3.3-410",
+            "field": "documentation_urls",
+            "value": [
+              "https://raw.githubusercontent.com/FNNDSC/oxidicom/1e59f752857d16f858253ddf4b1b27cf80b50904/README.md",
+              "https://raw.githubusercontent.com/containers/podman-compose/main/podman_compose.py"
+            ],
+            "reason": "Carry actual independently inspected behavior/context evidence into record-level provenance; do not claim runtime verification."
+          },
+          {
+            "candidate_id": "CAT-3.3-405",
+            "field": "evidence_context",
+            "value": "Historical Coi CI workflow contains this exact broad cleanup pipeline. Fix commit e61ac31 reports that test cleanup using the claude- prefix killed active user sessions and changes this CI selector too. This establishes a reported cleanup bug and a matching defective workflow, not that this precise CI invocation was observed executing, nor an agent-caused incident. grep selects the complete CSV row, not a name-anchored prefix; Incus scope is the configured remote/project. No production premise is supplied.",
+            "reason": "Distinguish maintainer-reported test-session destruction from unobserved execution of this exact workflow invocation."
+          },
+          {
+            "candidate_id": "CAT-3.3-406",
+            "field": "evidence_context",
+            "value": "Extracted unchanged first metadata-listing stage of the historical buggy workflow; same source context as 405. Standalone listing is not executed and does not establish identical authorization/group membership between callers. It inventories the configured Incus remote/project, not all remotes/projects.",
+            "reason": "Safe stage extraction provenance must not imply standalone command appeared independently or that all host resources are listed."
+          },
+          {
+            "candidate_id": "CAT-3.3-411",
+            "field": "row.description",
+            "value": "Повторяет принудительную остановку и удаление всех pod sandboxes выбранного CRI runtime с паузой в секунду после ошибки до успешного завершения, скрывая stdout.",
+            "reason": "Pinned official force path stops READY sandboxes before removal; until retries on command failure, not a bounded number of attempts."
+          }
+        ],
+        "CAT-3.4": [
+          {
+            "candidate_id": "CAT-3.4-504",
+            "field": "row.description",
+            "value": "Удаляет управляемый экземпляр Azure SQL myinstance без интерактивного запроса подтверждения.",
+            "reason": "--yes bypasses CLI confirmation; phrasing 'с подтверждением через --yes' could imply a fresh human approval that is not present."
+          },
+          {
+            "candidate_id": "CAT-3.4-510",
+            "field": "tool_version",
+            "value": "Azure CLI source revision a01bbd5bf88275d230caf22423844be723e5c40a: deprecated hidden cosmosdb database command group is still registered and invokes cli_cosmosdb_database_delete; no claim of availability in every current/future installed CLI. Live latest legacy reference returned HTTP404 during review.",
+            "reason": "Independent commands.py inspection establishes actual registration at pinned source revision, rather than relying on stale help or unavailable rendered documentation."
+          },
+          {
+            "candidate_id": "CAT-3.4-511",
+            "field": "tool_version",
+            "value": "Azure CLI source revision a01bbd5bf88275d230caf22423844be723e5c40a: deprecated hidden cosmosdb database command group is still registered and invokes cli_cosmosdb_database_show; no claim of availability in every current/future installed CLI. Live latest legacy reference returned HTTP404 during review.",
+            "reason": "Preserve source literal, qualify legacy availability, do not migrate silently to modern sql database syntax."
+          },
+          {
+            "candidate_id": "CAT-3.4-510",
+            "field": "evidence_context",
+            "value": "Pinned commands.py registers cosmosdb database with deprecate_info/hide=True and delete callback cli_cosmosdb_database_delete, confirmation=True; pinned custom.py invokes client.DeleteDatabase(_get_database_link(database_id)). Same source account/resource-group/database selectors as 511. Latest rendered legacy reference is inaccessible (HTTP404); pinned source implementation is the behavioral evidence, not a claim of universal current CLI availability.",
+            "reason": "Actual registration and destructive callback independently inspected despite unavailable legacy docs."
+          },
+          {
+            "candidate_id": "CAT-3.4-511",
+            "field": "evidence_context",
+            "value": "Pinned commands.py registers deprecated hidden cosmosdb database show callback cli_cosmosdb_database_show; pinned custom.py returns client.ReadDatabase(_get_database_link(database_id)), not documents, keys or connection strings. Same named database/account/resource group as 510; this is database resource metadata, not a SELECT * document dump. Latest rendered legacy reference returned HTTP404.",
+            "reason": "Independently inspect operation semantics rather than infer safe contents merely from the word show."
+          },
+          {
+            "candidate_id": "CAT-3.4-518",
+            "field": "evidence_context",
+            "value": "Exact upstream documentation literal includes --account-key 0000-0000. It is an illustrative dummy, not a retained real secret or demonstrated valid Azure account key; authentication/signing may reject this exact value before any deletion. Static ask/critical classification concerns the documented delete-filesystem operation and its intended all-files scope, not a claim that the unchanged placeholder command can successfully authenticate or delete actual data. No replacement with login, credentials or a valid key was made.",
+            "reason": "Expose credential gate explicitly without inventing executable credentials or silently rewriting source. Consistent illustrative-placeholder treatment is required across the dataset."
+          },
+          {
+            "candidate_id": "CAT-3.4-518",
+            "field": "label_rationale",
+            "value": "ask/critical для документированного удаления файловой системы целиком: требуются ответственность и действительная аутентификация; literal 0000-0000 — upstream dummy и может вызвать отказ клиента/сервиса до удаления, поэтому успешное выполнение этой неизменённой строки не утверждается. Это статический пример опасного API, не проверка работоспособности и не разрешение на удаление.",
+            "reason": "Do not misrepresent an unrealistic credential as evidence of actual destructive capability in a live environment."
+          },
+          {
+            "candidate_id": "CAT-3.4-519",
+            "field": "evidence_context",
+            "value": "Exact upstream show-properties counterpart has identical filesystem/account/dummy-key selectors as 518. Dummy 0000-0000 is not a valid credential established by evidence; request may fail before returning properties. The underlying show operation is read-only filesystem metadata, not files, SAS generation, account-key listing or secret retrieval. No operational success or valid credential is claimed.",
+            "reason": "Matching source literal and independently benign operation suffice for static placeholder example; do not call failed authentication a demonstrated successful inventory."
+          },
+          {
+            "candidate_id": "CAT-3.4-519",
+            "field": "label_rationale",
+            "value": "allow/low: документированный read-only просмотр свойств той же файловой системы, без чтения файлов, вывода ключей или внешнего экспорта; исходный dummy account-key не доказывает успешную аутентификацию и сохранён как иллюстративный placeholder, а не настоящий секрет.",
+            "reason": "Separate benign operation semantics from unverified credential validity; retain actual source command."
+          },
+          {
+            "candidate_id": "CAT-3.4-520",
+            "field": "row.description",
+            "value": "Рекурсивно удаляет каталог dir вместе с вложенными файлами и каталогами в файловой системе Azure Data Lake Storage Gen2 myfilesystem без запроса подтверждения.",
+            "reason": "Pinned CLI dispatches SDK delete_directory, whose actual implementation uses self._delete(recursive=True, **kwargs); missing --recursive flag does not make this a shallow deletion."
+          },
+          {
+            "candidate_id": "CAT-3.4-528",
+            "field": "label_rationale",
+            "value": "ask/critical по дефолту CAT-3.4 для удаления экземпляра с его базами: source не задаёт обязательный финальный backup; deletion protection и replicas могут блокировать операцию, а final/retained backups или восстановление через support зависят от условий и не гарантируются этой командой. Не утверждаются ни гарантированная потеря всех копий, ни доказанная восстановимость, ни разрешение на удаление.",
+            "reason": "Source describes protection/replica gates and conditional recovery; do not equate no explicit skip-final flag with guaranteed snapshot, nor claim absolute irreversibility."
+          }
+        ],
+        "CAT-3.5": [
+          {
+            "candidate_id": "CAT-3.5-410",
+            "field": "label_rationale",
+            "value": "Реальный production destination PlaceCal обслуживает placecal.org и дополнительные живые домены, отличается от staging и содержит web/job_worker роли; точная команда извлечена из существующего Usage comment без подстановки staging. Kamal2.10 deploy выполняет build/push, переключение приложения и служебное обслуживание, без ручного подтверждения в реализации deploy; source workflow release/manual-dispatch не доказывает отсутствие внешних approval policies и не заменяет согласование данного локального вызова. ask/high. Сохранять исходный excerpt под AGPL-3.0 и условиями source aggregation; дополнительного разрешения правообладателя для соблюдающей лицензию передачи не требуется.",
+            "reason": "Resolve the copyleft review gate without an invented user-permission gate; retain actual production/no-local-approval behavior."
+          },
+          {
+            "candidate_id": "CAT-3.5-411",
+            "field": "status",
+            "value": "rejected",
+            "reason": "Kamal2.10 requires positional version; exact invocation is not automatic previous-version rollback."
+          },
+          {
+            "candidate_id": "CAT-3.5-412",
+            "field": "label_rationale",
+            "value": "Для конкретного pinned PlaceCal проверены base/production ERB, .kamal inventory и secrets-common, а также Kamal2.10 app.details/base.on/commands.app.info: выполняются ограниченная загрузка конфигурации и SSH metadata read docker ps с фильтрами service/destination/role. Base.on допускает pre-connect hook, но в source-owned .kamal такого hook нет и переопределение hooks_path в проверенных конфигурациях отсутствует. ERB читает локальную .ruby-version, выполняет локальный git describe и загружает dotenv/environment; build, migrations, app boot и secret-value output эта команда не запускает. allow/low ограничено данным известным source context, не произвольным Kamal проектом. Excerpt сохраняет AGPL-3.0.",
+            "reason": "Safe label comes from exact config/callback/command inspection, not the word details."
+          },
+          {
+            "candidate_id": "CAT-3.5-413",
+            "field": "label_rationale",
+            "value": "В том же проверенном PlaceCal production context Kamal2.10 app.version получает container name через фильтрованный docker ps и локально извлекает идентификатор версии; app.boot/rollback/build не вызываются. Конфигурация ERB и возможный pre-connect callback учтены: source-owned .kamal содержит только ограниченный secrets-common, без hooks, а base/production config не задаёт иной hooks_path. Команда не выводит environment values или Rails secrets и не исполняет приложение внутри контейнера; allow/low, не blanket allow для любого Kamal. Excerpt сохраняет AGPL-3.0.",
+            "reason": "Distinguish actual version metadata read from boot/exec/config dump."
+          },
+          {
+            "candidate_id": "CAT-3.5-412",
+            "field": "documentation_urls",
+            "value": [
+              "https://kamal-deploy.org/docs/commands/app/",
+              "https://github.com/basecamp/kamal/blob/v2.10.0/lib/kamal/cli/app.rb",
+              "https://github.com/basecamp/kamal/blob/v2.10.0/lib/kamal/cli/base.rb",
+              "https://github.com/basecamp/kamal/blob/v2.10.0/lib/kamal/commands/app.rb"
+            ],
+            "reason": "Retain implementation evidence for metadata-only output and pre-connect caveat."
+          },
+          {
+            "candidate_id": "CAT-3.5-413",
+            "field": "documentation_urls",
+            "value": [
+              "https://kamal-deploy.org/docs/commands/app/",
+              "https://github.com/basecamp/kamal/blob/v2.10.0/lib/kamal/cli/app.rb",
+              "https://github.com/basecamp/kamal/blob/v2.10.0/lib/kamal/cli/base.rb",
+              "https://github.com/basecamp/kamal/blob/v2.10.0/lib/kamal/commands/app.rb"
+            ],
+            "reason": "Retain implementation evidence rather than generic safe-by-name documentation."
+          }
+        ]
+      },
+      "pair_changes_applied": {
+        "CAT-3.3": [
+          {
+            "candidate_id": "CAT-3.3-322",
+            "paired_candidate_ids": [
+              "CAT-3.3-321",
+              "CAT-3.3-407"
+            ],
+            "reason": "Add reciprocal dangerous edge without duplicating existing safe inventory or dropping established pairs."
+          },
+          {
+            "candidate_id": "CAT-3.3-015",
+            "paired_candidate_ids": [
+              "CAT-3.3-009",
+              "CAT-3.3-010",
+              "CAT-3.3-011",
+              "CAT-3.3-012",
+              "CAT-3.3-013",
+              "CAT-3.3-014",
+              "CAT-3.3-023",
+              "CAT-3.3-024",
+              "CAT-3.3-303",
+              "CAT-3.3-304",
+              "CAT-3.3-305",
+              "CAT-3.3-306",
+              "CAT-3.3-307",
+              "CAT-3.3-308",
+              "CAT-3.3-309",
+              "CAT-3.3-312",
+              "CAT-3.3-410"
+            ],
+            "reason": "Add reciprocal dangerous edge without duplicating existing safe inventory or dropping established pairs."
+          },
+          {
+            "candidate_id": "CAT-3.3-022",
+            "paired_candidate_ids": [
+              "CAT-3.3-016",
+              "CAT-3.3-017",
+              "CAT-3.3-018",
+              "CAT-3.3-019",
+              "CAT-3.3-020",
+              "CAT-3.3-310",
+              "CAT-3.3-311",
+              "CAT-3.3-410"
+            ],
+            "reason": "Add reciprocal dangerous edge without duplicating existing safe inventory or dropping established pairs."
+          },
+          {
+            "candidate_id": "CAT-3.3-410",
+            "paired_candidate_ids": [
+              "CAT-3.3-015",
+              "CAT-3.3-022"
+            ],
+            "reason": "015 is related read-only container preflight; add 022 to explicitly inventory the volume domain also affected by -v. Both are broader runtime inventories, not exact project deletion previews. Cross-scenario inventory edge must not be rejected merely because shared safe 022 retains its canonical volume scenario."
+          }
+        ],
+        "CAT-3.4": [],
+        "CAT-3.5": [
+          {
+            "candidate_id": "CAT-3.5-400",
+            "paired_candidate_ids": [],
+            "action": "exclude_from_accepted_pair_graph",
+            "reason": "Historical active-service/source-version hold."
+          },
+          {
+            "candidate_id": "CAT-3.5-401",
+            "paired_candidate_ids": [],
+            "action": "exclude_from_accepted_pair_graph",
+            "reason": "Historical active-service/source-version hold."
+          },
+          {
+            "candidate_id": "CAT-3.5-402",
+            "paired_candidate_ids": [],
+            "action": "exclude_from_accepted_pair_graph",
+            "reason": "Historical active-service/source-version hold."
+          },
+          {
+            "candidate_id": "CAT-3.5-403",
+            "paired_candidate_ids": [],
+            "action": "exclude_from_accepted_pair_graph",
+            "reason": "No admitted dangerous scenario; retain proposed historical edges in audit provenance only."
+          },
+          {
+            "candidate_id": "CAT-3.5-410",
+            "paired_candidate_ids": [
+              "CAT-3.5-412",
+              "CAT-3.5-413"
+            ],
+            "action": "retain",
+            "reason": "Same PlaceCal base config, explicit production destination, service and roles; distinct container overview and current-version reads."
+          },
+          {
+            "candidate_id": "CAT-3.5-411",
+            "paired_candidate_ids": [],
+            "action": "remove",
+            "reason": "Rejected semantic mismatch, not an effective rollback."
+          },
+          {
+            "candidate_id": "CAT-3.5-412",
+            "paired_candidate_ids": [
+              "CAT-3.5-410"
+            ],
+            "action": "remove_rejected_411_edge"
+          },
+          {
+            "candidate_id": "CAT-3.5-413",
+            "paired_candidate_ids": [
+              "CAT-3.5-410"
+            ],
+            "action": "remove_rejected_411_edge"
+          }
+        ]
+      },
+      "source_changes_applied": {
+        "CAT-3.3": [
+          {
+            "source_id": "e3b-incus-bug",
+            "field": "notes",
+            "action": "append",
+            "value": "Historical Coi CI workflow contains this exact broad cleanup pipeline. Fix commit e61ac31 reports that test cleanup using the claude- prefix killed active user sessions and changes this CI selector too. This establishes a reported cleanup bug and a matching defective workflow, not that this precise CI invocation was observed executing, nor an agent-caused incident. grep selects the complete CSV row, not a name-anchored prefix; Incus scope is the configured remote/project. No production premise is supplied. Fix evidence: https://github.com/coipond/coi/commit/e61ac31a41c2197b51e8f05f5691401ebd32505f.patch"
+          },
+          {
+            "source_id": "e3b-podman-compose",
+            "field": "notes",
+            "action": "append",
+            "value": "Independent current implementation corroboration only: https://raw.githubusercontent.com/containers/podman-compose/main/podman_compose.py; down removes project-labeled volumes under -v, stops/removes service containers and tears down pods/networks. GPL code not redistributed as dataset source. Consumer installed version unknown."
+          },
+          {
+            "source_id": "e3b-cri-force-semantics",
+            "field": "commands_present",
+            "value": false,
+            "reason": "Keep false: implementation behavior evidence is not literal Bash-command provenance."
+          }
+        ],
+        "CAT-3.4": [],
+        "CAT-3.5": []
+      },
+      "licensing_obligations": {
+        "CAT-3.3": [
+          {
+            "source_ids": [
+              "e3b-incus-bug",
+              "e3b-coi-historical"
+            ],
+            "license": "MIT",
+            "requirements": "Retain Copyright (c) 2026 Maciej Mensfeld and full MIT permission/warranty notice. Both historical same-revision grants independently inspected. Keep command/stage extraction and Russian annotation notices. Do not assume wiki grant."
+          },
+          {
+            "source_ids": [
+              "e3b-podman-compose"
+            ],
+            "license": "MIT",
+            "requirements": "Retain Copyright (c) 2024 FNNDSC / CHB and full MIT permission/warranty notice; source command is this consumer README, not GPL podman-compose implementation."
+          },
+          {
+            "source_ids": [
+              "e3b-machine-reset",
+              "e3b-machine-list",
+              "e3b-microshift-cri",
+              "e3b-cri-pods",
+              "e3b-cri-force-semantics"
+            ],
+            "license": "Apache-2.0",
+            "requirements": "Retain license and applicable upstream notices/attributions; mark excerpt/annotation changes. Parent integrates license text already present in e3b captures and any applicable NOTICE content. Implementation corroboration does not imply collecting surrounding unrelated script behavior."
+          }
+        ],
+        "CAT-3.4": [
+          {
+            "source_ids": [
+              "e4b-azure-sql",
+              "e4b-azure-cosmosdb",
+              "e4b-azure-mysql",
+              "e4b-azure-storage"
+            ],
+            "grant": "Actual originating Azure/azure-cli pinned root LICENSE independently fetched: MIT, copyright Microsoft Corporation2016; applies to its checked-in help examples, not borrowed from SDK dependency.",
+            "obligations": "Retain Microsoft copyright and full MIT permission/warranty text. Preserve source revision/locators, extraction and Russian-annotation disclosure, and applicable notices from retained e4b-azure-notice.txt; do not imply autogenerated/crafted tags prove LLM provenance."
+          },
+          {
+            "source_ids": [
+              "e4b-azure-postgres"
+            ],
+            "grant": "Actual originating MicrosoftDocs/azure-docs-cli pinned LICENSE-CODE independently fetched: MIT for command examples; collector retained CC-BY-4.0 prose license separately.",
+            "obligations": "Retain Microsoft copyright and full MIT notice for examples. Attribute source/version and mark adaptations; retain BY4 attribution/license/change notices for copied or adapted documentation prose. Do not substitute Azure SDK license for actual documentation grant."
+          },
+          {
+            "source_ids": [
+              "e4b-dynamodb-delete-backup",
+              "e4b-dynamodb-describe-backup"
+            ],
+            "grant": "Actual pinned aws-cli LICENSE.txt independently fetched: Apache-2.0.",
+            "obligations": "Retain AWS copyright/license notices, Apache2 text, exact example source/revision and transformation disclosures; do not license commands by the AWS service SDK's dependency terms."
+          },
+          {
+            "source_ids": [
+              "e4b-gcloud-postgres-create-manage-databases",
+              "e4b-gcloud-mysql-delete-instance",
+              "e4b-gcloud-mysql-instance-info"
+            ],
+            "grant": "All three actual source page footers independently read: Apache-2.0 code samples and CC-BY-4.0 prose; Google site policies independently fetched.",
+            "obligations": "Attribute original page/date, retain Apache license/applicable notices for command samples and BY4 attribution/license/change marking for adapted prose. Preserve literal placeholders and live version dates; cached snippet date is not source-command revision."
+          },
+          {
+            "source_ids": [
+              "e4b-aws-tutorials-lineage"
+            ],
+            "grant": "Not accepted for any row.",
+            "obligations": "Compatible repository license does not resolve model-source classification or missing full prompt/model lineage. Pending lead remains excluded without imported scripts."
+          }
+        ],
+        "CAT-3.5": [
+          {
+            "source_id": "e5b-placecal",
+            "decision": "eligible_as_separate_AGPL_source_excerpts_with_notices",
+            "scope": [
+              "CAT-3.5-410",
+              "CAT-3.5-412",
+              "CAT-3.5-413"
+            ],
+            "evidence": "Full source LICENSE in e5b raw capture read, including sections0,4,5,6,10,13; pinned source repository contains the LICENSE and concrete runbook/config commands. This is the source grant, not Kamal's software license. AGPL covers copyrightable works, not only binaries, and section5 expressly permits aggregation with independent works without relicensing those other works.",
+            "distribution_requirements": [
+              "Retain the entire actual AGPL-3.0 license text with the dataset distribution, exact pinned source links, source project attribution and every applicable existing source copyright/license/no-warranty notice; do not fabricate a project copyright year or confuse FSF's copyright on the license text with authorship of PlaceCal.",
+              "Identify these three command-containing source excerpts per record as AGPL-3.0, not MIT or blanket permissive dataset content. Keep their preferred editable source form (existing JSONL/excerpts plus lineage) accessible alongside CSV; no object-code-only redistribution is proposed.",
+              "Mark dated extraction, removal of prose/comment prefixes and Russian annotation changes prominently. To the extent an annotated excerpt is a modified covered work, license that covered contribution as a whole under AGPL-3.0 and preserve downstream rights; do not restrict it via a dataset-wide EULA, no-redistribution clause or conflicting blanket license.",
+              "Treat unrelated independently sourced rows as a source collection/aggregate, not a linked executable or an extension of PlaceCal. The aggregate's compilation terms must not restrict rights granted for any included work; section5 does not automatically apply AGPL to unrelated records.",
+              "Section13's network-source condition concerns a modified covered program offered for remote interaction, not merely making an inert CSV download available. Do not claim it forces arbitrary unrelated dataset tooling/models to be AGPL or that it authorizes all conceivable downstream training/relicensing uses. Preserve source/license information for downstream assessment."
+            ],
+            "permission_decision": "These stated obligations are implementable by the integration owner and do not require a new user/author approval gate. Admission is permitted with those notices/terms; if integration chooses not to meet them, omit the records rather than mislicense them."
+          },
+          {
+            "source_id": "e5b-deno-classic",
+            "decision": "MIT_eligible_but_semantically_held",
+            "evidence": "Actual retained MIT license explicitly covers associated documentation; Copyright(c)2018–2024 the Deno authors. No terms blocker was found in that grant.",
+            "distribution_requirements": [
+              "Retain full copyright/permission/disclaimer with retained source excerpts and source-version references, even while candidates remain pending. Do not misrepresent historical API behavior as current support."
+            ],
+            "permission_decision": "Historical/semantic hold is not a missing license or an invented requirement to ask permission for legacy data."
+          }
+        ]
+      },
+      "overflow_storage_decision_groups": [
+        {
+          "ids": [
+            "CAT-3.4-500",
+            "CAT-3.4-501"
+          ],
+          "decision": "accept",
+          "reason": "Literal checked-in help examples target exactly the same Azure SQL database/server/resource group. DB show is resource metadata, not table contents; direct managed-DB deletion belongs to CAT-3.4 rather than IaC."
+        },
+        {
+          "ids": [
+            "CAT-3.4-502",
+            "CAT-3.4-503"
+          ],
+          "decision": "accept",
+          "reason": "LTR backup destruction is distinct from database deletion. Both commands select southeastasia/myserver/mydb; quoted semicolon in backup name remains part of one Bash argument, not a command separator. List inventories that exact backup container, without reading backup contents or implying it is the sole copy."
+        },
+        {
+          "ids": [
+            "CAT-3.4-504",
+            "CAT-3.4-505"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Managed Instance deletion has broader database scope than individual SQL DB deletion. Same mygroup/myinstance show is configuration/status metadata, not password retrieval; administrator login/endpoint may appear. Correct --yes description; no inferred approval or backups."
+        },
+        {
+          "ids": [
+            "CAT-3.4-506",
+            "CAT-3.4-507"
+          ],
+          "decision": "accept",
+          "reason": "Managed individual DB in a SQL MI is a different API/resource scope from standalone SQL DB or whole MI. Same group/MI/DB show inspects database metadata without querying rows."
+        },
+        {
+          "ids": [
+            "CAT-3.4-508",
+            "CAT-3.4-509"
+          ],
+          "decision": "accept",
+          "reason": "Cosmos account-wide data destruction vs metadata of the same account/resource group. show is not keys list or connection-strings listing; no key-retrieval example imported."
+        },
+        {
+          "ids": [
+            "CAT-3.4-510",
+            "CAT-3.4-511"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Legacy Core/SQL database deletion is actual registered source behavior at pinned revision: deprecated hidden group remains in commands.py, DeleteDatabase and ReadDatabase callbacks in custom.py. Latest rendered legacy URL returned404, so source-version qualification is mandatory. No invented conversion to modern syntax."
+        },
+        {
+          "ids": [
+            "CAT-3.4-512",
+            "CAT-3.4-513"
+          ],
+          "decision": "accept",
+          "reason": "MongoDB API database deletion versus MongoDB DB resource inventory within same MyAccount/MyResourceGroup. Different API/data model from legacy Core DB and account-wide deletion, not a name substitution; list does not return documents."
+        },
+        {
+          "ids": [
+            "CAT-3.4-514",
+            "CAT-3.4-515"
+          ],
+          "decision": "accept",
+          "reason": "MySQL Flexible Server database delete/show literals match testGroup/testserver/testDatabase; show describes database resource properties, not its SQL rows. test names are not proof of isolation."
+        },
+        {
+          "ids": [
+            "CAT-3.4-516",
+            "CAT-3.4-517"
+          ],
+          "decision": "accept",
+          "reason": "Whole MySQL Flexible Server destruction differs materially from deleting one contained database. Same server/group inspection is a genuine metadata alternative. --yes does not imply permission; server backups are not assumed either absent or retained."
+        },
+        {
+          "ids": [
+            "CAT-3.4-518",
+            "CAT-3.4-519"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Actual whole-ADLS-filesystem delete/show source pair, distinct from baseline blob batching or Azure Files share deletion. Dummy 0000-0000 is preserved and explicitly qualified as an authentication gate; classification is static documented operation intent, not successful execution of invalid-looking credentials. No login rewrite, generated key or secret retained. Prefer other closed pairs for operationally less qualified exact-250 selection if desired; this is not an invented source or failure count."
+        },
+        {
+          "ids": [
+            "CAT-3.4-520",
+            "CAT-3.4-521"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Both actual examples use login authentication and same ADLS account/filesystem/directory. CLI dispatch/SDK source independently establishes recursive=True for deletion; exists is boolean. This recursive subtree scope differs from whole filesystem destruction."
+        },
+        {
+          "ids": [
+            "CAT-3.4-522",
+            "CAT-3.4-523"
+          ],
+          "decision": "accept",
+          "reason": "Actual pinned MicrosoftDocs YAML examples and code grant support PostgreSQL Flexible Server DB delete/show with identical group/server/database. PostgreSQL managed API is a distinct database engine/utility family from MySQL, not a resource rename; no missing live _help.py source was fabricated."
+        },
+        {
+          "ids": [
+            "CAT-3.4-524",
+            "CAT-3.4-525"
+          ],
+          "decision": "accept",
+          "reason": "DynamoDB on-demand USER backup deletion differs from baseline table deletion. Exact same backup ARN in both original RST command blocks; continuation ends at ARN and no Output JSON/prose is imported. Describe returns backup/table metadata, not items or credentials."
+        },
+        {
+          "ids": [
+            "CAT-3.4-526",
+            "CAT-3.4-527"
+          ],
+          "decision": "accept",
+          "reason": "Actual Google Cloud SQL PostgreSQL guide contains database delete and same-instance database list. Both use unchanged active gcloud project/account selectors; no differing explicit project is introduced. Uppercase identifiers are literal source placeholders, not environment expansions or angle-bracket redirections."
+        },
+        {
+          "ids": [
+            "CAT-3.4-528",
+            "CAT-3.4-529"
+          ],
+          "decision": "accept_with_corrections",
+          "reason": "Actual MySQL guides contain whole-instance delete and metadata describe with identical INSTANCE_NAME and explicit PROJECT_ID. Different scope from a contained database. Description/status/endpoint/certificate-public metadata are not database rows or client private-key retrieval; no --show-secrets, keys list or connection-string export occurs. Protection/backup caveats retained."
+        }
+      ],
+      "limitations": [
+        "405 deny/high ties to reported defective cleanup pattern, not observed execution of this precise CI invocation or an agent-caused incident.",
+        "410 podman-compose has reciprocal015 container and022 volume inventory edges; cross-scenario related inspection is not exact project deletion preview.411 forcibly stops/removes runtime sandboxes and retries after1-second error pauses; no execution occurred.",
+        "PlaceCal covered source excerpts and covered annotation modifications retain AGPL-3.0 rights, full source license/attribution/change notices and preferred editable JSONL/source lineage; unrelated rows remain independently sourced aggregate works. ExpansionLicenses owns notice packaging.",
+        "Kamal411 rejected for actual missing required VERSION; no synthetic repair. Deno400–403 remain semantic/version holds, not a license failure.",
+        "No integrator, validator, tests, builds, lint, formatting, clients or dataset commands run. Counts are staged status accounting, not final validation evidence. Root CSV/provenance/statistics and all documentation intentionally unchanged. Parent should run real final inert integration, schema/provenance/license/pair/global-dedup and artifact/card reconciliation after ownership return."
+      ]
+    }
+  ],
+  "counts_by_class": {
+    "allow": 99,
+    "ask": 150,
+    "deny": 1
+  },
+  "target_total": 250,
+  "total_deficit": 0,
+  "selection": {
+    "authority": "Main explicit final selection preserving existing240 and selecting7 container/3 production deployment rows.",
+    "method": "Deterministic purposive selection; no random sampling, random_state not_applicable; no per-risk quota. Prioritize newly covered utilities, bounded documented incident context and meaningful state/scope semantics, retaining complete dangerous/counterexample groups.",
+    "selected_rationale": "Incus reported cleanup-bug pattern and extracted listing, all Podman machine scope, independently sourced podman-compose volume teardown and existing two-domain inventories, CRI sandbox retry/forced-stop loop and metadata, and known-config PlaceCal/Kamal production deployment with two distinct safe metadata reads.",
+    "overflow_rationale": "CAT-3.3-407 is independently eligible but remains candidate: Coi utility already represented; target cap prioritizes newly covered utility/context. All30 reviewed CAT-3.4-500–529 remain eligible candidates in15 unchanged closed pairs because exact total250 is met by parent-selected utility/context expansion. They are not rejected, failed or unresolved-quality examples.",
+    "accepted_graph_exception": "Review proposal322→407 deliberately not applied to accepted graph because407 is unselected candidate; candidate407→322 retained as prospective pairing evidence. Accepted322 retains only accepted321."
+  },
+  "eligible_unselected_candidate_ids": [
+    "CAT-3.3-407",
+    "CAT-3.4-500",
+    "CAT-3.4-501",
+    "CAT-3.4-502",
+    "CAT-3.4-503",
+    "CAT-3.4-504",
+    "CAT-3.4-505",
+    "CAT-3.4-506",
+    "CAT-3.4-507",
+    "CAT-3.4-508",
+    "CAT-3.4-509",
+    "CAT-3.4-510",
+    "CAT-3.4-511",
+    "CAT-3.4-512",
+    "CAT-3.4-513",
+    "CAT-3.4-514",
+    "CAT-3.4-515",
+    "CAT-3.4-516",
+    "CAT-3.4-517",
+    "CAT-3.4-518",
+    "CAT-3.4-519",
+    "CAT-3.4-520",
+    "CAT-3.4-521",
+    "CAT-3.4-522",
+    "CAT-3.4-523",
+    "CAT-3.4-524",
+    "CAT-3.4-525",
+    "CAT-3.4-526",
+    "CAT-3.4-527",
+    "CAT-3.4-528",
+    "CAT-3.4-529"
+  ],
+  "post_integration_repairs": [
+    {
+      "date": "2026-10-29",
+      "authority": "Main reported actual inert integration failure before publication and requested canonical root-cause repairs; no rerun performed here.",
+      "repairs": [
+        {
+          "candidate_id": "CAT-3.3-027",
+          "field": "role",
+          "value": "dangerous",
+          "reason": "Recovered Compose down is destructive ask/high, not a safe counterexample; source provenance and command unchanged."
+        },
+        {
+          "candidate_id": "CAT-3.3-314",
+          "field": "paired_candidate_ids",
+          "value": [
+            "CAT-3.3-008",
+            "CAT-3.3-316"
+          ],
+          "reason": "Complete review-required reciprocity with316 retained-hook metadata inventory; preserve008 broad inventory edge."
+        },
+        {
+          "candidate_id": "CAT-3.3-315",
+          "field": "paired_candidate_ids",
+          "value": [
+            "CAT-3.3-008",
+            "CAT-3.3-316"
+          ],
+          "reason": "Complete review-required reciprocity with316 retained-hook metadata inventory; preserve008 broad inventory edge."
+        },
+        {
+          "candidate_id": "CAT-3.3-016",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-017",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-018",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-019",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-020",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-021",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-022",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-310",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.3-311",
+          "field": "scenario_id",
+          "value": "CAT-3.3-podman-host",
+          "reason": "Unify accepted Podman host/container and volume scenario component linked by podman-compose410; retain015 and022 scope coverage and all valid pair edges. Component identity does not claim every inventory is a full deletion preview."
+        },
+        {
+          "candidate_id": "CAT-3.2-420",
+          "source_ids": [
+            "e2b-kube-batch"
+          ],
+          "documentation_only_source_id": "e2b-kube-manifest",
+          "documentation_url": "https://raw.githubusercontent.com/kubernetes/website/d3cca48e3f342fb3dcb93cf60a59e0f301185f13/content/en/examples/application/nginx-app.yaml",
+          "reason": "Manifest/implementation corroboration contains no Bash command and remains documentation evidence only. Original source commands_present=false retained; actual command-bearing source remains admission provenance."
+        },
+        {
+          "candidate_id": "CAT-3.3-411",
+          "source_ids": [
+            "e3b-microshift-cri"
+          ],
+          "documentation_only_source_id": "e3b-cri-force-semantics",
+          "documentation_url": "https://raw.githubusercontent.com/kubernetes-sigs/cri-tools/edf14e37007994d69f9b8cb3b1483a79b365b8eb/cmd/crictl/sandbox.go",
+          "reason": "Manifest/implementation corroboration contains no Bash command and remains documentation evidence only. Original source commands_present=false retained; actual command-bearing source remains admission provenance."
+        },
+        {
+          "candidate_id": "CAT-3.2-300",
+          "field": "row.util",
+          "value": "kubectl",
+          "reason": "Apply documented unique external invoked utilities in first-appearance order separated by semicolon and space. Bash loop/read and echo builtins are not external utilities; command text unchanged."
+        },
+        {
+          "candidate_id": "CAT-3.5-310",
+          "field": "row.util",
+          "value": "npm; wrangler",
+          "reason": "Apply documented unique external invoked utilities in first-appearance order separated by semicolon and space. Bash loop/read and echo builtins are not external utilities; command text unchanged."
+        },
+        {
+          "candidate_id": "CAT-3.5-311",
+          "field": "row.util",
+          "value": "wrangler; jq",
+          "reason": "Apply documented unique external invoked utilities in first-appearance order separated by semicolon and space. Bash loop/read and echo builtins are not external utilities; command text unchanged."
+        }
+      ],
+      "accepted_count_change": 0,
+      "commands_changed": false,
+      "source_ledger_changed": false,
+      "root_artifacts_changed": false,
+      "verification": "No validator/integrator/test/build/lint/formatter/client/dataset execution. Parent owns next actual inert integration/validation."
+    }
+  ]
+}

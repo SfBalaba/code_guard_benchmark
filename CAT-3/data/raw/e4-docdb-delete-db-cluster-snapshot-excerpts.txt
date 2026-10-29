@@ -1,0 +1,12 @@
+Source ID: e4-docdb-delete-db-cluster-snapshot
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/docdb/delete-db-cluster-snapshot.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: command and necessary non-sensitive context only; output suppressed before persistence.
+
+Locator: awscli/examples/docdb/delete-db-cluster-snapshot.rst lines 5-6
+aws docdb delete-db-cluster-snapshot \
+--db-cluster-snapshot-identifier sample-cluster-snapshot
+Context: Официальный учебный пример; describe/get возвращает только конфигурацию и состояние сервиса, не значения ключей/строки БД/пароли. Листинг всех ресурсов является metadata preflight, не точным планом удаления, не бэкапом и не подтверждением права на удаление. Удаление кластера требует предварительно удалить instances; источник это явно оговаривает. Снимок sample-cluster-snapshot связан с sample-cluster в output удаления; просмотр метаданных снимка — отдельная проверка перед удалением кластера/снимка, не гарантия восстановления. describe-db-clusters upstream содержит сломанный перенос без backslash и не импортирован.

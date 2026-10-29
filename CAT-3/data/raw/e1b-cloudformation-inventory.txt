@@ -1,0 +1,5 @@
+### CloudFormation
+```bash
+# List stacks
+aws cloudformation list-stacks
+

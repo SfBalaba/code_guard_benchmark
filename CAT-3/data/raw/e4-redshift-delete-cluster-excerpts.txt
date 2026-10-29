@@ -1,0 +1,11 @@
+Source ID: e4-redshift-delete-cluster
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/redshift/delete-cluster.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: command and necessary non-sensitive context only; output suppressed before persistence.
+
+Locator: awscli/examples/redshift/delete-cluster.rst lines 9-9
+aws redshift delete-cluster --cluster-identifier mycluster --skip-final-cluster-snapshot
+Context: Официальный учебный пример; describe/get возвращает только конфигурацию и состояние сервиса, не значения ключей/строки БД/пароли. Листинг всех ресурсов является metadata preflight, не точным планом удаления, не бэкапом и не подтверждением права на удаление.

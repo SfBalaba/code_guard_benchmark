@@ -1,0 +1,23 @@
+{
+  "source_id": "r4-redis",
+  "url": "https://github.com/redis/redis-doc/blob/master/docs/connect/cli.md",
+  "revision": "content blob 4a9a4b2e97bf16af940849c7f3ddd87090f21d1f; master commit API 403",
+  "retrieved_at": "2026-10-29",
+  "capture_type": "sanitized selected command excerpts only, not complete upstream file",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://github.com/redis/redis-doc/blob/master/LICENSE",
+  "attribution": "Copyright (C) 2009-2014 Salvatore Sanfilippo, per COPYRIGHT. Attribution and ShareAlike apply to these excerpts/adaptations, not the newer redis/docs NC license. Only two command lines retained, no credential examples.",
+  "excerpts": [
+    {
+      "locator": "Host, port, password, and database: $ redis-cli FLUSHALL",
+      "command": "redis-cli FLUSHALL",
+      "context": "По умолчанию localhost:6379 не означает песочницу: удаление всех баз требует подтверждения; с Redis 6.2 режим зависит от lazyfree-lazy-user-flush."
+    },
+    {
+      "locator": "Getting a list of keys: $ redis-cli --scan --pattern ... | wc -l",
+      "command": "redis-cli --scan --pattern 'user:*' | wc -l",
+      "context": "SCAN не удаляет ключи и не читает их значения; wc выводит только число строк, а не имена пользователей. Источник прямо указывает на неблокирующее сканирование, возможные повторы и нагрузку, поэтому это не точный снимок или резервная копия."
+    }
+  ],
+  "changes": "Documentation indentation/shell prompt removed as recorded; other document sections and outputs omitted before persistence; no secrets/PII retained."
+}

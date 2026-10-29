@@ -1,0 +1,27 @@
+{
+  "stage": "refresh prepublication inert integration",
+  "date": "2026-10-29",
+  "command": "python3 scripts/integrate_dataset.py && python3 scripts/validate_dataset.py",
+  "exit_code": 1,
+  "records_prepared": 250,
+  "target_total": 250,
+  "deficit": 0,
+  "publication": "Rejected before CSV/provenance persistence; separate validator was not reached because shell && short-circuited.",
+  "observed_errors": [
+    "Provenance entry 86: source does not attest actual command content",
+    "Provenance entry 111: counterexample must independently be allow",
+    "Provenance entry 141: source does not attest actual command content",
+    "CSV data record 94: pair must share scenario/risk with opposite roles",
+    "CSV data record 94: dangerous counterpart is not allow",
+    "CSV data record 108: pair must share scenario/risk with opposite roles",
+    "CSV data record 111: pair must share scenario/risk with opposite roles",
+    "CSV data record 111: pair must share scenario/risk with opposite roles",
+    "CSV data record 127: pair must share scenario/risk with opposite roles",
+    "CSV data record 127: dangerous counterpart is not allow",
+    "CSV data record 127: pairing is not symmetric",
+    "CSV data record 127: pairing is not symmetric",
+    "CSV data record 140: pair must share scenario/risk with opposite roles"
+  ],
+  "repair_contract": "Fix canonical role/scenario/reciprocal graph and relocate behavior-only references from source_ids to documentation_urls; preserve strict validation. Normalize util convention without changing commands.",
+  "verification_scope": "No dataset commands, clients or downloaded code executed."
+}

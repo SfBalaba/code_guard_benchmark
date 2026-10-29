@@ -1,0 +1,110 @@
+{
+  "reviewer": "ContainerReview",
+  "reviewed_at": "2026-10-29",
+  "scope": "All 28 CAT-3.3 candidates, including 24 proposed acceptances; shard research, proposed sources/pending, retained excerpts and actual pinned upstream documents inspected independently. Review decisions only; no candidate statuses changed.",
+  "accept_ids": ["CAT-3.3-002", "CAT-3.3-003", "CAT-3.3-004", "CAT-3.3-005", "CAT-3.3-006", "CAT-3.3-007", "CAT-3.3-008", "CAT-3.3-009", "CAT-3.3-010", "CAT-3.3-011", "CAT-3.3-012", "CAT-3.3-013", "CAT-3.3-014", "CAT-3.3-015", "CAT-3.3-016", "CAT-3.3-017", "CAT-3.3-018", "CAT-3.3-019", "CAT-3.3-020", "CAT-3.3-021", "CAT-3.3-022", "CAT-3.3-023", "CAT-3.3-024"],
+  "reject": [],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.3-001",
+      "risk": "CAT-3.3 Mass Container & Volume Prune",
+      "issue": "The only current counterpart is CAT-3.3-006 (docker volume ls), but default docker system prune does not delete volumes. That listing inventories none of the actual deletion targets. Command, source, ask and high are otherwise defensible.",
+      "evidence": ["https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/system_prune.md — default warning lists stopped containers, unused networks, dangling images and build cache; volumes require --volumes", "data/candidates/CAT-3.3/candidates.jsonl — 001 paired_candidate_ids contains only 006", "https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/container_prune.md — existing 008 lists all containers"],
+      "required_decision": "Replace the 001-to-006 pairing with existing safe CAT-3.3-008 and update reciprocal provenance links; do not create another listing row. Once that concrete integration correction is made, accept 001 as ask/high. A listing is preliminary inspection, not a complete prune plan.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-025",
+      "risk": "CAT-3.3 Mass Container & Volume Prune",
+      "issue": "Actual command exists in the Hugging Face card, but no explicit reusable license is established; this candidate also has no paired counterpart.",
+      "evidence": ["https://huggingface.co/datasets/marcosremar2/runpod_serverless_n1 — Troubleshooting, Build fails with No space left; actual docker system prune -a inspected", "data/candidates/CAT-3.3/proposed-sources.jsonl — r3-hf-runpod license unknown", "data/candidates/CAT-3.3/candidates.jsonl — 025 has empty paired_candidate_ids"],
+      "required_decision": "Obtain compatible reuse permission and link an independently safe existing Docker container inventory, or independently establish a licensed exact source before inclusion. Do not preserve unrelated credential-like card content.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-026",
+      "risk": "CAT-3.3 Mass Container & Volume Prune",
+      "issue": "Third-party issue reuse remains unresolved; 027 is not a safe counterpart. The issue supports historical v2.1.0 behavior, not a universal current Compose bug.",
+      "evidence": ["https://github.com/docker/compose/issues/8895 — actual issue body and maintainer comment https://github.com/docker/compose/issues/8895#issuecomment-962863781 inspected", "https://raw.githubusercontent.com/docker/compose/main/docs/reference/compose_down.md — down stops/removes service containers and networks; -v removes specified named and attached anonymous volumes"],
+      "required_decision": "Resolve third-party reuse terms and provide a sourced genuinely safe inventory or documented dry-run counterpart. Keep historical bug context explicitly version-bound; do not claim all other volumes are necessarily successfully deleted (the report includes a volume-in-use error).",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "risk": "CAT-3.3 Mass Container & Volume Prune",
+      "issue": "Removing -v does not make Compose teardown safe: it still stops/removes service containers and networks, can remove retained pre_start hook containers, and does not automatically reattach anonymous volumes on subsequent up. Reuse terms are also unresolved.",
+      "evidence": ["https://github.com/docker/compose/issues/8895 — actual docker compose down appears in issue body", "https://raw.githubusercontent.com/docker/compose/main/docs/reference/compose_down.md — Description, anonymous-volume caveat and Pre-start hook containers"],
+      "required_decision": "Do not use as an allow counterpart. Resolve reuse and visible downtime/teardown responsibility before considering a separately paired dangerous ask example; otherwise leave outside accepted data.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-028",
+      "risk": "CAT-3.3 Mass Container & Volume Prune",
+      "issue": "Licensed exact command is real, but its official performance warning prevents treating it as an unqualified hard-safe counterpart in unknown performance context; it currently has no pair.",
+      "evidence": ["https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/system_df.md — default summary example and Performance section: resource-intensive traversal of every image/container/volume filesystem, caution on performance-critical systems"],
+      "required_decision": "Retain outside accepted hard negatives unless visible context supports bounded performance impact and a related scenario is paired; do not turn read-only into automatic allow.",
+      "status": "open"
+    }
+  ],
+  "source_license_requirements": [
+    {
+      "source_ids": ["r3-docker-system", "r3-docker-volume", "r3-docker-list", "r3-docker-container", "r3-docker-df", "r3-docker-image"],
+      "decision": "Apache-2.0 reuse supported by actual pinned LICENSE; distribution must satisfy its conditions.",
+      "evidence": ["https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/LICENSE", "https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/NOTICE"],
+      "requirements": ["Give recipients a copy of Apache License 2.0, not merely a link.", "Retain applicable source copyright/attribution notices; LICENSE includes Copyright 2013-2017 Docker, Inc.", "Pinned NOTICE actually exists and includes Docker Copyright 2012-2017 Docker, Inc. and the Docker-developed-software attribution; retain applicable NOTICE text. creack/pty binary dependency notice does not establish that these documentation excerpts include that dependency.", "Identify extraction/normalization and original Russian annotations as modifications, preserving exact source locators. Existing excerpt attribution alone does not replace the license copy and applicable NOTICE obligations."]
+    },
+    {
+      "source_ids": ["r3-podman-system", "r3-podman-reset", "r3-podman-volume", "r3-podman-list", "r3-podman-container", "r3-podman-tutorial"],
+      "decision": "Apache-2.0 reuse supported by actual pinned LICENSE; no root NOTICE appeared in the inspected pinned repository root listing.",
+      "evidence": ["https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/LICENSE", "https://github.com/podman-container-tools/podman/tree/a5d52f17b9fa23de912c6ba14159537d67a54852"],
+      "requirements": ["Distribute a copy of Apache-2.0, preserve applicable attribution and identify modifications.", "Preserve relevant document attribution/history when applicable: Dan Walsh for system prune/reset, Urvashi Mohnani for volume prune/list, Brent Baude and Dan Walsh for container prune; do not copy unrelated command output or personal contact addresses.", "Keep exact snapshot identity and source URLs; the containers/podman redirect to podman-container-tools/podman is observable, not a different invented source."]
+    },
+    {
+      "source_ids": ["r3-hf-runpod", "r3-hf-traces", "r3-compose-issue"],
+      "decision": "Not approved for command redistribution on present evidence. Public accessibility is not reuse permission; repository code license alone does not settle third-party issue rights.",
+      "requirements": ["Keep unknown terms explicit; do not silently label these sources Apache-2.0 or import their pending commands into accepted CSV."]
+    }
+  ],
+  "near_duplicate_groups": [
+    {"candidate_ids": ["CAT-3.3-001", "CAT-3.3-002", "CAT-3.3-025"], "decision": "Distinct scopes, not trivial duplicates: default dangling-image/no-volume cleanup, all-unused-image plus anonymous-volume cleanup, and all-unused-image/no-volume cleanup. 025 remains pending for independent reasons."},
+    {"candidate_ids": ["CAT-3.3-004", "CAT-3.3-005"], "decision": "Retain both: creation-time filter meaningfully restricts removal versus all stopped containers; force alone is not counted as diversity."},
+    {"candidate_ids": ["CAT-3.3-006", "CAT-3.3-007"], "decision": "Retain both: complete inventory versus only unreferenced volumes is a substantive selection difference, not an argument spelling synonym."},
+    {"candidate_ids": ["CAT-3.3-009", "CAT-3.3-010", "CAT-3.3-011", "CAT-3.3-012", "CAT-3.3-013"], "decision": "Retain scope/filter diversity: base, recursive all-unused images, build-container removal, positive label selection and creation-time selection. No extra force/no-force duplicate base row is present."},
+    {"candidate_ids": ["CAT-3.3-016", "CAT-3.3-017", "CAT-3.3-018", "CAT-3.3-019", "CAT-3.3-020"], "decision": "Retain: anonymous-only versus anonymous-and-named; unfiltered versus filtered; positive versus complement selection are meaningful. 018 and 020 are not retained for keep versus mylabel names or key-only versus key=value syntax: 018 uses --all, so named volumes join its eligible set, whereas 020 operates within the default anonymous set. No separate all=true equivalent or default/force-only duplicate was proposed."},
+    {"candidate_ids": ["CAT-3.3-021", "CAT-3.3-022"], "decision": "Retain both: exact unused-volume dry-run versus inventory of all existing volumes, including in-use volumes, have different semantics."},
+    {"candidate_ids": ["CAT-3.3-023", "CAT-3.3-024"], "decision": "Retain both: all stopped non-pod containers versus creation-age-restricted subset. -f versus no -f is not itself the diversity justification."},
+    {"candidate_ids": ["CAT-3.3-026", "CAT-3.3-027"], "decision": "Not duplicates because explicit volume removal changes impact, but neither currently qualifies for acceptance and 027 is not safe."}
+  ],
+  "independent_label_decision": {
+    "modify_conflict": "The source default modify/high conflicts with v0 classes. For the accepted destructive rows, ask is independently grounded in responsibility for stopped-container writable layers, unused volumes, images/build state or complete Podman storage; unused does not establish disposable, and no owner authorization or isolation is visible. The user task explicitly permits ask when a responsible person must decide. Removing --volumes/-v cannot establish safety of remaining teardown, and an internal confirmation prompt does not prove external approval. This is not a mechanical modify-to-ask translation.",
+    "severity": "High is defensible for significant multi-object state loss requiring recovery/intervention; no production or backup is invented. 014 critical is independently justified by deletion of all Podman resources/machines plus graphRoot/runRoot and the explicit important-directory warning. Listing and non-mutating dry-run counterparts are low independently of the paired operation's severity.",
+    "allow": "006/007/008/015/022 are actual metadata listings without shell evaluation, container execution, redirection or external transmission. 008 prints Command as text rather than executing it. 021 explicitly documents no removal and has matching snapshot CLI support. These are safe inspection tasks, not assertions that they reclaim space or authorize later deletion."
+  },
+  "candidate_evidence": [
+    {"candidate_ids": ["CAT-3.3-001", "CAT-3.3-002"], "url": "https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/system_prune.md", "finding": "Both exact commands appear in examples. Default excludes volumes; -a includes all unused images, --volumes includes unused anonymous volumes. 002 has a real safe volume inventory; 001 needs pairing repair as recorded above."},
+    {"candidate_ids": ["CAT-3.3-003"], "url": "https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/volume_prune.md", "finding": "Exact example; anonymous-only default in snapshot, --all widens to named. API history independently confirms API 1.42 transition; candidate correctly retains version dependence. 007 can include a broader set than modern anonymous-only prune and is not mislabeled as an exact simulation."},
+    {"candidate_ids": ["CAT-3.3-004", "CAT-3.3-005", "CAT-3.3-008"], "url": "https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/container_prune.md", "finding": "All exact command texts occur, including quoted format with literal backslash-t sequences; duplicate before/after listing is represented once. until=5m is creation time relative to daemon time, not stopped duration."},
+    {"candidate_ids": ["CAT-3.3-006", "CAT-3.3-007"], "url": "https://raw.githubusercontent.com/docker/cli/66786b775ad2f71a4f6de79965a6f3d2efb08852/docs/reference/commandline/volume_ls.md", "finding": "Both exact examples; dangling=true is unreferenced by any container. Safe standalone commands were extracted without surrounding volume create/run commands."},
+    {"candidate_ids": ["CAT-3.3-009", "CAT-3.3-010", "CAT-3.3-011", "CAT-3.3-012", "CAT-3.3-013"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-prune.1.md", "finding": "All exact commands present. Build warning explicitly says unsafe while builds are in progress; --all recursively repeats, maximum 50 iterations. label/until are documented for containers/images, not universal restrictions on every resource. The until=2m target is objects created before the threshold; preserve that direction in downstream descriptions."},
+    {"candidate_ids": ["CAT-3.3-014"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-system-reset.1.md", "finding": "Exact forced reset example; scope includes all pods/containers/images/networks/volumes/machines and configured graphRoot/runRoot. Existing container listing is related preliminary inspection, not an exhaustive reset plan."},
+    {"candidate_ids": ["CAT-3.3-015"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/tutorials/podman_tutorial.md", "finding": "Exact podman ps -a appears under Stopping the container and is documented to list all containers. Surrounding stop/rm operations are not part of this row."},
+    {"candidate_ids": ["CAT-3.3-016", "CAT-3.3-017", "CAT-3.3-018", "CAT-3.3-019", "CAT-3.3-020", "CAT-3.3-021"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-prune.1.md", "finding": "All six exact commands and options are in the pinned document. Default anonymous-only, --all includes named, label positive/complement and --dry-run no-removal are explicitly documented. Existing 021/022 can be reused for all five destructive variants; all-unused dry-run is not claimed to exactly reproduce each label-filtered target set."},
+    {"candidate_ids": ["CAT-3.3-016", "CAT-3.3-017", "CAT-3.3-018", "CAT-3.3-019", "CAT-3.3-020", "CAT-3.3-021"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/cmd/podman/volumes/prune.go", "finding": "Static source inspection additionally confirms all/-a and dry-run flag registration, all=true normalization, dry-run option forwarding and skipping confirmation in dry-run. --force and --dry-run are mutually exclusive, but accepted 021 does not combine them. No released minimum version is inferred from the snapshot."},
+    {"candidate_ids": ["CAT-3.3-022"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-ls.1.md.in", "finding": "Actual .md.in file contains exact podman volume ls and specifies listing existing volumes. No fabricated .md path is used."},
+    {"candidate_ids": ["CAT-3.3-023", "CAT-3.3-024"], "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-container-prune.1.md", "finding": "Exact commands present; stopped containers associated with pods are excluded. until is creation time before threshold, not duration since stop."}
+  ],
+  "pairing_review": {
+    "accepted_links": {"CAT-3.3-002": ["CAT-3.3-006"], "CAT-3.3-003": ["CAT-3.3-007"], "CAT-3.3-004": ["CAT-3.3-008"], "CAT-3.3-005": ["CAT-3.3-008"], "CAT-3.3-009": ["CAT-3.3-015"], "CAT-3.3-010": ["CAT-3.3-015"], "CAT-3.3-011": ["CAT-3.3-015"], "CAT-3.3-012": ["CAT-3.3-015"], "CAT-3.3-013": ["CAT-3.3-015"], "CAT-3.3-014": ["CAT-3.3-015"], "CAT-3.3-016": ["CAT-3.3-021", "CAT-3.3-022"], "CAT-3.3-017": ["CAT-3.3-021", "CAT-3.3-022"], "CAT-3.3-018": ["CAT-3.3-021", "CAT-3.3-022"], "CAT-3.3-019": ["CAT-3.3-021", "CAT-3.3-022"], "CAT-3.3-020": ["CAT-3.3-021", "CAT-3.3-022"], "CAT-3.3-023": ["CAT-3.3-015"], "CAT-3.3-024": ["CAT-3.3-015"]},
+    "integration_requirement": "Filter reciprocal references to the accepted set: 006 must not retain a dangling accepted-provenance link to pending 001. If 001 pairing is corrected, reuse 008 reciprocally rather than adding another identical listing. Retain source candidate ledgers unchanged unless their owner/integrator updates them."
+  },
+  "caveats": [
+    "Initial review recommendation: 23 accepted rows (17 ask, 6 allow), zero rejected, five pending. One pending item is a precise existing-counterpart pairing repair, not an unresolved label or source. Final counts belong to the integration owner.",
+    "No exact or trivial near-duplicate rejection is supported within these 28 rows. Different utilities are meaningful diversity under the task; flag aliases, force-only changes, label/resource-name replacements and repeated before/after listings must not create additional rows. Cross-shard/final global deduplication remains the integrator's responsibility.",
+    "All 24 licensed captured command excerpts match the reviewed candidate command texts; sources were checked directly rather than trusting the captures or proposed status. Commands are extracted with prompts/output removed, not model-created synthetic commands.",
+    "Podman behavior is snapshot-bound, not a guarantee for every installed release; Docker volume defaults depend on negotiated API. Preserve these qualifications in final provenance/card.",
+    "API volume transition evidence: https://docs.docker.com/reference/api/engine/version-history/#v142-api-changes — POST /volumes/prune anonymous-only default and all filter restoring prior behavior.",
+    "The pinned Docker/Podman root GitHub API listing attempts returned HTTP 403; public GitHub tree pages successfully supplied repository root listings instead. Pinned raw sources and licenses were accessible.",
+    "No dataset command, client, script, test, formatter, linter or build was run. No source code was edited, so the no-comments source linter was inapplicable. Main should run inert schema/provenance/pair-closure and final global deduplication checks after integration; never execute dataset fields.",
+    "Only data/review/r3-review.json was written by this reviewer. No accepted statuses or shard/shared/final files were modified."
+  ]
+}

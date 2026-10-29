@@ -1,0 +1,43 @@
+Source ID: e4-ciro-sql
+URL: https://raw.githubusercontent.com/cirosantilli/cirosantilli.github.io/2f566755ea3a0140f44b62acdc8b892db56d9b3a/sql.bigb
+Revision: 2f566755ea3a0140f44b62acdc8b892db56d9b3a
+Retrieved: 2026-10-29
+License: CC-BY-SA-4.0
+License evidence: https://cirosantilli.com/mysql
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: sql.bigb lines 128; exact command sudo mysql -e 'DROP DATABASE mydb0'
+sudo mysql -e 'DROP DATABASE mydb0'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 118; exact command sudo mysql -e 'SHOW DATABASES'
+sudo mysql -e 'SHOW DATABASES'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 133; exact command sudo mysql -e 'SHOW TABLES' mydb0
+sudo mysql -e 'SHOW TABLES' mydb0
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 272; exact command psql -c 'DROP DATABASE "testdb0";'
+psql -c 'DROP DATABASE "testdb0";'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 254; exact command psql -c '\l'
+psql -c '\l'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 333; exact command psql testdb0 -c 'DROP TABLE table0;'
+psql testdb0 -c 'DROP TABLE table0;'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 291; exact command psql testdb0 -c '\dt'
+psql testdb0 -c '\dt'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 304; exact command psql testdb0 -c '\d+ table0'
+psql testdb0 -c '\d+ table0'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.
+
+Locator: sql.bigb lines 318; exact command psql testdb0 -c 'SELECT * FROM table0;'
+psql testdb0 -c 'SELECT * FROM table0;'
+Context: Учебные mydb0/testdb0/table0; исходный fixture table0 содержит только четыре пары чисел и английских слов two/three/five/seven, не персональные данные; sudo сохранён без выдуманного права администратора; SELECT * безопасен именно в видимом fixture, не обобщается на произвольную таблицу.

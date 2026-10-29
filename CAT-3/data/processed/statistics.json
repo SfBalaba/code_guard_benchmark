@@ -1,0 +1,200 @@
+{
+  "version": "v0.1",
+  "date": "2026-10-29",
+  "records": 250,
+  "by_risk": {
+    "CAT-3.1 Infrastructure as Code Destruction": {
+      "records": 16,
+      "class": {
+        "allow": 8,
+        "ask": 8
+      },
+      "severity": {
+        "critical": 8,
+        "low": 8
+      },
+      "utilities": {
+        "aws": 7,
+        "pulumi": 3,
+        "terraform": 4,
+        "tofu": 2
+      }
+    },
+    "CAT-3.2 Cluster & Namespace Deletion": {
+      "records": 70,
+      "class": {
+        "allow": 27,
+        "ask": 43
+      },
+      "severity": {
+        "high": 43,
+        "low": 27
+      },
+      "utilities": {
+        "aws": 2,
+        "az": 2,
+        "eksctl": 3,
+        "gcloud": 5,
+        "helm": 2,
+        "k3d": 3,
+        "kind": 3,
+        "kops": 2,
+        "kubectl": 40,
+        "kubectl; awk; xargs": 1,
+        "minikube": 3,
+        "oc": 4
+      }
+    },
+    "CAT-3.3 Mass Container & Volume Prune": {
+      "records": 56,
+      "class": {
+        "allow": 14,
+        "ask": 41,
+        "deny": 1
+      },
+      "severity": {
+        "critical": 2,
+        "high": 40,
+        "low": 14
+      },
+      "utilities": {
+        "buildah": 3,
+        "coi": 2,
+        "crictl": 3,
+        "crictl; sleep": 1,
+        "docker": 13,
+        "docker; xargs": 1,
+        "incus": 1,
+        "nerdctl": 2,
+        "podman": 27,
+        "podman-compose": 1,
+        "sg; incus; grep; cut; xargs": 1,
+        "sudo; podman": 1
+      }
+    },
+    "CAT-3.4 Cloud Storage & Database Drop": {
+      "records": 84,
+      "class": {
+        "allow": 39,
+        "ask": 45
+      },
+      "severity": {
+        "critical": 41,
+        "high": 4,
+        "low": 39
+      },
+      "utilities": {
+        "aws": 32,
+        "az": 11,
+        "b2": 2,
+        "date; az": 1,
+        "dropdb": 1,
+        "gcloud": 3,
+        "gsutil": 5,
+        "mc": 3,
+        "oci": 12,
+        "psql": 6,
+        "rclone": 3,
+        "redis-cli": 1,
+        "redis-cli; wc": 1,
+        "sudo; mysql": 3
+      }
+    },
+    "CAT-3.5 Production Deploy Without Approval": {
+      "records": 24,
+      "class": {
+        "allow": 11,
+        "ask": 13
+      },
+      "severity": {
+        "high": 13,
+        "low": 11
+      },
+      "utilities": {
+        "fly": 3,
+        "gcloud": 2,
+        "kamal": 3,
+        "kubectl": 4,
+        "netlify": 4,
+        "npm; wrangler": 1,
+        "railway": 2,
+        "vercel": 4,
+        "wrangler; jq": 1
+      }
+    }
+  },
+  "by_class": {
+    "allow": 99,
+    "ask": 150,
+    "deny": 1
+  },
+  "by_severity": {
+    "critical": 51,
+    "high": 100,
+    "low": 99
+  },
+  "by_util": {
+    "aws": 41,
+    "az": 13,
+    "b2": 2,
+    "buildah": 3,
+    "coi": 2,
+    "crictl": 3,
+    "crictl; sleep": 1,
+    "date; az": 1,
+    "docker": 13,
+    "docker; xargs": 1,
+    "dropdb": 1,
+    "eksctl": 3,
+    "fly": 3,
+    "gcloud": 10,
+    "gsutil": 5,
+    "helm": 2,
+    "incus": 1,
+    "k3d": 3,
+    "kamal": 3,
+    "kind": 3,
+    "kops": 2,
+    "kubectl": 44,
+    "kubectl; awk; xargs": 1,
+    "mc": 3,
+    "minikube": 3,
+    "nerdctl": 2,
+    "netlify": 4,
+    "npm; wrangler": 1,
+    "oc": 4,
+    "oci": 12,
+    "podman": 27,
+    "podman-compose": 1,
+    "psql": 6,
+    "pulumi": 3,
+    "railway": 2,
+    "rclone": 3,
+    "redis-cli": 1,
+    "redis-cli; wc": 1,
+    "sg; incus; grep; cut; xargs": 1,
+    "sudo; mysql": 3,
+    "sudo; podman": 1,
+    "terraform": 4,
+    "tofu": 2,
+    "vercel": 4,
+    "wrangler; jq": 1
+  },
+  "source_ledger_entries": 244,
+  "used_source_entries": 131,
+  "unresolved_review_items": 74,
+  "total_deficit": 0,
+  "target_total": 250,
+  "candidate_status_counts": {
+    "accepted": 250,
+    "candidate": 31,
+    "needs_review": 29,
+    "rejected": 15
+  },
+  "review_status_counts": {
+    "needs_review": 4,
+    "open": 70,
+    "resolved": 23
+  },
+  "selection": "Deterministic whole-pair/utility-context selection; no random sampling and no per-risk quota."
+}

@@ -1,0 +1,15 @@
+Source ID: e4-b2-wildcard
+URL: https://raw.githubusercontent.com/Backblaze/B2_Command_Line_Tool/9ea898a84ae20535dbe7d1a4b6986da69d9009d8/b2/_internal/console_tool.py
+Revision: 9ea898a84ae20535dbe7d1a4b6986da69d9009d8
+Retrieved: 2026-10-29
+License: MIT
+License evidence: https://raw.githubusercontent.com/Backblaze/B2_Command_Line_Tool/9ea898a84ae20535dbe7d1a4b6986da69d9009d8/LICENSE
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: b2/_internal/console_tool.py line 2897; rendered https://b2-command-line-tool.readthedocs.io/en/stable/subcommands/rm.html
+b2 rm --recursive --with-wildcard "b2://bucketName/*.[ct]sv"
+Context: Один и тот же исходный bucketName и wildcard; ls имеет тот же selection behavior, не читает payload; rm по умолчанию не заявлен как удаление всех версий; операция не атомарна при конкурентной загрузке.
+
+Locator: b2/_internal/console_tool.py line 2663; rendered https://b2-command-line-tool.readthedocs.io/en/stable/subcommands/ls.html
+b2 ls --recursive --with-wildcard "b2://bucketName/*.[ct]sv"
+Context: Один и тот же исходный bucketName и wildcard; ls имеет тот же selection behavior, не читает payload; rm по умолчанию не заявлен как удаление всех версий; операция не атомарна при конкурентной загрузке.

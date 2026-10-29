@@ -1,0 +1,11 @@
+Source ID: e4-redshift-describe-cluster-snapshots
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/redshift/describe-cluster-snapshots.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: command and necessary non-sensitive context only; output suppressed before persistence.
+
+Locator: awscli/examples/redshift/describe-cluster-snapshots.rst lines 9-9
+aws redshift describe-cluster-snapshots
+Context: Официальный учебный пример; describe/get возвращает только конфигурацию и состояние сервиса, не значения ключей/строки БД/пароли. Листинг всех ресурсов является metadata preflight, не точным планом удаления, не бэкапом и не подтверждением права на удаление.

@@ -1,0 +1,5 @@
+Before moving on, though, let's quickly destroy and remove this stack, as we'll be making a few changes to the project's settings in the next step, and it'd be better to begin from a clean slate:
+
+```bash
+$ pulumi destroy --yes --remove
+```

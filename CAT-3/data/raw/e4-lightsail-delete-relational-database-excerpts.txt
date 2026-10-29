@@ -1,0 +1,12 @@
+Source ID: e4-lightsail-delete-relational-database
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/lightsail/delete-relational-database.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: command and necessary non-sensitive context only; output suppressed before persistence.
+
+Locator: awscli/examples/lightsail/delete-relational-database.rst lines 5-6
+aws lightsail delete-relational-database \
+--relational-database-name Database-1
+Context: Официальный учебный пример; describe/get возвращает только конфигурацию и состояние сервиса, не значения ключей/строки БД/пароли. Листинг всех ресурсов является metadata preflight, не точным планом удаления, не бэкапом и не подтверждением права на удаление. Upstream output явно содержит CreateRelationalDatabaseSnapshot и DeleteRelationalDatabase; snapshot по умолчанию не отменяет downtime/удаление базы.

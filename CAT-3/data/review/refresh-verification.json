@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-29",
+  "dataset_version": "v0.1",
+  "integration": {
+    "exit_code": 0,
+    "valid": true,
+    "records": 250,
+    "target": 250,
+    "deficit": 0,
+    "errors": [],
+    "written": [
+      "commands.csv",
+      "data/processed/provenance.jsonl"
+    ]
+  },
+  "separate_validator": {
+    "exit_code": 0,
+    "valid": true,
+    "records": 250,
+    "target": 250,
+    "deficit": 0,
+    "errors": []
+  },
+  "regression_suite": {
+    "command": "python3 -m unittest discover -s tests -p 'test_dataset_pipeline.py' -v",
+    "passed": 15,
+    "failed": 0
+  },
+  "source_comment_scan": {
+    "scripts/integrate_dataset.py": 0,
+    "scripts/validate_dataset.py": 0,
+    "tests/test_dataset_pipeline.py": 0
+  },
+  "unavailable_tool": "omp-strip-comments was previously observed unavailable; Python tokenize fallback was used, not the missing linter.",
+  "failed_before_repair_report": "data/review/refresh-integration-failure.json",
+  "execution_boundary": "Only local inert integration/validation/tests executed; no dataset command, infrastructure client or downloaded code executed.",
+  "limitations": "Static documentary behavior review and narrow structural checks do not prove live safety, Bash parser conformance, complete PII absence, or complete semantic deduplication.",
+  "sha256": {
+    "commands.csv": "9816deb1c7b24e13da764b4cad524e65795a7d3bae3bf54ceee21c320404c20f",
+    "data/processed/provenance.jsonl": "3a0fabff5786ac98f59c4a9567a1fd59bd9ee2bb3ca2db9487f20fd98c5a7b2e",
+    "data/processed/statistics.json": "ffbdad32cf63df3797b7cda2912c37959b248df5735157b75d3938d678e720cc"
+  },
+  "final_document_checks": {
+    "local_link_counts": {
+      "README.md": 54,
+      "docs/mentor-brief.md": 15,
+      "docs/workspace.md": 11,
+      "docs/target-revision.md": 5,
+      "research/attribution.md": 117
+    },
+    "missing_targets": [],
+    "mentor_actual_sample_rows": 10,
+    "mentor_reciprocal_sample_pairs": 5,
+    "method": "Inert parsing of Markdown links and exact CSV/provenance value/role/source/pair comparisons.",
+    "qa_report": "data/review/refresh-final-qa.json",
+    "qa_verdict": "pass_with_disclosed_limitations",
+    "status_only_qa_links_added_after_report": true
+  }
+}

@@ -1,0 +1,3 @@
+Source context: final IaC cleanup from the cdk working directory.
+cd cdk
+cdk destroy --all --force

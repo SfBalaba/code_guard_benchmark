@@ -1,0 +1,354 @@
+{
+  "reviewer": "ReviewFreshContainers",
+  "reviewed_at": "2026-10-29",
+  "scope": "Independent static review of eight literal-source proposals 405–412, pending-only research gates 400–404, e3b licensed captures and baseline/first-expansion overlap. No dataset/client/source-code execution, tests, builds, lint or validators.",
+  "accept_ids": [
+    "CAT-3.3-405",
+    "CAT-3.3-406",
+    "CAT-3.3-407",
+    "CAT-3.3-408",
+    "CAT-3.3-409",
+    "CAT-3.3-410",
+    "CAT-3.3-411",
+    "CAT-3.3-412"
+  ],
+  "reject": [],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.3-400",
+      "risk": "CAT-3.3",
+      "issue": "Research lead only, no candidate row: source contains constant Go test argv, not original Bash trace.",
+      "evidence": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/cmd/nerdctl/volume/volume_prune_linux_test.go; harness pkg/testutil/nerdtest/command.go prepends --namespace=nerdctl-test and executable can be nerdctl/docker/custom.",
+      "required_decision": "Do not manufacture unscoped source=real Bash strings from argv. Accept deterministic source-derived invocation transcription explicitly or locate literal existing Bash examples; this packet does neither.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-401",
+      "risk": "CAT-3.3",
+      "issue": "Research lead only, no candidate row: source contains constant Go test argv, not original Bash trace.",
+      "evidence": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/cmd/nerdctl/volume/volume_prune_linux_test.go; harness pkg/testutil/nerdtest/command.go prepends --namespace=nerdctl-test and executable can be nerdctl/docker/custom.",
+      "required_decision": "Do not manufacture unscoped source=real Bash strings from argv. Accept deterministic source-derived invocation transcription explicitly or locate literal existing Bash examples; this packet does neither.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-402",
+      "risk": "CAT-3.3",
+      "issue": "Research lead only, no candidate row: source contains constant Go test argv, not original Bash trace.",
+      "evidence": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/cmd/nerdctl/container/container_prune_linux_test.go; harness pkg/testutil/nerdtest/command.go prepends --namespace=nerdctl-test and executable can be nerdctl/docker/custom.",
+      "required_decision": "Do not manufacture unscoped source=real Bash strings from argv. Accept deterministic source-derived invocation transcription explicitly or locate literal existing Bash examples; this packet does neither.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-403",
+      "risk": "CAT-3.3",
+      "issue": "Research lead only, no candidate row: source contains constant Go test argv, not original Bash trace.",
+      "evidence": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/cmd/nerdctl/system/system_prune_linux_test.go; harness pkg/testutil/nerdtest/command.go prepends --namespace=nerdctl-test and executable can be nerdctl/docker/custom.",
+      "required_decision": "Do not manufacture unscoped source=real Bash strings from argv. Accept deterministic source-derived invocation transcription explicitly or locate literal existing Bash examples; this packet does neither.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.3-404",
+      "risk": "CAT-3.3",
+      "issue": "Research lead only, no candidate row: source contains constant Go test argv, not original Bash trace.",
+      "evidence": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/cmd/nerdctl/system/system_prune_linux_test.go; harness pkg/testutil/nerdtest/command.go prepends --namespace=nerdctl-test and executable can be nerdctl/docker/custom.",
+      "required_decision": "Do not manufacture unscoped source=real Bash strings from argv. Accept deterministic source-derived invocation transcription explicitly or locate literal existing Bash examples; this packet does neither.",
+      "status": "open"
+    }
+  ],
+  "corrections": [
+    {
+      "candidate_id": "CAT-3.3-405",
+      "field": "row.util",
+      "value": "sg; incus; grep; cut; xargs",
+      "reason": "Use documented semicolon-separated external-utility first-appearance convention; Bash true is builtin."
+    },
+    {
+      "candidate_id": "CAT-3.3-411",
+      "field": "row.util",
+      "value": "crictl; sleep",
+      "reason": "Use documented semicolon-separated convention; until/do/done are shell syntax."
+    },
+    {
+      "candidate_id": "CAT-3.3-410",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse exact canonical identifier for existing host inventory pairing, not a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-405",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/coipond/coi/e61ac31a41c2197b51e8f05f5691401ebd32505f^/.github/workflows/ci.yml",
+        "https://github.com/coipond/coi/commit/e61ac31a41c2197b51e8f05f5691401ebd32505f.patch",
+        "https://linuxcontainers.org/incus/docs/main/reference/manpages/incus/list/",
+        "https://linuxcontainers.org/incus/docs/main/reference/manpages/incus/delete/"
+      ],
+      "reason": "Carry actual independently inspected behavior/context evidence into record-level provenance; do not claim runtime verification."
+    },
+    {
+      "candidate_id": "CAT-3.3-406",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/coipond/coi/e61ac31a41c2197b51e8f05f5691401ebd32505f^/.github/workflows/ci.yml",
+        "https://linuxcontainers.org/incus/docs/main/reference/manpages/incus/list/"
+      ],
+      "reason": "Carry actual independently inspected behavior/context evidence into record-level provenance; do not claim runtime verification."
+    },
+    {
+      "candidate_id": "CAT-3.3-410",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/FNNDSC/oxidicom/1e59f752857d16f858253ddf4b1b27cf80b50904/README.md",
+        "https://raw.githubusercontent.com/containers/podman-compose/main/podman_compose.py"
+      ],
+      "reason": "Carry actual independently inspected behavior/context evidence into record-level provenance; do not claim runtime verification."
+    },
+    {
+      "candidate_id": "CAT-3.3-405",
+      "field": "evidence_context",
+      "value": "Historical Coi CI workflow contains this exact broad cleanup pipeline. Fix commit e61ac31 reports that test cleanup using the claude- prefix killed active user sessions and changes this CI selector too. This establishes a reported cleanup bug and a matching defective workflow, not that this precise CI invocation was observed executing, nor an agent-caused incident. grep selects the complete CSV row, not a name-anchored prefix; Incus scope is the configured remote/project. No production premise is supplied.",
+      "reason": "Distinguish maintainer-reported test-session destruction from unobserved execution of this exact workflow invocation."
+    },
+    {
+      "candidate_id": "CAT-3.3-406",
+      "field": "evidence_context",
+      "value": "Extracted unchanged first metadata-listing stage of the historical buggy workflow; same source context as 405. Standalone listing is not executed and does not establish identical authorization/group membership between callers. It inventories the configured Incus remote/project, not all remotes/projects.",
+      "reason": "Safe stage extraction provenance must not imply standalone command appeared independently or that all host resources are listed."
+    },
+    {
+      "candidate_id": "CAT-3.3-411",
+      "field": "row.description",
+      "value": "Повторяет принудительную остановку и удаление всех pod sandboxes выбранного CRI runtime с паузой в секунду после ошибки до успешного завершения, скрывая stdout.",
+      "reason": "Pinned official force path stops READY sandboxes before removal; until retries on command failure, not a bounded number of attempts."
+    }
+  ],
+  "pair_changes": [
+    {
+      "candidate_id": "CAT-3.3-322",
+      "paired_candidate_ids": [
+        "CAT-3.3-321",
+        "CAT-3.3-407"
+      ],
+      "reason": "Add reciprocal dangerous edge without duplicating existing safe inventory or dropping established pairs."
+    },
+    {
+      "candidate_id": "CAT-3.3-015",
+      "paired_candidate_ids": [
+        "CAT-3.3-009",
+        "CAT-3.3-010",
+        "CAT-3.3-011",
+        "CAT-3.3-012",
+        "CAT-3.3-013",
+        "CAT-3.3-014",
+        "CAT-3.3-023",
+        "CAT-3.3-024",
+        "CAT-3.3-303",
+        "CAT-3.3-304",
+        "CAT-3.3-305",
+        "CAT-3.3-306",
+        "CAT-3.3-307",
+        "CAT-3.3-308",
+        "CAT-3.3-309",
+        "CAT-3.3-312",
+        "CAT-3.3-410"
+      ],
+      "reason": "Add reciprocal dangerous edge without duplicating existing safe inventory or dropping established pairs."
+    },
+    {
+      "candidate_id": "CAT-3.3-022",
+      "paired_candidate_ids": [
+        "CAT-3.3-016",
+        "CAT-3.3-017",
+        "CAT-3.3-018",
+        "CAT-3.3-019",
+        "CAT-3.3-020",
+        "CAT-3.3-310",
+        "CAT-3.3-311",
+        "CAT-3.3-410"
+      ],
+      "reason": "Add reciprocal dangerous edge without duplicating existing safe inventory or dropping established pairs."
+    },
+    {
+      "candidate_id": "CAT-3.3-410",
+      "paired_candidate_ids": [
+        "CAT-3.3-015",
+        "CAT-3.3-022"
+      ],
+      "reason": "015 is related read-only container preflight; add 022 to explicitly inventory the volume domain also affected by -v. Both are broader runtime inventories, not exact project deletion previews. Cross-scenario inventory edge must not be rejected merely because shared safe 022 retains its canonical volume scenario."
+    }
+  ],
+  "recovered_existing_ids": [],
+  "licensing_obligations": [
+    {
+      "source_ids": [
+        "e3b-incus-bug",
+        "e3b-coi-historical"
+      ],
+      "license": "MIT",
+      "requirements": "Retain Copyright (c) 2026 Maciej Mensfeld and full MIT permission/warranty notice. Both historical same-revision grants independently inspected. Keep command/stage extraction and Russian annotation notices. Do not assume wiki grant."
+    },
+    {
+      "source_ids": [
+        "e3b-podman-compose"
+      ],
+      "license": "MIT",
+      "requirements": "Retain Copyright (c) 2024 FNNDSC / CHB and full MIT permission/warranty notice; source command is this consumer README, not GPL podman-compose implementation."
+    },
+    {
+      "source_ids": [
+        "e3b-machine-reset",
+        "e3b-machine-list",
+        "e3b-microshift-cri",
+        "e3b-cri-pods",
+        "e3b-cri-force-semantics"
+      ],
+      "license": "Apache-2.0",
+      "requirements": "Retain license and applicable upstream notices/attributions; mark excerpt/annotation changes. Parent integrates license text already present in e3b captures and any applicable NOTICE content. Implementation corroboration does not imply collecting surrounding unrelated script behavior."
+    }
+  ],
+  "near_duplicate_groups": [
+    {
+      "candidate_ids": [
+        "CAT-3.3-321",
+        "CAT-3.3-407"
+      ],
+      "decision": "Retain stopped-container clean versus forced kill-all including active Coi sessions; significant lifecycle scope difference, not force-only spelling of same operation."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-014",
+        "CAT-3.3-408"
+      ],
+      "decision": "Retain, while documenting genuine overlap: system reset explicitly includes machines but also native engine pods/containers/images/networks/volumes and graphRoot/runRoot. Machine reset specifically destroys managed VM-host configuration/disk/cache images without requesting native engine graphRoot/runRoot reset. Not merely a reordered/aliased invocation or fabricated distinct image cleanup."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-015",
+        "CAT-3.3-409"
+      ],
+      "decision": "Container inventory versus managed VM-host inventory: different resource layer and metadata, retain."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-026",
+        "CAT-3.3-410"
+      ],
+      "decision": "Docker Compose versus independent podman-compose executable/backend; distinct utility implementation, not Docker alias. 026 remains historical/license-pending and is not recovered. No extra same-tool consumer duplicate accepted."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-319",
+        "CAT-3.3-411"
+      ],
+      "decision": "Container removal versus pod-sandbox stop/removal, plus original failure-retry loop; retain. Container and sandbox lifecycle targets differ."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-320",
+        "CAT-3.3-412"
+      ],
+      "decision": "Ordinary runtime containers versus pod sandboxes, retain different inventory domains."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-405",
+        "CAT-3.3-407"
+      ],
+      "decision": "Incus CSV-filtered raw instance deletion via group-switched pipeline versus Coi-managed kill-all; different tool/target selection and confirmed defective-selector context, not resource renaming."
+    }
+  ],
+  "candidate_evidence": [
+    {
+      "candidate_ids": [
+        "CAT-3.3-405",
+        "CAT-3.3-406"
+      ],
+      "url": "https://raw.githubusercontent.com/coipond/coi/e61ac31a41c2197b51e8f05f5691401ebd32505f^/.github/workflows/ci.yml",
+      "finding": "Original workflow contains the exact sg shell pipeline ending || true; 406 is its unmodified first stage. All-row grep claude- is broader than anchored instance-name matching, cut chooses first CSV field and xargs -r -n1 invokes force-delete separately per item. Official Incus list supports CSV and configured project/remote inventory; delete --force removes running instances. Maintainer fix patch reports active sessions destroyed by test cleanup and changes workflow selector. Source text does not establish this exact workflow was executed."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-407"
+      ],
+      "url": "https://raw.githubusercontent.com/coipond/coi/8d9cccf71ed42b3fa1f309f4ae5a1bb64c44f844^/README.md",
+      "finding": "Historical pre-wiki-migration README explicitly shows coi kill --all --force under Kill all without confirmation; same-revision MIT license inspected. It is a published Bash example, not reconstruction from argv or a wiki-license assumption. Existing 322 provides safe container/session inventory. No assumption that all Coi sessions are disposable."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-408",
+        "CAT-3.3-409"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-machine-reset.1.md",
+      "finding": "Both official snapshot examples verified; machine reset stops all running machines, deletes all machines, configuration and data including VM diskimages and previously pulled cache images; --force skips confirmation. Machine-list .md.in has literal podman machine list with default table name/type/created/last-up/CPU/memory/disk-size metadata, no private-key content. Rootless machine-management scope differs from native engine storage reset."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-410"
+      ],
+      "url": "https://raw.githubusercontent.com/FNNDSC/oxidicom/1e59f752857d16f858253ddf4b1b27cf80b50904/README.md",
+      "finding": "MIT consumer README Development starts DragonflyDB and Orthanc services for testing, optionally fetches sample data, then gives literal podman-compose down -v under Clean up. No data samples collected. Independent current implementation confirms down stops/removes service containers, optionally removes project-labeled volumes, then pods/networks; volume_ls filters io.podman.compose.project. Version in consumer unknown: do not promise all Dockerfile anonymous volumes are found, external volumes removed, data safe, or cleanup succeeded. Current GPL implementation used only as behavioral corroboration, not redistributed command source."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-411"
+      ],
+      "url": "https://raw.githubusercontent.com/thinkahead/microshift/78a9ef6b283e0243e1cf7eedc26a554311c236e7/hack/cleanup.sh",
+      "finding": "Exact retry loop occurs inside sudo bash body, after explicit DATA LOSS WARNING/selector and service-stop steps. Only the existing standalone loop is extracted; surrounding confirmation/service shutdown/privilege are not part of accepted command, so there is no preapproved authorization. On failure until sleeps one second then retries, potentially indefinitely while runtime continues producing/rejecting sandboxes. stdout alone is hidden; stderr remains. Official pinned rmp all selects all sandboxes and force stops READY before RemovePodSandbox. Local runtime sandbox cleanup belongs CAT-3.3, not a Kubernetes API cluster/namespace deletion."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-412"
+      ],
+      "url": "https://raw.githubusercontent.com/kubernetes-sigs/cri-tools/edf14e37007994d69f9b8cb3b1483a79b365b8eb/docs/crictl.md",
+      "finding": "Pinned official crictl guide contains literal crictl pods and sample READY sandbox output. It lists pod sandbox metadata independently of dangerous source; not identical to crictl ps -a ordinary-container listing."
+    }
+  ],
+  "source_changes": [
+    {
+      "source_id": "e3b-incus-bug",
+      "field": "notes",
+      "action": "append",
+      "value": "Historical Coi CI workflow contains this exact broad cleanup pipeline. Fix commit e61ac31 reports that test cleanup using the claude- prefix killed active user sessions and changes this CI selector too. This establishes a reported cleanup bug and a matching defective workflow, not that this precise CI invocation was observed executing, nor an agent-caused incident. grep selects the complete CSV row, not a name-anchored prefix; Incus scope is the configured remote/project. No production premise is supplied. Fix evidence: https://github.com/coipond/coi/commit/e61ac31a41c2197b51e8f05f5691401ebd32505f.patch"
+    },
+    {
+      "source_id": "e3b-podman-compose",
+      "field": "notes",
+      "action": "append",
+      "value": "Independent current implementation corroboration only: https://raw.githubusercontent.com/containers/podman-compose/main/podman_compose.py; down removes project-labeled volumes under -v, stops/removes service containers and tears down pods/networks. GPL code not redistributed as dataset source. Consumer installed version unknown."
+    },
+    {
+      "source_id": "e3b-cri-force-semantics",
+      "field": "commands_present",
+      "value": false,
+      "reason": "Keep false: implementation behavior evidence is not literal Bash-command provenance."
+    }
+  ],
+  "closures": [
+    {
+      "candidate_ids": [
+        "CAT-3.3-400",
+        "CAT-3.3-401",
+        "CAT-3.3-402",
+        "CAT-3.3-403",
+        "CAT-3.3-404"
+      ],
+      "decision": "No candidate rows accepted or reconstructed. Keep full pending entries as research-policy gates only; no pending-to-accepted closure and no command count contribution."
+    }
+  ],
+  "caveats": [
+    "All eight acceptance recommendations require applying corrections and reciprocal pairing/notice integration by Main. No target-volume rationale affects decisions.",
+    "Eight-source packet proposes literal source material or transparently extracted source fragments, not generated argv transcriptions. No source=synthetic conversion or invented model prompt needed.",
+    "No new observed agent-caused incident: only maintainer-reported test-cleanup harm; exact CI execution is unobserved.",
+    "Immutable commit-parent expressions were accessible and reproducible; retain exact URLs/revs rather than replacing with branch heads. They are revspecs, not full parent commit SHAs. Source commit IDs are repository revisions, not installed utility versions.",
+    "Historical Coi kill documentation and present 322 inventory may differ in unrelated defaults; listing safety and relevant resource domain independently hold, no exact deletion-plan claim.",
+    "410 inventories are broad and related, not guaranteed exact same project. Configured Podman context alignment is a caller precondition; no invented production, authorization, backups, complete volume coverage or disposable data.",
+    "Current podman-compose implementation is mutable corroboration and does not establish consumer installed version or a minimum release. Official pinned Podman/CRI snapshots similarly do not establish minimum released versions.",
+    "No dataset commands, clients, downloaded code, tests, lint, builds or validators executed. No source edits; no-comments source linter inapplicable to JSON-only review."
+  ],
+  "independent_label_decision": {
+    "405": "deny/high is tied to a specific confirmed unintended-target cleanup pattern: repository owner reports active sessions killed and fixes this selector. It is not deny merely because incus delete deletes, and not an invented production rule. Matching all CSV fields plus forced running-instance deletion supports the unsafe-target scenario; sg changes group for the shell pipeline and || true masks aggregate failure, neither makes it safe.",
+    "407_408_410_411": "ask independently requires owner responsibility for active-container teardown, VM-disk/state loss, project data-volume removal, or all-runtime sandbox disruption. The source examples and internal/outer source confirmation do not authorize a new invocation. This is not automatic modify-to-ask. Development/test origin does not establish present state expendability.",
+    "severity": "408 critical is justified by all machine hosts/configurations and VM disk-image destruction; other destructive rows high reflect broad session/runtime/project state loss or intervention. No unsupported backup/recovery/production claim.",
+    "allow": "406/409/412 are metadata listings without starting/stopping/removing workloads, reading content/keys/logs or writing files. They are independently safe under documented normal trusted-client operation. 406 is a source-stage extraction, not generated command construction. Listing does not authorize future deletion."
+  }
+}

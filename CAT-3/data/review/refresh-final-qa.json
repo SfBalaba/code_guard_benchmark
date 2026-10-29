@@ -1,0 +1,133 @@
+{
+  "reviewer": "FinalRefreshQa",
+  "date": "2026-10-29",
+  "dataset_version": "v0.1",
+  "verdict": "pass_with_disclosed_limitations",
+  "scope": "Independent inert audit of the current frozen 250-record release, its mixed-license packaging, and finalized README/workspace/target revision/mentor brief. Historical data/review/final-qa.json for 92 records was not substituted for this review.",
+  "readiness": {
+    "mentor_ready_received": true,
+    "DOCSREADY_received_before_final_document_review_and_validator": true,
+    "ATTRIBUTIONREADY_received_and_updated_text_inspected": true
+  },
+  "blockers": [],
+  "required_corrections": [],
+  "resolved_findings": [
+    {
+      "path": "research/attribution.md",
+      "finding": "The deployment supplement still described PlaceCal admission as unresolved despite accepted DATA 248-250.",
+      "resolution": "The owning agent replaced the stale hold with actual admitted IDs 410/412/413, rejected 411 and held Deno distinctions, a per-record pinned source table, dated extraction/annotation notices, complete AGPL terms, accompanying editable source paths, and covered-contribution/downstream-rights and aggregate boundaries. The final text was independently read after ATTRIBUTIONREADY."
+    }
+  ],
+  "observed_counts": {
+    "records": 250,
+    "target_total": 250,
+    "total_deficit": 0,
+    "per_risk_quota": false,
+    "by_risk": {"CAT-3.1": 16, "CAT-3.2": 70, "CAT-3.3": 56, "CAT-3.4": 84, "CAT-3.5": 24},
+    "by_class": {"allow": 99, "ask": 150, "deny": 1},
+    "by_severity": {"critical": 51, "high": 100, "medium": 0, "low": 99},
+    "provenance_records": 250,
+    "source_ledger_entries": 244,
+    "used_source_ids": 131,
+    "canonical_candidates": {"accepted": 250, "candidate": 31, "needs_review": 29, "rejected": 15},
+    "review_queue": {"total": 97, "open": 70, "needs_review": 4, "resolved": 23},
+    "scenarios": 75,
+    "directed_pair_edges": 364,
+    "source_real": 250,
+    "source_synthetic": 0
+  },
+  "checks": [
+    {
+      "name": "CSV and annotation contract",
+      "result": "pass",
+      "paths": ["commands.csv", "docs/task-source.txt", "AGENTS.md", "docs/target-revision.md"],
+      "evidence": "Independent strict UTF-8/csv parsing observed the exact nine-field header/order, 251 records including header, all widths nine, nonempty strings and valid category/class/severity values, 250 Russian descriptions ending in a period and no description newlines, source=real and seed=- throughout. An independent in-memory DictWriter/DictReader parsed-value roundtrip matched every row. All 250 command texts were statically inspected for utility/scope and substantive diversity; no standalone SQL/Python statement start was found. SQL-client examples are DATA 169-178. No command or client was executed."
+    },
+    {
+      "name": "Canonical provenance and pair graph",
+      "result": "pass",
+      "paths": ["data/processed/provenance.jsonl", "data/candidates/CAT-3.1/candidates.jsonl", "data/candidates/CAT-3.2/candidates.jsonl", "data/candidates/CAT-3.3/candidates.jsonl", "data/candidates/CAT-3.4/candidates.jsonl", "data/candidates/CAT-3.5/candidates.jsonl", "data/review/pending.jsonl"],
+      "evidence": "Independent reconciliation found exactly one provenance mapping per DATA index 1-250 and equality of the accepted canonical candidate set and mapped set. Every candidate row matches CSV; provenance fields match canonical metadata. All pair edges are reciprocal, opposite-role, same-scenario and same-risk; counterexamples are allow and dangerous records ask/deny. Candidate-ID pair resolution matches DATA-index edges. No accepted ID has an unresolved queue item. Baseline dropdb CAT-3.4-031 and compose CAT-3.3-027 are accepted with resolved queue entries; protected kube-system CAT-3.2-001 remains needs_review. Documentation-only e2b-kube-manifest and e3b-cri-force-semantics are absent from accepted source_ids but their relevant pinned behavior-reference URLs remain on DATA 86 and 141."
+    },
+    {
+      "name": "Counts and selection",
+      "result": "pass",
+      "paths": ["data/processed/statistics.json", "data/review/integration-decisions.json", "README.md", "docs/target-revision.md", "docs/mentor-brief.md"],
+      "evidence": "Independent Counters match saved global class/severity/whole-util and per-risk class/severity/util statistics. All five risks have both roles. Current docs report 250 TOTAL and deficit zero, distinguish the original 92 and added 158, and do not impose 250-per-risk quotas. Canonical statuses and queue statuses reconcile; 31 eligible-unselected candidates are not counted as accepted or quality rejections."
+    },
+    {
+      "name": "Global duplicate review",
+      "result": "pass_with_disclosed_limitations",
+      "paths": ["commands.csv", "data/review/integration-decisions.json", "data/review/expansion-r1-review.json", "data/review/expansion-r2-review.json", "data/review/expansion-r3-review.json", "data/review/expansion2-r1-review.json", "data/review/expansion2-r2-review.json", "data/review/expansion2-r3-review.json"],
+      "evidence": "Independent exact-command and whitespace/backslash-continuation-normalized duplicate grouping found zero duplicate groups. Static inspection of all command texts and documented duplicate decisions found no remaining resource-renaming-only padding. Retained Terraform refresh/target, Pulumi remove, one/all-cluster, resource-kind, selector, object-generation, OCI prefix/delimiter/version, and command-substitution versus xargs variants have documented semantic distinctions. OpenTofu is independently sourced actual utility use, not generated alias substitution. This is a finite manual/static review, not a proof that no semantic overlap exists."
+    },
+    {
+      "name": "Sources and mixed-license packaging",
+      "result": "pass_with_disclosed_limitations",
+      "paths": ["research/sources.jsonl", "research/attribution.md", "research/licenses/", "data/raw/e5b-licensed-review-excerpts.jsonl", "data/review/expansion2-r5-review.json"],
+      "evidence": "All 131 used source IDs resolve to ledger entries attesting commands_present=true, accessibility=accessible and reuse_decision=permitted, with exact source/locator/license URL evidence. All 131 are individually mapped in attribution. All 84 distinct locally linked license artifacts exist and are nonempty; the final attribution's 117 local links resolve. Component mappings distinguish Apache/MIT/PostgreSQL, kind CC-BY-4.0 documentation, OSGeo CC-BY-SA-3.0, Redis/Ciro/Stack Overflow CC-BY-SA-4.0, BSD-3-Clause and PlaceCal AGPL-3.0, including applicable holder-specific notices and Oracle/Azure/Compose/nerdctl notice packaging. PlaceCal DATA 248-250 exact commands are present in the retained editable source-excerpt JSONL; that capture contains the full AGPL license, and the separate full license includes sections through END OF TERMS AND CONDITIONS. Final README and attribution supply per-record pinned sources, date 2026-10-29, extraction/annotation changes, covered-contribution AGPL terms and source forms rather than blanket MIT. No fresh network re-fetch of all original commands/licenses or legal guarantee of upstream ownership is claimed."
+    },
+    {
+      "name": "Narrow raw hygiene and source comments",
+      "result": "pass_with_disclosed_limitations",
+      "paths": ["data/raw/", "commands.csv", "scripts/validate_dataset.py", "scripts/integrate_dataset.py", "tests/test_dataset_pipeline.py"],
+      "evidence": "Independent inert UTF-8 scanning covered 127 raw files for private-key headers, AWS access-key forms, GitHub/Slack token forms, credential-bearing URLs and email indicators without exposing matched values. Credential-pattern hits were zero; email hits were one each in e2-license-notices.txt and e2b-license-notices.txt and 40 in e4b-azure-notice.txt. Their inspected context is preserved copyright/legal attribution, not collected runtime user PII. Final CSV had zero hits under these patterns. Independent tokenize scanning observed zero COMMENT tokens in each of the three source/test files. The previously missing omp-strip-comments was not rerun or falsely claimed available. Narrow pattern checks cannot prove absence of all secrets or PII."
+    },
+    {
+      "name": "Final dataset card and local links",
+      "result": "pass",
+      "paths": ["README.md", "docs/workspace.md", "docs/target-revision.md", "docs/mentor-brief.md"],
+      "evidence": "Final documents were inspected only after their readiness signals. Required title/Bash designation, actual composition/classes/yellow zone/utilities, source inventory and transformations, deterministic selection/random_state not applicable, no accepted synthetic commands and model disclosure, severity, version/date, limitations, taxonomy coverage/aggregate deficit and record provenance/pairs are present. The README inventory independently reconciles all 131 used IDs, each usage count, exact source URL, license URL and risk against frozen provenance, with no missing/extra/mismatched entries and 250 source references. Local Markdown targets resolve: README 53, workspace 10, target revision 5, mentor brief 15. Historical 92-row QA is explicitly distinguished. No train/dev/test split or split-leakage check is claimed."
+    },
+    {
+      "name": "Mentor examples, providers and research interpretation",
+      "result": "pass",
+      "paths": ["docs/mentor-brief.md", "README.md", "research/attribution.md"],
+      "evidence": "All ten mentor sample command texts, one-based DATA indices, source IDs, risk, class, severity and roles match actual CSV/provenance. Pairs (1,2), (22,24), (89,93), (150,153), (227,230) are reciprocal actual graph edges and are described as scoped metadata/validation preflight, not complete simulation/approval. Source-family counts independently reconcile to HF 21, tldr 8, Kubernetes/Helm 9, Docker/Podman 36, AWS 41, Azure 14, Google/gsutil 10, Redis 2, deployment 12 and other 97, summing 250. Search providers are built-in web_search with unknown underlying engine and Keenable, not invented Google/Bing; GitHub/HF are direct-access platforms. Rare-corpus inspection volume is distinguished from zero direct accepted imports. TerminalWorld pinned author-artifact CC-BY-4.0/stale record NC/third-party carveout is not converted into a blanket legal ban. DATA 136 is a contextual Incus cleanup deny; precise CI execution and agent causation are not claimed. Coverage gaps include medium, obfuscation, banking-specific operations and explicit production IaC."
+    }
+  ],
+  "exercised_verification": [
+    {
+      "command": "python3 scripts/validate_dataset.py",
+      "when": "Once, after DOCSREADY",
+      "exit_code": 0,
+      "result": {"valid": true, "records": 250, "target": 250, "deficit": 0, "errors": []},
+      "execution_scope": "Existing local inert validator only; no dataset command, infrastructure client or downloaded code."
+    },
+    {
+      "command": "In-memory Python standard-library csv/json/pathlib/collections/re/hashlib/tokenize audit cells",
+      "result": "Independent counts, parsed-value roundtrip, canonical/provenance/source graph reconciliation, duplicate grouping, source-inventory/local-link/sample matching, narrow hygiene indicators and comment-token checks described above. No permanent test/script created."
+    }
+  ],
+  "artifact_sha256": {
+    "commands.csv": "9816deb1c7b24e13da764b4cad524e65795a7d3bae3bf54ceee21c320404c20f",
+    "data/processed/provenance.jsonl": "3a0fabff5786ac98f59c4a9567a1fd59bd9ee2bb3ca2db9487f20fd98c5a7b2e",
+    "data/processed/statistics.json": "ffbdad32cf63df3797b7cda2912c37959b248df5735157b75d3938d678e720cc"
+  },
+  "documentation_sha256_at_review": {
+    "README.md": "e18e955bfdeeaa45c51a65c5bc58e9aa8a5230f4f2e9836e3e69eeae020d7e36",
+    "docs/workspace.md": "800a575f5624ace005e137e169ffec40b419b51556934b0809d6855651f8b1e2",
+    "docs/target-revision.md": "a77d42171d34fd3181e7cf8f3a189651a5adca5a14df997eec866b82740c5ac7",
+    "docs/mentor-brief.md": "80eab48cea13371d66c947593c62391ea0b9923ad51d879eb20187e9c07ba364",
+    "research/attribution.md": "4fd3396ba7ed6ede8d54a533f6fed979723c6f4d3ba4f3283575d7a9cdb413ac"
+  },
+  "post_report_status_only_review": {
+    "paths_and_lines": ["README.md:331", "docs/workspace.md:73"],
+    "result": "pass",
+    "evidence": "After the supervisor replaced pending-QA wording, independently read both complete status paragraphs and checked all eight local link occurrences resolve. Both accurately cite this report's pass_with_disclosed_limitations verdict, no blockers/required corrections, actual one inert validator and static/network/semantic/PII limits; historical 92-record QA remains distinguished. No validator, tests or full data audit was rerun.",
+    "final_status_snapshot_sha256": {
+      "README.md": "7e023eb17de306af555b42e3bc8fb7e5162b2616db0da02b96a0d871b2082a1a",
+      "docs/workspace.md": "21412675acb3761ef77a10680109418753d4174a69d22a96d410fc209f573291"
+    },
+    "scope_note": "The earlier documentation_sha256_at_review values preserve the full-review snapshots; these final hashes identify the separately reviewed status-only updates."
+  },
+  "limits": [
+    "Static documentary/inert QA only: no Bash syntax parser, live behavior/safety, infrastructure access, approval, isolation or recovery proof.",
+    "All used ledger assertions and local rights packaging were reconciled; this reviewer did not freshly fetch every remote source/license URL, independently recreate upstream NOTICE inventories, or guarantee upstream title/license compatibility for every downstream use.",
+    "Finite manual and narrow lexical duplicate/hygiene review is not proof of complete semantic uniqueness or all-secret/PII absence. Legal author contacts are intentionally retained in notices.",
+    "The 15 passing regression tests are reported in data/review/refresh-verification.json and were not rerun by this reviewer. No tests/builds/linters/formatters were run here.",
+    "The no-comments linter was previously unavailable; only the independently exercised tokenize fallback is asserted.",
+    "No dataset split exists, so no split-leakage test is asserted. Before any future split, group scenarios/sources and exclude card/mentor demonstrations from held-out evaluation.",
+    "README/workspace subsequently received only the supervisor's observed QA-status update; post_report_status_only_review records the independently checked final paragraphs, links and resulting hashes. The earlier full-review hashes remain historical snapshot evidence."
+  ]
+}

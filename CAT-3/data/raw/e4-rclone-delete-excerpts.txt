@@ -1,0 +1,19 @@
+Source ID: e4-rclone-delete
+URL: https://raw.githubusercontent.com/rclone/rclone/1053463755dea408a4abd42bf2ce917a3884a62a/docs/content/commands/rclone_delete.md
+Revision: 1053463755dea408a4abd42bf2ce917a3884a62a
+Retrieved: 2026-10-29
+License: MIT
+License evidence: https://raw.githubusercontent.com/rclone/rclone/1053463755dea408a4abd42bf2ce917a3884a62a/COPYING
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: docs/content/commands/rclone_delete.md line 35
+rclone --min-size 100M delete remote:path
+Context: Одни и те же upstream remote:path и min-size; lsl и dry-run документированы до удаления; remote backend не раскрыт, облако/владелец/backup не приписаны.
+
+Locator: docs/content/commands/rclone_delete.md line 28
+rclone --min-size 100M lsl remote:path
+Context: Одни и те же upstream remote:path и min-size; lsl и dry-run документированы до удаления; remote backend не раскрыт, облако/владелец/backup не приписаны.
+
+Locator: docs/content/commands/rclone_delete.md line 29
+rclone --dry-run --min-size 100M delete remote:path
+Context: Одни и те же upstream remote:path и min-size; lsl и dry-run документированы до удаления; remote backend не раскрыт, облако/владелец/backup не приписаны.

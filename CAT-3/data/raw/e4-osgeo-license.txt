@@ -1,0 +1,4 @@
+Source https://live.osgeo.org/archive/8.0/en/copyright.html; retrieved 2026-10-29
+Quickstarts and Quickstart Translations, are provided under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+Attribution: OSGeo-Live contributors, PostGIS Quickstart. https://creativecommons.org/licenses/by-sa/3.0/
+Do not confuse overview CC-BY-3.0 with quickstart CC-BY-SA-3.0.

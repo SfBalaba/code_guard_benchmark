@@ -1,0 +1,5 @@
+3. Run the following command to delete the SAM template.
+```shell
+sam delete --stack-name image-processing --no-prompts 
+```
+

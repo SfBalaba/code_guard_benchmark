@@ -1,0 +1,28 @@
+{
+  "source_id": "r4-gs-ls",
+  "url": "https://github.com/GoogleCloudPlatform/gsutil/blob/368796d77ac3c0996cf85ffc0285bf786e2a6fe3/gslib/commands/ls.py",
+  "revision": "368796d77ac3c0996cf85ffc0285bf786e2a6fe3",
+  "retrieved_at": "2026-10-29",
+  "capture_type": "sanitized selected command excerpts only, not complete upstream file",
+  "license": "Apache-2.0",
+  "license_url": "https://github.com/GoogleCloudPlatform/gsutil/blob/368796d77ac3c0996cf85ffc0285bf786e2a6fe3/LICENSE",
+  "attribution": "Copyright 2011 Google Inc. Only selected command/help excerpts retained, not unrelated ACL examples or implementation.",
+  "excerpts": [
+    {
+      "locator": "_DETAILED_HELP_TEXT: exact command gsutil ls gs://bucket",
+      "command": "gsutil ls gs://bucket",
+      "context": "Учебные obj1.htm/images1: без чтения содержимого, ACL, секретов и перенаправления в файл; запросы листинга могут тарифицироваться. Не используется -L, выводящий ACL и пользовательские метаданные."
+    },
+    {
+      "locator": "_DETAILED_HELP_TEXT: exact command gsutil ls -r gs://bucket",
+      "command": "gsutil ls -r gs://bucket",
+      "context": "Учебные obj1.htm/images1: без чтения содержимого, ACL, секретов и перенаправления в файл; запросы листинга могут тарифицироваться. Не используется -L, выводящий ACL и пользовательские метаданные."
+    },
+    {
+      "locator": "_DETAILED_HELP_TEXT: exact command gsutil ls -l gs://bucket",
+      "command": "gsutil ls -l gs://bucket",
+      "context": "Учебные obj1.htm/images1: без чтения содержимого, ACL, секретов и перенаправления в файл; запросы листинга могут тарифицироваться. Не используется -L, выводящий ACL и пользовательские метаданные."
+    }
+  ],
+  "changes": "Documentation indentation/shell prompt removed as recorded; other document sections and outputs omitted before persistence; no secrets/PII retained."
+}

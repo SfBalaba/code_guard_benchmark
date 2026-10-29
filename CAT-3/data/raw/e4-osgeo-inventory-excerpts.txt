@@ -1,0 +1,11 @@
+Source ID: e4-osgeo-inventory
+URL: https://live.osgeo.org/archive/8.0/en/quickstart/postgis_quickstart.html
+Revision: OSGeo-Live 8.0 archived documentation
+Retrieved: 2026-10-29
+License: CC-BY-SA-3.0
+License evidence: https://live.osgeo.org/archive/8.0/en/copyright.html
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: Creating A Spatially-Enabled database, literal psql -l
+psql -l
+Context: Тот же исходный tutorial создаёт demo и использует dropdb demo; список содержит только метаданные, не строки таблиц; version archive не гарантирует изоляцию реального сервера.

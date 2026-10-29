@@ -1,0 +1,3 @@
+Then you can go ahead and run `tofu validate`, `tofu plan` and `tofu apply` (or `tofu apply -auto-approve`) to provision the resources.
+
+- From the `infra/terraform` folder, run `tofu destroy -auto-approve` to destroy the resources provisioned with OpenTofu. Run also `az group delete -n rg-tf-vs-bicep-state` to remove the state's storage account.

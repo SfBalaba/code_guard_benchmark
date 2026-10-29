@@ -1,0 +1,14 @@
+Source: e4b-dynamodb-delete-backup
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/dynamodb/delete-backup.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Notes: Actual existing AWS CLI source example. Identical ARN in deletion and metadata inspection. New backup-destruction scenario, not a renamed duplicate of baseline DynamoDB table drop.
+
+Candidate: CAT-3.4-524
+Locator: awscli/examples/dynamodb/delete-backup.rst lines 5-6
+aws dynamodb delete-backup \
+--backup-arn arn:aws:dynamodb:us-west-2:123456789012:table/MusicCollection/backup/01576616366715-b4e58d3a
+Context: The source describes a USER on-demand backup of MusicCollection. ARN account ID123456789012 is the standard AWS documentation placeholder. DescribeBackup returns BackupDescription including keys/schema metadata, not table items.
+

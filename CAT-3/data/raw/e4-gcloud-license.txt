@@ -1,0 +1,4 @@
+Sources https://docs.cloud.google.com/sdk/gcloud/reference/storage/rm and /ls; retrieved 2026-10-29. Page last updated 2026-05-27 UTC.
+Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License.
+https://developers.google.com/site-policies
+Attribution: Google Cloud documentation. Selected code samples are unchanged except documentation indentation; Russian descriptions are new annotation.

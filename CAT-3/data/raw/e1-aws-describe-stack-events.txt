@@ -1,0 +1,8 @@
+**To describe stack events**
+
+The following ``describe-stack-events`` example displays the 2 most recent events for the specified stack. ::
+
+    aws cloudformation describe-stack-events \
+        --stack-name my-stack \
+        --max-items 2
+

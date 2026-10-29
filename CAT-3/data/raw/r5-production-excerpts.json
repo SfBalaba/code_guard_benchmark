@@ -1,0 +1,93 @@
+{
+  "retrieved_at": "2026-10-29",
+  "capture_type": "selected_sanitized_command_excerpts_not_full_documents",
+  "safety": "Inert public documentation examples only. No runtime command execution, private source, credentials, personal data or output logs retained. GitHub commit-author metadata intentionally not persisted.",
+  "transformations": [
+    "Selected only relevant Bash command lines and public section context; omitted fences and explanatory comments.",
+    "No command text changes or secret substitutions needed in selected examples.",
+    "No full source pages with incidental user/contact metadata retained."
+  ],
+  "sources": [
+    {
+      "source_id": "r5-vercel-plugin",
+      "url": "https://github.com/vercel/vercel-plugin/blob/9beca3cc1384a98d6bdd81acd1a22f942315b091/skills/deployments-cicd/SKILL.md",
+      "revision": "9beca3cc1384a98d6bdd81acd1a22f942315b091",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/vercel/vercel-plugin/blob/9beca3cc1384a98d6bdd81acd1a22f942315b091/LICENSE",
+      "attribution": "Copyright 2026 Vercel, Inc.",
+      "section": "Production Deployment; Build Locally, Deploy Build Output; Promote & Rollback",
+      "extracted_commands": [
+        "vercel --prod",
+        "vercel --prod --force",
+        "vercel deploy --prebuilt --prod",
+        "vercel rollback status"
+      ]
+    },
+    {
+      "source_id": "r5-netlify-deploy",
+      "url": "https://github.com/netlify/cli/blob/main/docs/commands/deploy.md",
+      "revision": "main as retrieved 2026-10-29; commit lookup HTTP 403; docs blob inventory 573bdadc8f07b57ecffd080ba8698df27e03ec05",
+      "license": "MIT",
+      "license_url": "https://github.com/netlify/cli/blob/main/LICENSE",
+      "attribution": "Copyright (c) 2016 Netlify",
+      "section": "Examples and deploy command description",
+      "extracted_commands": [
+        "netlify deploy --prod",
+        "netlify deploy --remote --prod",
+        "netlify deploy --prod-if-unlocked"
+      ]
+    },
+    {
+      "source_id": "r5-netlify-status",
+      "url": "https://github.com/netlify/cli/blob/main/docs/commands/status.md",
+      "revision": "main as retrieved 2026-10-29; docs blob inventory 9529891046ac7858af4fcfd51683ac49a195f63c",
+      "license": "MIT",
+      "license_url": "https://github.com/netlify/cli/blob/main/LICENSE",
+      "attribution": "Copyright (c) 2016 Netlify",
+      "section": "Usage netlify status; independently inspected src/commands/status/status.ts",
+      "extracted_commands": [
+        "netlify status"
+      ]
+    },
+    {
+      "source_id": "r5-linkwork",
+      "url": "https://github.com/momotech/LinkWork/blob/993fd9273ca416c521a12632a91a00f8cc073e95/deploy/k8s/README.md",
+      "revision": "993fd9273ca416c521a12632a91a00f8cc073e95",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/momotech/LinkWork/blob/993fd9273ca416c521a12632a91a00f8cc073e95/LICENSE",
+      "attribution": "Apache-2.0 repository license; no filled-in copyright owner in inspected license appendix",
+      "section": "Production (Harbor + Volcano), Deploy and Verify",
+      "extracted_commands": [
+        "kubectl apply -k deploy/k8s/overlays/prod",
+        "kubectl -n linkwork-prod get pods -w"
+      ]
+    },
+    {
+      "source_id": "r5-ralph",
+      "url": "https://github.com/lloydchang/mikeyobrien-ralph-orchestrator/blob/196220bd4eb2216f0df7a44238a593d2200057bc/docs/deployment/production.md",
+      "revision": "196220bd4eb2216f0df7a44238a593d2200057bc",
+      "license": "MIT",
+      "license_url": "https://github.com/lloydchang/mikeyobrien-ralph-orchestrator/blob/196220bd4eb2216f0df7a44238a593d2200057bc/LICENSE",
+      "attribution": "Copyright (c) 2025 Ralph Orchestrator Contributors",
+      "section": "Maintenance / Rolling Updates",
+      "extracted_commands": [
+        "kubectl rollout undo deployment/ralph-orchestrator",
+        "kubectl rollout status deployment/ralph-orchestrator",
+        "kubectl set image deployment/ralph-orchestrator \\\n  ralph=ghcr.io/mikeyobrien/ralph-orchestrator:v1.0.1 \\\n  --record"
+      ]
+    },
+    {
+      "source_id": "r5-cloud-patterns",
+      "url": "https://github.com/Cloud-Premises/kubernetes-production-patterns/blob/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8/README.md",
+      "revision": "e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8",
+      "license": "Apache-2.0 (explicit README grant)",
+      "license_url": "https://github.com/Cloud-Premises/kubernetes-production-patterns/blob/e9439e3d3fe5a31ffed1cfa935c43d9f52612ce8/README.md#-license",
+      "attribution": "Copyright 2025 Cloud Premises",
+      "section": "Using Helm Charts; License section",
+      "extracted_commands": [
+        "helm install myapp ./charts/web-application \\\n  --namespace production \\\n  --values values-production.yaml",
+        "helm upgrade myapp ./charts/web-application \\\n  --namespace production \\\n  --values values-production.yaml"
+      ]
+    }
+  ]
+}

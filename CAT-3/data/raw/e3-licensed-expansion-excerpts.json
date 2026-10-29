@@ -1,0 +1,131 @@
+{
+  "retrieved_at": "2026-10-29",
+  "notice": "Inert licensed excerpts only; remove console prompts/output; Russian annotations in candidate ledger; preserve upstream attribution/license through source ledger.",
+  "excerpts": [
+    {
+      "source_id": "e3-off-buildah-rm",
+      "url": "https://raw.githubusercontent.com/containers/buildah/8d5b4d2e57868676c88bcd8243d39a392c76e732/docs/buildah-rm.1.md",
+      "command": "buildah rm --all"
+    },
+    {
+      "source_id": "e3-off-buildah-prune",
+      "url": "https://raw.githubusercontent.com/containers/buildah/8d5b4d2e57868676c88bcd8243d39a392c76e732/docs/buildah-prune.1.md",
+      "command": "buildah prune --force"
+    },
+    {
+      "source_id": "e3-off-buildah-containers",
+      "url": "https://raw.githubusercontent.com/containers/buildah/8d5b4d2e57868676c88bcd8243d39a392c76e732/docs/buildah-containers.1.md",
+      "command": "buildah containers"
+    },
+    {
+      "source_id": "e3-off-podman-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "command": "podman rm --depend mywebserver"
+    },
+    {
+      "source_id": "e3-off-podman-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "command": "podman rm -f -a"
+    },
+    {
+      "source_id": "e3-off-podman-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "command": "podman rm --filter status=exited"
+    },
+    {
+      "source_id": "e3-off-podman-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "command": "podman rm --filter ancestor=nginx"
+    },
+    {
+      "source_id": "e3-off-podman-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "command": "podman rm --filter volume=web-vol"
+    },
+    {
+      "source_id": "e3-off-podman-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "command": "podman rm --filter network=web-net"
+    },
+    {
+      "source_id": "e3-off-podman-pod-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-pod-rm.1.md.in",
+      "command": "podman pod rm -f -a"
+    },
+    {
+      "source_id": "e3-off-podman-volume-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-rm.1.md",
+      "command": "podman volume rm --all"
+    },
+    {
+      "source_id": "e3-off-podman-volume-rm",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-rm.1.md",
+      "command": "podman volume rm --force myvol"
+    },
+    {
+      "source_id": "e3-off-podman-pod-prune",
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-pod-prune.1.md",
+      "command": "sudo podman pod prune"
+    },
+    {
+      "source_id": "e3-tldr-compose",
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md",
+      "command": "docker compose down"
+    },
+    {
+      "source_id": "e3-tldr-compose",
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md",
+      "command": "docker compose down --remove-orphans"
+    },
+    {
+      "source_id": "e3-tldr-compose",
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md",
+      "command": "docker compose down --rmi all"
+    },
+    {
+      "source_id": "e3-off-compose",
+      "url": "https://raw.githubusercontent.com/docker/compose/ed976f1cd44706721029ef2b9e02371e558b5228/docs/reference/compose_down.md",
+      "command": "docker ps -a --filter label=com.docker.compose.hook=pre_start"
+    },
+    {
+      "source_id": "e3-legacy-volume",
+      "url": "https://raw.githubusercontent.com/chadoe/docker-cleanup-volumes/master/README.md",
+      "command": "docker volume rm $(docker volume ls -qf dangling=true)"
+    },
+    {
+      "source_id": "e3-legacy-volume",
+      "url": "https://raw.githubusercontent.com/chadoe/docker-cleanup-volumes/master/README.md",
+      "command": "docker volume ls -qf dangling=true | xargs -r docker volume rm"
+    },
+    {
+      "source_id": "e3-cri-corpus",
+      "url": "https://raw.githubusercontent.com/etc-binstack/kubernetes-commands-cheat-sheet/main/README.md",
+      "command": "crictl rm --all --force"
+    },
+    {
+      "source_id": "e3-cri-corpus",
+      "url": "https://raw.githubusercontent.com/etc-binstack/kubernetes-commands-cheat-sheet/main/README.md",
+      "command": "crictl ps -a"
+    },
+    {
+      "source_id": "e3-coi",
+      "url": "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+      "command": "coi clean"
+    },
+    {
+      "source_id": "e3-coi",
+      "url": "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+      "command": "coi list --all"
+    },
+    {
+      "source_id": "e3-off-nerdctl",
+      "url": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/README.md",
+      "command": "nerdctl system prune"
+    },
+    {
+      "source_id": "e3-tldr-nerdctl",
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/linux/nerdctl.md",
+      "command": "nerdctl ps -a"
+    }
+  ]
+}

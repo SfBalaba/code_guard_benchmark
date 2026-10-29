@@ -1,0 +1,5 @@
+# Test key service access 
+# for deployment below us-east-1 is an example, use the region where you deployed
+# Note: region in which you will access Bedrock is by default us-east-1
+
+aws cloudformation list-stacks --region us-east-1  

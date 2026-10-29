@@ -1,0 +1,14 @@
+Source ID: e4-rds-delete-tenant-database
+URL: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/awscli/examples/rds/delete-tenant-database.rst
+Revision: 2d3e88e0116413754d907a15ec11b02a985ad66e
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/aws/aws-cli/2d3e88e0116413754d907a15ec11b02a985ad66e/LICENSE.txt
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: awscli/examples/rds/delete-tenant-database.rst lines 5-8
+aws rds delete-tenant-database \
+    --db-instance-identifier test-rds-oracle \
+    --tenant-db-name tenant2 \
+    --final-db-snapshot-identifier final-snap-test
+Context: Официальные учебные идентификаторы; только описание/статус, не содержимое БД, credentials или выгрузка. Snapshot deletion уничтожает резервные данные, а не доказывает удаление единственной копии. Cluster inventory охватывает все кластеры текущего региона, но не является точным планом удаления; cluster snapshot deletion output связывает снимок с mydbcluster; tenant inventory может не показывать уже удалённый tenant2. Финальный snapshot там, где указан, действительно запрашивается, но удаление/доступность всё ещё требует ответственности.

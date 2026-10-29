@@ -1,0 +1,4 @@
+Source https://cirosantilli.com/mysql; retrieved 2026-10-29
+Footer: License: CC BY-SA 4.0 unless noted
+https://creativecommons.org/licenses/by-sa/4.0/
+Attribution: Ciro Santilli. Commands from sql.bigb revision 2f566755ea3a0140f44b62acdc8b892db56d9b3a; selected text and Russian annotations are adaptations.

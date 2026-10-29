@@ -1,0 +1,15 @@
+Source ID: e4-gcloud-rm
+URL: https://docs.cloud.google.com/sdk/gcloud/reference/storage/rm
+Revision: Page last updated 2026-05-27 UTC, retrieved 2026-10-29; SDK installed version unspecified
+Retrieved: 2026-10-29
+License: Apache-2.0 (code samples); CC-BY-4.0 (prose)
+License evidence: https://developers.google.com/site-policies
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: EXAMPLES exact command gcloud storage rm gs://my-bucket/my-dir/**
+gcloud storage rm gs://my-bucket/my-dir/**
+Context: Официальные условные my-bucket/my-dir; ** затрагивает живые версии, --recursive подразумевает --all-versions и удаляет бакет при bucket URL; listing только metadata, не является полным recursive/version-aware deletion plan; unquoted wildcard сохранён, shell expansion зависит от окружения.
+
+Locator: EXAMPLES exact command gcloud storage rm --recursive gs://my-bucket/
+gcloud storage rm --recursive gs://my-bucket/
+Context: Официальные условные my-bucket/my-dir; ** затрагивает живые версии, --recursive подразумевает --all-versions и удаляет бакет при bucket URL; listing только metadata, не является полным recursive/version-aware deletion plan; unquoted wildcard сохранён, shell expansion зависит от окружения.

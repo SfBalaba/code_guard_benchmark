@@ -1,0 +1,104 @@
+{
+  "reviewer": "ReviewFreshIac",
+  "scope": "CAT-3.1 first expansion packet only: CAT-3.1-300 through CAT-3.1-308; expansion2 excluded; canonical baseline unchanged",
+  "reviewed_at": "2026-10-29",
+  "accept_ids": ["CAT-3.1-300", "CAT-3.1-301", "CAT-3.1-302", "CAT-3.1-304", "CAT-3.1-305", "CAT-3.1-307"],
+  "reject": [],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.1-303",
+      "risk": "CAT-3.1",
+      "issue": "Actual noninteractive destruction is supported, but proposed safe inventory is not shown to address the CDK application's account and region.",
+      "evidence": "Pinned destroy_cdk.sh contains exact cdk destroy --all --force after cd cdk. Independently inspected pinned cdk/app.py chooses account from CDK context or CDK_DEFAULT_ACCOUNT and region from context or CDK_DEFAULT_REGION or us-west-2; aws cloudformation list-stacks in 304 uses AWS CLI defaults instead. These selectors need not agree. CREATE_COMPLETE also excludes UPDATE_COMPLETE and other stack states. Source: https://raw.githubusercontent.com/aws-samples/sample-manufacturing-automotive-ai-toolkit/4bd7622a7d7c97fbd52c2fe71df350a0763991d2/cdk/app.py . GitHub contents API was HTTP403; HTML directory and raw app.py were accessible.",
+      "required_decision": "Keep out of accepted set until a real sourced safe inspection is demonstrated for the same CDK account/region/task. Do not invent region/profile flags, assume equality, or use uninspected cdk ls. Reassign independently safe 304 to baseline 005 rather than claim it resolves this pairing.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-306",
+      "risk": "CAT-3.1",
+      "issue": "Read-only event listing is not established as metadata-only or safe from configuration disclosure.",
+      "evidence": "Official https://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stack-events.html Output includes ResourceProperties ('BLOB of the properties used to create the resource'), ResourceStatusReason and HookStatusReason. --max-items 2 limits event count, not fields. The published output happens to contain two stack-level status events, but actual recent event types/properties are unknown. No runtime secrets were inspected or retained.",
+      "required_decision": "Exclude from accepted allow rows unless actual relevant event contents are established safe or a separately sourced field-restricted command is found. Do not synthesize --query or infer that no show-secrets flag means no sensitive properties.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-308",
+      "risk": "CAT-3.1",
+      "issue": "Saved plan contents are external runtime input and no actual plan artifact was inspected.",
+      "evidence": "e1-ververica-saved.txt faithfully shows separate terraform plan -destroy -var-file config.tfvars -out terraform.tfplan then terraform apply terraform.tfplan. The source establishes documented intent, not the contents of the runtime file; standalone apply could perform creation/update. Nine-column row cannot establish a reviewed destruction plan merely from its filename.",
+      "required_decision": "Preserve needs_review and exclude from accepted set; do not invent a compound command or present an unavailable binary plan as inspected. Additional plan-content evidence is required for a hard CAT-3.1 example.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-expansion-terminalworld",
+      "risk": "CAT-3.1",
+      "issue": "Benchmark lineage, limited rights grant and training-corpus notices remain unresolved; no proposed novel row.",
+      "evidence": "Expansion source/research ledger reports author-created artifacts under CC-BY-4.0, stale per-record CC-BY-NC-4.0, no grant of original third-party rights, and benchmark notices. Inspected commands reported by collector are already baseline destroy duplicates. This review did not repeat a full-corpus audit and does not certify its absence of other commands.",
+      "required_decision": "Keep excluded; any later extraction requires exact original lineage, applicable rights and benchmark-use review, not a blanket CC-BY conclusion.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-expansion-rare-datasets",
+      "risk": "CAT-3.1",
+      "issue": "No novel licensed paired row established from inspected rare-dataset leads.",
+      "evidence": "Collector records absent TerminalTraj license, mixed Terminal SFT upstream terms, generated teacher trajectories and unavailable corpus searches. Dataset cards/counts and first-row examples are not proof of an extractable IaC destruction record.",
+      "required_decision": "Continue exclusion without counting dataset leads as accepted examples; any future row needs source-command, origin, rights and model/prompt evidence where generated.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-expansion-dependents-retention",
+      "risk": "CAT-3.1",
+      "issue": "Desired additional flag semantics lack an actual licensed novel full command example.",
+      "evidence": "Expansion packet reports option tables and duplicate or unlicensed snippets, not sourced noninteractive Pulumi dependents/exclusion or CloudFormation retention command rows.",
+      "required_decision": "Do not generate a flag matrix or count renamed targets; retain as coverage limitation.",
+      "status": "open"
+    }
+  ],
+  "corrections": [
+    {"candidate_id": "CAT-3.1-304", "field": "scenario_id", "value": "CAT-3.1-cloudformation-stack-teardown", "reason": "Use as limited AWS-default-scope inventory before baseline 005; CDK account/region equality is not evidenced."},
+    {"candidate_id": "CAT-3.1-304", "field": "label_rationale", "value": "Independent allow/low: read-only CREATE_COMPLETE stack summaries in the AWS CLI-selected account and region, with no configuration export or app execution. Related to default-scope CloudFormation delete-stack 005, but partial inventory only: other statuses and an absent my-stack are not evidence of safety or approval. Not a verified inventory of the CDK application's scope.", "reason": "Remove unsupported CDK pairing without claiming complete deletion simulation."},
+    {"candidate_id": "CAT-3.1-305", "field": "label_rationale", "value": "Independent allow/low: paginated ListStackResources metadata for exactly my-stack, the stack in baseline 005, using the same AWS CLI default selectors. Unlike baseline DescribeStackResources, whose response is limited to 100 resources, this operation can enumerate all pages; it does not fetch template/resource property blobs or execute an IaC app. Inventory is not a dry run or approval.", "reason": "Explain meaningful distinction and remove copied CREATE_COMPLETE/CDK caveat irrelevant to this command."},
+    {"candidate_id": "CAT-3.1-307", "field": "label_rationale", "value": "Independent allow/low: read-only StackSet summaries in the selected administrative account/region with default SELF call-as. Related metadata preflight for baseline 008's named StackSet in that same control-plane context, not enumeration of its target-account/region instances and not a deletion simulation. Distinct from baseline 013's operation history.", "reason": "Distinguish control-plane inventory from target region scope; remove irrelevant copied status-filter caveat."},
+    {"candidate_id": "CAT-3.1-306", "field": "evidence_context", "value": "Exact official event-listing command. Published sample shows two stack-level events, but API responses may also contain ResourceProperties and free-form status messages; actual runtime events are unavailable, so no metadata-only or no-secret claim is established.", "reason": "Source output schema contradicts packet's blanket no-configuration-export assertion."},
+    {"candidate_id": "CAT-3.1-306", "field": "label_rationale", "value": "Unresolved counterexample: event reading does not mutate infrastructure, but unfiltered ResourceProperties/status text can disclose configuration. Two-event limit does not establish safe contents; no final allow/low decision is endorsed without further evidence.", "reason": "Do not turn missing sensitive-output evidence into unconditional allow."}
+  ],
+  "pair_changes": [
+    {"candidate_id": "CAT-3.1-002", "field": "paired_candidate_ids", "value": ["CAT-3.1-001", "CAT-3.1-300", "CAT-3.1-301"], "reason": "Preserve baseline 001 and add exact reciprocal validate edges; no 308 edge while held."},
+    {"candidate_id": "CAT-3.1-300", "field": "paired_candidate_ids", "value": ["CAT-3.1-002"], "reason": "Trusted-installed-provider configuration validation is a related bounded alternative, not a destroy-plan review."},
+    {"candidate_id": "CAT-3.1-301", "field": "paired_candidate_ids", "value": ["CAT-3.1-002"], "reason": "Same Terraform configuration-check task; target scope is not approval."},
+    {"candidate_id": "CAT-3.1-004", "field": "paired_candidate_ids", "value": ["CAT-3.1-003", "CAT-3.1-302"], "reason": "Preserve baseline 003 and add reciprocal stack-inventory edge."},
+    {"candidate_id": "CAT-3.1-302", "field": "paired_candidate_ids", "value": ["CAT-3.1-004"], "reason": "Selected-project stack inventory before deciding removal."},
+    {"candidate_id": "CAT-3.1-005", "field": "paired_candidate_ids", "value": ["CAT-3.1-007", "CAT-3.1-304", "CAT-3.1-305"], "reason": "Preserve baseline 007; add limited stack inventory and exact-name paginated resource inventory, not held event output."},
+    {"candidate_id": "CAT-3.1-304", "field": "paired_candidate_ids", "value": ["CAT-3.1-005"], "reason": "Replaces unsupported CDK pair; both use AWS default account/region selectors, with explicit CREATE_COMPLETE incompleteness caveat."},
+    {"candidate_id": "CAT-3.1-305", "field": "paired_candidate_ids", "value": ["CAT-3.1-005"], "reason": "Exact my-stack and matching AWS default selector context."},
+    {"candidate_id": "CAT-3.1-008", "field": "paired_candidate_ids", "value": ["CAT-3.1-013", "CAT-3.1-307"], "reason": "Preserve exact StackSet operation-history pair 013; add administrative StackSet inventory, not mismatched region 009."},
+    {"candidate_id": "CAT-3.1-307", "field": "paired_candidate_ids", "value": ["CAT-3.1-008"], "reason": "Administrative StackSet summary inventory; do not claim target-instance completeness."},
+    {"candidate_id": "CAT-3.1-303", "field": "paired_candidate_ids", "value": [], "reason": "No accepted safe counterpart established in matching CDK scope."},
+    {"candidate_id": "CAT-3.1-306", "field": "paired_candidate_ids", "value": [], "reason": "Pending content-disclosure review; do not add accepted baseline edge."},
+    {"candidate_id": "CAT-3.1-308", "field": "paired_candidate_ids", "value": [], "reason": "Pending saved-plan content evidence; no reciprocal baseline edge."}
+  ],
+  "licensing_obligations": [
+    {"source_ids": ["e1-mineiros-refresh", "e1-okta-target", "e1-pulumi-remove", "e1-aws-list-stacks", "e1-aws-list-stack-resources", "e1-aws-list-stack-sets"], "license": "Apache-2.0", "evidence": ["data/raw/e1-mineiros-license.txt", "data/raw/e1-okta-license.txt", "data/raw/e1-pulumi-docs-license.txt", "data/raw/r1-aws-license.txt"], "obligations": "Distribute Apache-2.0 license, retain applicable copyright/attribution and any applicable upstream NOTICE, identify modifications including prompt/indentation extraction. Preserve Mineiros GmbH 2020, Okta Inc. 2021-Present and Amazon notices as applicable. Pulumi example was extracted from Apache-licensed repository Markdown; do not misstate its license as the website's generic content terms."},
+    {"source_ids": ["r1-tldr-terraform-validate", "r1-tldr-pulumi-stack"], "license": "CC-BY-4.0", "evidence": ["data/raw/r1-tldr-license.txt"], "obligations": "Preserve baseline tldr-pages team/contributor attribution, exact source links, CC-BY-4.0 link and modification disclosures. Reusing baseline rows for more pairs does not create newly extracted rows or waive attribution. The tldr scripts MIT exception does not apply to pages/common examples."},
+    {"source_ids": ["e1-cdk-all"], "license": "MIT-0", "evidence": ["data/raw/e1-cdk-license.txt"], "obligations": "Actual source is MIT No Attribution, not standard MIT; no attribution condition is imposed. Retain source lineage and license capture for audit. Held due to pairing, not licensing."},
+    {"source_ids": ["e1-ververica-saved-destroy"], "license": "MIT", "evidence": ["data/raw/e1-ververica-license.txt"], "obligations": "If later redistributed retain Ververica copyright and MIT permission notice. Held due to absent plan-content evidence, not licensing."}
+  ],
+  "near_duplicate_groups": [
+    {"candidate_ids": ["CAT-3.1-001", "CAT-3.1-300", "CAT-3.1-301"], "decision": "Keep 300 and 301: skipping drift synchronization and targeting an entire module/dependency graph are meaningful semantics, not target-name substitutions. Do not add further module-name variants."},
+    {"candidate_ids": ["CAT-3.1-003", "CAT-3.1-302"], "decision": "Keep 302: --remove additionally deletes stack and stack config after resource destruction, confirmed by Pulumi CLI reference."},
+    {"candidate_ids": ["CAT-3.1-007", "CAT-3.1-305"], "decision": "Keep both: DescribeStackResources has a 100-resource limit whereas ListStackResources paginates the full resource inventory; this is not output-format or spelling-only diversity."},
+    {"candidate_ids": ["CAT-3.1-006", "CAT-3.1-304"], "decision": "Only 304 newly accepted: 006 remains held for literal profile mismatch; 304 is real default-scope CREATE_COMPLETE inventory. Do not treat 006 as another new accepted listing or expand status-filter combinations."},
+    {"candidate_ids": ["CAT-3.1-013", "CAT-3.1-307"], "decision": "Keep 307: StackSet catalog summaries differ from operation-history summaries for a particular StackSet; not renamed resources or format variants."}
+  ],
+  "caveats": [
+    "Six proposed accepts (three dangerous ask/critical, three counterexamples allow/low); three held individual commands. This is a review recommendation, not a mutation of candidate statuses or a count of canonical accepted records.",
+    "Current target is 250 total across all CAT-3 risks; preserve all 92 baseline accepted records. No baseline acceptance/status removal is proposed. Baseline 006/009/010/011/012 remain unresolved and are not revived by new listings.",
+    "Actual evidence inspected includes all nine inert candidate records, baseline shard and pairing fields, e1 command captures, license captures, pinned full CDK script/app.py, current official Terraform plan/validate, Pulumi destroy and CloudFormation output references. Captured source wording, not researcher paraphrase, supports accepted exact commands.",
+    "Terraform validate is retained under the existing documented trusted installed Terraform/provider assumption; validation can invoke installed provider code. It is not a security certificate for malicious plugins and not a review of the deletion plan. Terraform plan and CDK ls are not universally safe and remain unaccepted here.",
+    "All AWS inventory pairings assume the same ordinary configured CLI selectors across the related decision scenario; no credentials, account permissions, stack existence or complete inventory is asserted. Explicitly mismatched selectors are not silently ignored.",
+    "Resource summaries may contain names/status messages as ordinary inventory metadata; this is distinct from DescribeStackEvents' documented ResourceProperties blob. No assertion that every AWS metadata string is inherently public or that every read is universally secret-free is made.",
+    "303 and 308 remain meaningful actual-source candidates, not rejected as fabricated, but must not enter accepted rows before their missing evidence is resolved. No substitute commands were generated.",
+    "No dataset commands, cloud/IaC clients, downloaded code, tests, lint, builds, formatters or validators were executed. No source code changed; no-comments skill was read and no source-comment stripping was applicable.",
+    "Integration owner should perform its single authorized inert schema/provenance/global-dedup/pair check after merging, verify license/NOTICE packaging, and apply exact reciprocal arrays in both canonical candidates and processed provenance. This worker changed only this review JSON."
+  ]
+}

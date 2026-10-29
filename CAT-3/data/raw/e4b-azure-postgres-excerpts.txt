@@ -1,0 +1,18 @@
+Source: e4b-azure-postgres
+URL: https://raw.githubusercontent.com/MicrosoftDocs/azure-docs-cli/a57e46994c0c503437a8037352e3bd48c186f956/docs-ref-autogen/Latest-version/latest/postgres/flexible-server/db.yml
+Revision: a57e46994c0c503437a8037352e3bd48c186f956
+Retrieved: 2026-10-29
+License: MIT (code examples); CC-BY-4.0 (prose)
+License URL: https://raw.githubusercontent.com/MicrosoftDocs/azure-docs-cli/a57e46994c0c503437a8037352e3bd48c186f956/LICENSE-CODE
+Notes: Actual pinned YAML examples crosschecked against official rendered CLI reference; command samples reused under LICENSE-CODE; source prose license separately recorded. Live Azure CLI module path returned404, so versioned docs used, no fabricated source revision.
+
+Candidate: CAT-3.4-522
+Locator: docs-ref-autogen/Latest-version/latest/postgres/flexible-server/db.yml line 103
+az postgres flexible-server db delete --resource-group testGroup --server-name testserver --name testDatabase
+Context: Official versioned PostgreSQL flexible-server examples explicitly use the same resourceGroup/server/database; show returns metadata rather than table contents. Existing test-name does not establish sandbox isolation.
+
+Candidate: CAT-3.4-523
+Locator: docs-ref-autogen/Latest-version/latest/postgres/flexible-server/db.yml line 234
+az postgres flexible-server db show --resource-group testGroup --server-name testserver --name testDatabase
+Context: Official versioned PostgreSQL flexible-server examples explicitly use the same resourceGroup/server/database; show returns metadata rather than table contents. Existing test-name does not establish sandbox isolation.
+

@@ -1,0 +1,19 @@
+Source ID: e4-flow-minio
+URL: https://raw.githubusercontent.com/skydive-project/skydive-flow-exporter/45e41924254e92734fce75c126c4c8a4bf4b2f8f/README.md
+Revision: 45e41924254e92734fce75c126c4c8a4bf4b2f8f
+Retrieved: 2026-10-29
+License: Apache-2.0
+License evidence: https://raw.githubusercontent.com/skydive-project/skydive-flow-exporter/45e41924254e92734fce75c126c4c8a4bf4b2f8f/LICENSE
+Selection: only cited commands and necessary non-sensitive fixture/behavior context; no shell command executed.
+
+Locator: README.md line 63
+./mc rm --recursive --force local/bucket
+Context: Видимый tutorial локального тестового object store; mc config/credentials не включены; сам alias local не принимается за доказательство изоляции. Инвентаризация читает только метаданные, не flow payload. Force bucket removal и recursive object removal имеют разные последствия для самого бакета. Современный rm без --versions создаёт delete markers при versioning; описание не обещает физического удаления всех версий. rb --force документирован как recursive removal всех версий.
+
+Locator: README.md line 64
+./mc rb --force local/bucket
+Context: Видимый tutorial локального тестового object store; mc config/credentials не включены; сам alias local не принимается за доказательство изоляции. Инвентаризация читает только метаданные, не flow payload. Force bucket removal и recursive object removal имеют разные последствия для самого бакета. Современный rm без --versions создаёт delete markers при versioning; описание не обещает физического удаления всех версий. rb --force документирован как recursive removal всех версий.
+
+Locator: README.md line 106
+./mc ls --recursive local/bucket
+Context: Видимый tutorial локального тестового object store; mc config/credentials не включены; сам alias local не принимается за доказательство изоляции. Инвентаризация читает только метаданные, не flow payload. Force bucket removal и recursive object removal имеют разные последствия для самого бакета. Современный rm без --versions создаёт delete markers при versioning; описание не обещает физического удаления всех версий. rb --force документирован как recursive removal всех версий.

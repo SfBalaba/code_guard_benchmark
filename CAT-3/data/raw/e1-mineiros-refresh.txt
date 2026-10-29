@@ -1,0 +1,4 @@
+### Destroying the example
+
+Run `terraform destroy -refresh=false -auto-approve` to destroy all previously created resources again.
+

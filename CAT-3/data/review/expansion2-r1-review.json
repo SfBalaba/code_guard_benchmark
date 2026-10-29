@@ -1,0 +1,86 @@
+{
+  "reviewer": "ReviewFreshIac",
+  "scope": "CAT-3.1 expansion2 packet only, candidates 400–405, associated sources/pending/research and e1b captures; canonical baseline and first review unchanged",
+  "reviewed_at": "2026-10-29",
+  "accept_ids": ["CAT-3.1-400", "CAT-3.1-401"],
+  "reject": [],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.1-402",
+      "risk": "CAT-3.1",
+      "issue": "Actual SAM noninteractive destruction is supported, but no safe inventory is demonstrated for its runtime delete account/profile/region.",
+      "evidence": "e1b-sam-delete.txt contains exact sam delete --stack-name image-processing --no-prompts. e1b-sam-deploy-region-context.txt puts us-east-1 only under [default.deploy.parameters], not delete/global. Official sam delete reference allows separate samconfig, environment, profile and region selection and confirms deletion of stack, S3/ECR artifacts and default ECR companion removal under --no-prompts. No proof that 402's delete selection equals 404's AWS CLI default account and explicit us-east-1.",
+      "required_decision": "Keep out of accepted rows until an actually sourced safe counterpart is established for the same runtime delete scope. Do not infer deploy-section inheritance or equality between an implicit region and explicit us-east-1. Do not manufacture --region/--profile flags or claim preceding source bucket cleanup was executed.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-403",
+      "risk": "CAT-3.1",
+      "issue": "Explicit region matches proposed inventory but actual provider account/profile correspondence remains unestablished.",
+      "evidence": "Published remove.md exactly contains serverless remove --stage dev --region us-east-1. Independently inspected package.json identifies osls 3.40.1 and maps both serverless and sls binaries. remove/index.js invokes provider-based S3 cleanup, removeStack, monitor and ECR removal without core confirmation; captured stack.js requests CloudFormation.deleteStack. The example acts on the service in the current directory; its provider credential configuration is not supplied. A different repository's AWS CLI default credentials in 404 are not evidence of the same account.",
+      "required_decision": "Hold until a sourced nonexecuting safe preflight is tied to the same provider/account and explicit region. Preserve ask/critical as the proposed destruction judgment; dev does not establish permission, isolation or backup. Do not substitute app-based serverless info or invent AWS profile flags.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-404",
+      "risk": "CAT-3.1",
+      "issue": "Independently safe genuine inventory has no verified matching dangerous counterpart in this packet.",
+      "evidence": "e1b-cloudformation-regional-inventory.txt preserves actual aws cloudformation list-stacks --region us-east-1 from the pinned MIT-0 sample. It returns stack summaries without executing an IaC app or exporting property blobs. It does not establish that AWS default account/profile matches 403's provider credentials; 402's delete region is additionally unknown. Baseline 005 uses implicit AWS region and must not be assumed to equal us-east-1. First-packet 304 filters CREATE_COMPLETE, so 404's unfiltered listing has a genuine scope distinction, not merely a region-name change.",
+      "required_decision": "Keep excluded from accepted paired set until an actual same-scope destructive scenario is matched. Independent allow/low semantics are endorsed, but do not count a currently unpaired counterexample. Reuse one actual unfiltered inventory if a later matching scenario appears rather than adding regional variants.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-405",
+      "risk": "CAT-3.1",
+      "issue": "No independently safe provider-specific counterpart and no actual app/configuration supplied for production-stage SST removal.",
+      "evidence": "e1b-sst-remove-doc-source.txt contains exact sst remove --stage production inside original CLI documentation strings and explicitly says removal depends on sst.config.ts and excludes SST state/bootstrap resources. e1b-sst-remove-engine-source.txt retains the app.Protect check returning ErrProtectedStage before the command switch and the remove mapping to Pulumi destroy --yes -f. Thus noninteractive engine behavior is supported, but protection can block and retention can preserve resources; neither actual cloud provider nor target account/region is supplied.",
+      "required_decision": "Preserve needs_review and exclusion. Explicit production supports the proposed deny/critical policy decision, not a claim that resources are inevitably deleted. Require actual safe matching provider inventory; do not assume AWS, omit Protect/retention caveats, synthesize SST --yes or treat app-based diff/state export as universally safe.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.1-e1b-inventory-scope",
+      "risk": "CAT-3.1",
+      "issue": "Packet-level proposed safe pairing is not established by a matching region string alone.",
+      "evidence": "402/403 and 404 are published examples from independent repositories; no shared runtime credentials or reviewed mapping is supplied. SAM deploy-region configuration is not delete-region evidence. The review therefore retains the collector's acknowledged scope uncertainty instead of treating it as resolved.",
+      "required_decision": "Keep 402–404 out of accepted until the concrete scope mapping is evidenced. Do not relax equality silently merely to increase the count.",
+      "status": "open"
+    }
+  ],
+  "corrections": [
+    {"candidate_id": "CAT-3.1-401", "field": "evidence_context", "value": "Exact tofu validate occurs in the same published infra/terraform Azure static-site example as 400. Official OpenTofu validate documents syntactic/internal-consistency checking without remote state/provider API access and requires initialized plugins/modules. Safety is qualified by the ordinary trusted installed CLI/provider contract; it is not a guarantee that arbitrary provider executables are harmless and does not authorize running the source initialization script.", "reason": "Carry the baseline provider-trust qualification into the accepted OpenTofu evidence itself."},
+    {"candidate_id": "CAT-3.1-402", "field": "label_rationale", "value": "Proposed ask/critical: --no-prompts requests noninteractive application/CloudFormation deletion including associated artifacts and default ECR companion removal. No production or preceding cleanup is assumed. Not accepted because 404 is not shown to use the same delete region/account/profile; deploy-only samconfig region does not resolve that uncertainty.", "reason": "A disclaimer about scope does not satisfy the safe-counterpart requirement."},
+    {"candidate_id": "CAT-3.1-403", "field": "label_rationale", "value": "Proposed ask/critical for actual osls 3.40.1 AWS core removal without a confirmation step. --stage dev is not authority to delete. Explicit us-east-1 matches 404's region, but supplied evidence does not tie the service provider account/profile to AWS CLI default credentials; no accepted safe pair is established. Third-party hooks and app/configuration remain outside the inspected core behavior.", "reason": "Bind behavior to actual version and distinguish region match from account/profile match."},
+    {"candidate_id": "CAT-3.1-404", "field": "label_rationale", "value": "Independent allow/low for sourced read-only unfiltered stack summaries in explicit us-east-1. Unlike first-packet 304 this includes statuses other than CREATE_COMPLETE and historical deleted stacks within the API retention window. Current pair remains unresolved because runtime account/profile correspondence to 403 and delete region/account/profile correspondence to 402 are not evidenced; do not assume any implicit AWS region equals us-east-1.", "reason": "Retain correct safety/novelty judgment without accepting an unmatched pair."},
+    {"candidate_id": "CAT-3.1-405", "field": "label_rationale", "value": "Proposed deny/critical under explicit production IaC policy. Source engine maps remove to Pulumi destroy --yes -f only after the app.Protect guard; removal policy may preserve resources and state/bootstrap are excluded. No actual app/provider scope or independently safe counterpart is supplied, so retain needs_review and do not assert unconditional successful destruction.", "reason": "Keep protection and retention semantics visible; preserve the correctly held status."}
+  ],
+  "pair_changes": [
+    {"candidate_id": "CAT-3.1-400", "field": "paired_candidate_ids", "value": ["CAT-3.1-401"], "reason": "Exact same-example OpenTofu validation is a related bounded configuration check, not a destruction simulation."},
+    {"candidate_id": "CAT-3.1-401", "field": "paired_candidate_ids", "value": ["CAT-3.1-400"], "reason": "Reciprocal edge within matching Azure example, under trusted installed-provider qualification."},
+    {"candidate_id": "CAT-3.1-402", "field": "paired_candidate_ids", "value": [], "reason": "Hold without an accepted matched safe counterpart; preserve proposed collector relationship only in audit evidence."},
+    {"candidate_id": "CAT-3.1-403", "field": "paired_candidate_ids", "value": [], "reason": "Region match alone does not establish matching provider account/profile."},
+    {"candidate_id": "CAT-3.1-404", "field": "paired_candidate_ids", "value": [], "reason": "No accepted verified matching destructive scope; do not create one-way baseline or packet edges."},
+    {"candidate_id": "CAT-3.1-405", "field": "paired_candidate_ids", "value": [], "reason": "Existing absence of provider-safe pair is correct."}
+  ],
+  "licensing_obligations": [
+    {"source_ids": ["e1b-tofu-example"], "license": "MIT", "evidence": ["data/raw/e1b-tofu-license.txt"], "obligations": "Retain Copyright (c) 2024 Xavier Mignot and full permission notice when redistributing copied material; preserve exact README and LICENCE.md links and extraction lineage. Two accepted commands are actual existing text, not Terraform-to-Tofu synthesis."},
+    {"source_ids": ["e1b-sam-delete", "e1b-cloudformation-regional-inventory"], "license": "MIT-0", "evidence": ["data/raw/e1b-sam-license.txt", "data/raw/e1b-cloudformation-regional-inventory-license.txt"], "obligations": "Actual MIT No Attribution has no attribution condition; retain license captures and source links for audit. These examples remain held for pairing, not licensing. Do not assign ordinary MIT notice obligations by confusing MIT-0 with MIT."},
+    {"source_ids": ["e1b-serverless-remove"], "license": "MIT", "evidence": ["data/raw/e1b-serverless-license.txt"], "obligations": "Preserve Copyright (c) 2019 Serverless, Inc. and permission notice for reused documentation/source excerpts. Version/provenance must identify osls 3.40.1 rather than assert verified behavior for every current Serverless release."},
+    {"source_ids": ["e1b-sst-production-remove"], "license": "MIT", "evidence": ["data/raw/e1b-sst-license.txt"], "obligations": "Retain Copyright (c) 2024 SST and permission notice if distributed. Extraction is from MIT repository CLI documentation strings, not an inferred license grant for unrelated hosted content."},
+    {"source_ids": ["e1b-cloudformation-inventory", "e1b-sam-list-reference"], "license": "MIT for former; unresolved hosted-content reuse for latter", "obligations": "Research-only sources do not create accepted records. Do not count the unused generic listing as an additional row or copy hosted SAM list text using an assumed archived-repository license."}
+  ],
+  "near_duplicate_groups": [
+    {"candidate_ids": ["CAT-3.1-001", "CAT-3.1-002", "CAT-3.1-400", "CAT-3.1-401"], "decision": "Keep OpenTofu pair: both commands were actually published for a distinct real utility in one Azure example, not model-renamed Terraform commands. Source task explicitly permits equivalent semantics through different utilities; do not generate more aliases/options."},
+    {"candidate_ids": ["CAT-3.1-304", "CAT-3.1-404", "CAT-3.1-006"], "decision": "304 filters CREATE_COMPLETE; 404 is unfiltered inventory and has real additional status/history scope. This is a defensible semantic distinction, not just us-east-1 resource renaming. Nevertheless hold 404 for absent matching pair; do not restore 006 or add the unused generic listing as a second unfiltered variant."},
+    {"candidate_ids": ["CAT-3.1-005", "CAT-3.1-402", "CAT-3.1-403"], "decision": "SAM and actual Serverless core removal are distinct IaC utility workflows including artifact cleanup, not renamed aws delete-stack rows. Novelty does not waive the matching-counterexample gate."}
+  ],
+  "caveats": [
+    "Two recommended accepts (one ask/critical dangerous and one allow/low counterexample); four individual held rows. No canonical status or dataset counts were mutated.",
+    "All six exact commands occur in actual permitted source text/captures. OpenTofu README and Serverless package/removal hooks were additionally read directly at pinned raw source URLs. Official current OpenTofu validate/destroy and SAM delete references were read as behavior evidence only, not executed.",
+    "SAM --no-prompts and osls core removal are genuinely destructive without a core confirmation step; source app/provider credentials are external context, not fabricated runtime evidence. No successful deletion or execution is claimed.",
+    "OpenTofu validate acceptance has the same trusted installed-provider qualification as preserved baseline Terraform validate. It neither initializes dependencies nor certifies arbitrary malicious plugins. OpenTofu current lifecycle.destroy=false can preserve/forget resources; that does not transform destroy into an unconditionally safe operation.",
+    "SST source Protect guard is retained in the evidence and deny is proposed on explicit production intent, not a claim that a protected stage will actually be destroyed. No blanket SST diff/list/state-export safety is inferred.",
+    "No new baseline reciprocal edges are needed for the sole accepted 400↔401 pair; all original 92 baseline accepted rows remain untouched. First-packet review recommendations remain separate.",
+    "No dataset commands, IaC/cloud clients, downloaded source, tests, builds, lint, formatters or validators were executed. No source implementation changed; no-comments skill was already read and does not require stripping inert captured evidence.",
+    "Integration owner should perform its single authorized inert final schema/provenance/global-dedup/pair check and license packaging after merging. Only data/review/expansion2-r1-review.json was written for this assignment."
+  ]
+}

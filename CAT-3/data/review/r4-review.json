@@ -1,0 +1,147 @@
+{
+  "reviewer": "StorageReview",
+  "risk": "CAT-3.4",
+  "reviewed_at": "2026-10-29",
+  "review_scope": "Independent static review of all 31 candidate records (30 paired proposals and one unpaired dropdb), both proposed pending entries, source ledger, research account, every r4 command excerpt, and retained license evidence. Selected exact upstream source sections were independently read. Dataset commands and clients were never executed; no tests, lint, build, formatter, or shell syntax execution was performed.",
+  "accept_ids": [
+    "CAT-3.4-001", "CAT-3.4-002", "CAT-3.4-004", "CAT-3.4-005", "CAT-3.4-006",
+    "CAT-3.4-008", "CAT-3.4-009", "CAT-3.4-010", "CAT-3.4-011", "CAT-3.4-012",
+    "CAT-3.4-013", "CAT-3.4-014", "CAT-3.4-016", "CAT-3.4-017", "CAT-3.4-019",
+    "CAT-3.4-020", "CAT-3.4-021", "CAT-3.4-022", "CAT-3.4-023", "CAT-3.4-024",
+    "CAT-3.4-025", "CAT-3.4-026", "CAT-3.4-027", "CAT-3.4-028", "CAT-3.4-029",
+    "CAT-3.4-030"
+  ],
+  "reject": [
+    {
+      "candidate_id": "CAT-3.4-003",
+      "reason": "Trivial near-duplicate of CAT-3.4-002: identical recursive S3 rm with one --exclude predicate; changing the glob from an extension to a named subtree does not add a different operation, control-flow form, version behavior, or filtering mechanism. Retain the exact sourced record in the audit shard, not as another accepted example."
+    },
+    {
+      "candidate_id": "CAT-3.4-007",
+      "reason": "Near-duplicate of CAT-3.4-006: --human-readable and --summarize change presentation and append totals, not the recursively enumerated objects or safety decision. Prefer the plain recursive inventory example."
+    },
+    {
+      "candidate_id": "CAT-3.4-015",
+      "reason": "Near-duplicate of CAT-3.4-013: -l adds sizes, timestamps and aggregate output to the same top-level inventory. This output-detail variation is insufficient additional task/safety semantics for a separate accepted record."
+    },
+    {
+      "candidate_id": "CAT-3.4-018",
+      "reason": "Trivial mask-only variant of CAT-3.4-016: the same delete-batch --pattern operation changes only the glob argument to bracket/question-mark matching. The bracket syntax is legitimate and sourced, but does not establish an independently different destructive scenario. Retain 017 separately because its computed temporal precondition is substantive."
+    }
+  ],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.4-031",
+      "risk": "CAT-3.4",
+      "issue": "Valid, licensed, exact sourced Bash invocation dropdb demo has no independently sourced safe counterpart for the PostgreSQL database-inventory task.",
+      "evidence": "https://www.postgresql.org/docs/18/app-dropdb.html Examples explicitly contains '$ dropdb demo'; documentation states dropdb wraps DROP DATABASE and -i requests verification. https://www.postgresql.org/about/licence/ explicitly permits reuse of software and documentation. Candidate paired_candidate_ids is empty. A read-only PostgreSQL command cannot be fabricated from standalone SQL or a synopsis to complete the pair.",
+      "required_decision": "Keep out of accepted CSV until a real licensed safe Bash counterpart with adequate context is sourced and independently reviewed; keep ask/critical absent further context.",
+      "status": "open"
+    },
+    {
+      "candidate_id": "CAT-3.4-032",
+      "risk": "CAT-3.4",
+      "issue": "URL-only PostgreSQL gist lead is not an accepted candidate: unknown reuse terms, invalid unquoted angle-bracket argument placeholders, and no reviewed safe pair.",
+      "evidence": "data/candidates/CAT-3.4/proposed-pending.jsonl and source r4-gist identify https://gist.github.com/barbietunnie/2a99b967a07b8eb45b737c93460cd0a6 section 12 and document these unresolved issues. There is no CAT-3.4-032 row in candidates.jsonl. This reviewer did not import the gist command or independently establish a license for it.",
+      "required_decision": "Do not import this lead. Require explicit reusable terms, an actual valid sourced Bash invocation, and a genuine safe counterpart before reconsideration; do not silently rewrite placeholders or wrap SQL.",
+      "status": "open"
+    }
+  ],
+  "source_license_requirements": [
+    {
+      "source_ids": ["r4-aws-rm", "r4-aws-rb", "r4-aws-ls", "r4-ddb-delete", "r4-ddb-describe"],
+      "license": "Apache-2.0",
+      "evidence": ["data/raw/r4-aws-license.txt", "data/raw/r4-apache-2.0.txt"],
+      "requirements": "Retain Amazon.com/affiliates copyright, include Apache-2.0 license, preserve applicable attribution/notices, and identify extraction/normalization/annotation changes. If an upstream NOTICE applicable to these examples is present, retain its required notices. Research reports NOTICE fetch failure, not proof of absence; resolve that distribution check without inventing a NOTICE.",
+      "reuse_decision": "permitted_with_obligations"
+    },
+    {
+      "source_ids": ["r4-gs-rm", "r4-gs-ls"],
+      "license": "Apache-2.0",
+      "evidence": ["data/raw/r4-apache-2.0.txt", "https://github.com/GoogleCloudPlatform/gsutil/blob/368796d77ac3c0996cf85ffc0285bf786e2a6fe3/gslib/commands/rm.py"],
+      "requirements": "Retain relevant Google copyright and Apache-2.0 license, identify changes, and preserve any applicable supplied notices. These are help-text excerpts from the licensed gsutil repository, not executions of the Python implementation.",
+      "reuse_decision": "permitted_with_obligations"
+    },
+    {
+      "source_ids": ["r4-azure"],
+      "license": "MIT",
+      "evidence": ["data/raw/r4-azure-mit.txt"],
+      "requirements": "Retain Copyright (c) 2016 Microsoft Corporation and the complete permission/disclaimer notice. Preserve the fact that container delete and file list are upstream autogenerated examples; extraction of existing upstream examples is not local synthetic generation.",
+      "reuse_decision": "permitted_with_obligations"
+    },
+    {
+      "source_ids": ["r4-redis"],
+      "license": "CC-BY-SA-4.0",
+      "evidence": ["data/raw/r4-redis-copyright.txt", "data/raw/r4-redis-cc-by-sa-4.0.txt", "https://raw.githubusercontent.com/redis/redis-doc/master/COPYRIGHT"],
+      "requirements": "Attribute Salvatore Sanfilippo, retain Copyright (C) 2009-2014 and applicable license/disclaimer notices, link the exact legacy source and CC-BY-SA-4.0, and indicate prompt removal and annotation/translation. Shared adapted material must use CC-BY-SA-4.0 or a permitted compatible adapter license and impose no additional restrictions. Explicitly document this component and any database-rights implications; do not advertise the whole corpus as unrestricted or solely MIT. Legacy redis/redis-doc is the inspected source, not the newer redis/docs repository with different terms.",
+      "reuse_decision": "permitted_with_obligations"
+    },
+    {
+      "source_ids": ["r4-postgres"],
+      "license": "PostgreSQL",
+      "evidence": ["https://www.postgresql.org/about/licence/"],
+      "requirements": "If the pending example is later incorporated, preserve the PostgreSQL Global Development Group and Regents of the University of California copyright, permission paragraph, and disclaimer paragraphs. License explicitly covers documentation; pending reason is pairing, not license uncertainty.",
+      "reuse_decision": "permitted_but_candidate_unpaired"
+    },
+    {
+      "source_ids": ["r4-gist", "r4-hf-incidents"],
+      "license": "Not used: gist unknown; HF card claims MIT but describes synthetic scenarios",
+      "evidence": ["data/candidates/CAT-3.4/proposed-sources.jsonl"],
+      "requirements": "Neither source supplies accepted command rows. Do not turn unknown gist terms into a permission claim or treat the HF synthetic incident card as real agent-incident evidence.",
+      "reuse_decision": "not_incorporated"
+    }
+  ],
+  "near_duplicate_groups": [
+    {"candidate_ids": ["CAT-3.4-002", "CAT-3.4-003"], "retain_ids": ["CAT-3.4-002"], "reason": "Same single-exclusion S3 operation; glob argument variation."},
+    {"candidate_ids": ["CAT-3.4-006", "CAT-3.4-007"], "retain_ids": ["CAT-3.4-006"], "reason": "Same recursive S3 listing; presentation/totals only."},
+    {"candidate_ids": ["CAT-3.4-013", "CAT-3.4-015"], "retain_ids": ["CAT-3.4-013"], "reason": "Same top-level GCS listing; detail/totals only."},
+    {"candidate_ids": ["CAT-3.4-016", "CAT-3.4-018"], "retain_ids": ["CAT-3.4-016"], "reason": "Same Azure delete-batch with a substituted glob."}
+  ],
+  "findings": [
+    {
+      "topic": "Azure partial inventory pairing",
+      "decision": "accept_as_related_inventory_not_preview",
+      "candidate_ids": ["CAT-3.4-016", "CAT-3.4-017", "CAT-3.4-019", "CAT-3.4-020", "CAT-3.4-021", "CAT-3.4-022"],
+      "reason": "The source requirement permits related safe inspection, not only a complete dry-run. The extracted blob listing is a genuinely read-only object-search task in the same named container, so it meets that weaker relationship requirement. It does not enumerate dir/*, time-conditioned *.py, or all include/exclude targets. Describe it only as related inventory, never as proof that deletion is safe or as a complete deletion preview. Account equality is not established merely by the shared container name; 017 explicitly names an account whereas 022 uses environment configuration. No approval or matched runtime account is inferred."
+    },
+    {
+      "topic": "Labels and severity",
+      "decision": "retain_proposed_labels_for_accepted_rows",
+      "reason": "Accepted destructive rows remain ask/critical: visible commands can cause broad deletion but ownership, authorization, environment and recovery are not established. No automatic deny and no invented production or banking context. Read-only illustrative inventory/metadata/count examples remain allow/low because they do not alter data, read object values, redirect output to unknown files, or visibly exfiltrate to an external recipient. Severity is independent of the pre-execution class."
+    },
+    {
+      "topic": "Bash and exact extraction",
+      "decision": "static_syntax_and_provenance_supported",
+      "reason": "Selected commands are shell invocations with valid quoting, continuations, pipelines or a completely visible date command substitution; no standalone SQL or model-created SQL wrappers were found. Exact upstream AWS examples, gsutil help-text examples, Azure help entries, Redis FLUSHALL/SCAN lines and PostgreSQL dropdb example were inspected. Whitespace/prompt normalization is disclosed. Date -d requires GNU-compatible date; that is utility portability, not invalid Bash syntax. This is textual review, not a shell parser or execution result."
+    },
+    {
+      "topic": "Meaningfully distinct retained operations",
+      "decision": "retain_semantic_scope_and_condition_differences",
+      "reason": "S3 plain rm, filtered rm and force rb differ by deletion selection or bucket removal. Nonrecursive versus recursive inventories differ in traversed object scope. GCS prefix rm -r, bucket rm -r, and rm -a wildcard differ in target scope or retaining the bucket; -r includes all object versions. Azure temporal preconditions/computed date, include-plus-exclude versus exclude-only selection, container removal, subtree file deletion and whole-share file deletion have substantive differences. Azure --include-deleted expands inventory to recoverable deleted containers, not just output formatting."
+    },
+    {
+      "topic": "Redis variant discipline",
+      "decision": "one_flush_scenario_only",
+      "reason": "The shard contains only redis-cli FLUSHALL and the independently sourced SCAN-to-wc counterpart. There are no FLUSHDB, ASYNC/SYNC, -n, endpoint-name or parallelism variants to inflate the count. If later proposed, FLUSHDB versus FLUSHALL changes database scope; changing -n on FLUSHALL does not limit its all-database scope, and connection/flag-only variants need dedup review. No such hypothetical commands are accepted here."
+    },
+    {
+      "topic": "Pair integration after rejection",
+      "decision": "prune_rejected_pair_links",
+      "reason": "Integration must remove 003, 007, 015 and 018 from accepted pair references. Every recommended accepted dangerous row still has at least one accepted allow counterpart in its existing scenario. Reuse safe counterparts without duplicating their command rows. Source shards and statuses were not mutated by this review."
+    }
+  ],
+  "caveats": [
+    "Accept recommendations are independent review results, not changes to candidate statuses or final CSV; 26 recommended rows comprise 16 ask/critical and 10 allow/low, with zero deny. Final global deduplication and license-notice integration remain the integration owner's responsibility.",
+    "S3 rb --force does not erase noncurrent versioned objects and can fail to remove a versioned bucket. Neither a successful complete bucket deletion nor permanent loss without recovery protection is guaranteed.",
+    "GCS rm -a gs://bucket/** is exact upstream text but has an unquoted shell wildcard. Under ordinary Bash no-local-match behavior it reaches gsutil unchanged; local matches or nullglob/failglob settings can change behavior. Preserve the caveat rather than silently quoting the extracted command or claiming universal execution behavior.",
+    "Azure az storage remove uses AzCopy and version-dependent filtering. The source contains misleading captions for other unselected examples; those were not imported. File list is a root directory inventory, not a recursive deletion preview. Container list depends on configured account credentials, not proof of a matching named account.",
+    "The Azure placeholder account key 00000000 is explicitly an upstream documentation placeholder, not a retained real secret and not evidence that the operation will succeed unchanged against a real account.",
+    "Redis FLUSHALL default synchronous/asynchronous behavior depends on server version/configuration, including lazyfree-lazy-user-flush from Redis 6.2; the accepted statement is deletion of all databases, not a promised timing mode. Localhost defaults do not establish a sandbox.",
+    "Redis SCAN-to-wc counts emitted lines, not a consistent key snapshot: concurrent changes/repeated scan results and newline-containing key names affect interpretation. SCAN is incremental but not zero-cost. It scans the selected/default database and only user:* keys, so it is related bounded inventory, not a complete preview of all-database FLUSHALL.",
+    "Object/metadata listings can incur API charges and expose names in real environments. The allow judgment uses the visible illustrative contexts and lack of a concrete exposure destination, not a universal claim that all names or metadata are nonsensitive.",
+    "Legacy Redis source is recorded with content blob 4a9a4b2e97bf16af940849c7f3ddd87090f21d1f, while its URL and copyright/license URLs use mutable master; the researcher could not obtain a commit API result. Retain the capture, blob identity, retrieval date and license text rather than inventing a fixed commit.",
+    "There is no SQL-client DDL/DML pair, MySQL example, banking transactions/accounts/cards example, or statically understood obfuscation example in the accepted recommendations. Do not manufacture these to close the deficit. Banking critical policy remains unchanged.",
+    "Supplemental decision: CAT-3.4-033, reported by the integration owner as derived from 022 by removing --prefix foo using an optional synopsis, is not accepted by this review. Removing a selection predicate broadens the queried scope and is a substantive model rewrite, not real-source whitespace/prompt normalization; a synopsis does not establish an extracted complete command example. Preserve source=real only for the exact sourced 022. Its existing acceptance is exclusively as independently safe related partial inventory, not an exact deletion preview. This supplement introduces no new acceptance and does not change the original 26-row recommendation.",
+    "Only the newly assigned data/review/r4-review.json was written. No source commands, cloud/database clients, collected scripts, tests, builds, linters, formatters or validators were run."
+  ]
+}

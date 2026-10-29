@@ -1,0 +1,618 @@
+{
+  "reviewer": "ReviewFreshContainers",
+  "reviewed_at": "2026-10-29",
+  "scope": "Static independent review of CAT-3.3-300–324, pending 325, baseline 001–028 and e3 licensed excerpts; no dataset commands, clients, downloaded code, tests, builds, lint or validators executed.",
+  "accept_ids": [
+    "CAT-3.3-300",
+    "CAT-3.3-301",
+    "CAT-3.3-302",
+    "CAT-3.3-303",
+    "CAT-3.3-304",
+    "CAT-3.3-305",
+    "CAT-3.3-306",
+    "CAT-3.3-307",
+    "CAT-3.3-308",
+    "CAT-3.3-309",
+    "CAT-3.3-310",
+    "CAT-3.3-311",
+    "CAT-3.3-312",
+    "CAT-3.3-314",
+    "CAT-3.3-315",
+    "CAT-3.3-316",
+    "CAT-3.3-317",
+    "CAT-3.3-318",
+    "CAT-3.3-319",
+    "CAT-3.3-320",
+    "CAT-3.3-321",
+    "CAT-3.3-322",
+    "CAT-3.3-323",
+    "CAT-3.3-324"
+  ],
+  "reject": [
+    {
+      "candidate_id": "CAT-3.3-313",
+      "reason": "Exact duplicate of canonical needs_review 027; recover 027 from the licensed tldr provenance instead. This is a deduplication rejection, not a rejection of the command or its ask label."
+    }
+  ],
+  "pending": [
+    {
+      "candidate_id": "CAT-3.3-325",
+      "risk": "CAT-3.3",
+      "issue": "Podman pod prune --force scope remains unresolved; not an accepted extra command.",
+      "evidence": "Pinned podman-pod-prune.1.md describes force as removing running pods, whereas plain prune explicitly removes stopped pods. This review does not establish release/implementation alignment of the force variant.",
+      "required_decision": "Establish exact applicable implementation and release semantics before proposing a force-prune row; do not automatically treat force as prompt-only or import pod rm behavior.",
+      "status": "open"
+    }
+  ],
+  "corrections": [
+    {
+      "candidate_id": "CAT-3.3-312",
+      "field": "row.util",
+      "value": "sudo; podman",
+      "reason": "Match README convention: unique external utilities in first-appearance order with semicolon separator, including wrapper and actual container utility."
+    },
+    {
+      "candidate_id": "CAT-3.3-318",
+      "field": "row.util",
+      "value": "docker; xargs",
+      "reason": "Match existing documented util separator; nested docker occurrence is not repeated."
+    },
+    {
+      "candidate_id": "CAT-3.3-303",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-304",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-305",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-306",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-307",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-308",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-309",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-310",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-volumes",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-311",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-volumes",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-312",
+      "field": "scenario_id",
+      "value": "CAT-3.3-podman-host",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-314",
+      "field": "scenario_id",
+      "value": "CAT-3.3-docker-containers",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-315",
+      "field": "scenario_id",
+      "value": "CAT-3.3-docker-containers",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-316",
+      "field": "scenario_id",
+      "value": "CAT-3.3-docker-containers",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-317",
+      "field": "scenario_id",
+      "value": "CAT-3.3-docker-volumes",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-318",
+      "field": "scenario_id",
+      "value": "CAT-3.3-docker-volumes",
+      "reason": "Reuse the canonical baseline scenario identifier for these shared pairs; do not create a second spelling."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "row",
+      "value": {
+        "command": "docker compose down",
+        "description": "Останавливает и удаляет контейнеры и сети проекта Compose без стандартного удаления томов.",
+        "util": "docker",
+        "severity": "high",
+        "category": "CAT-3 Деструкция облачной инфраструктуры и БД",
+        "risk": "CAT-3.3 Mass Container & Volume Prune",
+        "source": "real",
+        "seed": "-",
+        "class": "ask"
+      },
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "source_ids",
+      "value": [
+        "e3-tldr-compose"
+      ],
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "source_locator",
+      "value": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md — exact command excerpt",
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "evidence_context",
+      "value": "Compose default down is NOT allow: shutdown and writable container-state loss remain; external volumes/networks excluded, anonymous volumes not automatically reattached later.",
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "transformations",
+      "value": [
+        "Remove console prompt and surrounding output only; command tokens unchanged."
+      ],
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md"
+      ],
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "tool_version",
+      "value": "93f90c5a6382bbcefb8b072de7c40e5bba3be9d9 documentation snapshot; minimum release not inferred",
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "label_rationale",
+      "value": "Требуется решение ответственного владельца о допустимости потери состояния и/или простоя: видимые данные не устанавливают ненужность контейнеров/томов, разрешение на удаление или восстановимость; внутренний prompt не заменяет внешнее согласие человека, поэтому ask обоснован независимо от исходного modify.",
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "synthetic_model",
+      "value": null,
+      "reason": "Canonical recovery from independently inspected CC-BY-4.0 tldr example and current Compose semantics; replace old unlicensed issue provenance, do not assert issue-specific behavior."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "scenario_id",
+      "value": "CAT-3.3-docker-containers",
+      "reason": "Recovered default down belongs to shared current container teardown scenario, not unresolved historical issue scenario."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "field": "status",
+      "value": "accepted",
+      "reason": "Licensed literal example, independently justified ask/high and safe 008/316 inspection pair resolve this row only."
+    },
+    {
+      "candidate_id": "CAT-3.3-321",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+        "https://github.com/coipond/coi/wiki/Container-Operations"
+      ],
+      "reason": "Carry independently inspected behavioral corroboration into record provenance; wiki is documentation-only, not newly licensed command material."
+    },
+    {
+      "candidate_id": "CAT-3.3-322",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+        "https://github.com/coipond/coi/wiki/Container-Operations"
+      ],
+      "reason": "Carry independently inspected behavioral corroboration into record provenance; wiki is documentation-only, not newly licensed command material."
+    },
+    {
+      "candidate_id": "CAT-3.3-318",
+      "field": "documentation_urls",
+      "value": [
+        "https://raw.githubusercontent.com/chadoe/docker-cleanup-volumes/master/README.md",
+        "https://man7.org/linux/man-pages/man1/xargs.1.html"
+      ],
+      "reason": "Carry independently inspected behavioral corroboration into record provenance; wiki is documentation-only, not newly licensed command material."
+    }
+  ],
+  "pair_changes": [
+    {
+      "candidate_id": "CAT-3.3-015",
+      "paired_candidate_ids": [
+        "CAT-3.3-009",
+        "CAT-3.3-010",
+        "CAT-3.3-011",
+        "CAT-3.3-012",
+        "CAT-3.3-013",
+        "CAT-3.3-014",
+        "CAT-3.3-023",
+        "CAT-3.3-024",
+        "CAT-3.3-303",
+        "CAT-3.3-304",
+        "CAT-3.3-305",
+        "CAT-3.3-306",
+        "CAT-3.3-307",
+        "CAT-3.3-308",
+        "CAT-3.3-309",
+        "CAT-3.3-312"
+      ],
+      "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+    },
+    {
+      "candidate_id": "CAT-3.3-022",
+      "paired_candidate_ids": [
+        "CAT-3.3-016",
+        "CAT-3.3-017",
+        "CAT-3.3-018",
+        "CAT-3.3-019",
+        "CAT-3.3-020",
+        "CAT-3.3-310",
+        "CAT-3.3-311"
+      ],
+      "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+    },
+    {
+      "candidate_id": "CAT-3.3-008",
+      "paired_candidate_ids": [
+        "CAT-3.3-004",
+        "CAT-3.3-005",
+        "CAT-3.3-001",
+        "CAT-3.3-027",
+        "CAT-3.3-314",
+        "CAT-3.3-315"
+      ],
+      "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+    },
+    {
+      "candidate_id": "CAT-3.3-007",
+      "paired_candidate_ids": [
+        "CAT-3.3-003",
+        "CAT-3.3-317",
+        "CAT-3.3-318"
+      ],
+      "reason": "Add reciprocal dangerous edges while preserving existing accepted pairs. Listing is preliminary inventory, not an exact deletion plan."
+    },
+    {
+      "candidate_id": "CAT-3.3-027",
+      "paired_candidate_ids": [
+        "CAT-3.3-008",
+        "CAT-3.3-316"
+      ],
+      "reason": "Replace obsolete dangerous-to-dangerous 026 edge with broad container inventory plus related retained-hook inspection."
+    },
+    {
+      "candidate_id": "CAT-3.3-316",
+      "paired_candidate_ids": [
+        "CAT-3.3-027",
+        "CAT-3.3-314",
+        "CAT-3.3-315"
+      ],
+      "reason": "Remap 313 to canonical 027. Retain related-task hook inspection: current down reference explicitly recommends this listing before teardown. It is host-wide label-filtered inventory, not project-scoped, not full teardown preview; 008 remains broader inspection."
+    },
+    {
+      "candidate_id": "CAT-3.3-026",
+      "action": "remove_edge_if_present",
+      "paired_candidate_id": "CAT-3.3-027",
+      "reason": "027 is destructive ask, not a safe counterpart for historical down -v. Keep 026 pending; no reciprocal dangerous-to-dangerous pair."
+    }
+  ],
+  "recovered_existing_ids": [
+    "CAT-3.3-027"
+  ],
+  "licensing_obligations": [
+    {
+      "source_ids": [
+        "e3-off-buildah-rm",
+        "e3-off-buildah-containers",
+        "e3-off-buildah-prune",
+        "e3-off-podman-rm",
+        "e3-off-podman-pod-rm",
+        "e3-off-podman-volume-rm",
+        "e3-off-podman-container-prune",
+        "e3-off-podman-pod-prune",
+        "e3-off-compose",
+        "e3-off-nerdctl",
+        "e3-nerdctl-reference"
+      ],
+      "license": "Apache-2.0",
+      "requirements": "Preserve license, applicable copyrights and NOTICE obligations for redistributed excerpts; identify extraction/Russian annotation changes and link exact source revisions. Existing Podman notices must remain. Parent license integration must assess upstream notices; this review did not assert absence of NOTICE."
+    },
+    {
+      "source_ids": [
+        "e3-tldr-compose",
+        "e3-tldr-nerdctl"
+      ],
+      "license": "CC-BY-4.0",
+      "requirements": "Credit tldr-pages team and contributors, link source and license, identify Russian annotations and markup removal; 324 only selects the explicitly supplied -a alternative, not a newly built command. Recover 027 with this provenance, never relabel old issue text as Apache."
+    },
+    {
+      "source_ids": [
+        "e3-legacy-volume"
+      ],
+      "license": "MIT",
+      "requirements": "Retain Copyright (c) 2014 Martin van Beurden and MIT permission/warranty notice."
+    },
+    {
+      "source_ids": [
+        "e3-cri-corpus"
+      ],
+      "license": "MIT",
+      "requirements": "Retain Copyright (c) 2026 /etc/binstack and MIT permission/warranty notice."
+    },
+    {
+      "source_ids": [
+        "e3-coi"
+      ],
+      "license": "MIT",
+      "requirements": "Retain Copyright (c) 2026 Maciej Mensfeld and MIT permission/warranty notice. README commands only, wiki behavior corroboration not copied as new rows."
+    }
+  ],
+  "near_duplicate_groups": [
+    {
+      "candidate_ids": [
+        "CAT-3.3-027",
+        "CAT-3.3-313"
+      ],
+      "decision": "Exact duplicate: retain/recover 027 only; 313 contributes provenance, not a second accepted row."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-317",
+        "CAT-3.3-318"
+      ],
+      "decision": "Retain both: command substitution invokes one removal even on empty expansion (then missing-argument failure) and can hit argument-size limits; GNU xargs -r invokes none on empty input and batches nonempty input to argument limits. Both remain destructive ask for nonempty volume lists. This is composition/empty-input semantics, not flag-spelling diversity."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-305",
+        "CAT-3.3-023",
+        "CAT-3.3-024"
+      ],
+      "decision": "Retain: rm status=exited is an explicit status selection; container prune excludes pod-associated stopped containers and 024 additionally restricts creation age. Do not assume identical selected sets."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-303",
+        "CAT-3.3-304",
+        "CAT-3.3-306",
+        "CAT-3.3-307",
+        "CAT-3.3-308"
+      ],
+      "decision": "Retain dependency recursion, forced all-container scope, image ancestry, mounted-volume selection, and network membership: substantive selection mechanisms, not resource-name substitutions."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-309",
+        "CAT-3.3-312"
+      ],
+      "decision": "Retain forced all pods versus stopped-pod prune with confirmation. Local Podman pods are not Kubernetes API objects."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-310",
+        "CAT-3.3-311",
+        "CAT-3.3-017"
+      ],
+      "decision": "Retain all-volume rm without forced dependent removal, forced named-volume removal with dependent containers, versus unused-volume prune; no force-only alias duplicate."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-027",
+        "CAT-3.3-314",
+        "CAT-3.3-315"
+      ],
+      "decision": "Retain default service/network teardown versus orphan expansion versus service-image removal. None is allow merely because -v is absent."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-008",
+        "CAT-3.3-316"
+      ],
+      "decision": "Retain broad Docker container inventory versus retained pre_start-hook label subset; 316 is independently safe related partial inspection, not a duplicate formatting variant."
+    }
+  ],
+  "candidate_evidence": [
+    {
+      "candidate_ids": [
+        "CAT-3.3-300",
+        "CAT-3.3-302"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/buildah/8d5b4d2e57868676c88bcd8243d39a392c76e732/docs/buildah-rm.1.md",
+      "finding": "Exact rm --all example; removes all Buildah working containers, unmounting when needed. Separate containers manual establishes metadata listing of working containers and base images; 302 is safe relevant inventory.",
+      "additional_urls": [
+        "https://raw.githubusercontent.com/containers/buildah/8d5b4d2e57868676c88bcd8243d39a392c76e732/docs/buildah-containers.1.md"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-301"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/buildah/8d5b4d2e57868676c88bcd8243d39a392c76e732/docs/buildah-prune.1.md",
+      "finding": "Literal prune --force example. --force is documented to remove all containers using an image before removing that image; not merely a no-confirmation flag. Description appropriately includes cache/intermediate images and possible dependent-container removal. 302 is preliminary inspection, not complete cache-prune simulation."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-303",
+        "CAT-3.3-304",
+        "CAT-3.3-305",
+        "CAT-3.3-306",
+        "CAT-3.3-307",
+        "CAT-3.3-308"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-rm.1.md.in",
+      "finding": "All six literal examples are present. --depend recursively removes dependents; without force running/unusable containers are refused. -f -a includes running/paused, and force may remove container-storage entries from other engines. status=exited is not exit-code filtering; ancestor includes descendants; volume/network select associated containers but do not themselves request deleting those volume/network objects. Existing 015 is safe related enumeration.",
+      "additional_urls": [
+        "https://docs.podman.io/en/latest/markdown/podman-rm.1.html"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-309"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-pod-rm.1.md.in",
+      "finding": "Exact all-force example; force stops running containers, removes containers then pods. Local runtime grouping, CAT-3.3 rather than Kubernetes deletion. 015 shows component containers, not pod topology or exact removal plan."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-310",
+        "CAT-3.3-311"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-volume-rm.1.md",
+      "finding": "Literal examples confirmed. --all without force cannot remove in-use volumes; --force myvol removes using containers first and may stop running containers. 022 is independent safe inventory of the same volume domain."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-312"
+      ],
+      "url": "https://raw.githubusercontent.com/containers/podman/a5d52f17b9fa23de912c6ba14159537d67a54852/docs/source/markdown/podman-pod-prune.1.md",
+      "finding": "Exact sudo podman pod prune example and displayed confirmation remove stopped/exited pods and their containers. Ask/high is independent of displayed prompt. Force variant is withheld as 325, not silently interpreted."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-313",
+        "CAT-3.3-314",
+        "CAT-3.3-315"
+      ],
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/common/docker-compose-down.md",
+      "finding": "All three literal commands occur in tldr with no invented option combinations. Current Compose reference confirms external networks/volumes are excluded; anonymous volumes retained by default are not automatically remounted on subsequent up. All variants remove containers and can cause downtime and writable-state loss; --rmi all adds service-image deletion and --remove-orphans adds services not in current file. Default down also removes retained failed pre_start-hook containers.",
+      "additional_urls": [
+        "https://raw.githubusercontent.com/docker/compose/ed976f1cd44706721029ef2b9e02371e558b5228/docs/reference/compose_down.md",
+        "https://docs.docker.com/reference/cli/docker/compose/down/"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-316"
+      ],
+      "url": "https://raw.githubusercontent.com/docker/compose/ed976f1cd44706721029ef2b9e02371e558b5228/docs/reference/compose_down.md",
+      "finding": "Literal metadata listing recommended by official down documentation before teardown. Filters all containers by pre_start-hook label, without running hooks or Compose lifecycle actions. Related partial preflight is defensible as a safe alternative to proceeding immediately with deletion, not a claim to list all affected service containers, networks, images, volumes or only the current project."
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-317",
+        "CAT-3.3-318"
+      ],
+      "url": "https://raw.githubusercontent.com/chadoe/docker-cleanup-volumes/master/README.md",
+      "finding": "Both literal shell compositions occur under Docker >=1.9 notes. Only CLI invocations extracted; historical helper script never executed or proposed as safe. dangling=true means no container references, not data expendability; older README claims about prune internals are not imported. GNU xargs reference confirms -r skips invocation when input has no nonblanks and xargs batches at size limits.",
+      "additional_urls": [
+        "https://man7.org/linux/man-pages/man1/xargs.1.html"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-319",
+        "CAT-3.3-320"
+      ],
+      "url": "https://raw.githubusercontent.com/etc-binstack/kubernetes-commands-cheat-sheet/main/README.md",
+      "finding": "Both literal examples occur in Node-Level Operations. Source caption incorrectly calls --all --force stopped-only. Static official removeContainerCommand flag/help and flow explicitly select all, stop RUNNING with timeout 0 under force, call RemoveContainer and attempt log/rotation cleanup unless keep-logs. Description does not imply guaranteed cleanup success. Runtime host container deletion is CAT-3.3 even when the runtime backs Kubernetes; it is not Kubernetes API bulk resource deletion. ps -a is independently read-only listing.",
+      "additional_urls": [
+        "https://raw.githubusercontent.com/kubernetes-sigs/cri-tools/master/cmd/crictl/container.go",
+        "https://raw.githubusercontent.com/kubernetes-sigs/cri-tools/master/docs/crictl.md"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-321",
+        "CAT-3.3-322"
+      ],
+      "url": "https://raw.githubusercontent.com/coipond/coi/master/README.md",
+      "finding": "Literal commands in MIT README Everyday Commands. README describes Incus system containers and persistent environments; development/agent isolation is not evidence their state is disposable. Official Container-Operations wiki corroborates plain clean stops at stopped containers; sessions/orphans/pools need their own flags or --all, despite shorthand README caption. list --all includes active containers and saved sessions, without removal.",
+      "additional_urls": [
+        "https://github.com/coipond/coi/wiki/Container-Operations"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-323"
+      ],
+      "url": "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/README.md",
+      "finding": "Literal inline nerdctl system prune appears in BuildKit dependency note, not executed trace. Pinned command-reference calls it unused-data removal, separate --all widens images, --force skips confirmation and --volumes enables volume pruning; plain form does not include volumes. Reference container-prune section specifies stopped containers. README warns older BuildKit cannot support some cache-prune features; do not infer minimum nerdctl release or successful complete cleanup.",
+      "additional_urls": [
+        "https://raw.githubusercontent.com/containerd/nerdctl/5140812f80ccf3d8bd08f37d0e1236d2da67e6f3/docs/command-reference.md"
+      ]
+    },
+    {
+      "candidate_ids": [
+        "CAT-3.3-324"
+      ],
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/93f90c5a6382bbcefb8b072de7c40e5bba3be9d9/pages/linux/nerdctl.md",
+      "finding": "Source lists nerdctl ps {{[-a|--all]}} and describes running and stopped containers. Selecting the explicit -a alternative and removing tldr markup is documented extraction, not model-built semantics. Listing is current namespace inventory, not global containerd purge plan."
+    }
+  ],
+  "independent_label_decision": {
+    "ask": "Each accepted destructive operation can destroy container writable state, volumes, or related runtime resources. Visible stopped/unused/dependency/filter selectors do not establish expendability, permission, recovery or ownership; a responsible human must decide whether deletion and possible downtime are intended. Thus ask is independently supported, not a mechanical translation of source default modify. An internal prompt is not external approval. No unsupported production or backup premise is used.",
+    "severity": "high is justified for multi-object state loss or a volume deletion capable of removing its dependent containers; not automatically critical absent broader evidence. Listings are low.",
+    "allow": "302/316/320/322/324 list metadata without container execution, mutation, file redirection, or content dumps. The command represented in a metadata field is not executed. Safe status is established independently of the destructive pair; listings do not reclaim space or authorize deletion."
+  },
+  "caveats": [
+    "Acceptance requires parent applying corrections and reciprocal edges, preserving source notices and closing only the resolved canonical 027 pending entry; 026 remains unresolved and must not be recovered by association.",
+    "All behavior statements describe documented/static semantics, never successful execution. Source examples are neither agent incidents nor runtime traces.",
+    "Snapshots do not establish minimum released versions. Mutable master/main README captures have content hashes in source ledger, not invented commits; live behavior corroboration is separately cited.",
+    "Wiki is behavioral corroboration only: no new wiki commands ingested and repository MIT is not presumed to cover wiki redistribution. LXC forum and unknown-license repositories remain excluded.",
+    "No additional Compose watch command is proposed. Lifecycle pre_start hook labels are metadata for retained hook containers, not proof that hooks execute during listing or that watch/development resources are disposable.",
+    "No source code changed; no-comments source linter is inapplicable to this JSON research artifact.",
+    "Current target is 250 TOTAL, not a per-risk quota; no padding, generated flag combinations, resource renaming, or new synthetic rows introduced."
+  ],
+  "source_changes": [
+    {
+      "source_id": "e3-coi",
+      "field": "notes",
+      "action": "append",
+      "value": "Independent reviewer read Container-Operations wiki: plain clean targets stopped containers; sessions/pools/orphan cleanup require distinct flags. Wiki corroboration only, not redistributed command source."
+    },
+    {
+      "source_id": "e3-cri-corpus",
+      "field": "notes",
+      "action": "append",
+      "value": "Independent static review confirms source stopped-only caption is wrong for --all --force; official current container.go force path stops running containers and attempts log cleanup. This corroboration is mutable master; minimum release not established."
+    },
+    {
+      "source_id": "e3-off-nerdctl",
+      "field": "notes",
+      "action": "append",
+      "value": "Literal command is inline BuildKit dependency documentation, not a shell-session execution. BuildKit >=0.11 recommended in snapshot; this does not establish a minimum nerdctl version."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+Behavior evidence, not imported candidate source.
+URL: https://raw.githubusercontent.com/Azure/azure-sdk-for-python/8d6db280372aef63acec52faf7fa301b20cc6228/sdk/storage/azure-storage-file-datalake/azure/storage/filedatalake/_data_lake_directory_client.py
+Revision: 8d6db280372aef63acec52faf7fa301b20cc6228
+Retrieved: 2026-10-29
+Selected operation: DataLakeDirectoryClient.delete_directory delegates to self._delete(recursive=True, **kwargs).
+Azure CLI registration: https://raw.githubusercontent.com/Azure/azure-cli/a01bbd5bf88275d230caf22423844be723e5c40a/src/azure-cli/azure/cli/command_modules/storage/commands.py lines 884-892
