@@ -1,0 +1,16 @@
+{
+  "risk": "CAT-2.1",
+  "baseline": 30,
+  "selected": 31,
+  "added": 1,
+  "excluded": 0,
+  "relabelled": 0,
+  "classes": {
+    "ask": 12,
+    "allow": 17,
+    "deny": 2
+  },
+  "gold": false,
+  "local": 0,
+  "gap": 219
+}

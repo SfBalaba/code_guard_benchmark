@@ -1,0 +1,2 @@
+id,old_class,new_class,action,reason
+N01-27dec1b3b851279f,,deny,sourced_addition,"Удаление удалённого ref, не matching colon. CAT-2.1; deny по правилу необратимых последствий."

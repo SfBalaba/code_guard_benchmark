@@ -1,11 +1,11 @@
 {
   "files": {
-    "PREFLIGHT.md": "70c8f58fdc7b484a60732d1eb40e2b9c7f53e48bc5a1e52726844d4272bb5be2",
-    "commands.csv": "c99dba67f678b861970f0dbb419ac634197e42f76fa78da7c28d06939ba8ec96",
-    "pairs.jsonl": "b68b39f819f260dff4d1c28b70cd98e8d2637a99e7da6a2a4528ea943a7e6b7b",
-    "README.md": "a375f35fae08c347644aac57b9d48af0450cec48a0130ae5e9189a872aad26ad",
-    "provenance.jsonl": "a87110b28705e7e71bd4e89cefe5515050ca45cc2a1c62652b30dff418e02aeb",
-    "QUESTIONS.md": "3a14271da6bcbffc443334dfc54079079fe5317dbdc3de502e92c82697a25833",
+    "PREFLIGHT.md": "d8bf77773c76dcb700694d218fabd12147a418be17bbd6720c8836b48d53d2eb",
+    "commands.csv": "ce040e0f2fd7cd7f7e5f50729aa84d420a59b89d8c58fce99a5f71dbc24d10b2",
+    "pairs.jsonl": "bc9d737d5745da0d8648b9c1505cb590d8034d9e90ccc2f19cc51853073b936c",
+    "README.md": "5cae51d15e80728b60a9f3e93fe463c5efd218bc06b9956b9cb671f4f88135cf",
+    "provenance.jsonl": "328a6a7ff7b64adacacd371b517c9c6c6af1d9740154c5f299094717a7ae883d",
+    "QUESTIONS.md": "4268363d22aa35ac3edf2961ed1d705e84cfc7e02039deac5bef0c790f38c092",
     "archive/archive.jsonl": "cbf3eac77b938eb9713985cade42bbe247baa5ce839208eb2d95ccd764a86b5b",
     "LICENSES/git__git/COPYING": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
     "LICENSES/nvbn__thefuck/LICENSE.md": "79c5121a816be0d8a5efada23a1b858de7394291bc668ed6c830c8861bb14749",
@@ -22,9 +22,9 @@
     "followup_2026-10-31/pairs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "followup_2026-10-31/checks.json": "80360fc18f5101858acc27f4860daff5b1d2b2826efbd96815103b904b93798f",
     "followup_2026-10-31/README.md": "d1526bbb3cbdbfe449f990c606518a7b960eea8188d12aa2cf7ca353bc48a90a",
-    "followup_2026-10-31/provenance.jsonl": "e7668861ceac27fd3b7f2b956848979d6950850dc82973697c9fb738c6cbf3f3",
+    "followup_2026-10-31/provenance.jsonl": "975e944a083e0f4a91d827b7486f07a75d4563bba9b7fed18b6d0df5bdd567f0",
     "followup_2026-10-31/attribution.json": "b3e1e5e5fc4dbddebc371912e4de031739f7cfdb7d57ead916acc02ac471b8a5",
-    "viewer/index.html": "8009ead8454523b7bb0a579333c04b72cc48382b0910d23c02624271f6eede1d",
+    "viewer/index.html": "49cdb577ac54953ae7ce0a2256cc59bb76dcfab252d35664d69ebb3f13307a9b",
     "viewer/preflight.html": "0b3b044ea748d28622498fd7ee18b72cba5f8e5513e1d1ce9608add514460a73",
     "viewer/discussion.html": "5577ef4082621465437319bad4fa2ec894e04e73e27722167e15d1f20c354a7d",
     "audit_v0_2026-10-31/summary.json": "e4926d75380ad06917f2c639c81ed14b957304e91a4b802b484b408ad52589d7",
@@ -50,7 +50,28 @@
     "audit_v0_2026-10-31/history/README.md": "fafad8f30a3e57252cd90c3bc0661ae6b4db5dc84467c7fc404d8b6225b62fa9",
     "audit_v0_2026-10-31/history/QUESTIONS.md": "5be5bade743311edc2e5367790b724d5bbfb658c05a2f037e7d97318e3209d44",
     "discussion/reserve.jsonl": "734a4f0fc315f67fba9a41362de2de3e76577ae7600f83745abfce4489ea1e3a",
-    "discussion/other.jsonl": "eabf95f11e9aa0ec3233abacb9d90c45fbb9c0888064bed0e5974e89d94c503f"
+    "discussion/other.jsonl": "eabf95f11e9aa0ec3233abacb9d90c45fbb9c0888064bed0e5974e89d94c503f",
+    "overnight_2026-11-01/summary.json": "df9d92d123b59ba9c66bbfe2253290ad56beb6c279da76628ff6180e75f57949",
+    "overnight_2026-11-01/CLASS_CHANGELOG.csv": "a8909e36ecf30005503c651585fccac5f9a6208f4697a396e71272bde5a09e6a",
+    "overnight_2026-11-01/REVIEW_QUEUE.jsonl": "294e0a93362875c309c0c2789bf61a28b9a34eaee10cf3a808ce0da514fc6b5e",
+    "overnight_2026-11-01/pairs_after.jsonl": "bc9d737d5745da0d8648b9c1505cb590d8034d9e90ccc2f19cc51853073b936c",
+    "overnight_2026-11-01/AUTHORIZATION.md": "3882f85d0f62cdf186f4215a8c0f376699e6bf18ec310ad3eb574c9e6ab8eff4",
+    "overnight_2026-11-01/REPORT.md": "c4e722780dede319fa8497c7aee383091ffb6405319c1daad6f33f13fba15eec",
+    "overnight_2026-11-01/rebuild_selected.py": "f2332c39b20bd657c8a7e4b8007c40aa497cc3b32ea92fcefbf7f5de73eb6946",
+    "overnight_2026-11-01/validate.py": "164d5477d4922537a57c12e70c6cab269b43185b37e7fce5a3fe608334d62bd9",
+    "overnight_2026-11-01/test_seed_drafts.jsonl": "ecbb6863052febf37d0f9cd2bca037bf097f5d524d8fd92876114f954c58d885",
+    "overnight_2026-11-01/selection_output.jsonl": "f80a9654a415c9b1d0667f448d9c4aed331207892db2c540f27ac5f0be4a0346",
+    "overnight_2026-11-01/validation.json": "92a9a3d5849d0039a560f7f2999691596600a5dfbdadf99ac7065c9c88f176ed",
+    "overnight_2026-11-01/POOL_RECONSIDERATION.jsonl": "094e1d6c4e7adf34ce3218c754dcf3cd84d091b31c50688af897a9a1247d7512",
+    "overnight_2026-11-01/SELECTED_REVIEW.jsonl": "82fa08394a7f5f46fe92991412be62f2db973f9b1171e74eb6cd40b01de786a0",
+    "overnight_2026-11-01/history/PREFLIGHT.md": "70c8f58fdc7b484a60732d1eb40e2b9c7f53e48bc5a1e52726844d4272bb5be2",
+    "overnight_2026-11-01/history/commands.csv": "c99dba67f678b861970f0dbb419ac634197e42f76fa78da7c28d06939ba8ec96",
+    "overnight_2026-11-01/history/pairs.jsonl": "b68b39f819f260dff4d1c28b70cd98e8d2637a99e7da6a2a4528ea943a7e6b7b",
+    "overnight_2026-11-01/history/README.md": "a375f35fae08c347644aac57b9d48af0450cec48a0130ae5e9189a872aad26ad",
+    "overnight_2026-11-01/history/provenance.jsonl": "a87110b28705e7e71bd4e89cefe5515050ca45cc2a1c62652b30dff418e02aeb",
+    "overnight_2026-11-01/history/manifest.json": "5cb706fb5481cfcf42db2cca9d69dd1a964ec7f46e8434e69162f70b157b742e",
+    "overnight_2026-11-01/history/QUESTIONS.md": "3a14271da6bcbffc443334dfc54079079fe5317dbdc3de502e92c82697a25833",
+    "overnight_2026-11-01/sources/git-push.adoc": "d1a9b356d6630280b354eeb6270985d57dacf89935cec682da60772d315be27e"
   },
   "original_v3_ids": [
     "C2-01318c049f9eb003",
@@ -90,10 +111,10 @@
     "other": 332,
     "archive": 242
   },
-  "selected": 30,
+  "selected": 31,
   "labels_preliminary": true,
   "original_backup_branch": "archive/local_CAT-2.1_before_publication_20261029",
-  "publication_version": "v0-audit-2026-10-31",
+  "publication_version": "overnight-2026-11-01",
   "previous_published_head": "dd5676ed5f19e53f2e1638ba42159e68cabe0da0",
   "followup_ids": [
     "F31-021b348a08934414",
@@ -101,7 +122,7 @@
     "F31-a4e8f15536bc9362"
   ],
   "followup_anonymized_ids": [],
-  "baseline_head": "a16768495827fa580aeac135a06fc12264fb98f6",
+  "baseline_head": "00e073bc4b79732141aaf3780e957a8984aee5e7",
   "selected_ids": [
     "C2-17d4dd0baaecba16",
     "C2-c46563ec87573f6b",
@@ -132,11 +153,11 @@
     "F31-8029c84b2ce2f0ec",
     "F31-a4e8f15536bc9362",
     "C2-2c5eb43056a713c1",
-    "C2-a28109fdab032503"
+    "C2-a28109fdab032503",
+    "N01-27dec1b3b851279f"
   ],
   "excluded_ids": [],
   "added_ids": [
-    "C2-2c5eb43056a713c1",
-    "C2-a28109fdab032503"
+    "N01-27dec1b3b851279f"
   ]
 }
