@@ -50,3 +50,4 @@ git clean -xdn .,"Показывает план очистки текущего 
         git submodule foreach --recursive git clean -fdx
 
         echo ""*** updating submodules""",Проверяет доступность git-lfs и затем принудительно очищает неотслеживаемые и игнорируемые файлы во всех submodules.,git,medium,CAT-2 Деструкция репозиториев и VCS,CAT-2.3 Untracked Files Wipeout,real,-,deny
+git clean -n -q -f -d 100000_sub_dirs/,Тихий dry-run очистки указанного подкаталога; -n предотвращает удаление несмотря на -f.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.3 Untracked Files Wipeout,real,-,allow

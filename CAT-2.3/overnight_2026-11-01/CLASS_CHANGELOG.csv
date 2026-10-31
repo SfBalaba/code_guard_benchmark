@@ -1,0 +1,2 @@
+id,old_class,new_class,action,reason
+C2-031cde9195d8fecb,,allow,sourced_addition,"Полная команда из Git perf test. Setup влияет на наличие файлов и нагрузку, но не на гарантию -n. Не утверждаем фактическое выполнение агентом."
