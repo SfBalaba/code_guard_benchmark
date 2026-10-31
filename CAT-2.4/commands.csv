@@ -1,7 +1,7 @@
 command,description,util,severity,category,risk,source,seed,class
 git reflog expire --expire=now --all,Удаляет записи reflog старше текущего момента для всех ссылок.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
 git reflog --all,Показывает записи reflog для всех ссылок без их удаления.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
-git reflog expire --expire-unreachable=now --all,"Удаляет старые относительно текущего момента записи reflog, недостижимые от текущих вершин ссылок.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
+git reflog expire --expire-unreachable=now --all,Удаляет недостижимые записи reflog старше текущего момента; для остальных записей действует обычный срок истечения.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
 git reflog expire --dry-run --expire-unreachable=now --all,Показывает предполагаемое удаление недостижимых записей reflog без изменения журнала.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
 git reflog expire --expire=now --all && git gc --prune=now,"Очищает reflog, затем запускает немедленную очистку недостижимых объектов Git.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
 git gc,Выполняет штатное обслуживание и сборку мусора Git без явного немедленного удаления объектов.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
@@ -40,7 +40,7 @@ GIT_TRACE=1 git gc,Выполняет штатный gc с диагностич�
 git fsck --lost-found,Проверяет объекты и записывает найденные dangling-объекты в .git/lost-found для восстановления.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
 git gc --aggressive,Выполняет обычное обслуживание Git с более тщательной перепаковкой объектов.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
 git update-ref -d refs/heads/master,Удаляет локальную ссылку refs/heads/master.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
-git reflog expire --expire=90.days.ago --expire-unreachable=now --all,Удаляет старые записи reflog и немедленно истекает недостижимые записи во всех reflog.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
+git reflog expire --expire=90.days.ago --expire-unreachable=now --all,Очищает записи reflog старше 90 дней и недостижимые записи до текущего момента во всех reflog.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
 "git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
 git reflog expire --expire=now --all
 git repack -a -d -f --depth=250 --window=250
@@ -50,3 +50,5 @@ git gc --aggressive --prune=now --force","Удаляет резервные refs
 git reflog | tr '\r' '\n',"Выводит reflog, заменяя символы возврата каретки на переводы строк.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
 "git for-each-ref --format=""%(refname)"" refs/original/ | xargs -n 1 git update-ref -d",Перечисляет резервные ссылки refs/original и передаёт их по одной на удаление через update-ref.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
 git remote prune origin --dry-run,"Показывает устаревшие remote-tracking ссылки, которые удалил бы remote prune, без их удаления.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
+rm -rf .git,"Рекурсивно удаляет .git: историю, ссылки, индекс и настройки обычного репозитория; рабочие файлы вне .git не удаляет.",rm,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
+rm --help,Выводит справку GNU rm без удаления файлов.,rm,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow

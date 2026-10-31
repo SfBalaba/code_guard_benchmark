@@ -1,0 +1,24 @@
+[
+  {
+    "id": "C2-d80fe00573054777",
+    "sources": [
+      {
+        "url": "https://stackoverflow.com/a/64708926",
+        "author": "Mark Adelsberger",
+        "author_url": "https://stackoverflow.com/users/7050130/mark-adelsberger",
+        "license": "CC BY-SA 4.0"
+      }
+    ]
+  },
+  {
+    "id": "C2-1efe30f976adc4a6",
+    "sources": [
+      {
+        "url": "https://gist.github.com/slyphon/1357148/3595989d6516476e67e8ecc8551dbdf2568b44d6",
+        "author": "slyphon",
+        "author_url": "https://github.com/slyphon",
+        "license": "not_specified_for_gist"
+      }
+    ]
+  }
+]

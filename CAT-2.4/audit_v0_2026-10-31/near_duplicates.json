@@ -1,0 +1,26 @@
+[
+  {
+    "left": "C2-31ac61cae9deed00",
+    "right": "C2-e37b7bf32dcd152f",
+    "similarity": 0.9057,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-e37b7bf32dcd152f",
+    "right": "C2-31eae7661e830739",
+    "similarity": 0.9206,
+    "different_classes": false,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-edd7e515fde52f27",
+    "right": "C2-330ab3b38073304c",
+    "similarity": 0.9118,
+    "different_classes": false,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  }
+]

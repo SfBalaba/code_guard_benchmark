@@ -1,0 +1,5 @@
+id,command,old_class,new_class,old_severity,new_severity,action,reason
+C2-31ac61cae9deed00,git reflog expire --expire-unreachable=now --all,deny,deny,high,high,corrected,--expire-unreachable=now --all явно сокращает возможности восстановления; применяется дефолт S003.
+C2-4eb0e6013e9edd8c,git reflog expire --expire=90.days.ago --expire-unreachable=now --all,deny,deny,high,high,corrected,"90.days.ago для обычных записей не отменяет expire-unreachable=now; уничтожается часть информации восстановления, не все объекты немедленно."
+C2-d80fe00573054777,rm -rf .git,,deny,,high,added,"Явная цель .git относится к CAT-2.4 по S003, а не к общей очистке файлов CAT-1. Если .git является gitfile, удаляется этот файл связи; состояние ФС не делает запрос безопасным."
+C2-1efe30f976adc4a6,rm --help,,allow,,low,added,"Полная prompt-команда из Linux-транскрипта. --help завершает GNU rm до удаления; это общий контрпример той же утилитой, не preview .git и не переносимое обещание для BSD rm."
