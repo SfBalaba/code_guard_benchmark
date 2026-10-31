@@ -1,0 +1,4 @@
+command,description,util,severity,category,risk,source,seed,class
+git push origin refs/tags/0.0.1:refs/tags/0.0.1,Публикует явно заданную ссылку тега без запроса принудительной перезаписи.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.1 Irreversible History Rewrite / Force Push,real,-,allow
+git push separate-remote @{6.months.ago}:master,Публикует прежнее состояние текущей ветки из reflog в master без force.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.1 Irreversible History Rewrite / Force Push,real,-,allow
+git push origin refs/tags/0.0.1^{commit}:refs/heads/new_branch,"Публикует коммит, на который указывает тег, в явно заданную ветку без force.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.1 Irreversible History Rewrite / Force Push,real,-,allow

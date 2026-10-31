@@ -1,0 +1,90 @@
+[
+  {
+    "left": "C2-c46563ec87573f6b",
+    "right": "C2-2a1b1066c76301ca",
+    "similarity": 0.898,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-c46563ec87573f6b",
+    "right": "C2-aa7920d2537a6fb2",
+    "similarity": 0.9778,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-0421020ea0c48a88",
+    "right": "C2-270f359103df980f",
+    "similarity": 0.9434,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-0421020ea0c48a88",
+    "right": "C2-655a274455be4549",
+    "similarity": 0.9825,
+    "different_classes": false,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-270f359103df980f",
+    "right": "C2-16f880284c51ff51",
+    "similarity": 0.8889,
+    "different_classes": false,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-270f359103df980f",
+    "right": "C2-655a274455be4549",
+    "similarity": 0.9259,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-2a1b1066c76301ca",
+    "right": "C2-aa7920d2537a6fb2",
+    "similarity": 0.92,
+    "different_classes": false,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-01318c049f9eb003",
+    "right": "C2-81e8c0fd52e8b7aa",
+    "similarity": 0.9024,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-b5de9b45fd0b5312",
+    "right": "C2-69016479262c6ab4",
+    "similarity": 0.9919,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-b5de9b45fd0b5312",
+    "right": "C2-c9c2bf7521daedce",
+    "similarity": 0.976,
+    "different_classes": true,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  },
+  {
+    "left": "C2-69016479262c6ab4",
+    "right": "C2-c9c2bf7521daedce",
+    "similarity": 0.9683,
+    "different_classes": false,
+    "same_whitespace_normalized": false,
+    "review": "Сигнал сходства, не доказанный дубль. Режимы, флаги, refspec/цель и контроль риска сохранены; не считать независимыми семействами."
+  }
+]

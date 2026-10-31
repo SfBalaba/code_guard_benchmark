@@ -1,0 +1,21 @@
+{
+  "risk": "CAT-2.1",
+  "baseline_head": "a16768495827fa580aeac135a06fc12264fb98f6",
+  "reviewed": 28,
+  "corrected": 0,
+  "class_changed": 0,
+  "excluded": 0,
+  "added": 2,
+  "selected": 30,
+  "classes": {
+    "ask": 12,
+    "allow": 17,
+    "deny": 1
+  },
+  "near_duplicate_signals": 11,
+  "gold": false,
+  "commissions_csv_found": false,
+  "train_seed_files_found": false,
+  "train_test_overlap_verified": false,
+  "audit_zip_available": false
+}

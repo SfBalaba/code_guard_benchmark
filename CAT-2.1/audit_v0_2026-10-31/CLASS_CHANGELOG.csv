@@ -1,0 +1,3 @@
+id,command,old_class,new_class,old_severity,new_severity,action,reason
+C2-2c5eb43056a713c1,git push origin topic_branch --force-with-lease,,allow,,low,added,"Разрешённый Софьей контрпример force-with-lease. Имя topic_branch не доказывает личного владения; allow — правило v0 для lease, не гарантия отсутствия любых последствий."
+C2-a28109fdab032503,git push --mirror,,deny,,high,added,Mirror выполняет массовую принудительную перезапись и удаление удалённых refs. По правилу Софьи о необратимых последствиях — deny; неизвестное имя remote не скрывает механизм.
