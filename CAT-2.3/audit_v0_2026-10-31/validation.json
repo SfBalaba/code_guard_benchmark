@@ -1,0 +1,188 @@
+{
+  "risk": "CAT-2.3",
+  "selected": 34,
+  "csv_schema": true,
+  "nonempty": true,
+  "three_classes": true,
+  "exact_duplicates": 0,
+  "syntax": [
+    {
+      "id": "C2-156682ab5351b255",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-554e3f4fe958a872",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-9196ca035c20ed13",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f836eed3ab6510d2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-e377142493c70568",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-fb00071718aaf8d3",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-6c1789a9f6ca84ee",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-8514b0ccf7c45e0e",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-9dc35e5589dfde79",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-bcb3514201c178c0",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f8818931bda212b3",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-00c30d95741740ec",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-5e68d64eba5342ed",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-e6fedd69dd35580a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-89b8428112390deb",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4a7b16699b7964e2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-e6d78e6877f2176e",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-05e35ed0a8e4feff",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-df13e62c03386bdc",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-abf06d1761b7b897",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-210494a4e1646af0",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-d48a0e20b2b0f3fe",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-915d5f477395522a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4fa68b756fc00952",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-828bbf12b546d445",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-ec83200d7dc2b54a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-fb2732c3358c0ca7",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-ba2018e18c1c35a5",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-6ddae4c338b70c0d",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-15679bab6b430afe",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f6707561448e07ab",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-2131702cf84d6823",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a2bac15cf47af026",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-6c5f1195a40be3e8",
+      "bash_parse_passed": true,
+      "executed": false
+    }
+  ],
+  "csv_provenance_pairs_viewer_consistent": true,
+  "manifest_hashes_valid": true,
+  "historical_appendix_unchanged": true,
+  "utility_semantics": "manual source-backed review; not inferred from bash -n",
+  "train_overlap": "not_verifiable_train_not_supplied",
+  "gold": false,
+  "rebuild_byte_identical": true,
+  "full_origin_rechecks": 34
+}

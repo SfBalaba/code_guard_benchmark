@@ -1,0 +1,37 @@
+id,command,old_class,new_class,old_severity,new_severity,action,reason
+C2-156682ab5351b255,git clean -f,modify,deny,medium,medium,corrected,"-f разрешает удаление, -n отсутствует;  S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-9196ca035c20ed13,git clean -fd,modify,deny,medium,medium,corrected,"-fd включает удаление каталогов; неизвестная ценность файлов не домысливается. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-e377142493c70568,git clean -fdx,modify,deny,medium,medium,corrected,"-x расширяет удаление на ignored; игнорирование не доказывает ненужность файлов. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-6c1789a9f6ca84ee,git clean -fdX,modify,deny,medium,medium,corrected,"Заглавная X выбирает ignored, в отличие от x; -f остаётся разрушающим режимом. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-9dc35e5589dfde79,git clean -dfx --exclude=.env,modify,deny,medium,medium,corrected,"Исключение одного имени не защищает прочие удаляемые пути. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-f8818931bda212b3,git clean -xffd && git submodule foreach --recursive git clean -xffd,modify,deny,medium,medium,corrected,"Обе команды выполняют удаление; двойное f допускает вложенные репозитории, && сохраняется. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-5e68d64eba5342ed,git clean -xffd,modify,deny,medium,medium,corrected,"Два f расширяют допустимое удаление на nested repositories; это отдельный механизм. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-89b8428112390deb,"git clean -nfd
+git clean -fd",modify,deny,medium,medium,corrected,"Вторая команда git clean -fd не содержит -n; предпросмотр не делает весь блок allow. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-4a7b16699b7964e2,git -c clean.requireForce=false clean -d,modify,deny,medium,medium,corrected,"Видимый -c clean.requireForce=false объясняет отсутствие -f; скрытая конфигурация не требуется. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-e6d78e6877f2176e,yes no | git clean -fdx,modify,deny,medium,medium,corrected,"Обычный clean -fdx не запрашивает подтверждение через stdin; yes no не предотвращает действие. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-d48a0e20b2b0f3fe,"git clean -x -n -e local_settings.py # Shows what would remove (-n flag)
+git clean -x -f -e local_settings.py # Removes it (note the -f flag)",modify,deny,medium,medium,corrected,"Весь блок содержит clean -f; исключение localsettings и preview первого шага не защищают прочие файлы. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-915d5f477395522a,"git clean -fdx
+git clean -fdX",modify,deny,medium,medium,corrected,"Второй -X не отменяет более широкое удаление первого -x; нужен предпросмотр до обоих шагов. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-4fa68b756fc00952,git clean -xdf && git submodule foreach git clean -xdf,modify,deny,medium,medium,corrected,"Foreach без --recursive не означает все уровни; оба clean принудительные. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-828bbf12b546d445,git submodule foreach git clean -fd,modify,deny,medium,medium,corrected,"Видимая строка foreach содержит clean -fd без preview; рекурсивность не приписываем. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-ec83200d7dc2b54a,"git clean -xdn
+git clean -xdf
+ls -ld mybranch",modify,deny,medium,medium,corrected,"Последующий ls не восстанавливает удалённые данные; второй clean не содержит n. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-fb2732c3358c0ca7,git clean -dfe --dry-run,modify,deny,medium,medium,corrected,"В -dfe опция e потребляет следующий аргумент; отдельного флага dry-run здесь нет.  S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-6ddae4c338b70c0d,"git clean -dfx --exclude='(.*\/)*(\.idea\/.*)(.*)'
+git clean -dfx --exclude=""(.*\/)*(\.idea\/.*)(.*)""
+git clean -dfx --exclude=r'(.*\/)*(\.idea\/.*)(.*)'
+git clean -dfx --exclude=r""(.*\/)*(\.idea\/.*)(.*)""",modify,deny,medium,medium,corrected,"Exclude у clean — ignore-pattern; r перед кавычкой в Bash становится частью аргумента. Ни один вызов не содержит dry-run; не обещаем сохранность .idea. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-15679bab6b430afe,git submodule foreach --recursive git clean -dxff,modify,deny,medium,medium,corrected,"Двойное f относится к clean внутри foreach; нужен предпросмотр той же области. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-2131702cf84d6823,git clean -fdx .,modify,deny,medium,medium,corrected,"Pathspec . не делает очистку узкой до одного файла. Отдельно проверено отличие от policy-deferred именованных путей. S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
+C2-6c5f1195a40be3e8,"#!/bin/bash
+
+        # One time git hook setup
+        command -v git-lfs >/dev/null 2>&1 || { echo >&2 ""\nThis repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/post-checkout.\n""; exit 2; }
+
+        echo ""*** cleaning submodules""
+        git submodule foreach --recursive git clean -fdx
+
+        echo ""*** updating submodules""",modify,deny,medium,medium,corrected,"command -v лишь проверяет наличие исполняемого файла, не запускает LFS; перенаправления идут в /dev/null/stderr. Весь hook сохранён, основной риск — recursive clean,  S020 отменяет исключение S009: фактическое удаление clean — deny по правилу 4 Софьи; severity остаётся medium по карточке CAT-2.3, независимо от class."
