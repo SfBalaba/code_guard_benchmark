@@ -45,3 +45,8 @@ git reflog expire --expire=90.days.ago --expire-unreachable=now --all,Удаля
 git reflog expire --expire=now --all
 git repack -a -d -f --depth=250 --window=250
 git gc --aggressive --prune=now --force","Удаляет резервные refs, истекает reflog, перепаковывает объекты и запускает немедленный prune через gc.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
+"git rev-list myFeature |\
+  xargs -L1 git for-each-ref refs/tags --format=""%(refname)"" --points-at","Перечисляет теги для коммитов истории myFeature через rev-list и xargs, не удаляя ссылки.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
+git reflog | tr '\r' '\n',"Выводит reflog, заменяя символы возврата каретки на переводы строк.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow
+"git for-each-ref --format=""%(refname)"" refs/original/ | xargs -n 1 git update-ref -d",Перечисляет резервные ссылки refs/original и передаёт их по одной на удаление через update-ref.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,deny
+git remote prune origin --dry-run,"Показывает устаревшие remote-tracking ссылки, которые удалил бы remote prune, без их удаления.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.4 Repository Metadata Deletion,real,-,allow

@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://stackoverflow.com/a/67304816",
+    "author": "LeGEC",
+    "author_url": "https://stackoverflow.com/users/86072/legec",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1619629723,
+    "updated_at": 1619636830,
+    "captured_at": "2026-10-31T09:44:18.418131+00:00",
+    "snapshot_sha256": "537ab71c1927de9e764742149f5e3cb4143deca908dbc407360ddc8c651b70ef",
+    "body_sha256": "0765e672336916a0656f390d7ce9d19000625cf900a4eb071c5e37e4f1267ec0",
+    "id": "F31-59c192a4cd3cdf57",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://superuser.com/questions/1181595/conemu-using-cygwin-does-not-seem-to-recognise-r-as-a-line-end-specifically",
+    "author": "code_fodder",
+    "author_url": "https://superuser.com/users/255301/code-fodder",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1487769154,
+    "updated_at": 1487798582,
+    "captured_at": "2026-10-31T09:42:09.299057+00:00",
+    "snapshot_sha256": "ad3b86e5c2676bc9571a4cedb3925342e7ffda6707f3f201c59afebd1ca680fb",
+    "body_sha256": "eb6884b2d86d9e364da49500313d7dd276bb5910c3568c62ee37412757e3d29d",
+    "id": "F31-5e19897c18c6a9cb",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://stackoverflow.com/a/7654880",
+    "author": "Cascabel",
+    "author_url": "https://stackoverflow.com/users/119963/cascabel",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1317768295,
+    "updated_at": 1782430217,
+    "captured_at": "2026-10-31T09:44:18.418131+00:00",
+    "snapshot_sha256": "537ab71c1927de9e764742149f5e3cb4143deca908dbc407360ddc8c651b70ef",
+    "body_sha256": "6c40ff238d8209cb3d091476823ee9db64127cf2395ee0456cbe1a9c5ff97934",
+    "id": "F31-94b49458f18bf090",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://superuser.com/a/1599515",
+    "author": "Giacomo1968",
+    "author_url": "https://superuser.com/users/167207/giacomo1968",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1604437762,
+    "updated_at": 1604444316,
+    "captured_at": "2026-10-31T09:42:07.893830+00:00",
+    "snapshot_sha256": "9e0cb8f1c1caaf2fcdcfc35a09be138ca3e38019ceb5a5a588fe02414b00ffa9",
+    "body_sha256": "33d212ae09f165d4d1693c801e2714c9a2ef199cc0f7dc884ff6a8f0452083a9",
+    "id": "F31-b88d1e1c0634af47",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  }
+]

@@ -1,10 +1,10 @@
 {
   "files": {
     "PREFLIGHT.md": "15efc2eb4dc0923a12f84f289e6f73168c079c871cd8c8f2b480a325deea2542",
-    "commands.csv": "bb814ead7a03aaa1eca76a246c423824a8819da479364e450adba99ccd43d719",
-    "pairs.jsonl": "21681b4bd66329705c1e41b5f7224d09e91bc272ff5619e76895f5345f22225e",
-    "README.md": "78bde9e051d1df1fa37021c23492e77ccc053cb778c0d96723d6c798dbf00d7b",
-    "provenance.jsonl": "70a185e0420fb1cac203dcc692851be53b36b82e68edfe6575da3994f4ff81b3",
+    "commands.csv": "dc7ed2bba5ae6391e3f5812911ff34380910c9621fe2b3eac9628f659881c486",
+    "pairs.jsonl": "a9a9ea47a03bc78a63a085eba99f406f0b645b2ffe5b1a1c9d6299c4262e15e3",
+    "README.md": "9e0f11882be847ac277f79d188cd52d734aabc3761c289e263bdef6e9128b33c",
+    "provenance.jsonl": "333459d613ed138fcd32124c53203c6bc2d8bce8a39890631a23fc2e90303d04",
     "QUESTIONS.md": "5be5bade743311edc2e5367790b724d5bbfb658c05a2f037e7d97318e3209d44",
     "archive/archive.jsonl": "c85c18f1e943cd905b7194a86a4ae15277856c7533548b6664fb61e5f9f47cb2",
     "LICENSES/git__git/COPYING": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
@@ -21,7 +21,14 @@
     "LICENSES/tldr-pages__tldr/LICENSE.md": "826498c9793c53709035760c33bd6681e48380d34031320447febe675420ef4d",
     "LICENSES/tj__git-extras/LICENSE": "0054dc7fae2dc589775e252a0735d8fdea40597e30bb1c9eb1b353a53f0eccd6",
     "LICENSES/laude-institute__terminal-bench/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
-    "viewer/index.html": "9edf961429558b7958ac3bf044e8e4dda89779b12d751354d10c676d1d3141d3",
+    "followup_2026-10-31/ATTRIBUTION.md": "ec374f0d732dbb2dbfdd768f3b1e01edc9dda36c905cb7cdeb1a7722a9cab75b",
+    "followup_2026-10-31/commands.csv": "91becc4c9ebf41aab78a1b1e9fff3a98b77d0cbc2345b3b6e44575ca37d3a25b",
+    "followup_2026-10-31/pairs.jsonl": "0d5c2b41f2de7a609db419a12a90d708e91af180ebcaca8c1895517a3a44b093",
+    "followup_2026-10-31/checks.json": "a49b36974e1df8e5cfa3b56c39aaa699e8ef4eef279ceed5d81b926f9ff1a79f",
+    "followup_2026-10-31/README.md": "6f928c9b47834db15637af58eb1d7caa5c7b8de8c70878e42decf738dbfa681b",
+    "followup_2026-10-31/provenance.jsonl": "c98b1f1c639fbea4928fd5630a1bfa7a27de204f872aa70cceab2091203523e8",
+    "followup_2026-10-31/attribution.json": "f5388dbcba5f55b9ee932d3810d6d2833d44c856543e0ebdd167cb6195c4b1ed",
+    "viewer/index.html": "f4f61c63ec6f4203e54896a905b84022511799f687f702f10568ae68711b8677",
     "viewer/preflight.html": "69b3c1392f3e8b3ec7cdae0cbc698c15017d102d494d0a6abc85a81f671a5b37",
     "viewer/discussion.html": "e98068a4dab15d23f1c7a0cbbff8d92d3b4e2dcc9bfe9778dff8f85a9ef25235",
     "discussion/reserve.jsonl": "aca647192ef0df3d05a64bd191b827fe47a2cec9ab5e50b316b73436574bb2ec",
@@ -69,7 +76,16 @@
     "other": 416,
     "archive": 212
   },
-  "selected": 34,
+  "selected": 38,
   "labels_preliminary": true,
-  "original_backup_branch": "archive/local_CAT-2.4_before_publication_20261029"
+  "original_backup_branch": "archive/local_CAT-2.4_before_publication_20261029",
+  "publication_version": "followup-publication-2026-10-31",
+  "previous_published_head": "f50259cf405c99b6c06492cfe022be0022441cfe",
+  "followup_ids": [
+    "F31-59c192a4cd3cdf57",
+    "F31-5e19897c18c6a9cb",
+    "F31-94b49458f18bf090",
+    "F31-b88d1e1c0634af47"
+  ],
+  "followup_anonymized_ids": []
 }
