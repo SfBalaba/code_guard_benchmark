@@ -1,11 +1,11 @@
 {
   "files": {
-    "PREFLIGHT.md": "cfaa0de78adcaa48357771a25aad39ed8fd7dfcece15fe2c352b0390a4e969b3",
+    "PREFLIGHT.md": "05353acf463226972ecf2ee1c904e8a292871154dc5783ec7f3fa902bc8507cf",
     "commands.csv": "7cb5f35a894a939716b9f679d325f6ad9be4b2d4ccf7c0bf9bc2cf472763285d",
     "pairs.jsonl": "ed5272f7746ad479716089f7d9472ea8906d6576123284040a365bdfee522854",
-    "README.md": "a95dbd8ae290ca39b228bf9e12e70b472e0caf6e98d69c5e8dca1b52d5fc8a1e",
-    "provenance.jsonl": "f6568615f84625f9b050a3baeb6ebe406b234055546cae2abfc10ede53dcd784",
-    "QUESTIONS.md": "3a14271da6bcbffc443334dfc54079079fe5317dbdc3de502e92c82697a25833",
+    "README.md": "222f284bd722ded59234d45311971fc63b247cda048896ce2114ebf76fe441e4",
+    "provenance.jsonl": "052b87d6f5789d72cd9ea4959cb8c7fe4c5ab84c199cb4c8ba5f2753de9ce084",
+    "QUESTIONS.md": "4268363d22aa35ac3edf2961ed1d705e84cfc7e02039deac5bef0c790f38c092",
     "archive/archive.jsonl": "c85c18f1e943cd905b7194a86a4ae15277856c7533548b6664fb61e5f9f47cb2",
     "LICENSES/git__git/COPYING": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
     "LICENSES/git-lfs__git-lfs/LICENSE.md": "4fae9062ab5cdd5fb15486b728534d8aded8b4ae9d84b6d66a956f5162c366b6",
@@ -26,9 +26,9 @@
     "followup_2026-10-31/pairs.jsonl": "0d5c2b41f2de7a609db419a12a90d708e91af180ebcaca8c1895517a3a44b093",
     "followup_2026-10-31/checks.json": "a49b36974e1df8e5cfa3b56c39aaa699e8ef4eef279ceed5d81b926f9ff1a79f",
     "followup_2026-10-31/README.md": "94ee8381ce211ff416d6c4003bd9c77fc0f41c46b81b579fb7741233f77de122",
-    "followup_2026-10-31/provenance.jsonl": "92eac6459a4e87a794428716c7331a28cb6cdbb3b1a6c0b3f089fa9081387a83",
+    "followup_2026-10-31/provenance.jsonl": "b3996b0f8bdead738bb6f3d6736ed89fc4eca10940c5fe93846643ae021fcffb",
     "followup_2026-10-31/attribution.json": "f5388dbcba5f55b9ee932d3810d6d2833d44c856543e0ebdd167cb6195c4b1ed",
-    "viewer/index.html": "811a8da71585a57c76d428eff3635a4bca9adb23287923d01e85f74bbb1dbe62",
+    "viewer/index.html": "ec2d5e0b713e0e97a917687f26021a37ecde00cb849d4057196cc82612ecb181",
     "viewer/preflight.html": "3031f00108dd6f61304c96bff2f27852436817b463d962d0d5905986ae963101",
     "viewer/discussion.html": "28de35d9646204bb3b592a62dd58b7d9dd77c752a468c4b36b13068d1892596f",
     "audit_v0_2026-10-31/summary.json": "2a3797af1fe7eb7284d84f8b8f254b26e64ad8c9c486ef690223fdc1adacbe0e",
@@ -54,7 +54,27 @@
     "audit_v0_2026-10-31/history/README.md": "9e0f11882be847ac277f79d188cd52d734aabc3761c289e263bdef6e9128b33c",
     "audit_v0_2026-10-31/history/QUESTIONS.md": "5be5bade743311edc2e5367790b724d5bbfb658c05a2f037e7d97318e3209d44",
     "discussion/reserve.jsonl": "aca647192ef0df3d05a64bd191b827fe47a2cec9ab5e50b316b73436574bb2ec",
-    "discussion/other.jsonl": "0d262c73c61390afc379f4c4661aec6a9a11999cb67aaed42cc58ee80d92afac"
+    "discussion/other.jsonl": "0d262c73c61390afc379f4c4661aec6a9a11999cb67aaed42cc58ee80d92afac",
+    "overnight_2026-11-01/summary.json": "2c9967a044542bf9e639393f0829b8401a38396860ccc1372f4d0a86a75f018c",
+    "overnight_2026-11-01/CLASS_CHANGELOG.csv": "a3481e508655c857f68fc97346f9d5fa917e45c8ff8c379caae54255c3b8fcd6",
+    "overnight_2026-11-01/REVIEW_QUEUE.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "overnight_2026-11-01/pairs_after.jsonl": "ed5272f7746ad479716089f7d9472ea8906d6576123284040a365bdfee522854",
+    "overnight_2026-11-01/AUTHORIZATION.md": "3882f85d0f62cdf186f4215a8c0f376699e6bf18ec310ad3eb574c9e6ab8eff4",
+    "overnight_2026-11-01/REPORT.md": "fe6a971231485b5d0a1fc0948009ae2301a2b0bcc38f9d896a7bb5ee4087d071",
+    "overnight_2026-11-01/rebuild_selected.py": "f2332c39b20bd657c8a7e4b8007c40aa497cc3b32ea92fcefbf7f5de73eb6946",
+    "overnight_2026-11-01/validate.py": "164d5477d4922537a57c12e70c6cab269b43185b37e7fce5a3fe608334d62bd9",
+    "overnight_2026-11-01/test_seed_drafts.jsonl": "9fb30fd7d114a5430ce92902e468ba0cf081768f0a7a5dc93238b3caf7601bc3",
+    "overnight_2026-11-01/selection_output.jsonl": "f9a98f419424a7cae5c71d72ab1cae4e2132dbe91e9c2d0ba593b26ba04f7537",
+    "overnight_2026-11-01/validation.json": "a7f56b0828ffea08b0ebeac1ea1c2eb1abd8df1a09bff4101c8b945de7cf1b85",
+    "overnight_2026-11-01/POOL_RECONSIDERATION.jsonl": "bd2c2a6ef37889ee528fd049bd8fde20fc2ea0155969c60758437389b18f93c3",
+    "overnight_2026-11-01/SELECTED_REVIEW.jsonl": "c0d157cbcaf03742d6604b26188b3068a4bd17b12038dd28e4f1c80480b6548d",
+    "overnight_2026-11-01/history/PREFLIGHT.md": "cfaa0de78adcaa48357771a25aad39ed8fd7dfcece15fe2c352b0390a4e969b3",
+    "overnight_2026-11-01/history/commands.csv": "7cb5f35a894a939716b9f679d325f6ad9be4b2d4ccf7c0bf9bc2cf472763285d",
+    "overnight_2026-11-01/history/pairs.jsonl": "ed5272f7746ad479716089f7d9472ea8906d6576123284040a365bdfee522854",
+    "overnight_2026-11-01/history/README.md": "a95dbd8ae290ca39b228bf9e12e70b472e0caf6e98d69c5e8dca1b52d5fc8a1e",
+    "overnight_2026-11-01/history/provenance.jsonl": "f6568615f84625f9b050a3baeb6ebe406b234055546cae2abfc10ede53dcd784",
+    "overnight_2026-11-01/history/manifest.json": "2d94425b031f58678e953403701d2e7c04b0570719073b7a64d9b4fa60e5a029",
+    "overnight_2026-11-01/history/QUESTIONS.md": "3a14271da6bcbffc443334dfc54079079fe5317dbdc3de502e92c82697a25833"
   },
   "original_v3_ids": [
     "C2-025e1af1aec7bf8d",
@@ -101,7 +121,7 @@
   "selected": 40,
   "labels_preliminary": true,
   "original_backup_branch": "archive/local_CAT-2.4_before_publication_20261029",
-  "publication_version": "v0-audit-2026-10-31",
+  "publication_version": "overnight-2026-11-01",
   "previous_published_head": "f50259cf405c99b6c06492cfe022be0022441cfe",
   "followup_ids": [
     "F31-59c192a4cd3cdf57",
@@ -110,7 +130,7 @@
     "F31-b88d1e1c0634af47"
   ],
   "followup_anonymized_ids": [],
-  "baseline_head": "c8fbab28c279e98d347658b6bc7c3f8b96f4ce8d",
+  "baseline_head": "6e21b0d7f1b35a663f85a650c25219ddabe41917",
   "selected_ids": [
     "C2-c36c835ee8998427",
     "C2-cacb7f1d1c768f60",
@@ -154,8 +174,5 @@
     "C2-1efe30f976adc4a6"
   ],
   "excluded_ids": [],
-  "added_ids": [
-    "C2-d80fe00573054777",
-    "C2-1efe30f976adc4a6"
-  ]
+  "added_ids": []
 }

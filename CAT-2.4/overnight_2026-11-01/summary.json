@@ -1,0 +1,15 @@
+{
+  "risk": "CAT-2.4",
+  "baseline": 40,
+  "selected": 40,
+  "added": 0,
+  "excluded": 0,
+  "relabelled": 0,
+  "classes": {
+    "deny": 16,
+    "allow": 24
+  },
+  "gold": false,
+  "local": 0,
+  "gap": 210
+}
