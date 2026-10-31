@@ -1,0 +1,24 @@
+[
+  {
+    "id": "C2-2c5eb43056a713c1",
+    "sources": [
+      {
+        "url": "https://github.com/kachick/times_kachick/issues/84",
+        "author": "kachick",
+        "author_url": "https://github.com/kachick",
+        "license": "not_specified_for_issue_text"
+      }
+    ]
+  },
+  {
+    "id": "C2-a28109fdab032503",
+    "sources": [
+      {
+        "url": "https://stackoverflow.com/questions/12264242",
+        "author": "rahul286",
+        "author_url": "https://stackoverflow.com/users/156336/rahul286",
+        "license": "CC BY-SA 3.0"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Проверка v0</title><style>body{max-width:1000px;margin:30px auto;padding:0 20px;font:16px/1.6 system-ui}pre{white-space:pre-wrap}</style><a href="index.html">Текущий отбор</a><pre># Проверка CAT-2.1 после аудита v0
+
+Актуальный отбор: 30. Проверено 28 исходных полных команд и 2 добавлений.
+
+Проверки: CSV 9 полей без пустот; только allow/ask/deny; risk/category; точные дубли; Bash -n без выполнения; согласованность CSV/provenance/pairs/viewer и followup; SHA-256 manifest; сохранность исторических JSONL. Near-duplicates — отдельный отчёт, не автоматическое удаление по сходству строк. Аргументы Git проверены вручную по документации и исходникам, а не выводятся из результата Bash -n.
+
+Запуск: `python3 CAT-2.1/audit_v0_2026-10-31/validate.py`. Результаты полного запуска записаны в audit_v0_2026-10-31/validation.json. Manifest не включает собственный хеш.
+
+commissions.csv/train seeds отсутствуют. Train не предоставлен, отсутствие утечки не доказано. Внешний ZIP аудита недоступен, сверка с ним не заявляется. Не gold; local=0, квота не закрыта. [Отчёт](audit_v0_2026-10-31/REPORT.md).
+</pre></html>
