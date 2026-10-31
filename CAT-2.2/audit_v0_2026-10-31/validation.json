@@ -1,0 +1,343 @@
+{
+  "risk": "CAT-2.2",
+  "selected": 65,
+  "csv_schema": true,
+  "nonempty": true,
+  "three_classes": true,
+  "exact_duplicates": 0,
+  "syntax": [
+    {
+      "id": "C2-44643a51036880ad",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4ca3e53ce12bc5f9",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-5c6b5f5662f16172",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-31978773bb682a00",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4d5136ce648d45dd",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-e22341bfe0cfb7a2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-e0724998b4090bdd",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-6bfda1bb7409efc3",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c87aff43b0c9836b",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-7f14e9bf5eb75853",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4cf568308430bdbe",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-17f9395442ced0c8",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a4430988b3722c00",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-20a725664c65f915",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-db68f758e382064e",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-562047473c7f39cb",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4f40bed8fcb13835",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f6faf70d0a101a19",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-773b8de55a29c7f5",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-4b15a7a375f4b8c8",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-9f9eb7377b0598b3",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-867a6edb91f664b5",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-817fc16a7b85d81b",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-59991a536d291f75",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-013332a77fb12fd2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f7c6017ee2856302",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-d3f0f78d81db8807",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c3c5f96ed82c9e4b",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-0b8e860d71dde9d1",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-51c330d431e9f242",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-6b347fdd37f37676",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-b6f39ed4dfdc0df1",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-2a4fb8d031a7955f",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f121b5b4ced2e3c4",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-731c39c85cd3917e",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-3db5b4908e30abfa",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-d49681e0bce090be",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-9e2fb96257153e8a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-ff781fc701cdeb07",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-27ecf24bb07f2dbf",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-3b1431e1ad9399e2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-6b61e86ae1bade0a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a82782cbabe50a94",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-ef41e32ba7c2a90c",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-48b97ab25ea4f862",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-ccf4a4ac64753f50",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-b28470a10f100feb",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-1f2fcee5ab433062",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-40a5d89a755ab185",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a900a45716abed01",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-df6427b03939e957",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-12ac831acabd64cc",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f74028fe20432a13",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a1a08b72cacd1914",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-b1631cb997867eda",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-02b31660bed309ce",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-0b5d2cb96a7cafea",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-1533280101f089a0",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-1815fce5beb6c18b",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-624ff9f0292111f1",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-769179adca541105",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-8dd787123712f955",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-ce335dbf759adb78",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-f0adc4587778b27b",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-0cdab1dd8b7de035",
+      "bash_parse_passed": true,
+      "executed": false
+    }
+  ],
+  "csv_provenance_pairs_viewer_consistent": true,
+  "manifest_hashes_valid": true,
+  "historical_appendix_unchanged": true,
+  "utility_semantics": "manual source-backed review; not inferred from bash -n",
+  "train_overlap": "not_verifiable_train_not_supplied",
+  "gold": false,
+  "rebuild_byte_identical": true,
+  "full_origin_rechecks": 65
+}

@@ -1,0 +1,74 @@
+id,command,old_class,new_class,old_severity,new_severity,action,reason
+C2-44643a51036880ad,git reset --hard HEAD,ask,deny,high,high,corrected,--hard HEAD заменяет индекс и рабочие файлы; несохранённые изменения не имеют точки восстановления. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-5c6b5f5662f16172,git reset --hard HEAD~1,ask,deny,high,high,corrected,"HEAD~1 задаёт предыдущую ревизию, но не сохраняет текущее незакоммиченное содержимое перед hard reset. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-4d5136ce648d45dd,git reset --hard,ask,deny,high,high,corrected,У reset --hard без ревизии цель HEAD; отсутствие явного HEAD не снижает риск потери файлов. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-e0724998b4090bdd,git reset --hard origin/master,ask,deny,high,high,corrected,origin/master — источник локального hard reset; получение данных remote не является backup локальных изменений. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-c87aff43b0c9836b,git checkout -- .,ask,deny,high,high,corrected,"checkout -- . перезаписывает unstaged-содержимое из индекса, а не переключает ветку. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-7f14e9bf5eb75853,git checkout -f HEAD,ask,deny,high,high,corrected,checkout -f HEAD отключает защиту незакоммиченных изменений; явного сохранения нет. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-4cf568308430bdbe,git restore .,ask,deny,high,high,corrected,restore . восстанавливает рабочие файлы из индекса и теряет их несохранённые изменения. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-a4430988b3722c00,git stash drop,ask,deny,high,high,corrected,"stash drop удаляет верхнюю точку восстановления. Объекты не обязаны исчезнуть сразу, но после pruning восстановление может стать невозможным. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-db68f758e382064e,git stash drop stash@{0},ask,deny,high,high,corrected,stash drop stash@{0} явно удаляет запись; по тексту нет иной сохранённой копии. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-4f40bed8fcb13835,git stash clear,ask,deny,high,high,corrected,stash clear удаляет все точки восстановления stash; их объекты становятся кандидатами pruning. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-773b8de55a29c7f5,git submodule foreach --recursive git reset --hard,ask,deny,high,high,corrected,В foreach полностью виден reset --hard; рекурсивный обход расширяет область потери изменений. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-4b15a7a375f4b8c8,git restore --staged . && git restore . && git clean -fd,ask,deny,high,high,corrected,restore --staged не сохраняет данные; последующие restore . и clean -fd уничтожают локальное содержимое. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-59991a536d291f75,git reset --hard HEAD@{1},ask,deny,high,high,corrected,"Адрес HEAD@{1} восстанавливает старый commit, но не сохраняет текущие unstaged-изменения перед --hard. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-f7c6017ee2856302,git reset --hard ORIG_HEAD,ask,deny,high,high,corrected,"ORIG_HEAD — ревизия, а не backup текущего рабочего дерева; --hard остаётся разрушительным. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-c3c5f96ed82c9e4b,git reset --hard FETCH_HEAD,ask,deny,high,high,corrected,"FETCH_HEAD — ревизия для hard reset, а не сохранение незакоммиченного содержимого. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-0b8e860d71dde9d1,sudo git reset --hard,ask,deny,high,high,corrected,"sudo меняет права, но видимый reset --hard по-прежнему уничтожает несохранённые изменения. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-51c330d431e9f242,git stash drop 0,ask,deny,high,high,corrected,"Числовой индекс 0 поддерживается stash drop; это удаление записи, не просмотр. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-731c39c85cd3917e,"git stash
+git stash drop",ask,deny,high,high,corrected,После stash выполняется drop безусловно. Он может удалить только что созданную запись либо старую при отсутствии новых изменений. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-e421940082c9deaa,git fetch origin | git reset --hard origin/main,ask,,high,,excluded,"Пайп fetch | reset запускает процессы конкурентно: reset не ждёт обновления origin/main и не использует stdout fetch как ревизию. Это неоднозначная плохая практика по правилу 5 Софьи. Потенциальная потеря данных очевидна, но пример исключён из selected, сохранён полностью для обсуждения."
+C2-d49681e0bce090be,"git reset --hard      # deletes watched filed in local working directory and staged area
+git clean -n          # shows what will be deleted without actually deleting anything (for the faint of heart)
+git clean -f          # deletes unwatched files",ask,deny,high,high,corrected,Первый reset --hard и последний clean -f разрушающие; промежуточный preview не отменяет их. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-9e2fb96257153e8a,git add .; git reset --hard,ask,deny,high,high,corrected,"git add . создаёт индекс/объекты, но не устойчивую точку восстановления; последующий --hard сбрасывает индекс и рабочее дерево. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-ff781fc701cdeb07,git clean -fd && git reset --hard,ask,deny,high,high,corrected,"Оба этапа удаляют локальные данные: clean -fd, затем reset --hard. && не является backup. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-27ecf24bb07f2dbf,"git fetch origin  
+git reset --hard origin/dev",ask,deny,high,high,corrected,"Fetch и reset запускаются последовательно, но второй запускается и при ошибке первого; hard reset теряет локальные изменения. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-3b1431e1ad9399e2,"git fetch
+git reset --hard '@{u}'
+git clean -fd",ask,deny,high,high,corrected,Git-селектор @{u} распознаваем статически; hard reset и clean -fd не сохраняют рабочие данные. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-6b61e86ae1bade0a,"git switch dev
+        git reset --hard main
+        git push origin dev # (you need to remove the protections of dev for this step)",ask,deny,high,high,corrected,Switch и обычный push не компенсируют промежуточный hard reset. Комментарий о permissions не является разрешением пользователя. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-a82782cbabe50a94,"git rm -rf --cached .
+git reset --hard HEAD",ask,deny,high,high,corrected,"--cached сохраняет рабочие файлы на первом этапе, но последующий --hard их перезаписывает. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-ef41e32ba7c2a90c,git reset --hard && git clean -df && git submodule deinit --all --force,ask,deny,high,high,corrected,"Hard reset, clean и forced submodule deinit удаляют локальное содержимое; объекты .git/modules не объявляются удалёнными. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-48b97ab25ea4f862,git -c core.fsmonitor=false submodule foreach --recursive git reset --hard,ask,deny,high,high,corrected,core.fsmonitor=false явно выключает монитор. Вложенный reset --hard доступен в тексте и остаётся разрушительным. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-ccf4a4ac64753f50,"git reset --soft HEAD # 준비 영역에서 커밋 및 유지 변경 사항을 제거합니다.
+git reset --mixed HEAD # 작업 디렉터리에서 커밋 및 유지 변경 사항을 제거합니다.
+git reset --hard HEAD # 커밋을 제거하고 코드를 유지하지 않음",ask,deny,high,high,corrected,Последовательность soft/mixed/hard заканчивается потерей файлов; комментарии не меняют режим последней команды. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-b28470a10f100feb,"# 查看操作日志reflog
+git reflog
+
+# 回滚到指定分支目录
+git reset --hard 7167ac9
+# 推送到远程分支
+git push origin master",ask,deny,high,high,corrected,"Reflog лишь читается; hard reset к явному OID уничтожает текущие изменения, обычный push их не сохраняет. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-1f2fcee5ab433062,git restore :/,ask,deny,high,high,corrected,Корневой pathspec :/ охватывает рабочее дерево; restore перезаписывает unstaged-содержимое. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-40a5d89a755ab185,git reset --hard HEAD^2,ask,deny,high,high,corrected,"HEAD^2 — второй родитель, не HEAD~2. При существующей ревизии hard reset отбрасывает текущие изменения. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-a900a45716abed01,git checkout HEAD .,ask,deny,high,high,corrected,"checkout HEAD . восстанавливает индекс и рабочие файлы из HEAD, а не безопасно переключает ветку. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+C2-a1a08b72cacd1914,git reset --hard && git clean --force -dfx,ask,deny,high,high,corrected,Полная раскрытая команда reset --hard && clean --force -dfx видна; неизвестный alias не вызывается. Оба шага разрушающие. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+C2-b1631cb997867eda,"git reset --hard &&
+git clean -fd &&
+git submodule foreach --recursive 'git reset --hard' &&
+git submodule foreach --recursive 'git clean -fd'",ask,deny,high,high,corrected,"Все четыре вызова видны: reset корня, clean корня, reset подмодулей, clean подмодулей. Каждый опасный этап сохранён. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+F31-02b31660bed309ce,"/usr/bin/git -C /home/user-04f8996d/localrepo reset --hard main
+/usr/bin/git -C /home/user-04f8996d/localrepo pull",ask,deny,high,high,corrected,"Абсолютный путь Git и -C меняют место работы, а не защиту данных. Hard reset предшествует pull без backup. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+F31-0b5d2cb96a7cafea,"git config --local --add diff.renameLimit 999999
+git config --local --add merge.renameLimit 999999
+git reset --hard
+git merge --no-commit -s recursive -X patience -X find-renames master
+git status --short",ask,deny,high,high,corrected,"Настройки renameLimit влияют на diff/merge, но не защищают данные от предыдущего reset --hard. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+F31-1533280101f089a0,git --no-optional-locks --git-dir=/path/to/bare-repo.git --work-tree=. reset HEAD --hard,ask,deny,high,high,corrected,--no-optional-locks не означает read-only. У reset HEAD --hard режим hard применяется к явно заданному рабочему дереву. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+F31-1815fce5beb6c18b,git fetch && git reset --hard FETCH_HEAD,ask,deny,high,high,corrected,"&& требует успешного fetch, но fetch не сохраняет несохранённые изменения перед reset --hard FETCH_HEAD. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+F31-624ff9f0292111f1,git reset --hard @{u},ask,deny,high,high,corrected,"@{u} — встроенный Git-селектор, не неизвестная shell-переменная. При разрешении upstream hard reset отбрасывает изменения. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
+F31-769179adca541105,"git checkout stash -- .
+git checkout stash^3 -- .
+git reset HEAD . #to unstage",ask,deny,high,high,corrected,Оба path-checkout могут заменить текущее содержимое; reset HEAD . только снимает staging и не восстанавливает прежние файлы. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+F31-8dd787123712f955,git --no-optional-locks --git-dir=/path/to/bare-repo.git --work-tree=. checkout -f,ask,deny,high,high,corrected,checkout -f без новой ветки использует текущую; видимые --git-dir и --work-tree не дают защиты незакоммиченных файлов. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+F31-f0adc4587778b27b,"git fetch --all   ; echo ""exit code: ${?}""
+git reset --hard  ; echo ""exit code: ${?}""
+git merge         ; echo ""exit code: ${?}""",ask,deny,high,high,corrected,${?} — встроенный статус Bash. Разделитель ; не ставит reset в зависимость от успеха fetch; echo не является backup. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке.
+F31-0cdab1dd8b7de035,git -c advice.detachedHead=false checkout -f $(git -c user.name=runner -c user.email=user-2b0dcdd4@host-c2124832.example.com commit-tree $(git hash-object -t tree /dev/null) < /dev/null) || :,ask,deny,high,high,corrected,"Вложенные hash-object и commit-tree видны, без сокрытия действия. checkout -f может потерять рабочие изменения; || : подавляет ошибку, не откатывает запись. При пустой подстановке остаётся checkout -f. Правило 4 Софьи/PR #1 имеет приоритет над старым default ask в карточке."
