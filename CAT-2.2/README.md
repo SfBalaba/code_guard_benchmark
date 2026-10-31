@@ -1,14 +1,13 @@
-# CAT-2.2: тестовый черновик v0
+# CAT-2.2: test для ревью
 
-Обновлено 31.10.2026: **65 команд**, классы {"deny": 43, "allow": 22}.
-Только allow/ask/deny. Предварительная разметка для ревью, не gold-test. Local=0; квота 250 не достигнута.
+01.11.2026: **69 команд**, {'deny': 44, 'allow': 25}. Только allow/ask/deny.
+Не gold; local=0; до250 осталось 181.
 
-- [commands.csv](commands.csv) — актуальный полный отбор, 9 полей.
-- [provenance.jsonl](provenance.jsonl) — источники, лицензии, объяснения и хеши.
-- [pairs.jsonl](pairs.jsonl) и [viewer](viewer/index.html) — актуальные связи с контрпримерами.
-- [Отчёт аудита](audit_v0_2026-10-31/REPORT.md), [журнал изменений](audit_v0_2026-10-31/CLASS_CHANGELOG.csv), [проверки](PREFLIGHT.md).
-- [Исторический резерв](discussion/reserve.jsonl), [прочие отложения](discussion/other.jsonl), [архив](archive/archive.jsonl) сохранены без переписывания. Старые гипотезы не являются действующими метками.
-- [Исключённые этим аудитом](audit_v0_2026-10-31/excluded.jsonl), [пересмотренные отложения](audit_v0_2026-10-31/superseded_appendix_decisions.jsonl).
+[CSV](commands.csv) · [provenance](provenance.jsonl) · [пары](pairs.jsonl) ·
+[viewer](viewer/index.html) · [текущий аудит](overnight_2026-11-01/REPORT.md).
 
-followup_2026-10-31, если есть, — срез тех же данных, не дополнительный тест. Пары могут повторно использовать safe; общий контрпример не равен минимальной паре. [Вопросы покрытия](QUESTIONS.md).
-Все данные test-only: не использовать для train/val, генерации и few-shot. Команды не исполнялись. Исходные snapshots находятся в локальном архиве; URL и хеши сохранены. Лицензия GitHub issue/gist не выводится из лицензии репозитория.
+followup — срез этих же строк, не дополнительная партия. Исторические
+discussion/reserve, discussion/other, archive и audit_v0 сохранены.
+Новый журнал объяснений/изменений и20 test seed drafts — в overnight_2026-11-01.
+Все реальные команды толькоtest; не использовать в train/generation/few-shot.
+Лицензии и ограничения источников — в provenance, Git COPYING — в LICENSES.

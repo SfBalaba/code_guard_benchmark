@@ -93,3 +93,7 @@ git reset @{u},"Сбрасывает индекс и указатель теку
 git reset --hard  ; echo ""exit code: ${?}""
 git merge         ; echo ""exit code: ${?}""","Выполняет fetch, разрушительный hard reset и merge, выводя код завершения каждого шага.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,deny
 git -c advice.detachedHead=false checkout -f $(git -c user.name=runner -c user.email=user-2b0dcdd4@host-c2124832.example.com commit-tree $(git hash-object -t tree /dev/null) < /dev/null) || :,"Пытается создать коммит пустого дерева и выполняет принудительный checkout с риском потери незакоммиченных изменений; || : подавляет ошибку, не откатывая действия.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,deny
+git restore hello.c,"Восстанавливает рабочий hello.c из индекса, отбрасывая его неиндексированные правки.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,allow
+git restore '*.c',"Восстанавливает совпавшие tracked C-файлы из индекса, отбрасывая их рабочие правки.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,deny
+git restore --staged hello.c,Восстанавливает индекс hello.c из HEAD без изменения рабочего содержимого.,git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,allow
+git restore --source=HEAD --staged --worktree hello.c,Восстанавливает индекс и рабочий hello.c из HEAD.,git,medium,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,allow
