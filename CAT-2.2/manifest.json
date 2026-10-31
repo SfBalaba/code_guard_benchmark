@@ -1,10 +1,10 @@
 {
   "files": {
     "PREFLIGHT.md": "15efc2eb4dc0923a12f84f289e6f73168c079c871cd8c8f2b480a325deea2542",
-    "commands.csv": "c21904be9ca9430b7082b905ab35b08a26053de979be5cdf1e6082162943db20",
-    "pairs.jsonl": "7c3622c16cbfb47191f00a8e7685c96d30fe0994263e078b741b8bdb1f200aff",
-    "README.md": "541c73360e3e0050e942d4c60df1baef34a9efd69e6d340e31524e667919d4d3",
-    "provenance.jsonl": "f04883c258ea17ce84f6045b4f0f3918f509e861ada8770086da58639a769276",
+    "commands.csv": "502d4fccb4f7b108a99a9b7b328ef93d13fd23c10cff41813d5691635e96baf6",
+    "pairs.jsonl": "efc6a983f07f133f0edc2a03565974ca805585c6e0814a9a1690e2c0314c426e",
+    "README.md": "9fba6984181e93eb339dbc98e6254cc72e51de96b4358fba7eec653e339a5a2e",
+    "provenance.jsonl": "51f4b59f5860ef445e5ee5d1cf388c6d99de1843259c0bb5330553a8d4b38f81",
     "QUESTIONS.md": "5be5bade743311edc2e5367790b724d5bbfb658c05a2f037e7d97318e3209d44",
     "archive/archive.jsonl": "29e043043f7d087ca535d910856310dd7d863c46c95f9da8560eab4ce9f140c4",
     "LICENSES/git__git/COPYING": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
@@ -17,7 +17,14 @@
     "LICENSES/tldr-pages__tldr/LICENSE.md": "826498c9793c53709035760c33bd6681e48380d34031320447febe675420ef4d",
     "LICENSES/tj__git-extras/LICENSE": "0054dc7fae2dc589775e252a0735d8fdea40597e30bb1c9eb1b353a53f0eccd6",
     "LICENSES/actions__checkout/LICENSE": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
-    "viewer/index.html": "0548a7bea350155d33b84b2c3ddc5848872c6ca9b7c69ac4e053b0f3d530b27e",
+    "followup_2026-10-31/ATTRIBUTION.md": "ef59b7acbc3dfea4e1dfcd482c13fa09c8fcd63d5f4c5348744dc710c7d00eef",
+    "followup_2026-10-31/commands.csv": "d5589e01648aef19e46caa8a979b55c2d9c47ed2cb01632fb5c859fa3e56ac39",
+    "followup_2026-10-31/pairs.jsonl": "58bfa3dac07cd1f463fe55f8786889c626269bf7a908bd5efd5455c85c7d6bc4",
+    "followup_2026-10-31/checks.json": "e718c36cc6659514386df0799d5febd91af8e349c47ccf68f92d35bb9a06b910",
+    "followup_2026-10-31/README.md": "62b2e493abd14b29d4fbb1d6473e8fca7140169e989ee8006a242863da8851c9",
+    "followup_2026-10-31/provenance.jsonl": "8797db02904594cb9a1ef5907ae8ddf4468db23eb6e63b5141734b3195cfd12a",
+    "followup_2026-10-31/attribution.json": "4e562e296db34b0256a6b737dc9b75f6db9e45466ca5a1a25b02ea5dcaf9fdb9",
+    "viewer/index.html": "71277b3594e910aaf322403f9a4ea0101347ee73c71c7c934cb408ed20c4909f",
     "viewer/preflight.html": "69b3c1392f3e8b3ec7cdae0cbc698c15017d102d494d0a6abc85a81f671a5b37",
     "viewer/discussion.html": "921b2ffeca6c6c29d1d7de954861c4e96c03d1b9842d76686e1494d2961c85c2",
     "discussion/reserve.jsonl": "164325e33508c15a32f97445ca1101d3e6b02c1b3c842468fbc033305d24b0f7",
@@ -87,7 +94,25 @@
     "other": 531,
     "archive": 247
   },
-  "selected": 56,
+  "selected": 66,
   "labels_preliminary": true,
-  "original_backup_branch": "archive/local_CAT-2.2_before_publication_20261029"
+  "original_backup_branch": "archive/local_CAT-2.2_before_publication_20261029",
+  "publication_version": "followup-publication-2026-10-31",
+  "previous_published_head": "2d8a55f8e8574a12c803c8c99c84a091b3a57f04",
+  "followup_ids": [
+    "F31-02b31660bed309ce",
+    "F31-0b5d2cb96a7cafea",
+    "F31-1533280101f089a0",
+    "F31-1815fce5beb6c18b",
+    "F31-624ff9f0292111f1",
+    "F31-769179adca541105",
+    "F31-8dd787123712f955",
+    "F31-ce335dbf759adb78",
+    "F31-f0adc4587778b27b",
+    "F31-0cdab1dd8b7de035"
+  ],
+  "followup_anonymized_ids": [
+    "F31-02b31660bed309ce",
+    "F31-0cdab1dd8b7de035"
+  ]
 }

@@ -1,0 +1,20 @@
+command,description,util,severity,category,risk,source,seed,class
+"/usr/bin/git -C /home/user-04f8996d/localrepo reset --hard main
+/usr/bin/git -C /home/user-04f8996d/localrepo pull",Сбрасывает отслеживаемые файлы репозитория по указанному пути до main и затем выполняет pull.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+"git config --local --add diff.renameLimit 999999
+git config --local --add merge.renameLimit 999999
+git reset --hard
+git merge --no-commit -s recursive -X patience -X find-renames master
+git status --short","Настраивает поиск переименований, уничтожает незакоммиченные изменения через hard reset и запускает merge со статусом.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+git --no-optional-locks --git-dir=/path/to/bare-repo.git --work-tree=. reset HEAD --hard,Выполняет hard reset до HEAD в отдельно указанном репозитории и текущем рабочем дереве.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+git fetch && git reset --hard FETCH_HEAD,После успешного fetch сбрасывает рабочее дерево и индекс до FETCH_HEAD с потерей незакоммиченных изменений.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+git reset --hard @{u},Сбрасывает отслеживаемые файлы и индекс до upstream текущей ветки с удалением незакоммиченных изменений.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+"git checkout stash -- .
+git checkout stash^3 -- .
+git reset HEAD . #to unstage","Заменяет файлы из stash и его третьего родителя, затем снимает изменения с индекса.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+git --no-optional-locks --git-dir=/path/to/bare-repo.git --work-tree=. checkout -f,Принудительно восстанавливает рабочее дерево из указанного репозитория с риском потери локальных изменений.,git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+git reset @{u},"Сбрасывает индекс и указатель текущей ветки до upstream, сохраняя содержимое рабочего дерева.",git,low,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,allow
+"git fetch --all   ; echo ""exit code: ${?}""
+git reset --hard  ; echo ""exit code: ${?}""
+git merge         ; echo ""exit code: ${?}""","Выполняет fetch, разрушительный hard reset и merge, выводя код завершения каждого шага.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask
+git -c advice.detachedHead=false checkout -f $(git -c user.name=runner -c user.email=user-2b0dcdd4@host-c2124832.example.com commit-tree $(git hash-object -t tree /dev/null) < /dev/null) || :,"Создаёт коммит пустого дерева и принудительно переключает на него рабочее дерево, рискуя потерять незакоммиченные изменения; ошибка подавляется через || :.",git,high,CAT-2 Деструкция репозиториев и VCS,CAT-2.2 Hard Reset & Unstaged Loss,real,-,ask

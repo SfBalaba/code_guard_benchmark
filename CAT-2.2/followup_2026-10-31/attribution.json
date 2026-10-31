@@ -1,0 +1,186 @@
+[
+  {
+    "url": "https://unix.stackexchange.com/questions/689075/how-to-pull-git-repository-on-linux-startup",
+    "author": "hypercoyote",
+    "author_url": "https://unix.stackexchange.com/users/427491/hypercoyote",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1643863238,
+    "updated_at": 1644334614,
+    "captured_at": "2026-10-31T09:42:04.302490+00:00",
+    "snapshot_sha256": "3f215fd71c7ea475eed7443ce8336f620c3a577bfd154ceb6d4702e02decbcdd",
+    "body_sha256": "36bf286a6dcc14b319c68dbb3a3db85baf2ec5eab63028994154b640b5b16f10",
+    "id": "F31-02b31660bed309ce",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": [
+      "host/email/home identifiers anonymized; original preserved locally"
+    ]
+  },
+  {
+    "url": "https://superuser.com/questions/1180930/what-configuration-option-is-required-for-git-to-apply-changes-to-all-copies-whe",
+    "author": "Energiequant",
+    "author_url": "https://superuser.com/users/237908/energiequant",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1487617273,
+    "updated_at": null,
+    "captured_at": "2026-10-31T09:42:08.584659+00:00",
+    "snapshot_sha256": "fdfe5b3fd546011234181d10f3efb6ed6e606d01b8b149a0e0600846c862447f",
+    "body_sha256": "ec0b48f4feef5e190c9e95e1698023c5007b7840cdf81b4ead3bb73efec8af4a",
+    "id": "F31-0b5d2cb96a7cafea",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://superuser.com/questions/1496992/git-checkout-from-read-only-bare-repo",
+    "author": "M Conrad",
+    "author_url": "https://superuser.com/users/575259/m-conrad",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1572340418,
+    "updated_at": 1572595094,
+    "captured_at": "2026-10-31T09:42:08.584659+00:00",
+    "snapshot_sha256": "fdfe5b3fd546011234181d10f3efb6ed6e606d01b8b149a0e0600846c862447f",
+    "body_sha256": "17a1c74b5dee02c225f82139c280389c9f6475cd42edda661cfd030e6ae3f855",
+    "id": "F31-1533280101f089a0",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://stackoverflow.com/a/45141032",
+    "author": "Useless",
+    "author_url": "https://stackoverflow.com/users/212858/useless",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1500285167,
+    "updated_at": null,
+    "captured_at": "2026-10-31T09:44:18.418131+00:00",
+    "snapshot_sha256": "537ab71c1927de9e764742149f5e3cb4143deca908dbc407360ddc8c651b70ef",
+    "body_sha256": "4b273e7de649546b1785a9359d3c7237793ff778943ecbb697778d88cb2c0f1b",
+    "id": "F31-1815fce5beb6c18b",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://stackoverflow.com/a/45139916",
+    "author": "Ry-",
+    "author_url": "https://stackoverflow.com/users/707111/ry",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1500282020,
+    "updated_at": 1500282718,
+    "captured_at": "2026-10-31T09:44:18.418131+00:00",
+    "snapshot_sha256": "537ab71c1927de9e764742149f5e3cb4143deca908dbc407360ddc8c651b70ef",
+    "body_sha256": "846590e988ec3aedf8d4359c9f4a204e40d72ee3e23408add04bab7cc6b26412",
+    "id": "F31-624ff9f0292111f1",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://superuser.com/questions/1390215/is-there-a-cleaner-way-to-handle-git-stash-apply",
+    "author": "vbs",
+    "author_url": "https://superuser.com/users/980547/vbs",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1546529981,
+    "updated_at": 1546600784,
+    "captured_at": "2026-10-31T09:42:08.584659+00:00",
+    "snapshot_sha256": "fdfe5b3fd546011234181d10f3efb6ed6e606d01b8b149a0e0600846c862447f",
+    "body_sha256": "1aa389ab1110e113f56689a96f409eb3e78387830eb03fe62439824e5c5a387c",
+    "id": "F31-769179adca541105",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://superuser.com/questions/1496992/git-checkout-from-read-only-bare-repo",
+    "author": "M Conrad",
+    "author_url": "https://superuser.com/users/575259/m-conrad",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1572340418,
+    "updated_at": 1572595094,
+    "captured_at": "2026-10-31T09:42:08.584659+00:00",
+    "snapshot_sha256": "fdfe5b3fd546011234181d10f3efb6ed6e606d01b8b149a0e0600846c862447f",
+    "body_sha256": "17a1c74b5dee02c225f82139c280389c9f6475cd42edda661cfd030e6ae3f855",
+    "id": "F31-8dd787123712f955",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://stackoverflow.com/a/45139916",
+    "author": "Ry-",
+    "author_url": "https://stackoverflow.com/users/707111/ry",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1500282020,
+    "updated_at": 1500282718,
+    "captured_at": "2026-10-31T09:44:18.418131+00:00",
+    "snapshot_sha256": "537ab71c1927de9e764742149f5e3cb4143deca908dbc407360ddc8c651b70ef",
+    "body_sha256": "846590e988ec3aedf8d4359c9f4a204e40d72ee3e23408add04bab7cc6b26412",
+    "id": "F31-ce335dbf759adb78",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://unix.stackexchange.com/a/385031",
+    "author": "Hauke Laging",
+    "author_url": "https://unix.stackexchange.com/users/32191/hauke-laging",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1502303455,
+    "updated_at": null,
+    "captured_at": "2026-10-31T09:42:04.698540+00:00",
+    "snapshot_sha256": "4efa73f26079f28649d2976991fdd565647d1c1daf22fac164967ce0e91245e5",
+    "body_sha256": "1f8632c0f348e1eac9e5661b9d31d0a09f4f45a859d9129810d3d983c3266ab5",
+    "id": "F31-f0adc4587778b27b",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://github.com/tj-actions/changed-files/issues/1167",
+    "author": "Stas-AbsoluteDesign",
+    "author_url": "https://github.com/Stas-AbsoluteDesign",
+    "license": "not_specified_for_issue_text",
+    "created_at": "2023-04-11T09:40:02Z",
+    "updated_at": "2023-05-31T12:57:09Z",
+    "captured_at": "2026-10-31T09:41:40.593714+00:00",
+    "snapshot_sha256": "9e847780c13ad7614135ccfc21a871ffb6e36d462202cbf28e8ed6e5225f1f0e",
+    "body_sha256": "47cc65b1465a6e8e66ccd4d4c58f930ad1ed3c99dc7ada5e12de34c7c9a352eb",
+    "id": "F31-0cdab1dd8b7de035",
+    "transformations": [
+      "CRLF to LF",
+      "strip outer whitespace",
+      "dedent_literal_scalar"
+    ],
+    "publication_transformations": [
+      "host/email/home identifiers anonymized; original preserved locally"
+    ]
+  }
+]
