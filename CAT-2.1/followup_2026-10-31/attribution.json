@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://superuser.com/a/1455809",
+    "author": "Agust&#237;n Amen&#225;bar Larra&#237;n",
+    "author_url": "https://superuser.com/users/148235/agust%c3%adn-amen%c3%a1bar-larra%c3%adn",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1562173073,
+    "updated_at": null,
+    "captured_at": "2026-10-31T09:42:10.538772+00:00",
+    "snapshot_sha256": "80ccbccd5c9ed851964ef3bfee17e37b8ed50b5a31204ba80861525632321fbb",
+    "body_sha256": "c8b157922e078b19062b042d3dc3f293275b4c68af87b5a4acca96b83d4b5fb5",
+    "id": "F31-021b348a08934414",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://unix.stackexchange.com/a/27171",
+    "author": "Pat Notz",
+    "author_url": "https://unix.stackexchange.com/users/10323/pat-notz",
+    "license": "CC BY-SA 3.0",
+    "created_at": 1324315891,
+    "updated_at": null,
+    "captured_at": "2026-10-31T09:42:06.525772+00:00",
+    "snapshot_sha256": "8e003cfcfbac10f60e2952551d721d67e7d4abc37b305bea74525af2615e7704",
+    "body_sha256": "df3d11666085f8e1471acc0421fadef3597ab90e823cd79fbb6f80f8fec188d3",
+    "id": "F31-8029c84b2ce2f0ec",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  },
+  {
+    "url": "https://superuser.com/a/1501090",
+    "author": "Jacob Brown",
+    "author_url": "https://superuser.com/users/1111500/jacob-brown",
+    "license": "CC BY-SA 4.0",
+    "created_at": 1573486257,
+    "updated_at": null,
+    "captured_at": "2026-10-31T09:42:10.538772+00:00",
+    "snapshot_sha256": "80ccbccd5c9ed851964ef3bfee17e37b8ed50b5a31204ba80861525632321fbb",
+    "body_sha256": "4944c5b8a706d4bcc5823e3ead15767a979ba21b156a498b50a5edab4e22e6bb",
+    "id": "F31-a4e8f15536bc9362",
+    "transformations": [
+      "HTML entity decode",
+      "CRLF to LF",
+      "strip outer whitespace"
+    ],
+    "publication_transformations": []
+  }
+]
