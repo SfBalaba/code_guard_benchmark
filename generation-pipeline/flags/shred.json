@@ -1,0 +1,26 @@
+{
+ "util": "shred",
+ "source": "https://manpages.debian.org/bookworm/coreutils/shred.1.en.gz",
+ "short": {
+  "f": "none",
+  "n": "required",
+  "s": "required",
+  "u": "none",
+  "v": "none",
+  "x": "none",
+  "z": "none"
+ },
+ "long": {
+  "exact": "none",
+  "force": "none",
+  "help": "none",
+  "iterations": "required",
+  "random-source": "required",
+  "remove": "optional",
+  "size": "required",
+  "verbose": "none",
+  "version": "none",
+  "zero": "none"
+ },
+ "words": []
+}

@@ -1,0 +1,15 @@
+{
+ "util": "lsattr",
+ "source": "https://manpages.debian.org/bookworm/e2fsprogs/lsattr.1.en.gz",
+ "short": {
+  "R": "none",
+  "V": "none",
+  "a": "none",
+  "d": "none",
+  "l": "none",
+  "p": "none",
+  "v": "none"
+ },
+ "long": {},
+ "words": []
+}

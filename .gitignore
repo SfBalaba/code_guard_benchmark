@@ -1,0 +1,13 @@
+# Пока в репозитории только пайплайн генерации
+/*
+!/.gitignore
+!/generation-pipeline/
+
+# Python / инструменты
+__pycache__/
+*.pyc
+.ruff_cache/
+.DS_Store
+
+# Результаты прогонов (производные данные, разметка не gold)
+generation-pipeline/runs/

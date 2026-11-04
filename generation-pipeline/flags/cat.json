@@ -1,0 +1,28 @@
+{
+ "util": "cat",
+ "source": "https://manpages.debian.org/bookworm/coreutils/cat.1.en.gz",
+ "short": {
+  "A": "none",
+  "E": "none",
+  "T": "none",
+  "b": "none",
+  "e": "none",
+  "n": "none",
+  "s": "none",
+  "t": "none",
+  "u": "none",
+  "v": "none"
+ },
+ "long": {
+  "help": "none",
+  "number": "none",
+  "number-nonblank": "none",
+  "show-all": "none",
+  "show-ends": "none",
+  "show-nonprinting": "none",
+  "show-tabs": "none",
+  "squeeze-blank": "none",
+  "version": "none"
+ },
+ "words": []
+}

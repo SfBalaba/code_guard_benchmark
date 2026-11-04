@@ -1,0 +1,27 @@
+{
+ "util": "readlink",
+ "source": "https://manpages.debian.org/bookworm/coreutils/readlink.1.en.gz",
+ "short": {
+  "e": "none",
+  "f": "none",
+  "m": "none",
+  "n": "none",
+  "q": "none",
+  "s": "none",
+  "v": "none",
+  "z": "none"
+ },
+ "long": {
+  "canonicalize": "none",
+  "canonicalize-existing": "none",
+  "canonicalize-missing": "none",
+  "help": "none",
+  "no-newline": "none",
+  "quiet": "none",
+  "silent": "none",
+  "verbose": "none",
+  "version": "none",
+  "zero": "none"
+ },
+ "words": []
+}

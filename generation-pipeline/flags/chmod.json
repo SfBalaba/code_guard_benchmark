@@ -1,0 +1,33 @@
+{
+ "util": "chmod",
+ "source": "https://manpages.debian.org/bookworm/coreutils/chmod.1.en.gz",
+ "short": {
+  "R": "none",
+  "X": "none",
+  "a": "none",
+  "c": "none",
+  "f": "none",
+  "g": "none",
+  "o": "none",
+  "r": "none",
+  "s": "none",
+  "t": "none",
+  "u": "none",
+  "v": "none",
+  "w": "none",
+  "x": "none"
+ },
+ "long": {
+  "changes": "none",
+  "help": "none",
+  "no-preserve-root": "none",
+  "preserve-root": "none",
+  "quiet": "none",
+  "recursive": "none",
+  "reference": "required",
+  "silent": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

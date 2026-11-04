@@ -1,0 +1,22 @@
+{
+ "util": "wc",
+ "source": "https://manpages.debian.org/bookworm/coreutils/wc.1.en.gz",
+ "short": {
+  "L": "none",
+  "c": "none",
+  "l": "none",
+  "m": "none",
+  "w": "none"
+ },
+ "long": {
+  "bytes": "none",
+  "chars": "none",
+  "files0-from": "required",
+  "help": "none",
+  "lines": "none",
+  "max-line-length": "none",
+  "version": "none",
+  "words": "none"
+ },
+ "words": []
+}

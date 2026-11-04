@@ -1,0 +1,7 @@
+{
+ "util": "setenforce",
+ "source": "https://manpages.debian.org/bookworm/selinux-utils/setenforce.8.en.gz",
+ "short": {},
+ "long": {},
+ "words": []
+}

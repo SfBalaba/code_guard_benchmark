@@ -1,0 +1,28 @@
+{
+ "util": "set",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "a": "none",
+  "b": "none",
+  "e": "none",
+  "f": "none",
+  "h": "none",
+  "k": "none",
+  "m": "none",
+  "n": "none",
+  "p": "none",
+  "t": "none",
+  "u": "none",
+  "v": "none",
+  "x": "none",
+  "B": "none",
+  "C": "none",
+  "E": "none",
+  "H": "none",
+  "P": "none",
+  "T": "none",
+  "o": "optional"
+ },
+ "plus_flags": true
+}

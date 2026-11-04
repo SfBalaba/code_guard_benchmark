@@ -1,0 +1,26 @@
+{
+ "util": "sha256sum",
+ "source": "https://manpages.debian.org/bookworm/coreutils/sha256sum.1.en.gz",
+ "short": {
+  "b": "none",
+  "c": "none",
+  "t": "none",
+  "w": "none",
+  "z": "none"
+ },
+ "long": {
+  "binary": "none",
+  "check": "none",
+  "help": "none",
+  "ignore-missing": "none",
+  "quiet": "none",
+  "status": "none",
+  "strict": "none",
+  "tag": "none",
+  "text": "none",
+  "version": "none",
+  "warn": "none",
+  "zero": "none"
+ },
+ "words": []
+}

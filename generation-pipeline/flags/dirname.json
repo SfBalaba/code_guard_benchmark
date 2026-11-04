@@ -1,0 +1,13 @@
+{
+ "util": "dirname",
+ "source": "https://manpages.debian.org/bookworm/coreutils/dirname.1.en.gz",
+ "short": {
+  "z": "none"
+ },
+ "long": {
+  "help": "none",
+  "version": "none",
+  "zero": "none"
+ },
+ "words": []
+}

@@ -1,0 +1,27 @@
+{
+ "util": "timedatectl",
+ "source": "https://manpages.debian.org/bookworm/systemd/timedatectl.1.en.gz",
+ "short": {
+  "8": "none",
+  "H": "required",
+  "M": "required",
+  "a": "none",
+  "h": "none",
+  "p": "required"
+ },
+ "long": {
+  "adjust-system-clock": "none",
+  "all": "none",
+  "help": "none",
+  "host": "required",
+  "machine": "required",
+  "monitor": "none",
+  "no-ask-password": "none",
+  "no-pager": "none",
+  "property": "required",
+  "user": "none",
+  "value": "none",
+  "version": "none"
+ },
+ "words": []
+}

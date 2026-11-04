@@ -1,0 +1,17 @@
+{
+ "util": "basename",
+ "source": "https://manpages.debian.org/bookworm/coreutils/basename.1.en.gz",
+ "short": {
+  "a": "none",
+  "s": "required",
+  "z": "none"
+ },
+ "long": {
+  "help": "none",
+  "multiple": "none",
+  "suffix": "required",
+  "version": "none",
+  "zero": "none"
+ },
+ "words": []
+}

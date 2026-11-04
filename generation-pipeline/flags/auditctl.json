@@ -1,0 +1,39 @@
+{
+ "util": "auditctl",
+ "source": "https://manpages.debian.org/bookworm/auditd/auditctl.8.en.gz",
+ "short": {
+  "A": "none",
+  "C": "none",
+  "D": "none",
+  "F": "none",
+  "R": "none",
+  "S": "required",
+  "W": "none",
+  "a": "none",
+  "b": "none",
+  "c": "none",
+  "d": "none",
+  "e": "none",
+  "f": "none",
+  "h": "none",
+  "i": "none",
+  "k": "none",
+  "l": "none",
+  "m": "none",
+  "p": "required",
+  "q": "none",
+  "r": "none",
+  "s": "none",
+  "t": "none",
+  "v": "none",
+  "w": "none"
+ },
+ "long": {
+  "backlog_wait_time": "none",
+  "loginuid-immutable": "none",
+  "reset-lost": "none",
+  "reset_backlog_wait_time_actual": "none",
+  "signal": "none"
+ },
+ "words": []
+}

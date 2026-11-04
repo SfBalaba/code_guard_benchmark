@@ -1,0 +1,19 @@
+{
+ "util": "truncate",
+ "source": "https://manpages.debian.org/bookworm/coreutils/truncate.1.en.gz",
+ "short": {
+  "c": "none",
+  "o": "none",
+  "r": "required",
+  "s": "required"
+ },
+ "long": {
+  "help": "none",
+  "io-blocks": "none",
+  "no-create": "none",
+  "reference": "required",
+  "size": "required",
+  "version": "none"
+ },
+ "words": []
+}

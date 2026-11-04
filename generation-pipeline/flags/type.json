@@ -1,0 +1,12 @@
+{
+ "util": "type",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "a": "none",
+  "f": "none",
+  "p": "none",
+  "t": "none",
+  "P": "none"
+ }
+}

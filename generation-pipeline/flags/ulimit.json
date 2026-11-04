@@ -1,0 +1,31 @@
+{
+ "util": "ulimit",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "S": "none",
+  "H": "none",
+  "a": "none",
+  "b": "none",
+  "c": "none",
+  "d": "none",
+  "e": "none",
+  "f": "none",
+  "i": "none",
+  "k": "none",
+  "l": "none",
+  "m": "none",
+  "n": "none",
+  "p": "none",
+  "q": "none",
+  "r": "none",
+  "s": "none",
+  "t": "none",
+  "u": "none",
+  "v": "none",
+  "x": "none",
+  "P": "none",
+  "R": "none",
+  "T": "none"
+ }
+}

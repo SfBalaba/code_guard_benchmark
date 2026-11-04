@@ -1,0 +1,21 @@
+{
+ "util": "ntpdate",
+ "source": "https://manpages.debian.org/bookworm/ntpsec-ntpdate/ntpdate.8.en.gz",
+ "short": {
+  "4": "none",
+  "6": "none",
+  "B": "none",
+  "a": "none",
+  "b": "none",
+  "d": "none",
+  "k": "none",
+  "o": "none",
+  "q": "none",
+  "s": "none",
+  "t": "none",
+  "u": "none",
+  "v": "none"
+ },
+ "long": {},
+ "words": []
+}

@@ -1,0 +1,18 @@
+{
+ "util": "read",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "a": "required",
+  "d": "required",
+  "e": "none",
+  "i": "required",
+  "n": "required",
+  "N": "required",
+  "p": "required",
+  "r": "none",
+  "s": "none",
+  "t": "required",
+  "u": "required"
+ }
+}

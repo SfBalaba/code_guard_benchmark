@@ -1,0 +1,30 @@
+{
+ "util": "tail",
+ "source": "https://manpages.debian.org/bookworm/coreutils/tail.1.en.gz",
+ "short": {
+  "F": "none",
+  "c": "required",
+  "f": "optional",
+  "n": "required",
+  "q": "none",
+  "s": "required",
+  "v": "none",
+  "z": "none"
+ },
+ "long": {
+  "bytes": "required",
+  "follow": "optional",
+  "help": "none",
+  "lines": "required",
+  "max-unchanged-stats": "required",
+  "pid": "required",
+  "quiet": "none",
+  "retry": "none",
+  "silent": "none",
+  "sleep-interval": "required",
+  "verbose": "none",
+  "version": "none",
+  "zero-terminated": "none"
+ },
+ "words": []
+}

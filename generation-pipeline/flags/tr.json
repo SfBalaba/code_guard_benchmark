@@ -1,0 +1,20 @@
+{
+ "util": "tr",
+ "source": "https://manpages.debian.org/bookworm/coreutils/tr.1.en.gz",
+ "short": {
+  "C": "none",
+  "c": "none",
+  "d": "none",
+  "s": "none",
+  "t": "none"
+ },
+ "long": {
+  "complement": "none",
+  "delete": "none",
+  "help": "none",
+  "squeeze-repeats": "none",
+  "truncate-set1": "none",
+  "version": "none"
+ },
+ "words": []
+}

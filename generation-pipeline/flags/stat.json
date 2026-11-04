@@ -1,0 +1,21 @@
+{
+ "util": "stat",
+ "source": "https://manpages.debian.org/bookworm/coreutils/stat.1.en.gz",
+ "short": {
+  "L": "none",
+  "c": "none",
+  "f": "none",
+  "t": "none"
+ },
+ "long": {
+  "cached": "required",
+  "dereference": "none",
+  "file-system": "none",
+  "format": "required",
+  "help": "none",
+  "printf": "required",
+  "terse": "none",
+  "version": "none"
+ },
+ "words": []
+}

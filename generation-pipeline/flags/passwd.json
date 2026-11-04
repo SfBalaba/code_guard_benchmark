@@ -1,0 +1,41 @@
+{
+ "util": "passwd",
+ "source": "https://manpages.debian.org/bookworm/passwd/passwd.1.en.gz",
+ "short": {
+  "1": "none",
+  "R": "none",
+  "S": "none",
+  "a": "none",
+  "d": "none",
+  "e": "none",
+  "h": "none",
+  "i": "none",
+  "k": "none",
+  "l": "none",
+  "n": "none",
+  "q": "none",
+  "r": "none",
+  "u": "none",
+  "w": "none",
+  "x": "none"
+ },
+ "long": {
+  "all": "none",
+  "delete": "none",
+  "expire": "none",
+  "expiredate": "none",
+  "help": "none",
+  "inactive": "none",
+  "keep-tokens": "none",
+  "lock": "none",
+  "maxdays": "none",
+  "mindays": "none",
+  "quiet": "none",
+  "repository": "none",
+  "root": "none",
+  "status": "none",
+  "unlock": "none",
+  "warndays": "none"
+ },
+ "words": []
+}

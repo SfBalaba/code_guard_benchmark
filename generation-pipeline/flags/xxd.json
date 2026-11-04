@@ -1,0 +1,35 @@
+{
+ "util": "xxd",
+ "source": "https://manpages.debian.org/bookworm/xxd/xxd.1.en.gz",
+ "short": {
+  "1": "none",
+  "C": "none",
+  "E": "none",
+  "a": "none",
+  "b": "none",
+  "c": "none",
+  "e": "none",
+  "g": "none",
+  "h": "optional",
+  "i": "none",
+  "l": "none",
+  "n": "none",
+  "o": "required",
+  "p": "none",
+  "r": "optional",
+  "s": "none",
+  "u": "none",
+  "v": "none"
+ },
+ "long": {},
+ "words": [
+  "bits",
+  "c8",
+  "cols",
+  "help",
+  "len",
+  "name",
+  "ps",
+  "seek"
+ ]
+}

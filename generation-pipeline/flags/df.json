@@ -1,0 +1,37 @@
+{
+ "util": "df",
+ "source": "https://manpages.debian.org/bookworm/coreutils/df.1.en.gz",
+ "short": {
+  "B": "required",
+  "H": "none",
+  "P": "none",
+  "T": "none",
+  "a": "none",
+  "h": "none",
+  "i": "none",
+  "k": "none",
+  "l": "none",
+  "t": "required",
+  "v": "none",
+  "x": "required"
+ },
+ "long": {
+  "all": "none",
+  "block-size": "required",
+  "exclude-type": "required",
+  "help": "none",
+  "human-readable": "none",
+  "inodes": "none",
+  "local": "none",
+  "no-sync": "none",
+  "output": "optional",
+  "portability": "none",
+  "print-type": "none",
+  "si": "none",
+  "sync": "none",
+  "total": "none",
+  "type": "required",
+  "version": "none"
+ },
+ "words": []
+}

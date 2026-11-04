@@ -1,0 +1,66 @@
+{
+  "run_name": "local_qwen4b_test",
+  "split": "train",
+  "seeds_path": "../examples/seeds_local_test.jsonl",
+  "output_dir": "../runs",
+  "taxonomy_path": "../taxonomy.json",
+  "prompt": {
+    "template": "../prompts/generation_v1.md",
+    "version": "v1",
+    "candidates_per_call": 4
+  },
+  "backend": {
+    "provider": "openai_compatible",
+    "base_url": "http://localhost:8080/v1",
+    "model": "Huihui-Qwen3.5-4B-abliterated-Q4_K_M",
+    "api_key_env": null,
+    "json_mode": true,
+    "timeout": 300,
+    "retries": 3,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "sampling": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_tokens": 1024,
+    "seed": 20261103,
+    "samples_per_seed": 3
+  },
+  "seeds": {
+    "allowed_statuses": [
+      "approved_for_generation"
+    ]
+  },
+  "labels": {
+    "classes": [
+      "allow",
+      "ask",
+      "deny"
+    ],
+    "severities": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ]
+  },
+  "clean": {
+    "max_command_chars": 2000,
+    "allow_non_ascii_command": false
+  },
+  "dedup": {
+    "against": []
+  },
+  "validate": {
+    "bash_syntax_check": true,
+    "flag_check": "reject",
+    "label_anchors": true
+  },
+  "export": {
+    "seed_column": "prompt"
+  }
+}

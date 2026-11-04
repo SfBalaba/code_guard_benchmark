@@ -1,0 +1,36 @@
+{
+ "util": "sed",
+ "source": "https://manpages.debian.org/bookworm/sed/sed.1.en.gz",
+ "short": {
+  "E": "none",
+  "V": "none",
+  "e": "none",
+  "f": "none",
+  "i": "optional",
+  "l": "required",
+  "n": "none",
+  "r": "none",
+  "s": "none",
+  "u": "none",
+  "z": "none"
+ },
+ "long": {
+  "debug": "none",
+  "expression": "required",
+  "file": "required",
+  "follow-symlinks": "none",
+  "help": "none",
+  "in-place": "optional",
+  "line-length": "required",
+  "null-data": "none",
+  "posix": "none",
+  "quiet": "none",
+  "regexp-extended": "none",
+  "sandbox": "none",
+  "separate": "none",
+  "silent": "none",
+  "unbuffered": "none",
+  "version": "none"
+ },
+ "words": []
+}

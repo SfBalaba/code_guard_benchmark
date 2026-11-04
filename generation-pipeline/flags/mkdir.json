@@ -1,0 +1,19 @@
+{
+ "util": "mkdir",
+ "source": "https://manpages.debian.org/bookworm/coreutils/mkdir.1.en.gz",
+ "short": {
+  "Z": "none",
+  "m": "required",
+  "p": "none",
+  "v": "none"
+ },
+ "long": {
+  "context": "optional",
+  "help": "none",
+  "mode": "required",
+  "parents": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

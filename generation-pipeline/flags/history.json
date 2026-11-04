@@ -1,0 +1,18 @@
+{
+ "util": "history",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "c": "none",
+  "d": "required",
+  "a": "none",
+  "n": "none",
+  "r": "none",
+  "w": "none",
+  "p": "none",
+  "s": "none"
+ },
+ "arg_patterns": {
+  "-d": "^-?\\d+(?:--?\\d+)?$"
+ }
+}

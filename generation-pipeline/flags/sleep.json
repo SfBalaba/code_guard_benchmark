@@ -1,0 +1,10 @@
+{
+ "util": "sleep",
+ "source": "https://manpages.debian.org/bookworm/coreutils/sleep.1.en.gz",
+ "short": {},
+ "long": {
+  "help": "none",
+  "version": "none"
+ },
+ "words": []
+}

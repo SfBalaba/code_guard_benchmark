@@ -1,0 +1,20 @@
+{
+  "run_name": "mock_demo",
+  "split": "train",
+  "seeds_path": "../examples/seeds_example.jsonl",
+  "output_dir": "../runs",
+  "taxonomy_path": "../taxonomy.json",
+  "prompt": {
+    "template": "../prompts/generation_v1.md",
+    "version": "v1",
+    "candidates_per_call": 4
+  },
+  "backend": {
+    "provider": "mock",
+    "mode": "clean"
+  },
+  "sampling": {
+    "samples_per_seed": 2,
+    "seed": 20261103
+  }
+}

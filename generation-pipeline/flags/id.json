@@ -1,0 +1,26 @@
+{
+ "util": "id",
+ "source": "https://manpages.debian.org/bookworm/coreutils/id.1.en.gz",
+ "short": {
+  "G": "none",
+  "Z": "none",
+  "a": "none",
+  "g": "none",
+  "n": "none",
+  "r": "none",
+  "u": "none",
+  "z": "none"
+ },
+ "long": {
+  "context": "none",
+  "group": "none",
+  "groups": "none",
+  "help": "none",
+  "name": "none",
+  "real": "none",
+  "user": "none",
+  "version": "none",
+  "zero": "none"
+ },
+ "words": []
+}

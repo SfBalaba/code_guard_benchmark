@@ -1,0 +1,15 @@
+{
+ "util": "update-ca-certificates",
+ "source": "https://manpages.debian.org/bookworm/ca-certificates/update-ca-certificates.8.en.gz",
+ "short": {
+  "f": "none",
+  "h": "none",
+  "v": "none"
+ },
+ "long": {
+  "fresh": "none",
+  "help": "none",
+  "verbose": "none"
+ },
+ "words": []
+}

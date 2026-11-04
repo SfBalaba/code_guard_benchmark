@@ -1,0 +1,10 @@
+{
+ "util": "sestatus",
+ "source": "https://manpages.debian.org/bookworm/policycoreutils/sestatus.8.en.gz",
+ "short": {
+  "b": "none",
+  "v": "none"
+ },
+ "long": {},
+ "words": []
+}

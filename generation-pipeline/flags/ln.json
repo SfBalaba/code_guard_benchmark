@@ -1,0 +1,38 @@
+{
+ "util": "ln",
+ "source": "https://manpages.debian.org/bookworm/coreutils/ln.1.en.gz",
+ "short": {
+  "F": "none",
+  "L": "none",
+  "P": "none",
+  "S": "required",
+  "T": "none",
+  "b": "none",
+  "d": "none",
+  "f": "none",
+  "i": "none",
+  "n": "none",
+  "r": "none",
+  "s": "none",
+  "t": "required",
+  "v": "none"
+ },
+ "long": {
+  "backup": "optional",
+  "directory": "none",
+  "force": "none",
+  "help": "none",
+  "interactive": "none",
+  "logical": "none",
+  "no-dereference": "none",
+  "no-target-directory": "none",
+  "physical": "none",
+  "relative": "none",
+  "suffix": "required",
+  "symbolic": "none",
+  "target-directory": "required",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

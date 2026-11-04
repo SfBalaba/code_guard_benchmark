@@ -1,0 +1,21 @@
+{
+ "util": "mktemp",
+ "source": "https://manpages.debian.org/bookworm/coreutils/mktemp.1.en.gz",
+ "short": {
+  "d": "none",
+  "p": "required",
+  "q": "none",
+  "t": "none",
+  "u": "none"
+ },
+ "long": {
+  "directory": "none",
+  "dry-run": "none",
+  "help": "none",
+  "quiet": "none",
+  "suffix": "required",
+  "tmpdir": "optional",
+  "version": "none"
+ },
+ "words": []
+}

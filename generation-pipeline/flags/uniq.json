@@ -1,0 +1,30 @@
+{
+ "util": "uniq",
+ "source": "https://manpages.debian.org/bookworm/coreutils/uniq.1.en.gz",
+ "short": {
+  "D": "none",
+  "c": "none",
+  "d": "none",
+  "f": "required",
+  "i": "none",
+  "s": "required",
+  "u": "none",
+  "w": "required",
+  "z": "none"
+ },
+ "long": {
+  "all-repeated": "optional",
+  "check-chars": "required",
+  "count": "none",
+  "group": "optional",
+  "help": "none",
+  "ignore-case": "none",
+  "repeated": "none",
+  "skip-chars": "required",
+  "skip-fields": "required",
+  "unique": "none",
+  "version": "none",
+  "zero-terminated": "none"
+ },
+ "words": []
+}

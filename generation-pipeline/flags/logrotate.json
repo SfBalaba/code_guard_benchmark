@@ -1,0 +1,30 @@
+{
+ "util": "logrotate",
+ "source": "https://manpages.debian.org/bookworm/logrotate/logrotate.8.en.gz",
+ "short": {
+  "1": "none",
+  "6": "none",
+  "?": "none",
+  "d": "none",
+  "f": "none",
+  "l": "none",
+  "m": "none",
+  "s": "none",
+  "u": "none",
+  "v": "none"
+ },
+ "long": {
+  "debug": "none",
+  "force": "none",
+  "help": "none",
+  "log": "none",
+  "mail": "none",
+  "skip-state-lock": "none",
+  "state": "none",
+  "usage": "none",
+  "verbose": "none",
+  "version": "none",
+  "wait-for-state-lock": "none"
+ },
+ "words": []
+}

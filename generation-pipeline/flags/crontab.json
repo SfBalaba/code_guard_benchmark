@@ -1,0 +1,15 @@
+{
+ "util": "crontab",
+ "source": "https://manpages.debian.org/bookworm/cron/crontab.1.en.gz",
+ "short": {
+  "e": "none",
+  "h": "none",
+  "i": "none",
+  "l": "none",
+  "n": "none",
+  "r": "none",
+  "u": "none"
+ },
+ "long": {},
+ "words": []
+}

@@ -1,0 +1,22 @@
+{
+ "util": "head",
+ "source": "https://manpages.debian.org/bookworm/coreutils/head.1.en.gz",
+ "short": {
+  "c": "required",
+  "n": "required",
+  "q": "none",
+  "v": "none",
+  "z": "none"
+ },
+ "long": {
+  "bytes": "required",
+  "help": "none",
+  "lines": "required",
+  "quiet": "none",
+  "silent": "none",
+  "verbose": "none",
+  "version": "none",
+  "zero-terminated": "none"
+ },
+ "words": []
+}

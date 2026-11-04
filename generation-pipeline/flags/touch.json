@@ -1,0 +1,24 @@
+{
+ "util": "touch",
+ "source": "https://manpages.debian.org/bookworm/coreutils/touch.1.en.gz",
+ "short": {
+  "a": "none",
+  "c": "none",
+  "d": "required",
+  "f": "none",
+  "h": "none",
+  "m": "none",
+  "r": "required",
+  "t": "required"
+ },
+ "long": {
+  "date": "required",
+  "help": "none",
+  "no-create": "none",
+  "no-dereference": "none",
+  "reference": "required",
+  "time": "required",
+  "version": "none"
+ },
+ "words": []
+}

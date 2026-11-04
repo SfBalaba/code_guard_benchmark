@@ -1,0 +1,17 @@
+{
+ "util": "tee",
+ "source": "https://manpages.debian.org/bookworm/coreutils/tee.1.en.gz",
+ "short": {
+  "a": "none",
+  "i": "none",
+  "p": "none"
+ },
+ "long": {
+  "append": "none",
+  "help": "none",
+  "ignore-interrupts": "none",
+  "output-error": "optional",
+  "version": "none"
+ },
+ "words": []
+}

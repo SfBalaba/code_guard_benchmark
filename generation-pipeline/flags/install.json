@@ -1,0 +1,41 @@
+{
+ "util": "install",
+ "source": "https://manpages.debian.org/bookworm/coreutils/install.1.en.gz",
+ "short": {
+  "C": "none",
+  "D": "none",
+  "S": "required",
+  "T": "none",
+  "Z": "none",
+  "b": "none",
+  "c": "none",
+  "d": "none",
+  "g": "required",
+  "m": "required",
+  "o": "required",
+  "p": "none",
+  "s": "none",
+  "t": "required",
+  "v": "none"
+ },
+ "long": {
+  "backup": "optional",
+  "compare": "none",
+  "context": "optional",
+  "directory": "none",
+  "group": "required",
+  "help": "none",
+  "mode": "required",
+  "no-target-directory": "none",
+  "owner": "required",
+  "preserve-context": "none",
+  "preserve-timestamps": "none",
+  "strip": "none",
+  "strip-program": "required",
+  "suffix": "required",
+  "target-directory": "required",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

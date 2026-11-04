@@ -1,0 +1,12 @@
+{
+ "util": "kill",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "s": "required",
+  "n": "required",
+  "l": "none",
+  "L": "none"
+ },
+ "signal_flags": true
+}

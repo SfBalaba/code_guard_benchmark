@@ -1,0 +1,12 @@
+{
+ "util": "shopt",
+ "source": "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html",
+ "long": {},
+ "short": {
+  "o": "none",
+  "p": "none",
+  "q": "none",
+  "s": "none",
+  "u": "none"
+ }
+}

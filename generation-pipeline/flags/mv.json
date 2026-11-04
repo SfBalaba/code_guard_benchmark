@@ -1,0 +1,32 @@
+{
+ "util": "mv",
+ "source": "https://manpages.debian.org/bookworm/coreutils/mv.1.en.gz",
+ "short": {
+  "S": "required",
+  "T": "none",
+  "Z": "none",
+  "b": "none",
+  "f": "none",
+  "i": "none",
+  "n": "none",
+  "t": "required",
+  "u": "none",
+  "v": "none"
+ },
+ "long": {
+  "backup": "optional",
+  "context": "none",
+  "force": "none",
+  "help": "none",
+  "interactive": "none",
+  "no-clobber": "none",
+  "no-target-directory": "none",
+  "strip-trailing-slashes": "none",
+  "suffix": "required",
+  "target-directory": "required",
+  "update": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

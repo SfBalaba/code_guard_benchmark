@@ -1,0 +1,16 @@
+{
+ "util": "rmdir",
+ "source": "https://manpages.debian.org/bookworm/coreutils/rmdir.1.en.gz",
+ "short": {
+  "p": "none",
+  "v": "none"
+ },
+ "long": {
+  "help": "none",
+  "ignore-fail-on-non-empty": "none",
+  "parents": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

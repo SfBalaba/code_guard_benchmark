@@ -1,0 +1,34 @@
+{
+ "util": "split",
+ "source": "https://manpages.debian.org/bookworm/coreutils/split.1.en.gz",
+ "short": {
+  "C": "required",
+  "a": "required",
+  "b": "required",
+  "d": "none",
+  "e": "none",
+  "l": "required",
+  "n": "required",
+  "t": "required",
+  "u": "none",
+  "x": "none"
+ },
+ "long": {
+  "additional-suffix": "required",
+  "bytes": "required",
+  "elide-empty-files": "none",
+  "filter": "required",
+  "help": "none",
+  "hex-suffixes": "optional",
+  "line-bytes": "required",
+  "lines": "required",
+  "number": "required",
+  "numeric-suffixes": "optional",
+  "separator": "required",
+  "suffix-length": "required",
+  "unbuffered": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": []
+}

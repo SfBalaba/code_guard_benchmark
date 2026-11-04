@@ -1,0 +1,32 @@
+{
+ "util": "chown",
+ "source": "https://manpages.debian.org/bookworm/coreutils/chown.1.en.gz",
+ "short": {
+  "H": "none",
+  "L": "none",
+  "P": "none",
+  "R": "none",
+  "c": "none",
+  "f": "none",
+  "h": "none",
+  "v": "none"
+ },
+ "long": {
+  "changes": "none",
+  "dereference": "none",
+  "from": "required",
+  "help": "none",
+  "no-dereference": "none",
+  "no-preserve-root": "none",
+  "preserve-root": "none",
+  "quiet": "none",
+  "recursive": "none",
+  "reference": "required",
+  "silent": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": [
+  "hR"
+ ]
+}

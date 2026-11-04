@@ -1,0 +1,29 @@
+{
+ "util": "date",
+ "source": "https://manpages.debian.org/bookworm/coreutils/date.1.en.gz",
+ "short": {
+  "I": "optional",
+  "R": "none",
+  "d": "required",
+  "f": "required",
+  "r": "required",
+  "s": "required",
+  "u": "none"
+ },
+ "long": {
+  "date": "required",
+  "debug": "none",
+  "file": "required",
+  "help": "none",
+  "iso-8601": "optional",
+  "reference": "required",
+  "resolution": "none",
+  "rfc-3339": "required",
+  "rfc-email": "none",
+  "set": "required",
+  "universal": "none",
+  "utc": "none",
+  "version": "none"
+ },
+ "words": []
+}

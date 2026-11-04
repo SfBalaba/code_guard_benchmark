@@ -1,0 +1,34 @@
+{
+ "util": "chattr",
+ "source": "https://manpages.debian.org/bookworm/e2fsprogs/chattr.1.en.gz",
+ "short": {
+  "A": "none",
+  "C": "none",
+  "D": "none",
+  "F": "none",
+  "P": "none",
+  "R": "none",
+  "S": "none",
+  "T": "none",
+  "V": "none",
+  "a": "none",
+  "c": "none",
+  "d": "none",
+  "e": "none",
+  "f": "none",
+  "i": "none",
+  "j": "none",
+  "m": "none",
+  "p": "none",
+  "s": "none",
+  "t": "none",
+  "u": "none",
+  "v": "none",
+  "x": "none"
+ },
+ "long": {},
+ "words": [
+  "RVf"
+ ],
+ "plus_flags": true
+}

@@ -1,0 +1,39 @@
+{
+ "util": "od",
+ "source": "https://manpages.debian.org/bookworm/coreutils/od.1.en.gz",
+ "short": {
+  "A": "required",
+  "N": "required",
+  "S": "required",
+  "a": "none",
+  "b": "none",
+  "c": "none",
+  "d": "none",
+  "f": "none",
+  "i": "none",
+  "j": "required",
+  "l": "none",
+  "o": "none",
+  "s": "none",
+  "t": "required",
+  "v": "none",
+  "w": "optional",
+  "x": "none"
+ },
+ "long": {
+  "address-radix": "required",
+  "endian": "required",
+  "format": "required",
+  "help": "none",
+  "output-duplicates": "none",
+  "read-bytes": "required",
+  "skip-bytes": "required",
+  "strings": "optional",
+  "traditional": "none",
+  "version": "none",
+  "width": "optional"
+ },
+ "words": [
+  "w16"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "util": "whoami",
+ "source": "https://manpages.debian.org/bookworm/coreutils/whoami.1.en.gz",
+ "short": {},
+ "long": {
+  "help": "none",
+  "version": "none"
+ },
+ "words": []
+}

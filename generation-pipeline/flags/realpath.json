@@ -1,0 +1,28 @@
+{
+ "util": "realpath",
+ "source": "https://manpages.debian.org/bookworm/coreutils/realpath.1.en.gz",
+ "short": {
+  "L": "none",
+  "P": "none",
+  "e": "none",
+  "m": "none",
+  "q": "none",
+  "s": "none",
+  "z": "none"
+ },
+ "long": {
+  "canonicalize-existing": "none",
+  "canonicalize-missing": "none",
+  "help": "none",
+  "logical": "none",
+  "no-symlinks": "none",
+  "physical": "none",
+  "quiet": "none",
+  "relative-base": "required",
+  "relative-to": "required",
+  "strip": "none",
+  "version": "none",
+  "zero": "none"
+ },
+ "words": []
+}

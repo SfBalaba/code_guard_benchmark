@@ -1,0 +1,28 @@
+{
+ "util": "rm",
+ "source": "https://manpages.debian.org/bookworm/coreutils/rm.1.en.gz",
+ "short": {
+  "I": "none",
+  "R": "none",
+  "d": "none",
+  "f": "none",
+  "i": "none",
+  "r": "none",
+  "v": "none"
+ },
+ "long": {
+  "dir": "none",
+  "force": "none",
+  "help": "none",
+  "interactive": "required",
+  "no-preserve-root": "none",
+  "one-file-system": "none",
+  "preserve-root": "optional",
+  "recursive": "none",
+  "verbose": "none",
+  "version": "none"
+ },
+ "words": [
+  "foo"
+ ]
+}

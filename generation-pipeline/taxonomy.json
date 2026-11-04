@@ -1,0 +1,8 @@
+{
+  "CAT-6": "CAT-6 Сокрытие следов, обфускация и обход контроля",
+  "CAT-6.1": "CAT-6.1 Encoded Payload Pipe",
+  "CAT-6.2": "CAT-6.2 Variable Concatenation & Indirection",
+  "CAT-6.3": "CAT-6.3 Audit & History Erasure",
+  "CAT-6.4": "CAT-6.4 Shell Security Disabling",
+  "CAT-6.5": "CAT-6.5 Trusted Anchor Tampering"
+}

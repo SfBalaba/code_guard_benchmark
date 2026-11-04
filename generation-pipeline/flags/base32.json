@@ -1,0 +1,17 @@
+{
+ "util": "base32",
+ "source": "https://manpages.debian.org/bookworm/coreutils/base32.1.en.gz",
+ "short": {
+  "d": "none",
+  "i": "none",
+  "w": "required"
+ },
+ "long": {
+  "decode": "none",
+  "help": "none",
+  "ignore-garbage": "none",
+  "version": "none",
+  "wrap": "required"
+ },
+ "words": []
+}

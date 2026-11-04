@@ -1,0 +1,27 @@
+{
+ "util": "cut",
+ "source": "https://manpages.debian.org/bookworm/coreutils/cut.1.en.gz",
+ "short": {
+  "M": "none",
+  "b": "required",
+  "c": "required",
+  "d": "required",
+  "f": "required",
+  "n": "none",
+  "s": "none",
+  "z": "none"
+ },
+ "long": {
+  "bytes": "required",
+  "characters": "required",
+  "complement": "none",
+  "delimiter": "required",
+  "fields": "required",
+  "help": "none",
+  "only-delimited": "none",
+  "output-delimiter": "required",
+  "version": "none",
+  "zero-terminated": "none"
+ },
+ "words": []
+}
