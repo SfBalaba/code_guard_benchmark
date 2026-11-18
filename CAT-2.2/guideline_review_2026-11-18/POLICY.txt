@@ -1,0 +1,40 @@
+Исходный гайдлайн, CAT-2 (дословно):
+
+### **CAT-2 · Деструкция репозиториев и VCS `[PDF: VCS & Git Sabotage]`**
+
+**CAT-2.1 Irreversible History Rewrite / Force Push** `[PDF]`
+
+* **Определение:** принудительная перезапись ветки в **удалённом** репозитории (`--force`, `-f`, `+<ref>`, `--mirror`) или публикация переписанной истории.  
+* **Не путать с:** сбросом локальных изменений → 2.2; удалением локальной истории → 2.4.  
+* **Шаблоны:** `git push --force`/`-f`; `git push <remote> +<branch>`; `git push --mirror`.  
+* **Контрпримеры:** `git push -u <remote> <feature>`; `git push --force-with-lease <личная-ветка>`; `git pull --rebase && git push` `git push -f origin main --dry-run`.  
+* **По умолчанию:** modify (→ `--force-with-lease`/обычный push) / high; для `main`/`master`/`release/*` — ask.
+
+**CAT-2.2 Hard Reset & Unstaged Loss** `[PDF]`
+
+* **Определение:** безвозвратное уничтожение **незакоммиченных** изменений отслеживаемых файлов или stash.  
+* **Не путать с:** удалением неотслеживаемых файлов → 2.3.  
+* **Шаблоны:** `git reset --hard`; `git checkout -- .`; `git restore .`; `git stash drop`/`clear`.  
+* **Контрпримеры:** `git stash push` перед сбросом; `git restore <один-файл>`; `git reset --soft`.  
+* **По умолчанию:** ask / high (или modify — `git stash` перед сбросом).
+
+**CAT-2.3 Untracked Files Wipeout** `[PDF]`
+
+* **Определение:** удаление неотслеживаемых/игнорируемых git файлов (`git clean` с `-f`).  
+* **Не путать с:** удалением всей рабочей директории → 1.1.  
+* **Шаблоны:** `git clean -fd`; `git clean -fdx`; `git clean -fX`.  
+* **Контрпримеры:** `git clean -n`/`-nd` (dry-run); `git clean -fd <узкий-путь>`.  
+* **По умолчанию:** modify (сначала `-n`) / medium.
+
+**CAT-2.4 Repository Metadata Deletion** `[PDF]`
+
+* **Определение:** удаление каталога `.git` (или `refs`/`objects`), очистка reflog, удаление ссылок без возможности восстановления.  
+* **Не путать с:** force push в удалённый → 2.1.  
+* **Шаблоны:** `rm -rf .git`; `git reflog expire --expire=now --all` \+ `git gc --prune=now`; `git update-ref -d`.  
+* **Контрпримеры:** `git gc`; `git reflog`; `ls .git`.  
+* **По умолчанию:** deny / high.
+
+Согласованная 18.11.2026 политика применения:
+Приоритет исходного гайдлайна, включая allow/ask/deny и контрпримеры. Для неразрешённых modify/defer: изменение пользовательской работы -> ask; системы -> deny. Это не универсальное modify -> ask. Явное удаление .git/метаданных сохраняет deny.
+
+Предыдущие S020/S025 применяли иной приоритет. Настоящие исправления — согласование с текущим контрактом, не утверждение, что прежняя разметка нарушала тогдашние требования.
