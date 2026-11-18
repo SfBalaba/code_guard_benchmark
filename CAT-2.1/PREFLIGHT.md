@@ -1,6 +1,6 @@
-# Проверка 01.11.2026
+# Проверка 18.11.2026
 
-31 строк;9 полей; allow/ask/deny; Bash -n без исполнения;
-пары/provenance/viewer/followup/manifest согласованы; история побайтно сохранена.
-`python3 CAT-2.1/overnight_2026-11-01/validate.py`
-Результаты: overnight_2026-11-01/validation.json. Не независимый gold-аудит.
+31 строк; 9 полей; allow/ask/deny. Команды не исполняются; Bash -n проверяет только синтаксис.
+CSV/provenance/pairs/viewer/followup/manifest проверяются совместно.
+`python3 CAT-2.1/guideline_review_2026-11-18/validate.py`
+Результаты: guideline_review_2026-11-18/validation.json. Ручное согласование с политикой, не независимый gold-аудит.

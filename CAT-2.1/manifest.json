@@ -1,11 +1,11 @@
 {
   "files": {
-    "PREFLIGHT.md": "d8bf77773c76dcb700694d218fabd12147a418be17bbd6720c8836b48d53d2eb",
+    "PREFLIGHT.md": "56b12676b1c0809ebc864696bc71b10cd4725c1309bee754da705e5408f5f020",
     "commands.csv": "ce040e0f2fd7cd7f7e5f50729aa84d420a59b89d8c58fce99a5f71dbc24d10b2",
     "pairs.jsonl": "bc9d737d5745da0d8648b9c1505cb590d8034d9e90ccc2f19cc51853073b936c",
-    "README.md": "5cae51d15e80728b60a9f3e93fe463c5efd218bc06b9956b9cb671f4f88135cf",
+    "README.md": "83541f5d78c26753d4a48d655dafafcaf40d83930d42899765f465c27b1bb02a",
     "provenance.jsonl": "328a6a7ff7b64adacacd371b517c9c6c6af1d9740154c5f299094717a7ae883d",
-    "QUESTIONS.md": "4268363d22aa35ac3edf2961ed1d705e84cfc7e02039deac5bef0c790f38c092",
+    "QUESTIONS.md": "70e46093b4f5edf7c95d41c19ae7aca01c7cbff3689b6dcf4178b691ca47628e",
     "archive/archive.jsonl": "cbf3eac77b938eb9713985cade42bbe247baa5ce839208eb2d95ccd764a86b5b",
     "LICENSES/git__git/COPYING": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
     "LICENSES/nvbn__thefuck/LICENSE.md": "79c5121a816be0d8a5efada23a1b858de7394291bc668ed6c830c8861bb14749",
@@ -24,7 +24,7 @@
     "followup_2026-10-31/README.md": "d1526bbb3cbdbfe449f990c606518a7b960eea8188d12aa2cf7ca353bc48a90a",
     "followup_2026-10-31/provenance.jsonl": "975e944a083e0f4a91d827b7486f07a75d4563bba9b7fed18b6d0df5bdd567f0",
     "followup_2026-10-31/attribution.json": "b3e1e5e5fc4dbddebc371912e4de031739f7cfdb7d57ead916acc02ac471b8a5",
-    "viewer/index.html": "49cdb577ac54953ae7ce0a2256cc59bb76dcfab252d35664d69ebb3f13307a9b",
+    "viewer/index.html": "a80f3c0ea2d6cc9cec1b8f45b45b5d4b91e1aae62c6a2fe131a4173e45f96633",
     "viewer/preflight.html": "0b3b044ea748d28622498fd7ee18b72cba5f8e5513e1d1ce9608add514460a73",
     "viewer/discussion.html": "5577ef4082621465437319bad4fa2ec894e04e73e27722167e15d1f20c354a7d",
     "audit_v0_2026-10-31/summary.json": "e4926d75380ad06917f2c639c81ed14b957304e91a4b802b484b408ad52589d7",
@@ -71,7 +71,16 @@
     "overnight_2026-11-01/history/provenance.jsonl": "a87110b28705e7e71bd4e89cefe5515050ca45cc2a1c62652b30dff418e02aeb",
     "overnight_2026-11-01/history/manifest.json": "5cb706fb5481cfcf42db2cca9d69dd1a964ec7f46e8434e69162f70b157b742e",
     "overnight_2026-11-01/history/QUESTIONS.md": "3a14271da6bcbffc443334dfc54079079fe5317dbdc3de502e92c82697a25833",
-    "overnight_2026-11-01/sources/git-push.adoc": "d1a9b356d6630280b354eeb6270985d57dacf89935cec682da60772d315be27e"
+    "overnight_2026-11-01/sources/git-push.adoc": "d1a9b356d6630280b354eeb6270985d57dacf89935cec682da60772d315be27e",
+    "guideline_review_2026-11-18/context_review.jsonl": "78501bb90415787c341650101509b15dd71f11222dbfb0a4e508776fee2bc8f0",
+    "guideline_review_2026-11-18/POLICY.txt": "57ad99d3332a3eb6dc26b39f7ca9b49ac9a73e204ebb36be681241c4b282d539",
+    "guideline_review_2026-11-18/CLASS_CHANGELOG.csv": "9b000d965314a077a0e070e7f10a404f1776cdccb9588fa5a627476da4b22725",
+    "guideline_review_2026-11-18/summary.json": "d533bfbc4d0195d2cbdb22f9577b274e90791b15d67b030ac0cbd7033d86eb8f",
+    "guideline_review_2026-11-18/REPORT.txt": "cdc9b9a460809281f851ad1365d5e13d547287eb9ac32a1372814d828d1a9231",
+    "guideline_review_2026-11-18/before.jsonl": "f80a9654a415c9b1d0667f448d9c4aed331207892db2c540f27ac5f0be4a0346",
+    "guideline_review_2026-11-18/review.jsonl": "5227f3ee29de2637800376ab9936fbf23ec6fea1d9a220f2c480bc138000bca2",
+    "guideline_review_2026-11-18/validate.py": "b08868ea206234b64ca3a298123febfbacf766f26881ab190531550a69e8116f",
+    "guideline_review_2026-11-18/validation.json": "cb1e3190cf86b0b4b118ea9db1a074d4f6c665dbf60d7642c887dad38be81624"
   },
   "original_v3_ids": [
     "C2-01318c049f9eb003",
@@ -114,7 +123,7 @@
   "selected": 31,
   "labels_preliminary": true,
   "original_backup_branch": "archive/local_CAT-2.1_before_publication_20261029",
-  "publication_version": "overnight-2026-11-01",
+  "publication_version": "guideline-first-2026-11-18",
   "previous_published_head": "dd5676ed5f19e53f2e1638ba42159e68cabe0da0",
   "followup_ids": [
     "F31-021b348a08934414",
@@ -122,7 +131,7 @@
     "F31-a4e8f15536bc9362"
   ],
   "followup_anonymized_ids": [],
-  "baseline_head": "00e073bc4b79732141aaf3780e957a8984aee5e7",
+  "baseline_head": "ccab2348dd349ded9921a0e3ea703e591abf1002",
   "selected_ids": [
     "C2-17d4dd0baaecba16",
     "C2-c46563ec87573f6b",
