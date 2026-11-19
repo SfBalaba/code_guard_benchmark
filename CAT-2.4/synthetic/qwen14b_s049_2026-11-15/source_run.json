@@ -1,0 +1,51 @@
+{
+  "source_run": "S049",
+  "source_directory": "train_generation_2026-11-14_qwen_full",
+  "generation_completed_at": "2026-11-15T05:29:53.804780+03:00",
+  "published_date": "2026-11-19",
+  "subcategory": "CAT-2.4",
+  "model_config": {
+    "model": {
+      "key": "qwen14b",
+      "repo": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+      "revision": "5b379ec4bf71bafecb5f9081ad28b19939128988",
+      "filename": "Qwen2.5-Coder-14B-Instruct-Q4_K_M.gguf",
+      "sha256": "2946d28c9e1bb2bcae6d42e8678863a31775df6f740315c7d7e6d6b6411f5937",
+      "bytes": 8988111072,
+      "url": "https://huggingface.co/bartowski/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/5b379ec4bf71bafecb5f9081ad28b19939128988/Qwen2.5-Coder-14B-Instruct-Q4_K_M.gguf",
+      "base_model": "Qwen/Qwen2.5-Coder-14B-Instruct",
+      "abliterated": false
+    },
+    "input_manifest_sha256": "25991e33344404693704c51b5845dbe3771244f6d0b695cf363c2c6f0d5b000f",
+    "engine_sha256": {
+      "runtime.py": "80c26cc7250c9d0b1658f2abc5b6e3f280db9f0c28d1a1e4de32a86c8df08a90",
+      "run_full.py": "78ebc36f38e3345819c1509e48d42804212e795b780bba2b398526fd1d2e9ec8",
+      "checks.py": "fe024bca8474f784a66382b7c9c75cb311f0a55b901f6cb973f128bd87ee1cf6",
+      "compiler.py": "083ea95db3e6efc59d853bad6cd9ec1a81c76d915bec22526a7211e69274779b",
+      "prepare.py": "753145af9badf5d1d1a4161d26679f5af5085290cd1c7d992bc31caaba0e7d3d"
+    },
+    "temperature": 0.2,
+    "top_p": 0.95,
+    "max_tokens": 256,
+    "thinking": false,
+    "concurrency": 4
+  },
+  "construction": "Qwen generated literal cores independently for each seed/side; compiler added the form and declared streams/context. Not fully model-authored complex commands.",
+  "origin_kind": "author_synthetic_prompts_and_model_outputs",
+  "source_sha256": {
+    "output/CAT-2.4_pairs.jsonl": "ca5a2ba28044ef484be1a30f370e3aac2ef94b88fbe9e06317efec35d62c6637",
+    "inputs/pairs.json": "7e1806466f8928c1770a09fe8855811ea850861fe9710335e04cb590f7cf222f",
+    "runs/qwen14b/config.json": "2a7f4896e60d383ee9b3f27c3f9c36b85726933e0eab59e358011b3611d02f4c",
+    "runs/qwen14b/raw.jsonl": "9ffa8bde82ccf2e3815366a3c6e14bc357f3ef6273e1e712fd3264c2b5e65888",
+    "runs/qwen14b/records.jsonl": "2592cbabd787a7702038e67365c9e0ca0f29bc7ec62888371fbf6ac2b2f4e71e",
+    "runs/qwen14b/requests.jsonl": "ac40ddc77f80c86677c6cf8cc0eebb84a32eb75c4b43d754701598e9a29b3185",
+    "output/structural_rejections.jsonl": "c294d9e3e7fd62c299594aad49c744e419ed144feb9c73f8c54cb753b24397a3",
+    "reports/pair_diagnostics.jsonl": "4f0296130df50681952691c995853ea1a418ab5e3ab7832b4435d05c276e18ea",
+    "reports/exact_duplicates.jsonl": "cdbc86703afb2b6401c616d91f1b39435ded06cf52a370cefa5bddbb9ebdbe53"
+  },
+  "raw_response_content_join_verified": true,
+  "semantic_validation": false,
+  "human_gold": false,
+  "safety_labels_assigned": false,
+  "test_family_independence": "not_established"
+}
