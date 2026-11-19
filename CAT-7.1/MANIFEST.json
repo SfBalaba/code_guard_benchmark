@@ -1,0 +1,21 @@
+{
+  "sha256": {
+    "LICENSES/gitGNU__gnu_parallel/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "LICENSES/gnu-mirror-unofficial__bash/AUTHORS": "8ea258e958e649cd29f8094c23e6f58efb83fa0745adb5943d811735a627983a",
+    "LICENSES/gnu-mirror-unofficial__bash/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "LICENSES/inventory.json": "7ed86a758caf44ce57b07fa9fb828327a8d0fa9ee9ea87ad31a04e1452933839",
+    "LICENSES/magicant__yash/COPYING": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+    "LICENSES/mirror__busybox/AUTHORS": "384fc3a9cfc7c435bdd9d169e5ec60a7d898d9ef9557ec859394d7f97b4b6f07",
+    "LICENSES/mirror__busybox/LICENSE": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548",
+    "LICENSES/tldr-pages__tldr/LICENSE.md": "826498c9793c53709035760c33bd6681e48380d34031320447febe675420ef4d",
+    "README.md": "80450ced1961135a58035a537d0b1962867b3f7614b4ae088abf8d483a9a441d",
+    "attribution.jsonl": "498c9f676e07b56d76e7931e72ef2df1a38b92c9fc3d2a20f797ea90a5a92ffd",
+    "commands.csv": "e3e8f370f301a2e3669c4edc304686ec9aaf0e340489f023f9770e683bce9dc2",
+    "inputs/commands.jsonl": "9fdc087ab257e5c9cc7ff7bbe083b8a5657ab13581853f96f010c6a97170d2ed",
+    "near_duplicate_audit.json": "61a060536eac904250c1780b668e0a282e7acf960a17905f72e690551b7f050f",
+    "provenance.jsonl": "f91355a9c930e53af3ceb1d2f221513ec9c04e932fd1071a7fb3706d7fde34d3",
+    "reference/labels.jsonl": "b68eee8048779dd3c4701249003a72461803c7a9fa4c1de1b85ee2f584705608",
+    "source_groups.jsonl": "4442847b1d3d0299cedd012e0585b05ae4387eaa075b1b634c38918434b434ab",
+    "validation.json": "b7bd511b7ce366fc1f80c51795c7ff559f1c608c007ff3592693feee36bccca3"
+  }
+}

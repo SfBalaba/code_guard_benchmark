@@ -1,0 +1,70 @@
+{"source_item": "https://askubuntu.com/a/1191346", "ids": ["cat7-e086f29d0e6d2688"]}
+{"source_item": "https://askubuntu.com/a/1247327", "ids": ["cat7-db0517efea133e68"]}
+{"source_item": "https://askubuntu.com/a/555748", "ids": ["cat7-2aaf3b80d896c01b"]}
+{"source_item": "https://askubuntu.com/a/715851", "ids": ["cat7-db0517efea133e68"]}
+{"source_item": "https://askubuntu.com/a/891076", "ids": ["cat7-b8d0c55bfe3420b3"]}
+{"source_item": "https://askubuntu.com/q/1191326", "ids": ["cat7-dde92f3080d87502"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/src/env_parallel.pod", "ids": ["cat7-2139ae4763872971", "cat7-49d0c61d82f3177e"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/src/optional/genresults.sh", "ids": ["cat7-2955fb0af27b2d6b"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/src/parallel.pod", "ids": ["cat7-003e22d33ad32d0c", "cat7-01a9bd850a7850ea", "cat7-036b98cade205c96", "cat7-0b6f7f2544bb884b", "cat7-138a3c6fd01ca6b6", "cat7-159afb51344b4454", "cat7-15d6797307027ba5", "cat7-1bc8f97bb2420bd5", "cat7-1f7861fe6fe6ea92", "cat7-2456aaca913e726c", "cat7-28858c0823b2ef50", "cat7-296fb591477b8a25", "cat7-2ab55c4659ce50be", "cat7-302e6e591f899296", "cat7-33f2d302426fc021", "cat7-3451a29ab376cf4b", "cat7-35d754787131418c", "cat7-392698456b0c70ac", "cat7-3afea8b0ecb43a3c", "cat7-3b267bbf47a63550", "cat7-3c478e766adeb4a9", "cat7-447668a4791483e2", "cat7-4c6b102bd4e0d283", "cat7-539276f134bed260", "cat7-5596092cf8a402f4", "cat7-586a76404ed296b2", "cat7-5de6f7066b5b3544", "cat7-607f5e8b3e505bd5", "cat7-627e20b6cc7200fd", "cat7-70f35c208423d1b3", "cat7-7522b3bb0b813f5f", "cat7-75a9167f1ee17136", "cat7-75b740f592e9fb2f", "cat7-761ad3a813349771", "cat7-7b3e6f4cda85376a", "cat7-80be1c2768e3a2f6", "cat7-814f879542359418", "cat7-8840fe75f0c837ae", "cat7-8a7bc7feb04728b1", "cat7-8b0026e0dcfa30f3", "cat7-8cffb7a217ef3e38", "cat7-8fdbeadb8256a590", "cat7-91af8ae5b1541a53", "cat7-94d38eca3602eb51", "cat7-989441eade2a453f", "cat7-9e6307f145a1a576", "cat7-9eca4ecf5aa8465a", "cat7-a036eece42018c20", "cat7-a481ee53093911fd", "cat7-a7b6197b90f2f6f6", "cat7-aadb986f5e6ececf", "cat7-ad45003eee2263e2", "cat7-b75dd6860a7f09b9", "cat7-baabea0b9bfbd9f3", "cat7-bd0dfae7b5055d32", "cat7-c1f000e142d69a42", "cat7-c89b2ada81a35609", "cat7-cc8d63c247cddd0e", "cat7-ccd6c68232306294", "cat7-ce9c8db3fb477fab", "cat7-d75bc8bf0a50fd49", "cat7-d8dbe7afa04d7dd1", "cat7-dabaf3c810d78b53", "cat7-e7e1df3c3c19e435", "cat7-e94a2ebb33648a95", "cat7-f7133c9a579fc798", "cat7-f8953f2dc8488fb3", "cat7-fc786f4f4417723c"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/src/parallel_alternatives.pod", "ids": ["cat7-6453bbe7cfce6891", "cat7-6db346c3b5722b37", "cat7-8ad308c3e94c0288", "cat7-c7d0235f8a605441", "cat7-da1dbe90c9d0c897", "cat7-faa52b9a6cd68d7b"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/src/parallel_tutorial.pod", "ids": ["cat7-08067ab9d827bd86", "cat7-0d150afa92389a8a", "cat7-12d0ad65e3a854ce", "cat7-143ed5a728e95221", "cat7-176569850295468c", "cat7-17a35da1c18e6ac3", "cat7-19c224d0f3e50624", "cat7-1bc184686540632d", "cat7-1c5f1b97d4785a63", "cat7-1fb51d5d5a6060c6", "cat7-204a4fd285ae4360", "cat7-22e9fb4b0157495e", "cat7-2347549b9711728a", "cat7-2484ee336d235791", "cat7-2850be54f57f6d62", "cat7-28b20b0124d5e859", "cat7-28c0eda68485c4fd", "cat7-29eca4e97495655e", "cat7-2b88702d21d3f6fb", "cat7-2ca287bdff0801d5", "cat7-2e2ee228d99ccb08", "cat7-2e6d7d4be606a2c2", "cat7-2e9739bde402657d", "cat7-2ec4e1618b757367", "cat7-2f73493827d5dfc1", "cat7-30c77babe381c530", "cat7-323aed40c758eb67", "cat7-332a72eacf77ad0d", "cat7-3cb8848437d3597f", "cat7-40dc62bfbec9a69d", "cat7-4139dda1fb2e9916", "cat7-4151d402d27798e9", "cat7-417b5012c1b0a61c", "cat7-423956e0b6afab8a", "cat7-46f9d843f97d3fc9", "cat7-4a4b8ad46adf4095", "cat7-4c9cfe9076d95431", "cat7-4d1236debaefc7ac", "cat7-4dcf851c4d9a3afa", "cat7-4f2cfe98de022603", "cat7-4f72940cccb71911", "cat7-565549a98d0bbc91", "cat7-568b0a1a8534fec8", "cat7-577bfdd58a64254c", "cat7-57c5ca5de10d5e4f", "cat7-5b109fbddc16f644", "cat7-5d5b1f6120bccaeb", "cat7-62affd54b6db79be", "cat7-638d66e64ab4ab29", "cat7-64f07f1badcd39f6", "cat7-662d1b1063707e06", "cat7-669f827dccb45f82", "cat7-6a668a4a148a6cbd", "cat7-6b5fbfe2ecfc447d", "cat7-6cdc75984fed18c4", "cat7-6eb0eb24fe7cfa9b", "cat7-7091fb12e1514828", "cat7-70aee449fa8baa57", "cat7-70c19be06c5b6b89", "cat7-76c125e72a3cf212", "cat7-7747788868686cf0", "cat7-7a2f7d56b927dc2d", "cat7-7f1cbd219fbbdbab", "cat7-830409587c80d6d1", "cat7-83cfdda02e4af56b", "cat7-84550fd0725c07f8", "cat7-8593235c383e066a", "cat7-85d208ac1bb8f69c", "cat7-86c31f17c415280f", "cat7-8892a5f9dbfacaa2", "cat7-8b7ec14a5fdf0558", "cat7-8fca1705dc56db6e", "cat7-9131d8d42b692e08", "cat7-9167060558739332", "cat7-91d6a036ecdf07b7", "cat7-96caad664491de58", "cat7-98e1f7562cb8fd8b", "cat7-9cb442a4a0a669bc", "cat7-9d0bc404ae1ade96", "cat7-a3d9764dc728e949", "cat7-ad799b8fd652221b", "cat7-af63d536af87e3a9", "cat7-bb7b0fed96ec93b1", "cat7-bc538e3b8b1e19aa", "cat7-bf4c14e5fee8434e", "cat7-bfe137619c9141e4", "cat7-c1e592e4b09e9e0f", "cat7-c42f87d7c8d52443", "cat7-c65535eb4c509b71", "cat7-c6eb6a506cc6ac5c", "cat7-c93b846ad00d1c6d", "cat7-ca74c2e4eb55eba5", "cat7-cab0b1ffd5f14715", "cat7-cbe1a529111ff194", "cat7-d198f506aea30d02", "cat7-d44360f7c51bf454", "cat7-d594df6c6b7bed1d", "cat7-da136c2601ab8c2b", "cat7-e2fbc57c85d8f14c", "cat7-e4022fe236a97226", "cat7-e9334c04dd1e582b", "cat7-f1383242641fa9af", "cat7-f7eddcc5fcbdd573", "cat7-fd0e7e4686a521d6"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/src/parcat.pod", "ids": ["cat7-27ec585f497438a9"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/testsuite/tests-to-run/parallel-local20.sh", "ids": ["cat7-2d317056aa59c803"]}
+{"source_item": "https://github.com/gitGNU/gnu_parallel/blob/a7a9e522ddb5a571f3846d84ace0f30a3bff9650/testsuite/tests-to-run/sem02.sh", "ids": ["cat7-2901f4c15390fe68"]}
+{"source_item": "https://github.com/gnu-mirror-unofficial/bash/blob/9439ce094c9aa7557a9d53ac7b412a23aa66e36b/tests/jobs3.sub", "ids": ["cat7-e74fb1e7605f31b2"]}
+{"source_item": "https://github.com/magicant/yash/blob/f1f1e1cbe64f76ceaf172f2689d72247f5111b12/tests/builtins-p.tst", "ids": ["cat7-77c2f5388380b0ed"]}
+{"source_item": "https://github.com/magicant/yash/blob/f1f1e1cbe64f76ceaf172f2689d72247f5111b12/tests/while-p.tst", "ids": ["cat7-57c5fcd18455a022", "cat7-66a887aa973244c0"]}
+{"source_item": "https://github.com/mirror/busybox/blob/371fe9f71d445d18be28c82a2a6d82115c8af19d/shell/ash_test/ash-signals/signal7.tests", "ids": ["cat7-a35ec821154c42f9"]}
+{"source_item": "https://github.com/mirror/busybox/blob/371fe9f71d445d18be28c82a2a6d82115c8af19d/shell/hush_test/hush-signals/signal7.tests", "ids": ["cat7-a35ec821154c42f9"]}
+{"source_item": "https://github.com/tldr-pages/tldr/blob/bc614bf4855805510fadd5ba3823f1e556f8ca63/pages/linux/prlimit.md", "ids": ["cat7-bf5250072e6af2f0"]}
+{"source_item": "https://serverfault.com/q/222696", "ids": ["cat7-2c8e6b527867d829"]}
+{"source_item": "https://superuser.com/a/1018736", "ids": ["cat7-32b020a68c9658a6"]}
+{"source_item": "https://superuser.com/a/1169004", "ids": ["cat7-3c4b3532f0ae80c4"]}
+{"source_item": "https://superuser.com/a/667129", "ids": ["cat7-b00caeae007c28e8"]}
+{"source_item": "https://superuser.com/q/1635418", "ids": ["cat7-e076987073fb5de2"]}
+{"source_item": "https://superuser.com/q/480571", "ids": ["cat7-572c864a69dd4536", "cat7-5dc1e5a884dac039"]}
+{"source_item": "https://unix.stackexchange.com/a/127362", "ids": ["cat7-8c6ea2ddaa926e61"]}
+{"source_item": "https://unix.stackexchange.com/a/127363", "ids": ["cat7-82818bd705da44db"]}
+{"source_item": "https://unix.stackexchange.com/a/158569", "ids": ["cat7-0e175291c13a1146"]}
+{"source_item": "https://unix.stackexchange.com/a/256623", "ids": ["cat7-cff6833d18ef3f46"]}
+{"source_item": "https://unix.stackexchange.com/a/281648", "ids": ["cat7-2025c5d76281cdd7"]}
+{"source_item": "https://unix.stackexchange.com/a/298340", "ids": ["cat7-bf5250072e6af2f0"]}
+{"source_item": "https://unix.stackexchange.com/a/316783", "ids": ["cat7-db0517efea133e68"]}
+{"source_item": "https://unix.stackexchange.com/a/349102", "ids": ["cat7-76d6ba6c304e2230"]}
+{"source_item": "https://unix.stackexchange.com/a/364746", "ids": ["cat7-0ab0ee4c52a017fc", "cat7-5e408187f6062b65"]}
+{"source_item": "https://unix.stackexchange.com/a/367027", "ids": ["cat7-50b98cd03afd1c17"]}
+{"source_item": "https://unix.stackexchange.com/a/401120", "ids": ["cat7-e19035bdb7c72519"]}
+{"source_item": "https://unix.stackexchange.com/a/405478", "ids": ["cat7-a402469c41104ed6"]}
+{"source_item": "https://unix.stackexchange.com/a/470062", "ids": ["cat7-f001983a60c7e1e9"]}
+{"source_item": "https://unix.stackexchange.com/a/478551", "ids": ["cat7-30d70d29f2bc9d86"]}
+{"source_item": "https://unix.stackexchange.com/a/482800", "ids": ["cat7-145d48b520ac0eec", "cat7-b798f56909818570"]}
+{"source_item": "https://unix.stackexchange.com/a/487354", "ids": ["cat7-7517927b6883ab4b"]}
+{"source_item": "https://unix.stackexchange.com/a/539419", "ids": ["cat7-08e23a54981c0794"]}
+{"source_item": "https://unix.stackexchange.com/a/562473", "ids": ["cat7-5609a7751ae5f0d1"]}
+{"source_item": "https://unix.stackexchange.com/a/638978", "ids": ["cat7-8d5d5e424908526f", "cat7-daafad2b51200e62"]}
+{"source_item": "https://unix.stackexchange.com/a/657003", "ids": ["cat7-6f8b861b73f6b654", "cat7-ee1f25ab07882991"]}
+{"source_item": "https://unix.stackexchange.com/a/680390", "ids": ["cat7-ce1c48a1fca3221e"]}
+{"source_item": "https://unix.stackexchange.com/a/758711", "ids": ["cat7-241def945ff8a3b1"]}
+{"source_item": "https://unix.stackexchange.com/a/777233", "ids": ["cat7-c80242425a9ea779"]}
+{"source_item": "https://unix.stackexchange.com/a/788267", "ids": ["cat7-1aa8c2f5003b898f"]}
+{"source_item": "https://unix.stackexchange.com/a/89005", "ids": ["cat7-21a49d404d5b3c01", "cat7-59ea86aa6001b81c", "cat7-5d9a17cb70b9733a"]}
+{"source_item": "https://unix.stackexchange.com/q/127358", "ids": ["cat7-432fae0362c2eac4", "cat7-82818bd705da44db"]}
+{"source_item": "https://unix.stackexchange.com/q/158564", "ids": ["cat7-a5962e6c3f543146"]}
+{"source_item": "https://unix.stackexchange.com/q/174805", "ids": ["cat7-82337a8fb85c18da"]}
+{"source_item": "https://unix.stackexchange.com/q/256495", "ids": ["cat7-9f4b05fc921d4bbb"]}
+{"source_item": "https://unix.stackexchange.com/q/273170", "ids": ["cat7-7ba5c12aea68b268", "cat7-94eb640605d6bd92"]}
+{"source_item": "https://unix.stackexchange.com/q/283496", "ids": ["cat7-6d8c88fd4f36d7ec"]}
+{"source_item": "https://unix.stackexchange.com/q/291723", "ids": ["cat7-0e45250d5491389a"]}
+{"source_item": "https://unix.stackexchange.com/q/316774", "ids": ["cat7-db0517efea133e68"]}
+{"source_item": "https://unix.stackexchange.com/q/320494", "ids": ["cat7-065e900e07e9972f"]}
+{"source_item": "https://unix.stackexchange.com/q/364313", "ids": ["cat7-52150e8b6b88b94a"]}
+{"source_item": "https://unix.stackexchange.com/q/433652", "ids": ["cat7-c4d1d614ae79a66b"]}
+{"source_item": "https://unix.stackexchange.com/q/449224", "ids": ["cat7-f55b5f9391f0d6d3"]}
+{"source_item": "https://unix.stackexchange.com/q/524080", "ids": ["cat7-6640d70918503bf3"]}
+{"source_item": "https://unix.stackexchange.com/q/528542", "ids": ["cat7-86a785d644508671"]}
+{"source_item": "https://unix.stackexchange.com/q/538340", "ids": ["cat7-9a47019f86b33101"]}
+{"source_item": "https://unix.stackexchange.com/q/556480", "ids": ["cat7-db0517efea133e68"]}
+{"source_item": "https://unix.stackexchange.com/q/625634", "ids": ["cat7-2392075c7e968e8c"]}
+{"source_item": "https://unix.stackexchange.com/q/758707", "ids": ["cat7-dfcf79047d4f3ca7"]}
+{"source_item": "https://unix.stackexchange.com/q/788219", "ids": ["cat7-1aa8c2f5003b898f", "cat7-4f2c6be237f1f118", "cat7-a392450a698d06c1"]}

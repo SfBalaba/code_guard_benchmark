@@ -1,0 +1,250 @@
+{"id": "cat7-db0517efea133e68", "command": ":(){ :|: & };:"}
+{"id": "cat7-2025c5d76281cdd7", "command": " bomb() { bomb & bomb; }; bomb"}
+{"id": "cat7-6d8c88fd4f36d7ec", "command": ":(){ (:) | (:) }; :"}
+{"id": "cat7-9f4b05fc921d4bbb", "command": "#!/bin/bash\n\nmail() {\n    echo \"Free of oxens\" | mail -s \"Do you want to play chicken with the void?\" \"example@example.org\"\n}\n\nmail\n\nexit 0"}
+{"id": "cat7-0e175291c13a1146", "command": "showword() {\n  echo $1\n}\n\nexport -f showword\necho This is a sample message | xargs -d' ' -t -n1 -P2 bash -c 'showword \"$@\"' _"}
+{"id": "cat7-ce1c48a1fca3221e", "command": "#!/bin/bash\n\nshowword() {\n  echo $1\n}\nexport -f showword\n\nparallel -j2 showword {} ::: This is a sample message"}
+{"id": "cat7-145d48b520ac0eec", "command": "(printf '%s\\0' {1..40}; sleep 2) | parallel -j8 --null -k --lb -N 2 echo {1} {2}"}
+{"id": "cat7-5e408187f6062b65", "command": "(:|:)"}
+{"id": "cat7-c4d1d614ae79a66b", "command": "perl -e 'print \"Test\" x 100' | xargs -P 100"}
+{"id": "cat7-cff6833d18ef3f46", "command": "mail() {\n    echo \"Free of oxens\" | /usr/bin/mail -s \"Do you want to play chicken with the void?\" \"example@example.org\"\n}"}
+{"id": "cat7-bf5250072e6af2f0", "command": "prlimit"}
+{"id": "cat7-a402469c41104ed6", "command": "startServer(){\n    local connected=0 fd\n    exec {fd}<> <(:)\n    nc -q 0 -l -p \"$PORT\" <&$fd | \n    while read -r line\n    do  if [ \"$connected\" == \"0\" ]\n        then startServer $(($1+1)) &\n             connected=\"1\"\n        fi\n        echo server $1 logic goes here\n    done >&$fd\n    exec {fd}<&-\n}"}
+{"id": "cat7-432fae0362c2eac4", "command": "xargs -P 4"}
+{"id": "cat7-8c6ea2ddaa926e61", "command": "find / -type f -ctime +30 -mtime +30 -atime +30 -print0 | xargs -0 -P 4 md5sum"}
+{"id": "cat7-82818bd705da44db", "command": "find / -type f -ctime +30 -mtime +30 -atime +30 -exec md5sum {} \\; | xargs -P 4"}
+{"id": "cat7-b798f56909818570", "command": "(seq 20; sleep 5) | parallel -j10  -k 'date;echo'"}
+{"id": "cat7-e19035bdb7c72519", "command": "seq 10 | parallel -j4 echo {}"}
+{"id": "cat7-f001983a60c7e1e9", "command": ":(){ : | :& : | :& }; :"}
+{"id": "cat7-0ab0ee4c52a017fc", "command": "((:|:)|(:|:))"}
+{"id": "cat7-036b98cade205c96", "command": "echo 1,2,3 | parallel -vkd, echo a{}b\necho 1,2,3 | parallel -vkd, \"echo 'a'{}'b'\"\necho 1,2,3 | parallel -vkd, \"echo 'a'\"{}\"'b'\""}
+{"id": "cat7-0d150afa92389a8a", "command": "echo foo,bar,_baz,__qux, | \\\n  parallel -kN1 --rrs --regexp --recend ,_+ --pipe \\\n  echo JOB{#}\\;cat\\;echo END"}
+{"id": "cat7-138a3c6fd01ca6b6", "command": "find . | parallel 'a={}; name=${a##*/};' \\\n  'upper=$(echo \"$name\" | tr \"[:lower:]\" \"[:upper:]\");'\\\n  'echo \"$name - $upper\"'"}
+{"id": "cat7-1bc8f97bb2420bd5", "command": "ARR=(\"My brother's 12\\\" records are worth <\\$\\$\\$>\"'!' Foo Bar)\nparallel echo ::: ${ARR[@]} # This is probably not what you want"}
+{"id": "cat7-1c5f1b97d4785a63", "command": "sem --id foo -u 'echo Slow started; sleep 5; echo Slow ended' &&\nsem --id foo --semaphoretimeout 1 'echo Forced running after 1 sec' &&\nsem --id foo --semaphoretimeout -2 'echo Give up after 2 secs'\nsem --id foo --wait"}
+{"id": "cat7-1fb51d5d5a6060c6", "command": "parallel --rpl '{..} s:\\.[^.]+$::;s:\\.[^.]+$::;' echo '{2..} {1}' \\\n  ::: bar ::: foo.tar.gz"}
+{"id": "cat7-204a4fd285ae4360", "command": "parallel --delay 2.5 echo Starting {}\\;date ::: 1 2 3"}
+{"id": "cat7-22e9fb4b0157495e", "command": "echo foo,bar,_baz,__qux, | \\\n  parallel -kN1 --regexp --recend ,_+ --pipe \\\n  echo JOB{#}\\;cat\\;echo END"}
+{"id": "cat7-2347549b9711728a", "command": "myvar=AbcAaAdef\necho ${myvar,A}\nparallel --plus echo '{,A}' ::: \"$myvar\"\necho ${myvar,,A}\nparallel --plus echo '{,,A}' ::: \"$myvar\""}
+{"id": "cat7-2484ee336d235791", "command": "parallel echo {#} ::: A B C"}
+{"id": "cat7-2850be54f57f6d62", "command": "parallel --number-of-cpus\nparallel --number-of-cores"}
+{"id": "cat7-28c0eda68485c4fd", "command": "parallel --dirnamereplace ,, echo ,, ::: A/B.C"}
+{"id": "cat7-296fb591477b8a25", "command": "cat addressbook.tsv | \\\n  parallel --colsep '\\t' --header : echo {Name} {E-mail address}"}
+{"id": "cat7-2b88702d21d3f6fb", "command": "parallel -j2 --halt now,fail=1 echo {}\\; exit {} ::: 0 0 1 2 3"}
+{"id": "cat7-2ca287bdff0801d5", "command": "myvar=abcAaAdef\necho ${myvar:2}\nparallel --plus echo {:2} ::: \"$myvar\""}
+{"id": "cat7-2e2ee228d99ccb08", "command": "parallel --eta sleep ::: 1 3 2 2 1 3 3 2 1"}
+{"id": "cat7-2e6d7d4be606a2c2", "command": "parallel --basenamereplace ,, echo ,, ::: A/B.C"}
+{"id": "cat7-2ec4e1618b757367", "command": "parallel --colsep '\\t' echo 1={1} 2={2} :::: tsv-file.tsv"}
+{"id": "cat7-2f73493827d5dfc1", "command": "parallel --extensionreplace ,, echo ,, ::: A/B.C"}
+{"id": "cat7-30c77babe381c530", "command": "parallel --basenameextensionreplace ,, echo ,, ::: A/B.C"}
+{"id": "cat7-323aed40c758eb67", "command": "parallel -q perl -e 'print \"@ARGV\\n\"' ::: This works"}
+{"id": "cat7-332a72eacf77ad0d", "command": "sem --fg 'sleep 1; echo The first finished' &&\n  echo The first finished running in the foreground &&\n  sem --fg 'sleep 1; echo The second finished' &&\n  echo The second finished running in the foreground\nsem --wait"}
+{"id": "cat7-33f2d302426fc021", "command": "ARR=(\"My brother's 12\\\" records are worth <\\$\\$\\$>\"'!' Foo Bar)\nparallel echo ::: \"${ARR[@]}\""}
+{"id": "cat7-2456aaca913e726c", "command": "parallel [ -f {1}:{2} ] \"||\" echo {1}:{2} does not exist \\\n  ::: {00..23} ::: {00..55..5}"}
+{"id": "cat7-143ed5a728e95221", "command": "parallel -a abc-file echo"}
+{"id": "cat7-19c224d0f3e50624", "command": "cat num1000000 | parallel --pipe wc"}
+{"id": "cat7-29eca4e97495655e", "command": "cat num30000 | parallel --xargs echo | wc -l"}
+{"id": "cat7-35d754787131418c", "command": "VAR=\"My brother's 12\\\" records are worth <\\$\\$\\$>\"\nparallel -q echo \"$VAR\" ::: '!'\nexport VAR\nparallel echo '\"$VAR\"' ::: '!'"}
+{"id": "cat7-3c478e766adeb4a9", "command": "echo test |\\\n  parallel VAR='\"two  spaces  between  each  word\"' echo {} \\'\"$VAR\"\\'"}
+{"id": "cat7-3cb8848437d3597f", "command": "/usr/bin/time parallel -N0 sleep 1 :::: num128"}
+{"id": "cat7-4139dda1fb2e9916", "command": "parallel --load 100% echo load is less than {} job per cpu ::: 1"}
+{"id": "cat7-4151d402d27798e9", "command": "parallel --version"}
+{"id": "cat7-417b5012c1b0a61c", "command": "cat num1000000 | parallel --pipe -N140000 wc"}
+{"id": "cat7-423956e0b6afab8a", "command": "parallel echo {= 'if($arg[1]==$arg[2]) { skip() }' =} \\\n  ::: {1..3} ::: {1..3}"}
+{"id": "cat7-46f9d843f97d3fc9", "command": "cat num1000000 | parallel --pipe -L75 wc"}
+{"id": "cat7-4a4b8ad46adf4095", "command": "echo /foo, bar/, /baz, qux/, | \\\n  parallel -kN1 --recstart / --pipe echo JOB{#}\\;cat\\;echo END"}
+{"id": "cat7-4c6b102bd4e0d283", "command": "parallel perl -ne \\''/^\\S+\\s+\\S+$/ and print $ARGV,\"\\n\"'\\' ::: file"}
+{"id": "cat7-4c9cfe9076d95431", "command": "parallel --pipepart -a num1000000 --block 3m wc"}
+{"id": "cat7-4dcf851c4d9a3afa", "command": "parallel --plus echo Job {#} of {##} ::: {1..5}"}
+{"id": "cat7-4f2cfe98de022603", "command": "parallel --arg-file-sep // echo ::: A B C // def-file"}
+{"id": "cat7-565549a98d0bbc91", "command": "cat num_%header | \\\n  parallel --header '(%.*\\n)*' --pipe -N3 echo JOB{#}\\;cat"}
+{"id": "cat7-568b0a1a8534fec8", "command": "parallel echo :::: abc-file :::+ G H I :::: def-file"}
+{"id": "cat7-577bfdd58a64254c", "command": "parallel echo {} shell quoted is {= '$_=Q($_)' =} ::: '*/!#$'"}
+{"id": "cat7-57c5ca5de10d5e4f", "command": "parallel -j2 --slotreplace ,, echo ,, ::: A B C"}
+{"id": "cat7-586a76404ed296b2", "command": "seq 10 | parallel echo $$"}
+{"id": "cat7-607f5e8b3e505bd5", "command": "cat file_list | parallel 'if [ ! -e {} ] ; then echo {}; fi'"}
+{"id": "cat7-627e20b6cc7200fd", "command": "parallel --plus echo {#beta_} ::: beta_mycode keep_beta_here"}
+{"id": "cat7-6453bbe7cfce6891", "command": "parallel --xargs echo 'BEGIN{'{}'}END' ::: 1 2 3"}
+{"id": "cat7-64f07f1badcd39f6", "command": "parallel --help"}
+{"id": "cat7-662d1b1063707e06", "command": "cat num1000000 | parallel --pipe -j4 --round-robin wc"}
+{"id": "cat7-669f827dccb45f82", "command": "parallel --tagstring {}-bar echo foo-{} ::: A B C"}
+{"id": "cat7-57c5fcd18455a022", "command": "while echo foo&do break;done;wait"}
+{"id": "cat7-66a887aa973244c0", "command": "i=0\nwhile [ $((i=i+1)) -le 1 ];do echo $i&done\nwait"}
+{"id": "cat7-77c2f5388380b0ed", "command": ":() { echo not reached; }\n:"}
+{"id": "cat7-6b5fbfe2ecfc447d", "command": "parallel --trim r echo pre-{}-post ::: ' A '"}
+{"id": "cat7-6cdc75984fed18c4", "command": "parallel -N0 echo foo ::: 1 2 3"}
+{"id": "cat7-6db346c3b5722b37", "command": "# Show what would be executed\nparallel --dry-run echo ::: a\n# Read arguments from file\nparallel -a file echo\n# Changing the delimiter\nparallel -d _ echo ::: a_b_c_"}
+{"id": "cat7-6eb0eb24fe7cfa9b", "command": "parallel echo {= 'if($_==3) { skip() }' =} ::: {1..5}"}
+{"id": "cat7-7091fb12e1514828", "command": "echo /foo, bar/, /baz, qux/, | \\\n  parallel -kN1 --recend ', ' --pipe echo JOB{#}\\;cat\\;echo END"}
+{"id": "cat7-70aee449fa8baa57", "command": "parallel -E stop echo ::: A B stop C D"}
+{"id": "cat7-70c19be06c5b6b89", "command": "parallel --jobs 4 -m echo ::: 1 2 3 4 5 6 7 8 9 10"}
+{"id": "cat7-70f35c208423d1b3", "command": "parallel echo {1} {2} {3} ::: 6 7 ::: 4 5 ::: 1 2 3\nparallel echo {1} {2} {3} :::: <(seq 6 7) <(seq 4 5) \\\n  :::: <(seq 1 3)\nparallel -a <(seq 6 7) echo {1} {2} {3} :::: <(seq 4 5) \\\n  :::: <(seq 1 3)\nparallel -a <(seq 6 7) -a <(seq 4 5) echo {1} {2} {3} \\\n  ::: 1 2 3\nseq 6 7 | parallel -a - -a <(seq 4 5) echo {1} {2} {3} \\\n  ::: 1 2 3\nseq 4 5 | parallel echo {1} {2} {3} :::: <(seq 6 7) - \\\n  ::: 1 2 3"}
+{"id": "cat7-75b740f592e9fb2f", "command": "parallel echo ::: a b c :::+ 1 2 3 ::: X Y :::+ 11 22"}
+{"id": "cat7-761ad3a813349771", "command": "parallel --link echo {1} {2} {3} \\\n  ::: 1 2 ::: I II III ::: a b c d e f g"}
+{"id": "cat7-76c125e72a3cf212", "command": "unset myvar\necho ${myvar:-myval}\nparallel --plus echo {:-myval} ::: \"$myvar\""}
+{"id": "cat7-83cfdda02e4af56b", "command": "parallel --use-cpus-instead-of-cores -N0 sleep 1 :::: num8"}
+{"id": "cat7-84550fd0725c07f8", "command": "parallel echo ::: A B C ::: D E F"}
+{"id": "cat7-8593235c383e066a", "command": "parallel --arg-sep ,, echo ,, A B C :::: def-file"}
+{"id": "cat7-85d208ac1bb8f69c", "command": "parallel -d '\\0' echo :::: abc0-file"}
+{"id": "cat7-86c31f17c415280f", "command": "parallel --parens ,,,, echo ',, s:\\.[^.]+$::;s:\\.[^.]+$::; ,,' \\\n  ::: foo.tar.gz"}
+{"id": "cat7-8840fe75f0c837ae", "command": "seq 1000 | parallel --pipe --tee -v wc {} ::: -w -l -c"}
+{"id": "cat7-8892a5f9dbfacaa2", "command": "parallel -a abc-file -a def-file echo"}
+{"id": "cat7-8a7bc7feb04728b1", "command": "parallel --plus echo {%_beta} ::: mycode_beta keep_beta_here"}
+{"id": "cat7-8ad308c3e94c0288", "command": "parallel false ::: 1 || echo Job failed"}
+{"id": "cat7-8b0026e0dcfa30f3", "command": "seq 1000 | parallel --pipe --tee --tag \\\n  'grep {1} | wc {2}' ::: {0..9} ::: -l -c"}
+{"id": "cat7-8b7ec14a5fdf0558", "command": "parallel echo ::: A B C D E :::+ F G"}
+{"id": "cat7-8fca1705dc56db6e", "command": "cat num1000000 | parallel --pipe --block 2M wc"}
+{"id": "cat7-8fdbeadb8256a590", "command": "parallel --plus echo {/beta_/} ::: beta_mycode remove_beta_here"}
+{"id": "cat7-9131d8d42b692e08", "command": "parallel --noswap echo the system is not swapping ::: now"}
+{"id": "cat7-9167060558739332", "command": "parallel -N3 echo 1={1} 2={2} 3={3} ::: A B C D E F G H"}
+{"id": "cat7-91af8ae5b1541a53", "command": "VAR=\"My brother's 12\\\" records are worth <\\$\\$\\$>\"\nexport VAR\nmyfunc() { echo \"$VAR\" \"$1\"; }\nexport -f myfunc\nparallel myfunc ::: '!'"}
+{"id": "cat7-21a49d404d5b3c01", "command": ":(){ sleep 61; : | : & };:\nbg"}
+{"id": "cat7-59ea86aa6001b81c", "command": "ps -auxf"}
+{"id": "cat7-5d9a17cb70b9733a", "command": "jobs"}
+{"id": "cat7-96caad664491de58", "command": "cat num_%header | parallel --header 2 --pipe -N3 echo JOB{#}\\;cat"}
+{"id": "cat7-989441eade2a453f", "command": "seq 10 | parallel -N2 \\\n  echo seq:'$'PARALLEL_SEQ arg1:{1} arg2:{2}"}
+{"id": "cat7-98e1f7562cb8fd8b", "command": "parallel --header : echo f1={f1} f2={f2} ::: f1 A B ::: f2 C D"}
+{"id": "cat7-a036eece42018c20", "command": "doit() {\n  echo Doing it for $1\n  sleep 2\n  echo Done with $1\n}\nexport -f doit\nparallel doit ::: 1 2 3"}
+{"id": "cat7-a481ee53093911fd", "command": "getit() {\n  date=$(date -d \"today -$1 days\" +%Y%m%d)\n  num=$2\n  echo wget http://www.example.com/path/to/${date}_${num}.jpg\n}\nexport -f getit\n\nparallel getit ::: $(seq 30) ::: $(seq -w 24)"}
+{"id": "cat7-a7b6197b90f2f6f6", "command": "parallel --rpl '{%(.*?)} s/$$1//' echo {%.tar.gz} ::: my.tar.gz\nparallel --rpl '{:%(.+?)} s:$$1(\\.[^/]+)*$::' \\\n  echo {:%_file} ::: my_file.tar.gz\nparallel -n3 --rpl '{/:%(.*?)} s:.*/(.*)$$1(\\.[^/]+)*$:$1:' \\\n  echo job {#}: {2} {2.} {3/:%_1} ::: a/b.c c/d.e f/g_1.h.i"}
+{"id": "cat7-aadb986f5e6ececf", "command": "echo test | parallel VAR=this_is_set_after_starting \\; echo {} \\$VAR"}
+{"id": "cat7-ad45003eee2263e2", "command": "doubleit() {\n  echo Doing it for $1 $2\n  sleep 2\n  echo Done with $1 $2\n}\nexport -f doubleit\nparallel doubleit ::: 1 2 3 ::: a b"}
+{"id": "cat7-baabea0b9bfbd9f3", "command": "seq 10 | parallel echo \\$\\$"}
+{"id": "cat7-bb7b0fed96ec93b1", "command": "parallel --shuf echo ::: 1 2 3 ::: a b c ::: A B C"}
+{"id": "cat7-bc538e3b8b1e19aa", "command": "parallel -S : echo running on ::: the_local_machine"}
+{"id": "cat7-bfe137619c9141e4", "command": "cat fixedlen | parallel --pipe --header .{4} --block 3 --recend '' \\\n  'echo start; cat; echo'"}
+{"id": "cat7-c42f87d7c8d52443", "command": "cat num30000 | parallel --xargs -s 10000 echo | wc -l"}
+{"id": "cat7-c65535eb4c509b71", "command": "sem 'sleep 1; echo The first finished' &&\n  echo The first is now running in the background &&\n  sem 'sleep 1; echo The second finished' &&\n  echo The second is now running in the background\nsem --wait"}
+{"id": "cat7-c6eb6a506cc6ac5c", "command": "parallel --dryrun echo {} ::: A B C"}
+{"id": "cat7-c89b2ada81a35609", "command": "parallel -k echo {1}'{=3 $_=$_%2?\":\":\" \"=}'{2}{3} \\\n  ::: {0..12} ::: {0..5} ::: {0..9}"}
+{"id": "cat7-003e22d33ad32d0c", "command": "parallel --pipepart --block 100m -a bigfile --files sort |\\\n  parallel -Xj1 sort -m {} ';' rm {} >bigfile.sort"}
+{"id": "cat7-01a9bd850a7850ea", "command": "parallel --resume --joblog log -j10 \\\n  'sleep .{}; exit {= $_%=2 =}' ::: {10..1}"}
+{"id": "cat7-08067ab9d827bd86", "command": "parallel --header : --results outdir echo ::: f1 A B ::: f2 C D"}
+{"id": "cat7-0b6f7f2544bb884b", "command": "cat hosts.txt | parallel -P 100 host | grep 1.2.3.4"}
+{"id": "cat7-12d0ad65e3a854ce", "command": "seq 10 20 | parallel --tmux 'echo start {}; sleep {}; echo done {}'"}
+{"id": "cat7-176569850295468c", "command": "parallel --joblog /tmp/log exit  ::: 1 2 3 0\ncat /tmp/log\nparallel --resume --joblog /tmp/log exit  ::: 1 2 3 0 0 0\ncat /tmp/log"}
+{"id": "cat7-17a35da1c18e6ac3", "command": "man parallel_tutorial"}
+{"id": "cat7-27ec585f497438a9", "command": "mkfifo slot-{1..5}-digit-{0..9}\nparallel -j5 'seq 100000 | grep {} > slot-{%}-digit-{}' ::: {0..9} &\nparallel parcat slot-{1..5}-digit-{} '>' digit-{} ::: {0..9}"}
+{"id": "cat7-2901f4c15390fe68", "command": "#!/bin/bash\n\nminipv() {\n    sleep=$1\n    while read line; do\n\techo \"$line\"\n\tsleep $sleep\n    done\n}\nexport -f minipv\n\necho '### Test id = --id `tty`'\nparallel --id `tty` --lb --semaphore seq  1 10 '|' minipv 0.1\necho '### Test default id = --id `tty`'\nparallel            --lb --semaphore seq 11 20 '|' minipv 0.01\necho '### Test --semaphorename `tty`'\nparallel --semaphorename `tty` --semaphore --wait\necho done"}
+{"id": "cat7-2955fb0af27b2d6b", "command": "#!/bin/bash\n#\n# Generate the result files used to test the query modules.\n\n../parallel --header : --result testresults echo {a} {b} ::: a 1 2 ::: b 0.30 0.40"}
+{"id": "cat7-2ab55c4659ce50be", "command": "parallel --pipepart --block 100M -a bigfile --fifo cat regexp.txt \\\n  \\| parallel --pipe -L1000 --round-robin grep -f - {}"}
+{"id": "cat7-2d317056aa59c803", "command": "#!/bin/bash\n\necho '### Test of #! --shebang'\ncat >/tmp/shebang <<EOF\n#!/usr/local/bin/parallel --shebang -rk echo\nA\nB\nC\nEOF\nchmod 755 /tmp/shebang\n/tmp/shebang\n\necho '### Test of #! --hashbang'\ncat >/tmp/shebang <<EOF\n#!/usr/local/bin/parallel --hashbang -rk echo\nA\nB\nC\nEOF\nchmod 755 /tmp/shebang\n/tmp/shebang\n\necho '### Test of #! with 2 files as input (2 columns)'\ncat >'/tmp/she <bang>\"' <<EOF\n#!/usr/local/bin/parallel --shebang -rk --xapply -a /tmp/123 echo\nA\nB\nC\nEOF\nchmod 755 '/tmp/she <bang>\"'\nseq 1 3 >/tmp/123\n'/tmp/she <bang>\"'"}
+{"id": "cat7-2e9739bde402657d", "command": "# This only works in Bash\nmy_func() {\n  echo in my_func $1\n}\nexport -f my_func\nparallel --env my_func -S $SERVER1 my_func ::: baz"}
+{"id": "cat7-302e6e591f899296", "command": "parallel -k traceroute ::: qubes-os.org debian.org freenetproject.org"}
+{"id": "cat7-3451a29ab376cf4b", "command": "(echo file1; echo file2) | parallel gzip\nparallel gzip ::: file1 file2\nparallel gzip {} ::: file1 file2\nparallel --arg-sep ,, gzip {} ,, file1 file2\nparallel --arg-sep ,, gzip ,, file1 file2\nparallel ::: \"gzip file1\" \"gzip file2\""}
+{"id": "cat7-392698456b0c70ac", "command": "DBURL=sqlite3:///%2Ftmp%2Fmy.sqlite\nDBTABLEURL=$DBURL/mytable\nparallel --sqlandworker $DBTABLEURL seq ::: {1..10}\nsql $DBURL '.headers on' '.mode csv' 'SELECT * FROM mytable;'"}
+{"id": "cat7-40dc62bfbec9a69d", "command": "sem --id my_id -u 'echo First started; sleep 10; echo First done'"}
+{"id": "cat7-447668a4791483e2", "command": "VAR=\"two  spaces  between  each  word\"\necho test | parallel echo {} \\'\"$VAR\"\\'"}
+{"id": "cat7-4d1236debaefc7ac", "command": "parallel --results outdir --sqlandworker csv:////%2Ftmp%2Flog2.csv \\\n  seq ::: 10 ::: 12 13 14\ncat /tmp/log2.csv"}
+{"id": "cat7-4f72940cccb71911", "command": "parallel --nonall -S $SERVER1,$SERVER2 echo foo bar"}
+{"id": "cat7-539276f134bed260", "command": "sep=`perl -e 'print map { (\"a\"..\"z\",\"A\"..\"Z\")[rand(52)] } (1..50);'`\ncat my.csv | perl -ape '$F[1] ne $l and print \"'$sep'\"; $l = $F[1]' |\n   parallel --recend $sep --rrs --pipe -N1 wc"}
+{"id": "cat7-5de6f7066b5b3544", "command": "cat regexp.txt | parallel --pipe -L1000 --round-robin --compress \\\n  grep -f - -n bigfile |\n  sort -un | perl -pe 's/^\\d+://'"}
+{"id": "cat7-638d66e64ab4ab29", "command": "parallel --citation"}
+{"id": "cat7-6a668a4a148a6cbd", "command": "parallel --onall -S $SERVER1,$SERVER2 echo ::: foo bar"}
+{"id": "cat7-7522b3bb0b813f5f", "command": "seq 10 | parallel echo {} + 1 is {= '$_++' =}\nparallel csh -c {= '$_=\"mkdir \".Q($_)' =} ::: '12\" dir'\nseq 50 | parallel echo job {#} of {= '$_=total_jobs()' =}"}
+{"id": "cat7-75a9167f1ee17136", "command": "free=$(awk '/^((Swap)?Cached|MemFree|Buffers):/ { sum += $2 }\n            END { print sum }' /proc/meminfo)\npercpu=$((free / 200 / $(parallel --number-of-cores)))k"}
+{"id": "cat7-7a2f7d56b927dc2d", "command": "MYVAR='foo bar'\nexport MYVAR\nparallel --env MYVAR -S $SERVER1 echo '$MYVAR' ::: baz"}
+{"id": "cat7-80be1c2768e3a2f6", "command": "#!/usr/bin/sem --shebang-wrap -u --id $0 --fg /bin/bash\n\necho This will run\nsleep 5\necho exclusively"}
+{"id": "cat7-814f879542359418", "command": "parallel --hostgroups \\\n  --sshlogin @grp1/myserver1 -S @grp1+grp2/myserver2 \\\n  --sshlogin @grp3/myserver3 \\\n  echo ::: my_grp1_arg@grp1 arg_for_grp2@grp2 third@grp1+grp3"}
+{"id": "cat7-830409587c80d6d1", "command": "parallel --jobs 4 -m echo pre-{}-post ::: A B C D E F G"}
+{"id": "cat7-0e45250d5491389a", "command": "(\n   trap 'echo SIGUSR1' SIGUSR1;\n   echo $BASHPID;\n   while :;do\n       sleep 1 &\n       wait $!;\n       echo test;\n   done\n)&"}
+{"id": "cat7-1aa8c2f5003b898f", "command": "echo hello world | {\n  i=0\n  while [ $i -lt 10 ]; do\n    cat &\n    : $(( i+=1 ))\n  done\n}\nwait"}
+{"id": "cat7-2392075c7e968e8c", "command": "parallel -Dall -j0 ping -nc 3 ::: qubes-os.org gnu.org freenetproject.org"}
+{"id": "cat7-241def945ff8a3b1", "command": "( \n  ( while true; do echo subsubshell1 && sleep 5; done ) & \n  pids+=($!)\n  ( while true; do echo subsubshell2 && sleep 10; done ) &\n  pids+=($!)\n  echo \"${pids[@]}\"\n  wait\n)"}
+{"id": "cat7-28858c0823b2ef50", "command": "seq -w 0 999999 | parallel -j10 --pipe parallel -j0 touch pict{}.jpg"}
+{"id": "cat7-2aaf3b80d896c01b", "command": "find . -iname '*run.sh' -printf 'cd %h; ./%f\\0' | xargs -L1 -0 -P0 bash -c"}
+{"id": "cat7-3c4b3532f0ae80c4", "command": "doit() {\n    url=\"$1\"\n    urlstatus=$(curl -o /dev/null --silent --head --write-out  '%{http_code}' \"${url}\" --max-time 5 )\n    echo \"$url  $urlstatus\"\n}\nexport -f doit\ncat input.txt | parallel -j0 -k doit"}
+{"id": "cat7-4f2c6be237f1f118", "command": "[ -p pipe ] || mkfifo pipe\n\ni=0\nwhile [ $i -lt 10 ]; do\n  <pipe cat &\n  : $(( i+=1 ))\ndone\n\n# sleep 1\necho hello world >pipe\nwait"}
+{"id": "cat7-50b98cd03afd1c17", "command": ":(){ :&:; }; :"}
+{"id": "cat7-52150e8b6b88b94a", "command": "function repeat {\n    while :; do\n        echo repeating; sleep 1\n    done\n}\nrepeat &\necho running once"}
+{"id": "cat7-5609a7751ae5f0d1", "command": "function snooze {\n    sleep $1\n}\n\nwhile true\ndo\n    snooze 60m &\n    wait $!\ndone"}
+{"id": "cat7-572c864a69dd4536", "command": "cat urllist | parallel --pipe -j0 parallel ./linkcheck.sh {}"}
+{"id": "cat7-5dc1e5a884dac039", "command": "cat urllist | parallel -j10 --pipe parallel -j0 ./linkcheck.sh {}"}
+{"id": "cat7-7517927b6883ab4b", "command": "function _jobs_get_count_e {\n   jobs -r | wc -l | tr -d \" \"\n}\n\nfunction _jobs_set_max_parallel {\n   g_jobs_max_jobs=$1\n}\n\nfunction _jobs_get_max_parallel_e {\n   [[ $g_jobs_max_jobs ]] && {\n      echo $g_jobs_max_jobs\n\n      echo 0\n   }\n\n   echo 1\n}\n\nfunction _jobs_is_parallel_available_r() {\n   (( $(_jobs_get_count_e) < $g_jobs_max_jobs )) &&\n      return 0\n\n   return 1\n}\n\nfunction _jobs_wait_parallel() {\n   # Sleep between available jobs\n   while true; do\n      _jobs_is_parallel_available_r &&\n         break\n\n      sleep 0.1s\n   done\n}\n\nfunction _jobs_wait() {\n   wait\n}"}
+{"id": "cat7-82337a8fb85c18da", "command": "#!/bin/bash\n\necho ++++sub $BASHPID\n\n(\n  while true; do \n    echo +++++tick  $BASHPID\n    sleep 5\n  done \n) &\n\nwait\n\necho SUB/tick clear"}
+{"id": "cat7-86a785d644508671", "command": "printf \"%s\\0\" * | xargs -r0 -n 1 -P 0 sha256sum"}
+{"id": "cat7-91d6a036ecdf07b7", "command": "parallel --files echo ::: A B C"}
+{"id": "cat7-9cb442a4a0a669bc", "command": "parallel --header : --colsep '\\t' echo f1={f1} f2={f2} \\\n  :::: tsv-file.tsv"}
+{"id": "cat7-9d0bc404ae1ade96", "command": "echo /foo, bar/, /baz, qux/, | \\\n  parallel -kN1 --recend ', ' --recstart / --pipe \\\n  echo JOB{#}\\;cat\\;echo END"}
+{"id": "cat7-9e6307f145a1a576", "command": "parallel --resume-failed --joblog log -j10 \\\n  'echo {};sleep .{}; exit {= $_%=3 =}' ::: {10..1}"}
+{"id": "cat7-a3d9764dc728e949", "command": "cat abc-file | parallel -a - -a def-file echo"}
+{"id": "cat7-ad799b8fd652221b", "command": "parallel -N3 echo ::: A B C D E F G H"}
+{"id": "cat7-b75dd6860a7f09b9", "command": "parallel --results /tmp/diffcount \"diff -U 0 {1} {2} | \\\n  tail -n +3 |grep -v '^@'|wc -l\" ::: * ::: *"}
+{"id": "cat7-bd0dfae7b5055d32", "command": "parallel -S server pwd ::: \"\"\nparallel --wd . -S server pwd ::: \"\"\nparallel --wd ... -S server pwd ::: \"\""}
+{"id": "cat7-bf4c14e5fee8434e", "command": "cat num30000 | parallel --jobs 4 -m echo | wc -l"}
+{"id": "cat7-c1e592e4b09e9e0f", "command": "/usr/bin/time parallel -N0 -j64 sleep 1 :::: num128"}
+{"id": "cat7-c1f000e142d69a42", "command": "parallel --tag --nonall -S server1,server2 uptime"}
+{"id": "cat7-c7d0235f8a605441", "command": "ls | \\\n  parallel 'echo -n `gzip < {} | wc -c`; echo -n '*100/'; wc -c < {}' | bc"}
+{"id": "cat7-c93b846ad00d1c6d", "command": "sem --jobs 3 --id my_id -u 'echo Start 1; sleep 5; echo 1 done' &&\nsem --jobs 3 --id my_id -u 'echo Start 2; sleep 6; echo 2 done' &&\nsem --jobs 3 --id my_id -u 'echo Start 3; sleep 7; echo 3 done' &&\nsem --jobs 3 --id my_id -u 'echo Start 4; sleep 8; echo 4 done' &&\nsem --wait --id my_id"}
+{"id": "cat7-ca74c2e4eb55eba5", "command": "parallel -S 4/$SERVER1 echo force {} cpus on server ::: 4"}
+{"id": "cat7-cab0b1ffd5f14715", "command": "parallel --jobs 4 -X echo pre-{}-post ::: A B C D E F G"}
+{"id": "cat7-cbe1a529111ff194", "command": "parallel ::: ls 'echo foo' pwd"}
+{"id": "cat7-cc8d63c247cddd0e", "command": "parallel --pipepart -a myfile --block -10 -j5 wc"}
+{"id": "cat7-ccd6c68232306294", "command": "parallel --pipepart -a regexps.txt --block 1M grep -Ff - -n bigfile |\n  sort -un | perl -pe 's/^\\d+://'"}
+{"id": "cat7-ce9c8db3fb477fab", "command": "for i in *.log ; do\n  echo $i\n  sem -j10 gzip $i \";\" echo done\ndone\nsem --wait"}
+{"id": "cat7-d198f506aea30d02", "command": "parallel echo 1={1} 2={2} 3={3} -1={-1} -2={-2} -3={-3} \\\n  ::: A B ::: C D ::: E F"}
+{"id": "cat7-d44360f7c51bf454", "command": "parallel -k --retries 3 \\\n  'echo tried {} >>/tmp/runs; echo completed {}; exit {}' ::: 1 2 0\ncat /tmp/runs"}
+{"id": "cat7-d594df6c6b7bed1d", "command": "parallel --memfree 1G echo will run if more than 1 GB is ::: free"}
+{"id": "cat7-d75bc8bf0a50fd49", "command": "parallel --link -a <(seq 6) -a <(seq 6 -1 1) echo\nparallel --link echo :::: <(seq 6) <(seq 6 -1 1)"}
+{"id": "cat7-d8dbe7afa04d7dd1", "command": "find . -type f | parallel -k -j150% -n 1000 -m grep -H -n STRING {}"}
+{"id": "cat7-da136c2601ab8c2b", "command": "echo common data > common_file\nparallel --basefile common_file -S $SERVER1 \\\n  cat common_file\\; echo {} ::: foo"}
+{"id": "cat7-da1dbe90c9d0c897", "command": "parallel -q perl -ne '/^\\S+\\s+\\S+$/ and print $ARGV,\"\\n\"' ::: *"}
+{"id": "cat7-dabaf3c810d78b53", "command": "parallel -k echo ::: 0 1 ::: 0 1 ::: 0 1 ::: 0 1 ::: 0 1 ::: 0 1"}
+{"id": "cat7-e2fbc57c85d8f14c", "command": "parallel -S $SERVER1 --sshdelay 0.2 echo ::: 1 2 3"}
+{"id": "cat7-e4022fe236a97226", "command": "parallel -j2 'printf \"%s-start\\n%s\" {} {};\n  sleep {};printf \"%s\\n\" -middle;echo {}-end' ::: 4 2 1"}
+{"id": "cat7-e7e1df3c3c19e435", "command": "parallel --tag 'diff {1} {2} | wc -l' ::: * ::: * | sort -nk3"}
+{"id": "cat7-e9334c04dd1e582b", "command": "parallel --interactive echo ::: 1 2 3"}
+{"id": "cat7-e94a2ebb33648a95", "command": "seq 4 | parallel -j0 \\\n  'sleep {};echo -n start{};sleep {};echo {}end'\nseq 4 | parallel -u -j0 \\\n  'sleep {};echo -n start{};sleep {};echo {}end'"}
+{"id": "cat7-f1383242641fa9af", "command": "parallel --minversion 20130722 && \\\n  echo Your version is at least 20130722."}
+{"id": "cat7-f7133c9a579fc798", "command": "inotifywait -qmre MOVED_TO -e CLOSE_WRITE --format %w%f my_dir |\\\n  parallel -u echo"}
+{"id": "cat7-f7eddcc5fcbdd573", "command": "parallel --max-line-length-allowed"}
+{"id": "cat7-f8953f2dc8488fb3", "command": "parallel -a /usr/share/dict/words --pipepart --tee --tag \\\n  'grep {1} | wc {2}' ::: {a..z} ::: -l -c"}
+{"id": "cat7-faa52b9a6cd68d7b", "command": "apply -2 cmp a1 b1 a2 b2\nparallel -N2 cmp ::: a1 b1 a2 b2"}
+{"id": "cat7-fc786f4f4417723c", "command": "parallel --pipepart --block 100M -a bigfile -k --compress \\\n  grep -f regexp.txt"}
+{"id": "cat7-fd0e7e4686a521d6", "command": "parallel --nice 17 echo this is being run with nice -n ::: 17"}
+{"id": "cat7-08e23a54981c0794", "command": "cat infile |\n  parallel -P0 -q curl {} -o /dev/null --silent --head --write-out \"%{http_code} {}\\n\" > outfile"}
+{"id": "cat7-2c8e6b527867d829", "command": "pv infile | parallel -u -j4 \"echo {} | sed 's/something//'\" > outfile"}
+{"id": "cat7-30d70d29f2bc9d86", "command": "parallel -j2 pandoc {} -f markdown {.}.pdf ::: *.md"}
+{"id": "cat7-6f8b861b73f6b654", "command": "forkstat -e fork"}
+{"id": "cat7-76d6ba6c304e2230", "command": "find /usr/ -type f  -print0 | parallel -0 -L64 -P4 ls -lAd  | sort -k9 > /tmp/bbb"}
+{"id": "cat7-7ba5c12aea68b268", "command": "time find tex -maxdepth 1 -name \"*.json\" | \\\n    parallel -X -j 8 grep -ohP \"'pattern'\" > /dev/null"}
+{"id": "cat7-8d5d5e424908526f", "command": "seq 10 > files.txt\nstrace -tt -e read xargs -t -P 4 -n1 -d'\\n' -a files.txt sleep"}
+{"id": "cat7-94eb640605d6bd92", "command": "time find tex -maxdepth 1 -name \"*.json\" | \\\n                xargs -P 8 -n 1000 grep -ohP \"'pattern'\" > /dev/null"}
+{"id": "cat7-9a47019f86b33101", "command": "cat infile | xargs -I {} -P3 curl {} -o /dev/null --silent --head --write-out \"%{http_code} {}\\n\" > outfile"}
+{"id": "cat7-a35ec821154c42f9", "command": "bug() {\n\ttrap : exit\n\t# Bug was causing sh to be run in subshell,\n\t# as if this line is replaced with (sh -c ...; exit $?) &\n\t# here:\n\tsh -c 'echo REAL_CHILD=$$' &\n\techo PARENTS_IDEA_OF_CHILD=$!\n\twait  # make sure bkgd shell completes\n}\n\nbug | {\nwhile read varval; do\n\teval $varval\ndone\ntest x\"$REAL_CHILD\" != x\"\" \\\n&& test x\"$REAL_CHILD\" = x\"$PARENTS_IDEA_OF_CHILD\"\necho \"Bug detected: $?\"\n}"}
+{"id": "cat7-e74fb1e7605f31b2", "command": "#   This program is free software: you can redistribute it and/or modify\n#   it under the terms of the GNU General Public License as published by\n#   the Free Software Foundation, either version 3 of the License, or\n#   (at your option) any later version.\n#\n#   This program is distributed in the hope that it will be useful,\n#   but WITHOUT ANY WARRANTY; without even the implied warranty of\n#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n#   GNU General Public License for more details.\n#\n#   You should have received a copy of the GNU General Public License\n#   along with this program.  If not, see <http://www.gnu.org/licenses/>.\n#\n\nNJOB=8\ni=0\n\nwhile [ $i -lt $NJOB ]\ndo\n    /bin/sh -c \"sleep 4; exit 0\" &\n    rv=$?\n    pid=$!\n    eval bg_pid_$i=$pid\n#    echo $$: Job $i: pid is $pid rv=$rv\n    i=$((i + 1))\ndone\n\n\n\ni=0\nwhile [ $i -lt $NJOB ]\ndo\n    eval wpid=\\$bg_pid_$i\n    echo Waiting for job $i #'('pid $wpid')'\n    wait $wpid\n    rv=$?\n    echo job $i returns $rv\n    i=$((i + 1))\ndone"}
+{"id": "cat7-ee1f25ab07882991", "command": "forkstat -S"}
+{"id": "cat7-f55b5f9391f0d6d3", "command": "echo {1..8} | xargs -d \" \" -P 2 -I {} echo \"consuming task {}\""}
+{"id": "cat7-32b020a68c9658a6", "command": "threads=20\ntempfifo=$PMS_HOME/$$.fifo\n\ntrap \"exec 1000>&-;exec 1000<&-;exit 0\" 2\nmkfifo $tempfifo\nexec 1000<>$tempfifo\nrm -rf $tempfifo\n\nfor ((i=1; i<=$threads; i++))\ndo\n    echo >&1000\ndone\n\nfor ((j=1; j<=1000; j++))\ndo\n    read -u1000\n    {\n        echo $j\n        echo >&1000\n    } &\ndone\n\nwait\necho \"done!!!!!!!!!!\""}
+{"id": "cat7-a392450a698d06c1", "command": "[ -p pipe ] || mkfifo pipe\nexec 3<>pipe\n\ni=0\nwhile [ $i -lt 10 ]; do\n  <&3 cat &\n  : $(( i+=1 ))\ndone\n\n# sleep 1\necho hello world >pipe\nwait"}
+{"id": "cat7-b8d0c55bfe3420b3", "command": "#!/bin/bash\nloop_function(){\n    while :\n    do\n       sleep 3\n    done\n}\n\nloop_function &\n\nwhile true\ndo\n    sleep 3\ndone"}
+{"id": "cat7-c80242425a9ea779", "command": "taskA() { echo dummy A=$1; }\ntaskB() { echo dummy B=$1; }\nexport -f taskA taskB\n\n# Do the inital warm up so we can run taskA $i, taskB $i-1\ntaskA 1\ntaskA 2\ntaskB 1\n# Now taskA $i and taskB $i-1 is done for $i=2\n\ndoit() {\n    i=$1\n    a=$i\n    b=$((i - 1))\n    # Run 'taskA $1' and 'taskB $i-1' in parallel\n    parallel ::: \"taskA $a\" \"taskB $b\"\n}\nexport -f doit\n\nseq 3 1000 | parallel -j1 doit"}
+{"id": "cat7-dde92f3080d87502", "command": "export commands=\"cmd1; cmd2; \"\nhosts=(\"host1\" \"host2\" \"host3\" \"host4\")\nMaxInstance=10\necho_var(){\n   echo \"Executing in $1:\"; sleep 1; echo \"Output of: $commands\"; return 0;\n}\nexport -f echo_var\nprintf \"%s\\n\" ${hosts[@]} | xargs -n 2 -P $MaxInstance -I {} $(command -v bash) -c 'echo_var \"$1\"' _ {}"}
+{"id": "cat7-dfcf79047d4f3ca7", "command": "( \\\n  ( while true; do echo subsubshell1 && sleep 5; done ) & \\\n  ( while true; do echo subsubshell2 && sleep 10; done ) & \\\n  wait; \\\n)"}
+{"id": "cat7-e076987073fb5de2", "command": "#!/bin/bash\n\nset -x\n\nwhoami\n\nnumber_of_processes=$(ps auxf | wc -l)\nnumber_of_processes_plus=$((number_of_processes+480))\n\necho \"found $number_of_processes processes, setting the limit to $number_of_processes_plus\"\n\nulimit -u $number_of_processes_plus\n\nperl -e '\nuse strict;\nuse warnings;\n\nmy $pid = fork();\nmy $errno = $!;\n\nprint \"ERRNO: $errno\\n\";\n\nif($pid == -1) {\n        warn \"PID was -1!!! errno: >>>$errno<<<\\n\";\n} else {\n        if(defined $pid) {\n                if($pid == 0) {\n                        warn \"Child-process\\n\";\n                } else {\n                        warn \"Parent-process\\n\";\n                }\n        } else {\n                warn \"\\$pid NOT DEFINED\";\n        }\n}\n'"}
+{"id": "cat7-daafad2b51200e62", "command": "xargs -t -P 4 -n1 -d'\\n' -a <(tail -fn +1 files.txt) sleep"}
+{"id": "cat7-e086f29d0e6d2688", "command": "echo -e '1\\n2\\n3' | xargs -n1 -P3 -I{} bash -c 'echo {} start; sleep 1; echo {} ready'\nparallel 'echo {} start; sleep 1; echo {} ready' ::: 1 2 3"}
+{"id": "cat7-3afea8b0ecb43a3c", "command": "DBURL=csv:///%2Ftmp%2Fmy.csv\nDBTABLEURL=$DBURL/mytable\nparallel --sqlandworker $DBTABLEURL seq ::: {1..10}"}
+{"id": "cat7-7f1cbd219fbbdbab", "command": "DBURL=sqlite3:///%2Ftmp%2Fmydatabase\nDBURLTABLE=$DBURL/mytable\nparallel --sqlandworker $DBURLTABLE echo ::: foo bar ::: baz quuz"}
+{"id": "cat7-28b20b0124d5e859", "command": "parallel --resume-failed --joblog /tmp/log exit  ::: 1 2 3 0 0 0\ncat /tmp/log"}
+{"id": "cat7-62affd54b6db79be", "command": "parallel --controlmaster -S $SERVER1 echo ::: 1 2 3"}
+{"id": "cat7-5d5b1f6120bccaeb", "command": "parallel --hostgroup -S @grp1/$SERVER1 -S @grp2/$SERVER2 echo {} \\\n  ::: run_on_grp1@grp1 run_on_grp2@grp2"}
+{"id": "cat7-8cffb7a217ef3e38", "command": "ls | parallel -q bash -c 'wc -c <(echo {})'"}
+{"id": "cat7-9eca4ecf5aa8465a", "command": "seq 3 | parallel sem --id mymutex sed -i -e 'i{}' myfile"}
+{"id": "cat7-af63d536af87e3a9", "command": "echo '--nice 17' > ~/.parallel/nicetimeout\necho '--timeout 300%' >> ~/.parallel/nicetimeout\nparallel --profile nicetimeout echo ::: A B C"}
+{"id": "cat7-5b109fbddc16f644", "command": "seq 1000 | parallel -j10 --bar '(echo -n {};sleep 0.1)' \\\n  2> >(zenity --progress --auto-kill --auto-close)"}
+{"id": "cat7-7b3e6f4cda85376a", "command": "parallel \"zcat {} | bzip2 >{.}.bz2 && rm {}\" ::: *.gz"}
+{"id": "cat7-15d6797307027ba5", "command": "parallel lame {} -o {.}.mp3 ::: *.wav"}
+{"id": "cat7-3b267bbf47a63550", "command": "find . -name '*.jpg' | parallel convert -geometry 120 {} {}_thumb.jpg"}
+{"id": "cat7-1bc184686540632d", "command": "echo $SERVER1 > nodefile\n# Force 4 cores, special ssh-command, username\necho 4//usr/bin/ssh user@$SERVER2 >> nodefile\nparallel --sshloginfile nodefile echo ::: running on more hosts"}
+{"id": "cat7-7747788868686cf0", "command": "echo This is input_file > input_file\nparallel -S $SERVER1 --trc {}.out cat {} \">\"{}.out ::: input_file\ncat input_file.out"}
+{"id": "cat7-065e900e07e9972f", "command": "ulimit -S -c 0      # Don't want coredumps.\nulimit -S -u 50     # limit 50 processes\nexport FUNCNEST=44  # limit function recursion"}
+{"id": "cat7-6640d70918503bf3", "command": "uname -a\nulimit -a\ncat /proc/sys/kernel/pid_max\ncat /proc/sys/kernel/threads-max"}
+{"id": "cat7-b00caeae007c28e8", "command": "cat list-of-scripts > parallel -j4\ncat out1 out2 out3 out4"}
+{"id": "cat7-a5962e6c3f543146", "command": "#!/bin/bash\n\nshowword() {\n  echo $1\n}\n\necho This is a sample message | xargs -d' ' -t -n1 -P2 showword"}
+{"id": "cat7-159afb51344b4454", "command": "cat list | parallel -j1 -k -v ls\ncat list | parallel -j1 -k -v -S\"myssh user@server\" ls"}
+{"id": "cat7-1f7861fe6fe6ea92", "command": "cat bigfile | parallel --pipe --files sort |\\\n  parallel -Xj1 sort -m {} ';' rm {} >bigfile.sort"}
+{"id": "cat7-2139ae4763872971", "command": "alias myecho=\"echo aliases\";\nenv_parallel myecho ::: work;\nenv_parallel -S server myecho ::: work;\nenv_parallel --env myecho myecho ::: work;\nenv_parallel --env myecho -S server myecho ::: work"}
+{"id": "cat7-49d0c61d82f3177e", "command": "myarray=(arrays work, too)\nenv_parallel -k echo '${myarray[{}]}' ::: 1 2 3\nenv_parallel -k -S server echo '${myarray[{}]}' ::: 1 2 3\nenv_parallel -k --env myarray echo '${myarray[{}]}' ::: 1 2 3\nenv_parallel -k --env myarray -S server echo '${myarray[{}]}' ::: 1 2 3"}
+{"id": "cat7-94d38eca3602eb51", "command": "parallel --pipepart -a regexps.txt --block $percpu --compress \\\n  grep -F -f - bigfile"}
+{"id": "cat7-5596092cf8a402f4", "command": "inotifywait -qmre MOVED_TO -e CLOSE_WRITE --format %w%f my_dir |\\\n  parallel -S ..  -u echo"}
