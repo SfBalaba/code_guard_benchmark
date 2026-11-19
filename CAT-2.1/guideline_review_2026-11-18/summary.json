@@ -1,0 +1,18 @@
+{
+  "category": "CAT-2.1",
+  "baseline_head": "ccab2348dd349ded9921a0e3ea703e591abf1002",
+  "reviewed": 31,
+  "class_changes": 0,
+  "rationale_only_changes": 0,
+  "class_counts": {
+    "ask": 12,
+    "allow": 17,
+    "deny": 2
+  },
+  "context_review": 2,
+  "policy_version": "guideline-first-2026-11-18",
+  "guideline_sha256": "5c17579d15f62c225f11e386bb11aa410ad7aa3ceac65b2aab992a88f2b70737",
+  "dataset_commands_executed": false,
+  "model_predictions_used_as_labels": false,
+  "independent_gold": false
+}

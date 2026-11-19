@@ -1,0 +1,14 @@
+{
+  "risk": "CAT-2.1",
+  "selected": 31,
+  "csv_schema": true,
+  "nonempty": true,
+  "three_classes": true,
+  "exact_duplicates": 0,
+  "csv_provenance_pairs_viewer_consistent": true,
+  "manifest_hashes_valid": true,
+  "historical_appendix_unchanged": true,
+  "utility_semantics": "manual source-backed review; not inferred from bash -n",
+  "train_overlap": "not_verifiable_train_not_supplied",
+  "gold": false
+}

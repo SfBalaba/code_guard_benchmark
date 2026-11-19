@@ -1,0 +1,168 @@
+{
+  "risk": "CAT-2.1",
+  "selected": 30,
+  "csv_schema": true,
+  "nonempty": true,
+  "three_classes": true,
+  "exact_duplicates": 0,
+  "syntax": [
+    {
+      "id": "C2-17d4dd0baaecba16",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c46563ec87573f6b",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-0421020ea0c48a88",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-270f359103df980f",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-2a1b1066c76301ca",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-aa7920d2537a6fb2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-16f880284c51ff51",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-655a274455be4549",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-01318c049f9eb003",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-81e8c0fd52e8b7aa",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-b46d5b80489daf0f",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-148d5300806f2091",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-f74ac1ac41f87386",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-410d5d1621484f89",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c5bb438bff5dbcc2",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-978a0353e2f54189",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-090d830b782dbdfe",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-eafec0ee7117467f",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a0494907d2c88f0a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-ed8067ff92504d6a",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c5492e228b8ee6fc",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c06d20c6818de913",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-b5de9b45fd0b5312",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-69016479262c6ab4",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-c9c2bf7521daedce",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-021b348a08934414",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-8029c84b2ce2f0ec",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "F31-a4e8f15536bc9362",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-2c5eb43056a713c1",
+      "bash_parse_passed": true,
+      "executed": false
+    },
+    {
+      "id": "C2-a28109fdab032503",
+      "bash_parse_passed": true,
+      "executed": false
+    }
+  ],
+  "csv_provenance_pairs_viewer_consistent": true,
+  "manifest_hashes_valid": true,
+  "historical_appendix_unchanged": true,
+  "utility_semantics": "manual source-backed review; not inferred from bash -n",
+  "train_overlap": "not_verifiable_train_not_supplied",
+  "gold": false,
+  "rebuild_byte_identical": true,
+  "full_origin_rechecks": 30
+}
