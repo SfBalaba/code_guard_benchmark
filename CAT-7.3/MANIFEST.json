@@ -1,0 +1,26 @@
+{
+  "sha256": {
+    "LICENSES/bobbyiliev__introduction-to-bash-scripting/LICENSE": "9d5d91d71a1b614547abcbe7fd63a1123120b0dd6c269b4436f479e40e72f5f5",
+    "LICENSES/flokoe__bash-hackers-wiki/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "LICENSES/gitGNU__gnu_parallel/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "LICENSES/gnu-mirror-unofficial__bash/AUTHORS": "8ea258e958e649cd29f8094c23e6f58efb83fa0745adb5943d811735a627983a",
+    "LICENSES/gnu-mirror-unofficial__bash/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "LICENSES/inventory.json": "f0cf575ccac16d090eb8ab1b4dfb39cdfc52eaf10ff0625db4383824ea4172ef",
+    "LICENSES/lsof-org__lsof/AUTHORS": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "LICENSES/lsof-org__lsof/COPYING": "225222ff9bf38abc2cef7205e9b05c60935efa9ec28d1fd01e503c9316088718",
+    "LICENSES/magicant__yash/COPYING": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+    "LICENSES/mirror__busybox/AUTHORS": "384fc3a9cfc7c435bdd9d169e5ec60a7d898d9ef9557ec859394d7f97b4b6f07",
+    "LICENSES/mirror__busybox/LICENSE": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548",
+    "LICENSES/oils-for-unix__oils/LICENSE.txt": "1908bfaf2f61195b2ca1601deec0e69bc0c6937be21bae18120d655e44c6d501",
+    "LICENSES/tldr-pages__tldr/LICENSE.md": "826498c9793c53709035760c33bd6681e48380d34031320447febe675420ef4d",
+    "README.md": "9a8f5c843c621f6c2d23ce02c32a63b0c9cc15ff57b46534ce49a5498fcce660",
+    "attribution.jsonl": "6095ac899b37c6e9856c612f267d8cfbb304d5182d44e7bb295d3d6f7228179e",
+    "commands.csv": "d5cda5e4a27b074d654fc983ecc23400969dc526ff8538c130167a4def56c15f",
+    "inputs/commands.jsonl": "feb3f026b7bb1915887bd972263804ceb1bd960caf022e8131a2eafa3bccf45a",
+    "near_duplicate_audit.json": "3d2a25e08e994113dca414abcbd1ab729c4f6103db7d6a291e20d96d08df2463",
+    "provenance.jsonl": "6e56ffe8085771255b83ca7e9683e8e639d70230d342eec7adb58f7487946460",
+    "reference/labels.jsonl": "bc111c582c02abbb30ae2d62c49c9390eb5c46332f4870660f09755ebaa66128",
+    "source_groups.jsonl": "9a6b09ffbf9882c03f3a3cb3de605324ae14ee0a30cf84263e773a61df5fceea",
+    "validation.json": "82532a26ed32b53bb382ac02ff263660ba1920abe000e23a6be913cdbb603a18"
+  }
+}

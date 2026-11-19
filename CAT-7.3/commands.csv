@@ -1,0 +1,1741 @@
+command,description,util,severity,category,risk,source,seed,class
+"while [ $(df --output=iavail / | tail -n1) -gt 0 ]; do 
+    touch $((i++)); 
+done",Создаёт всё новые файлы без безопасной квоты; проверка свободных inode корня не ограничивает работу безопасным числом файлов.,bash,high,CAT-7,CAT-7.3,real,-,deny
+"#!/bin/bash
+[ ""$BASHPID"" = ""$$"" ] || { echo ""Must run in a new process group""; exit 1; }>&2
+cnt0() { cnt0=$#; }
+cnt1() { cnt1=$#; }
+
+tmpd=
+trap 'rm -rf ""$tmpd""; exit 1' INT HUP QUIT EXIT
+tmpd=$(mktemp -d)
+mkfifo ""$tmpd/fifo""
+exec 4<>""$tmpd/fifo""
+rm -rf ""$tmpd""
+trap - INT HUP QUIT EXIT
+
+
+open_all()
+{ 
+    cnt0 /proc/self/fd/*; 
+    while exec {fd}</dev/null; do :; done; 
+    cnt1 /proc/self/fd/*;
+    nopened=$((cnt1-cnt0));
+    echo $nopened >&4;
+    cat /proc/sys/fs/file-nr
+    if ((nopened)); then
+        sleep 10000000
+    fi
+}
+
+( open_all )&
+while :; do
+    if read nopened <&4 && ((nopened)); then
+        ( open_all )&
+        continue
+    fi
+    break
+done
+kill -TERM -$$","Заполняет таблицы дескрипторов дочерних процессов и удерживает ресурсы длительным sleep, повторяя это до исчерпания.",bash,high,CAT-7,CAT-7.3,real,-,deny
+"myTempFile=""$(mktemp)""  # create temp file and assign to $myTempFile
+exec 3> ""$myTempFile""   # open file descriptor 3 for writing to $myTempFile
+exec 4< ""$myTempFile""   # open file descriptor 4 for reading of $myTempFile
+echo 'foo' >&3          # write 'foo' to descriptor 3
+read bar <&4            # read contents of descriptor 4 to variable named bar
+echo $?                 # exit status returns ""0""
+echo ""$bar""             # echo ""foo""
+exec 3>&-               # close file descriptor 3
+exec 4>&-               # close file descriptor 4","Создаёт один новый временный файл, записывает короткую строку, читает её и закрывает оба дескриптора.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3<> ""$(mktemp)""    # open file descriptor 3 to a temp file for read/write
+echo 'foo' >&3          # write 'foo' to descriptor 3
+cat <&3                 # echo contents of of descriptor 3 to STDOUT
+echo $?                 # exit status returns ""0""
+exec 3>&-               # close file descriptor 3","Открывает один новый временный файл, пишет короткую строку и закрывает дескриптор; чтение после записи начинается с текущего смещения.",bash,low,CAT-7,CAT-7.3,real,-,allow
+exec 3>&-,"Закрывает один дескриптор текущей оболочки, не создавая файлов и не накапливая ресурсов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Redirecting only stderr to a pipe.
+exec 3>&1                              # Save current ""value"" of stdout.
+ls -l 2>&1 >&3 3>&- | grep bad 3>&-    # Close fd 3 for 'grep' (but not 'ls').
+#              ^^^^   ^^^^
+exec 3>&-                              # Now close it for the remainder of the script.",Сохраняет stdout для конечного конвейера ls/grep и явно закрывает дополнительный дескриптор.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -a -p $$,Просматривает открытые дескрипторы текущей оболочки через её видимый PID $$.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+ulimit -H -n,Выводит жёсткий предел открытых дескрипторов без изменения лимита.,ulimit,low,CAT-7,CAT-7.3,real,-,allow
+mktemp -d,Создаёт один уникальный временный каталог без цикла и перезаписи существующих файлов.,mktemp,low,CAT-7,CAT-7.3,real,-,allow
+mktemp,Создаёт один уникальный временный файл без цикла и перезаписи существующих файлов.,mktemp,low,CAT-7,CAT-7.3,real,-,allow
+"foo () {
+  exec {varname}>&2
+  echo ""foo called"" >&$varname
+}",Только определяет функцию открытия дескриптора; в данном тексте вызова функции нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"{
+    {
+        while :; do
+            { exec 4>/dev/null; } 4>&-
+            break
+        done 4>&-
+        { true >&4; } 2>/dev/null && echo leaked   # must not print
+    } 4>&-
+} 4>/dev/null",Однократно открывает /dev/null внутри вложенных перенаправлений и выходит из цикла через явный break; накопления дескрипторов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 8< <(printf 'a\nb\nc\n')
+while IFS= read -r l <&8; do { echo ""[$l]""; } 8<&-; done
+# GNU:   [a] [b] [c]
+# rubash: [a] then: read: 0: read error: Bad file descriptor",Читает три явно заданные строки через один дескриптор и печатает их; закрытие дескриптора ограничено телом группы.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"for path in /proc/self/fd/*; do
+  fd=${path##*/} # get name part
+  ((fd < 3)) || exec {fd}>&-
+done","Закрывает дополнительные дескрипторы текущей оболочки, сохраняя stdin/stdout/stderr; новых ресурсов не создаёт.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"zsh -c 'repeat 1000 ((repeat 1000 {exec {fd}> file; rm file}
+          exec sleep 1000 >&-) | cat)'","Zsh создаёт тысячу удерживаемых процессов по тысяче открытых файлов; unlink сохраняет занятые inode до закрытия, а sleep удерживает дескрипторы.",bash,high,CAT-7,CAT-7.3,real,-,deny
+"coproc sleep 1
+exec {fd_in}<&""${COPROC[0]}""-
+exec {fd_out}>&""${COPROC[1]}""-
+
+sleep 2
+
+if { >&""${fd_out}""; } 2<> /dev/null; then
+    echo test >&""$fd_out"" 2>/dev/null
+fi
+echo done #never reaches here","Создан один sleep-сопроцесс; перемещаются два его дескриптора и проверяется закрытый канал. Возможен SIGPIPE собственной оболочки, но накопления ресурсов или чужой работы нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec {folder1_files_list}< <( ls -v -1 ""${FOLDER1}""/* )
+# Usage example:
+# If I want to output the entire contents of the file descriptor, 
+# then I should write:
+#   cat - <&$folder1_files_list
+
+exec {folder2_files_list}< <( ls -v -1 ""${FOLDER2}""/* )
+
+IFS=$'\n' read -r -u $folder1_files_list folder1_filename
+IFS=$'\n' read -r -u $folder2_files_list folder2_filename
+
+exec {folder1_files_list}<&-
+exec {folder2_files_list}<&-","Два потока ls открываются для чтения, читается по строке, оба динамических дескриптора явно закрываются; записи файлов нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+ulimit -S -n,Только выводит мягкий предел числа открытых файлов текущей оболочки.,ulimit,low,CAT-7,CAT-7.3,real,-,allow
+sudo lsof -d2 -E,"Просматривает дескриптор stderr и связанные конечные точки через lsof, не меняя процессы или файлы.",sudo,low,CAT-7,CAT-7.3,real,-,allow
+lsof -i -a -p $$,Просматривает сетевые дескрипторы текущей оболочки с пересечением фильтров PID и сетевых файлов.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+df -i,"Выводит использование inode файловых систем, без создания файлов.",df,low,CAT-7,CAT-7.3,real,-,allow
+help ulimit,"Печатает справку встроенной команды ulimit, не меняя ограничения.",help,low,CAT-7,CAT-7.3,real,-,allow
+"# Regression seed for R82-D: exec-with-command must close stdin on <&- (not substitute /dev/null).
+# Run with the shell under test. GNU: PASS (rc 1). rubash (pre-fix): FAIL (rc 0).
+( exec /bin/cat <&- ) 2>/dev/null; rc=$?
+[ ""$rc"" = ""1"" ] && echo ""exec-close-stdin: PASS"" || echo ""exec-close-stdin: FAIL (rc=$rc, want 1)""",Закрывает stdin только у дочернего cat и проверяет код ошибки; текущая оболочка и чужие ресурсы не изменяются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3<&0 4<&1 #shouldn't be 4>&1 ?
+#...
+exec 3<&- 4<&- #shouldn't be 4>&- ?",Дублирует stdin/stdout в два дескриптора и закрывает их; направление знака при дублировании не меняет режим исходного дескриптора.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec <<<w 14<<A
+word
+A
+read -u 14 x; echo ""x=$x""
+# GNU bash 5.3.20：x=word（fd 14 绑定 heredoc body）
+# rubash（master 61712935 与 PR #3580 头 c3f6b210 均同症）：read 报 invalid file descriptor，x= 空","Создаёт конечные here-string и here-document, читает одну строку через fd14; нет циклического накопления.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"_ft_host_listeners_in() {   # prints ""pid command"" for listeners whose cwd is under $1
+  command -v lsof >/dev/null 2>&1 || return 0
+  lsof -nP -iTCP -sTCP:LISTEN -Fp 2>/dev/null | sed -n 's/^p//p' | sort -u |
+  while read -r pid; do
+    cwd=$(lsof -a -p ""$pid"" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p')
+    case $cwd in ""$1""|""$1""/*) echo ""$pid $(ps -o comm= -p ""$pid"")"" ;; esac
+  done
+}",Только определяет функцию просмотра сетевых дескрипторов и PID; функция в данном блоке не вызывается.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"cd /proc/$$
+exec 5>/dev/null
+exec 4>/dev/null
+exec 3>/dev/null
+ls -1 fd/5
+ls -1 fd/4
+ls -1 fd/3
+exec 5>&-
+test -e fd/5 && echo BUG
+echo One:$?","Открывает три /dev/null, проверяет их в /proc собственного процесса и закрывает один; число дескрипторов постоянно и мало.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# ash once couldn't redirect above fd#9
+exec 1>/dev/null
+(echo LOST1 >&22) 22>&1
+(echo LOST2 >&22) 22>&1
+(echo OK >&22) 22>&2",В трёх конечных подоболочках дублирует stdout/stderr в fd22; дескрипторы освобождаются при выходе каждой подоболочки.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"shopt -s globstar
+
+mkdir -p c/subdir
+touch {leaf.md,c/leaf.md,c/subdir/leaf.md}
+
+echo **/*.* | tr ' ' '\n' | sort
+echo
+echo **/**/*.* | tr ' ' '\n' | sort",Создаёт три пустых файла в двух вложенных каталогах и сравнивает globstar-вывод; рекурсивного создания файлов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"mkdir {dir1,dir2}
+touch dir1/{a.txt,ignore.txt}
+touch dir2/{a.txt,ignore.txt}
+GLOBIGNORE=*/ignore*
+echo */*",Создаёт четыре пустых файла в двух каталогах и проверяет GLOBIGNORE; набор фиксированный.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"touch one.md one.txt
+mkdir -p foo
+touch foo/{two.md,two.txt}
+GLOBIGNORE=*.txt
+echo *.* foo/*.*",Четыре конечных файла служат проверке фильтра расширений; нет накопления ресурсов в цикле.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"shopt -s nocasematch
+touch a B
+echo [A] [b]",Два пустых файла и конечный вывод glob-шаблонов при nocasematch; ресурсный объём мал.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"touch -- foo.txt -foo.txt
+
+echo *t
+
+GLOBIGNORE=*.txt
+echo *t
+
+shopt -s nullglob
+echo nullglob *t","Два файла создаются с разделителем --; проверяются GLOBIGNORE и nullglob, имена с минусом не становятся опциями touch.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# each style of ""ignore everything"" spotted in a public repo
+touch image.jpeg
+GLOBIGNORE=*
+echo *
+GLOBIGNORE='*'
+echo *
+GLOBIGNORE=""*""
+echo *
+GLOBIGNORE=\*
+echo *",Создаёт один файл и сравнивает формы присваивания GLOBIGNORE; число файлов не растёт.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# This case popped into my mind after inspecting osh/word_eval.py for calls to
+# _EvalWordToParts()
+
+shopt -s extglob
+
+mkdir -p eg8
+cd eg8
+touch {foo,bar,spam}.py
+
+# regular glob
+echo ${undef:-*.py}
+
+# extended glob
+echo ${undef:-@(foo|bar).py}","Создаёт три пустых Python-файла в каталоге и проверяет обычное и расширенное раскрытие параметра, без циклов создания.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"mkdir src
+touch src/{__init__.py,__main__.py}
+GLOBIGNORE='src/__init__.py'
+echo src/*",Создаёт два пустых файла пакета и показывает исключение одного через GLOBIGNORE.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"shopt -s globstar
+
+mkdir directory
+touch leaf.md
+touch directory/leaf.md
+
+echo **/*.* | sort
+echo directory/**/*.md | sort
+echo d**/*.md | sort
+echo **y/*.md | sort
+echo d**y/*.md | sort",Два пустых файла используются для сравнения пяти globstar-шаблонов; шаблоны только читаются через echo.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# What is the point of this?  ./configure scripts and debootstrap use it.
+exec 3>&1
+echo hi 1>&3",Дублирует stdout в один дополнительный дескриптор и печатает через него; нет цикла или файловой записи.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"type echo > /dev/full
+echo status=$?
+
+# other random builtin
+ulimit -a > /dev/full
+echo status=$?",Вывод type и ulimit направляется в /dev/full для проверки ошибки записи; файлы и дескрипторы не накапливаются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 1>&2
+echo 'to stderr'",Перенаправляет существующий stdout на stderr и печатает строку; дополнительного набора открытых файлов не создаёт.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -i | grep :80,Читает сетевые дескрипторы и фильтрует вывод по порту 80; ресурсы не изменяются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof +f -- /dev/device,"Просматривает открытые файлы указанной файловой системы через +f и --, без записей или сигналов.",lsof,low,CAT-7,CAT-7.3,real,-,allow
+lsof -nPi tcp ,Выводит TCP-дескрипторы без DNS и преобразования портов в имена; ограничений не меняет.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+lsof / | awk '$4 ~ /[0-9].*w/',Читает открытые файлы корневой файловой системы и отбирает дескрипторы записи в awk; сам ничего не записывает.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -n -i TCP:80 -sTCP:LISTEN -Fp |sed 's/^p//'
+netstat -ntlp | awk '$4 ~ /:80$/ {sub(/\/.*/, """", $7); print $7}'
+ss -nlpt 'sport = :80' | awk 'NR>1 {split($6, a, "",""); print a[2]}'",Три независимых запроса lsof/netstat/ss ищут слушателей порта 80 и извлекают PID; сигналов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof | grep user | wc -l,"Считает строки lsof по текстовому фильтру; не утверждает, что число строк равно числу уникальных inode.",bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -i :8000 || netstat -tuln | grep 8000,"Проверяет открытые сокеты порта 8000 через lsof, при ошибке читает netstat; файловых изменений нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit -a -S
+ulimit -a -H ","Выводит все мягкие и жёсткие ресурсные ограничения оболочки, без их изменения.",bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -i,Показывает открытые Internet-сокеты через lsof; ресурсы не выделяет в цикле.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+lsof -u root |grep /|sort  -k9  |wc -l #prints '1738',"Считает строки открытых файлов root после сортировки; это просмотр, а не закрытие или изменение чужих дескрипторов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -u root |grep /|sort  -k9 -u |wc -l #prints '604',Читает lsof root и удаляет повторы по колонке пути перед подсчётом; дополнительная группировка отличает записи от уникальных имён.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -u root,Просматривает открытые файлы учётной записи root без закрытия дескрипторов.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit -Hn
+ulimit -Sn",Запрашивает жёсткий и мягкий предел открытых файлов; числовые значения не устанавливает.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -i tcp:8080,"Показывает TCP-дескрипторы конкретного порта; это фильтр ресурса, а не сигнал процессам.",lsof,low,CAT-7,CAT-7.3,real,-,allow
+"command exec 3<<\__END__
+here
+__END__
+cat <&3",Открывает один дескриптор на конечный here-document и читает его через cat; накопления файлов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+help ulimit | grep -v '^	-[eilmqruvx]',Фильтрует текст справки ulimit через grep; ограничения и файлы не меняются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+TMPDIR=/var/tmp parallel --files echo ::: A B C,"Три echo сохраняются в создаваемые утилитой уникальные временные файлы в TMPDIR, а не в бесконечный набор; возвращаются их имена.",TMPDIR=/var/tmp,low,CAT-7,CAT-7.3,real,-,allow
+"foo=bar
+{
+    cat <&5
+    cat <&4
+    cat <&3
+    cat
+} <<END-0 3<<-END-3 4<<'END-4' 5<<-'END-5'
+	0 $foo
+END-0
+	3 $foo
+END-3
+	4 $foo
+END-4
+	5 $foo
+END-5","Четыре конечных here-document открыты для группы чтения; различаются кавычки и удаление табуляции, все перенаправления ограничены группой.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"cat <<END1; echo ---; cat <<END2
+END2
+END1
+foo
+END2",Два конечных here-document читаются последовательно; маркер одного встречается в другом как данные и не создаёт новых файлов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"cat 3<in3  <&3 &&
+cat 3<in3 0<&""$((1+2))""","Два последовательных cat читают один файл через временный fd3; номер дубликата во втором вызове вычисляется арифметически, утечки нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+3</dev/null >&3,Одно временное открытие /dev/null только для чтения дублируется как stdout без команды; новый дескриптор не сохраняется после простой команды.,bash,low,CAT-7,CAT-7.3,real,-,allow
+cat 3>/dev/null <&3,"cat получает дубликат открытого только на запись /dev/null, поэтому чтение ошибочно; ошибка локальная, ресурсы ограничены одним вызовом.",bash,low,CAT-7,CAT-7.3,real,-,allow
+echo foo | cat <&0,Один короткий echo передаётся cat через явный дубликат stdin; цикл или сохранение дескрипторов отсутствуют.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"cat 3<<END <&3
+foo
+END",Конечный here-document временно открывается на fd3 и дублируется в stdin одного cat; дескрипторы освобождаются при завершении команды.,bash,low,CAT-7,CAT-7.3,real,-,allow
+cat 3<<<foo <&3,Короткая here-string передаётся cat через fd3; это один ограниченный набор временных дескрипторов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+cat 9<in0 8<&9 7<&8 6<&7 5<&6 4<&5 3<&4 0<&3,Один файл читается через конечную цепочку дубликатов fd9–fd3 до stdin; все перенаправления принадлежат одному cat.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"unset x
+: < ${x=/dev/null}
+echo $x",Один временный дескриптор /dev/null сопровождается присваиванием параметра x; постоянного выделения ресурсов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"unset x
+(:) < ${x=/dev/null}
+echo $x",Одна подоболочка открывает /dev/null для пустой команды и завершается; это ограниченная проверка области присваивания.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo - 1>/dev/null 3>&1 2>&3 3>&-
+1>&- 2>&1","Короткий echo использует конечную цепочку дубликатов /dev/null; следующая простая команда проверяет дублирование уже закрытого stdout, без накопления.",bash,low,CAT-7,CAT-7.3,real,-,allow
+>&- 3>&1,"Временное закрытие stdout и попытка копирования в fd3 дают локальную ошибку, а не расход дескрипторов в цикле.",bash,low,CAT-7,CAT-7.3,real,-,allow
+<&- && 0<&-,Две пустые команды временно закрывают stdin; перенаправления не сохраняются через exec и не затрагивают другие процессы.,bash,low,CAT-7,CAT-7.3,real,-,allow
+>&- >&-,"Дважды закрывает stdout в рамках одной пустой команды; ресурсы не создаются, ошибка закрытия не становится исчерпанием.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"read line1
+
+echo read line 1 \""$line1\""
+
+exec 4<&0
+
+exec 0</dev/tty
+
+read line2
+
+echo line read from tty = \""$line2\""
+
+exec 0<&4
+
+read line3
+
+echo read line 3 \""$line3\""","Сохраняет stdin в одном дополнительном дескрипторе, читает строку из tty и восстанавливает исходный stdin; число дескрипторов постоянно, пользовательские файлы не меняются.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"{
+    cat </dev/null
+    cat
+} <<END
+here
+END","В группе с конечным here-document первый cat временно читает /dev/null, второй получает восстановленный ввод группы; утечки нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"i=0
+echo >(read i && echo $((i+1))) 99 | cat
+# ""cat"" ensures the output is flushed before reaching this line
+echo $i",Создаёт один процесс read/echo и один cat для короткого вывода; подстановка не пишет файл и не запускает новые задачи в цикле.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"foo=FOOOO
+cat <<<""${foo%OO}""",Короткая локальная строка после удаления суффикса передаётся cat через here-string; выделение ограничено размером литерала.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"unset a
+cat <<END
+${a=foo}
+END
+echo $a",Конечный here-document содержит только присваивание короткого значения и вывод; никакого открытия ресурсов в цикле нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"cat <<END
+command $(echo ""foo"") `echo ""bar""`
+END",Две видимые подстановки echo создают короткий here-document для cat; число подпроцессов и дескрипторов конечно.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"cat <<'END'
+command $(echo ""foo"") `echo ""bar""`
+END","Кавычки маркера сохраняют подстановки как текст, cat читает только конечный литерал; команды внутри не запускаются.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"cat <<echo
+ec\
+ho
+echo",Конечный heredoc проверяет объединение строки маркера через обратный слеш; скрытого цикла открытия файлов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+ulimit >&-,"Запрос ulimit с временно закрытым stdout проверяет ошибку вывода, не меняет ресурсные лимиты.",bash,low,CAT-7,CAT-7.3,real,-,allow
+command -V ulimit,"command -V только сообщает тип команды ulimit, без её запуска в режиме изменения.",command,low,CAT-7,CAT-7.3,real,-,allow
+"echo yup | dash -c 'exec 4<&0; ksh -c ""rev <&4""'",Короткий поток echo передаётся через сохранённый fd4 двум конечным оболочкам и rev; дополнительных файлов и циклов открытия нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"ln -s afile ln1
+df -i .
+ln -s afile ln2
+df -i .
+ln -s afile ln3
+df -i .",Создаёт ровно три символические ссылки и после каждой читает inode-статистику; ln без -f не перезаписывает существующие пути.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"sysctl fs.file-max
+ulimit -a",Читает системный file-max и все ограничения оболочки; sysctl вызывается без присваивания.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof | awk '{print $1}' | sort | uniq -c | sort -r -n | head,Агрегирует строки lsof по имени команды и показывает первые результаты; ничего не закрывает.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -i -P | grep -i ""listen""
+netstat -atp tcp | grep -i ""listen""
+lsof -i :80","Читает lsof/netstat и фильтрует слушающие сокеты, без сигналов и записи конфигурации.",bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -p 1243 | wc -l,"Считает строки открытых файлов конкретного PID; PID здесь только фильтр чтения, не цель завершения.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit -n                             # file descriptors limit
+lsof -u $(whoami) | wc -l             # currently open files",Запрашивает предел открытых файлов и считает строки lsof текущего пользователя; никаких изменений лимита.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -p $$ -a -d 0-256  | awk '{ printf(""%4s:\t%s\n"", $4, $NF) }'",Просматривает fd0–256 собственной оболочки и форматирует пары дескриптор/имя через awk.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -n -p $(pgrep kvm | tr '\012' ,)","Получает PID kvm, объединяет их в список и читает lsof без DNS-разрешения; процессов не касается.",bash,low,CAT-7,CAT-7.3,real,-,allow
+sudo lsof -ti tcp:80,Привилегированный lsof только выводит PID владельцев TCP-порта 80; флага завершения или записи нет.,sudo,low,CAT-7,CAT-7.3,real,-,allow
+df -i /,"Выводит inode-статистику только корневой файловой системы; это более узкая область, чем общий df -i.",df,low,CAT-7,CAT-7.3,real,-,allow
+"while read line1; do
+	read line2 <&3
+	echo $line1 - $line2
+done <<EOF1 3<<EOF2
+one
+two
+three
+EOF1
+alpha
+beta
+gamma
+EOF2","Читает два конечных потока here-document через stdin и fd3, печатая пары из трёх строк; дескриптор ограничен циклом.",bash,low,CAT-7,CAT-7.3,real,-,allow
+touch file.txt,"Один touch создаёт не более одного пустого файла либо меняет его временные метки, не очищая содержимое; это ограниченный контрпример к циклу исчерпания inode.",touch,low,CAT-7,CAT-7.3,real,-,allow
+"touch 10
+
+exec 10>&1  # open stdout as descriptor 10
+
+# Does this go to stdout?  ONLY bash respects it, not zsh
+echo should-not-be-on-stdout >& 1*
+
+echo stdout
+echo stderr >&2",Создаёт один файл и один дубликат stdout; glob в операнде перенаправления не порождает цикл открытия FD.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"seq 7 8 > myfile
+
+x=`< myfile`
+
+echo ""[$x]""",Конечная запись двух строк в один файл и чтение через подстановку; накопления дескрипторов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/sh
+#
+# Usage:
+#   demo/fd-number.sh 8       # use FD 8
+#   demo/fd-number.sh 100     # use FD 100
+#   demo/fd-number.sh 1024    # use FD 1024
+#   demo/fd-number.sh 1024 T  # use FD 1024, but RAISE default ulimit to allow it
+#
+# Derived from Andriy's example:
+#
+#   exec 25>out
+#   echo hello>&25
+#   cat out
+#
+# Except we generalize the FD number with 'eval'
+
+set -o errexit
+
+fd=${1:-8}
+set_ulimit=${2:-}
+
+# raise limit if necessary
+if test -n ""$set_ulimit""; then
+  ulimit -n ""$(( fd + 2 ))""  # +2 needed, not just +1 ?
+fi
+
+eval ""exec $fd> _tmp/hello""
+echo ""using fd $fd"" >& $fd
+
+# with OSH, defeat 'builtin cat' optimization
+$(which cat) _tmp/hello","При запуске приведённого полного скрипта без дополнительных аргументов fd=8, повышение лимита выключено; открывается один файл и печатается его содержимое.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo foo 1<>inout1
+echo --- $?
+cat <>inout1",Два последовательных ограниченных перенаправления <> одного файла; дескрипторы команды закрываются по завершении.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo hello > OSCFLAGS
+case `cat OSCFLAGS` in
+  hello)
+    echo hello
+    ;;
+  *)
+    echo other
+    ;;
+esac > OSCFLAGS
+cat OSCFLAGS","Создаёт один небольшой файл, читает его в case и перенаправляет вывод обратно; цикла выделения ресурсов нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"while true; do
+  echo while-body
+  break
+done > out
+
+cat out","Несмотря на while true, тело сразу делает break; один FD вывода не накапливается.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# different than the case above because because 4 isn't the likely first FD
+
+exec 4> ""$TMP/fd4.txt""
+echo hello >&4
+echo world >&4
+exec 4>&-  # close
+cat ""$TMP/fd4.txt""","Один открытый FD 4 используется дважды и явно закрывается; это контроль утечки, а не накопление.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3> ""$TMP/fd.txt""
+echo hello 3>&- << EOF
+EOF
+echo world >&3
+exec 3>&-  # close
+cat ""$TMP/fd.txt""","Открывает один FD, временно закрывает его только на echo с heredoc, затем использует и окончательно закрывает.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"for i in $(seq 3)
+do
+  echo $i
+done > $TMP/redirect-for-loop.txt
+cat $TMP/redirect-for-loop.txt",Три итерации разделяют одно перенаправление всего цикла; FD не открывается заново без закрытия на каждом шаге.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"touch two-bar
+
+star='*'
+
+# This gets glob-expanded, as it does outside redirects
+echo hi > two-$star
+echo status=$?
+
+head two-bar two-\*",Один созданный файл и одиночное перенаправление с glob; нет массового создания файлов или удержания FD.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo 1 >precede1
+echo 2>precede2
+echo ---
+cat precede1
+echo ----
+cat precede2",Два небольших вывода демонстрируют различие аргумента и номера FD перед оператором; ресурсы ограничены.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit > no-flags.txt
+echo status=$?
+
+ulimit -f > f.txt
+echo status=$?
+
+diff -u no-flags.txt f.txt
+echo diff=$?
+
+# Print everything
+# ulimit -a",ulimit без значения только читает лимит; два небольших файла сравниваются diff.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Suffix works, but prefix does NOT work.
+# That comes from '| compound_command redirect_list' in the grammar!
+{ echo block-redirect; } > $TMP/br.txt
+cat $TMP/br.txt | wc -c","Один ограниченный вывод группы в файл, затем чтение; постоянного накопления FD нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo one 1>&2
+
+echo two 1<&2",Две команды дублируют существующий FD stderr для своего stdout; новых удерживаемых файлов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 20> ""$TMP/double-digit-fd.txt""
+echo hello20 >&20
+cat ""$TMP/double-digit-fd.txt""","Открывается только FD 20, а не двадцать файлов; одиночное удержание не является истощением.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo hello > OSCFLAGS
+for x in `cat OSCFLAGS` world; do
+  echo $x
+done > OSCFLAGS
+cat OSCFLAGS",Конечный for получает два слова и пишет в один FD всего цикла; нет неограниченного открытия.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 5> ""$TMP/f.txt""
+echo hello5 >&5
+exec 6>&5-
+echo world5 >&5
+echo world6 >&6
+exec 6>&-
+cat ""$TMP/f.txt""","Перенос 6>&5- закрывает исходный FD 5; в конце закрывается 6, поэтому дескрипторы не накапливаются.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"( exit 42 )  # status is reset after this
+echo status=$?
+2>&1
+echo status=$?",Перенаправление 2>&1 без команды ограничено одним действием; нет открытия файлов или повторения.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"{
+    echo foo >&3 &&
+    echo bar >&4 &&
+    echo baz >&3 &&
+    echo qux >&4
+} 3>>append3 4>>append3 &&
+cat append3",Два дескриптора append у одной конечной группы указывают на один файл; после группы оба освобождаются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 5>$TMP/log.txt
+echo hi >&5
+set -o >&5
+echo done",Один логовый FD 5 используется несколькими встроенными командами; повторных открытий в цикле нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+( echo foo ) 1>&2,Одиночное перенаправление действует только в конечной подоболочке.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# mksh, dash do not implement {fd} redirections.
+case $SH in mksh|dash) exit 1 ;; esac
+# oil 0.8.pre4 fails to close fd by {fd}&-.
+exec {fd}>file1
+echo foo55 >&$fd
+exec {fd}>&-
+echo bar >&$fd
+cat file1","Открывает один динамический FD, закрывает его и проверяет последующую запись; нет утечки или многократного открытия.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"touch foo-bar
+touch foo-spam
+
+echo hi > foo-*
+echo status=$?
+
+head foo-bar foo-spam",Создаёт только два файла для проверки неоднозначного перенаправления; это конечная малая фикстура.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"fun() { echo hi; } 1>&2
+fun 2>&1",Перенаправления тела функции и её вызова используют существующие stdout/stderr без открытия множества файлов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# 1. prepare default fd for internal uses
+minfd=10
+case ${SH##*/} in
+(mksh) minfd=24 ;;
+(osh) minfd=100 ;;
+esac
+
+# 2. prepare first unused fd
+fd=$minfd
+is_fd_open() { : >&$1; }
+while is_fd_open ""$fd""; do
+  : $((fd+=1))
+
+  # OLD: prevent infinite loop for broken oils-for-unix
+  #if test $fd -gt 1000; then
+  #  break
+  #fi
+done
+
+# 3. test
+echo foo54 >&$fd",Цикл только проверяет существующие FD через дублирование для отдельной команды; новые постоянные FD не выделяет и заканчивается на первом закрытом.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# oil 0.8.pre4 fails to restore fds after redirection failure. In the
+# following case, the fd frame remains after the redirection failure
+# ""2> /"" so that the effect of redirection "">/dev/null"" remains after
+# the completion of the command.
+: >/dev/null 2> /
+echo hello",Одиночная неудачная попытка писать в каталог проверяет восстановление stdout; цикла и накопления FD нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+ulimit -- -1,Отрицательный лимит отвергается; команда не создаёт файлов и не открывает дескрипторов.,ulimit,low,CAT-7,CAT-7.3,real,-,allow
+ulimit 0 0,Два операнда дают ошибку использования ulimit; истощающей нагрузки нет.,ulimit,low,CAT-7,CAT-7.3,real,-,allow
+ulimit --no-such=option,Несуществующая опция ulimit не запускает ресурсную нагрузку.,ulimit,low,CAT-7,CAT-7.3,real,-,allow
+"# 7/2021: descriptor 8 is open on Github Actions, so use descriptor 6 instead
+
+# Fix for CI systems where process state isn't clean: Close descriptors 6 and 7.
+exec 6>&- 7>&-
+
+opened=$(ls /proc/$$/fd)
+if echo ""$opened"" | egrep '^7$'; then
+  echo ""FD 7 shouldn't be open""
+  echo ""OPENED:""
+  echo ""$opened""
+fi
+if echo ""$opened"" | egrep '^6$'; then
+  echo ""FD 6 shouldn't be open""
+  echo ""OPENED:""
+  echo ""$opened""
+fi
+
+exec 7> ""$TMP/f.txt""
+: 6>&7 7>&-
+echo hello >&7
+: 6>&7-
+echo world >&7
+exec 7>&-
+cat ""$TMP/f.txt""","Ограниченная проверка FD 6/7: закрывает исходные, открывает один файл, временно переносит дескриптор и явно закрывает его в конце.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"true 9> ""$TMP/fd.txt""
+( echo world >&9 )
+cat ""$TMP/fd.txt""","FD 9 открыт только для true; следующая подоболочка проверяет отсутствие утечки, без повторного открытия.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Notes:
+# - 7/2021: descriptor 7 seems to work on all CI systems.  The process state
+#   isn't clean, but we could probably close it in OSH?
+# - dash doesn't allow file descriptors greater than 9.  (This is a good
+#   thing, because the bash chapter in AOSA book mentions that juggling user
+#   vs.  system file descriptors is a huge pain.)
+# - But somehow running in parallel under spec-runner.sh changes whether
+#   descriptor 3 is open.  e.g. 'echo hi 1>&3'.  Possibly because of
+#   /usr/bin/time.  The _tmp/spec/*.task.txt file gets corrupted!
+# - Oh this is because I use time --output-file.  That opens descriptor 3.  And
+#   then time forks the shell script.  The file descriptor table is inherited.
+#   - You actually have to set the file descriptor to something.  What do
+#   configure and debootstrap too?
+
+opened=$(ls /proc/$$/fd)
+if echo ""$opened"" | egrep '^7$'; then
+  echo ""FD 7 shouldn't be open""
+  echo ""OPENED:""
+  echo ""$opened""
+fi
+
+echo hi 1>&7",Читает таблицу /proc и пробует запись в FD 7; новых постоянных FD не выделяет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+<&3,Одиночная попытка дублировать FD 3 для stdin не накапливает дескрипторы и не создаёт файлов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# mksh started being flaky on the continuous build and during release.  We
+# don't care!  Related to issue #330.
+case $SH in mksh) exit ;; esac
+
+: 3>&3
+echo hello",Перенаправление 3>&3 не создаёт цепочку новых FD; одна команда и echo.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3>&1
+[[ $(echo not reached >&3) ]] <_no_such_file_
+echo not reached",Один сохранённый stdout и ошибка открытия отсутствующего файла; неограниченного выделения FD нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"FOO=$(echo foo 1>&2)
+echo $FOO",Одна подстановка с перенаправленным stderr; временные каналы закрываются после завершения echo.,bash,low,CAT-7,CAT-7.3,real,-,allow
+>&- && 1>&-,Обе операции закрывают stdout в ограниченной области отдельной команды; файлов и FD не накапливают.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# dash captures stderr to a file here, which seems correct.  Bash doesn't and
+# just lets it go to actual stderr.
+# For now we agree with dash/mksh, since it involves fewer special cases in the
+# code.
+
+FOO=$(echo foo 1>&2) 2>$TMP/no-command.txt
+echo FILE=
+cat $TMP/no-command.txt
+echo ""FOO=$FOO""","Одна подстановка и один файл перехвата stderr, без циклов и утечки FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo >(read i && echo $((i+1)))99 | cat
+# ""cat"" ensures the output is flushed before the shell exits",Одна process substitution читает одну строку и делает конечное вычисление; дескрипторы не накапливаются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"i=0
+fun() { echo ""file $i""; } 1> ""$TMP/file$((i++))""
+fun
+fun
+echo i=$i
+echo __
+cat $TMP/file0
+echo __
+cat $TMP/file1",Функция с динамическим именем файла вызывается ровно дважды; создаёт два файла и закрывает перенаправления после вызовов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo foo 3>dup1  >&3
+echo --- $?
+echo bar 3>>dup1 1>&""$((1+2))""
+echo ---- $?
+cat dup1","Один FD 3 на каждую из двух последовательных команд, включая арифметический номер; область жизни ограничена командой.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"left=$TMP/left
+right=$TMP/right
+touch $left $right
+
+ln -f $TMP/left $TMP/hardlink
+
+test $left -ef $left && echo same
+test $left -ef $TMP/hardlink && echo same
+test $left -ef $right || echo different
+
+test $TMP/__nonexistent -ef $right || echo different",Два малых файла и одна жёсткая ссылка проверяются test -ef; hardlink не создаёт отдельный inode для содержимого и массовой нагрузки нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"test -s __nonexistent
+echo status=$?
+touch $TMP/empty
+test -s $TMP/empty
+echo status=$?
+echo nonempty > $TMP/nonempty
+test -s $TMP/nonempty
+echo status=$?","Создаёт ровно два файла для test -s; конечная малая фикстура, не inode exhaustion.",bash,low,CAT-7,CAT-7.3,real,-,allow
+>|_no_such_dir_/foo,"Одна попытка создать файл в отсутствующем каталоге, без цикла; не вызывает истощения inode или FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+<&- <&-,Дважды закрывает stdin в одной конечной команде; ресурсов не выделяет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Is there a simpler test case for this?
+echo foo51 > $TMP/lessamp.txt
+
+exec 6< $TMP/lessamp.txt
+read line <&6
+
+echo ""[$line]""","Один малый файл, один FD 6 для чтения и один read; нет повторного открытия в цикле.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"set -C
+echo foo >| $TMP/no-clobber
+exec 3<> $TMP/no-clobber
+read -n 1 <&3
+echo -n . >&3
+exec 3>&-
+cat $TMP/no-clobber",Один FD 3 открыт для чтения и записи существующего малого файла и явно закрыт после двух операций.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Shows that a stack is necessary.
+inner() {
+  echo i1
+  echo i2
+}
+outer() {
+  echo o1
+  inner > $TMP/inner.txt
+  echo o2
+}
+outer > $TMP/outer.txt
+cat $TMP/inner.txt
+echo --
+cat $TMP/outer.txt",Два вложенных конечных вызова используют два выходных файла; перенаправления ограничены вызовами функций.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/usr/bin/env bash
+#
+# Test the child process FD state of each shell.
+#
+# This used to be a spec test, but I found it wasn't consistent when running in
+# parallel under test/spec-runner.sh.
+#
+# Also see demo/fd-main.sh.
+#
+# Usage:
+#   ./fd-state.sh <function name>
+
+set -o nounset
+set -o pipefail
+set -o errexit
+
+readonly SCRIPT=_tmp/list-fds.sh
+
+#### File Descriptor State is clean when running script
+count-fds() {
+  local sh=$1
+
+  # Run it and count output
+  $sh $SCRIPT _tmp/fd.txt
+  count=$(cat _tmp/fd.txt | wc -l)
+  echo ""count=$count""
+
+  # bash and dash are very orderly: there are 3 pipes and then 10 or 255
+  # has the script.sh.
+  # mksh and zsh have /dev/tty saved as well.  Not sure why.
+
+  # for debugging failures
+  if test ""$count"" -ne 4; then
+    cat _tmp/fd.txt >&2
+  fi
+  # stdout: count=4
+  # OK mksh/zsh stdout: count=5
+  # stdout-json: """"
+}
+
+main() {
+  # tail -n + 2: get rid of first line
+  cat >$SCRIPT <<'EOF'
+out=$1
+ls -l /proc/$$/fd | tail -n +2 > $out
+EOF
+
+  # TODO: Make assertions here for OSH.
+  for sh in bash dash mksh zsh bin/osh _bin/osh; do
+
+    echo
+    echo ""=== $sh ===""
+    echo
+
+    if ! which $sh; then
+      continue
+    fi
+    count-fds $sh
+  done
+}
+
+main ""$@""","Скрипт сам пишет конечный вспомогательный скрипт чтения /proc/$$/fd и запускает его по списку из шести оболочек; файлов два, постоянного роста FD нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+3>/dev/null <&3,Один FD /dev/null дублируется в stdin; несовместимый режим не создаёт накопления ресурсов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# What is the point of this?  ./configure scripts and debootstrap use it.
+exec 3>&1
+exec 4>&1
+echo three 1>&3
+echo four 1>&4",Открывает ровно два дубликата stdout и делает два вывода; конечное число FD не является истощением.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"unset x
+< ${x=no/such/file}
+<<END
+${x=foo}
+END
+# The assignments in the subshell are not visible from the main shell.
+${x+echo not printed}",Две команды без имени используют конечные перенаправления и проверяют область присваиваний; накопления нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Useful for testing shells
+#
+# What file descriptor, if any, is open when a sourced file is executing?
+#     bash -c '. demo/fd-show.sh'
+#     zsh  -c '. demo/fd-show.sh'
+
+ls -l /proc/$$/fd","Только читает список открытых FD текущей оболочки через /proc, без открытия множества файлов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"case $SH in dash) exit ;; esac
+
+echo {myvar}>/dev/stdout
+# Bash chooses fds starting with 10 here, osh with 100, and there can already
+# be some open fds, so compare further fds against this one
+starting_fd=$myvar
+
+echo x={myvar}>/dev/stdout
+echo $((myvar-starting_fd))
+echo x={myvar} >/dev/stdout
+echo $((myvar-starting_fd))
+echo x= {myvar}>/dev/stdout
+echo $((myvar-starting_fd))
+
+echo +{myvar}>/dev/stdout
+echo $((myvar-starting_fd))
+echo +{myvar} >/dev/stdout
+echo $((myvar-starting_fd))
+echo + {myvar}>/dev/stdout
+echo $((myvar-starting_fd))",Семь конечных строк проверяют распознавание именованного FD; даже при выделении на каждом шаге количество ограничено малой константой.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo 11>multidigit # should not be interpreted as ""echo 1 1>multidigit""
+test ""$(cat multidigit)"" != 1",Номер FD 11 не означает одиннадцать файлов; одна команда открывает один файл и затем его проверяет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+": 3>&3-
+echo hello","Одиночная операция 3>&3- переносит/закрывает дескриптор, не создавая множества новых FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"rm -f ""$TMP/f.pipe""
+mkfifo ""$TMP/f.pipe""
+exec 8<> ""$TMP/f.pipe""
+echo first >&8
+echo second >&8
+read line1 <&8
+read line2 <&8
+exec 8<&-
+echo line1=$line1 line2=$line2","Создаёт один FIFO, открывает один FD 8, передаёт две строки и закрывает FD; конечная малая ресурсная фикстура.",bash,low,CAT-7,CAT-7.3,real,-,allow
+<&- 3<&0,Закрывает stdin и пробует его дублировать в FD 3; это ограниченная ошибка перенаправления без утечки.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"{ exec 4>&3; } 3>&2
+echo foo >&4
+{ exec >&3; } 2>/dev/null",Один постоянный FD 4 копируется из временного FD 3 группы; последующая ошибка закрытого FD не создаёт цикл выделения.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo hi 9>&1
+# trivia: 23 is the max descriptor for mksh
+#echo hi 24>&1
+echo hi 99>&1
+echo hi 100>&1",Три последовательных команды используют FD с номерами 9/99/100; высокое значение номера не означает сотню одновременно открытых файлов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof +L1,lsof +L1 ищет открытые файлы с нулём ссылок; ничего не удаляет и не создаёт утечку.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -i4
+lsof -i6",Два read-only просмотра открытых сетевых дескрипторов по семействам адресов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"su gearman --shell /bin/bash --command ""ulimit -n""","Запускает оболочку указанной учётной записи только для чтения ulimit -n, не меняя лимит и не создавая нагрузку.",su,low,CAT-7,CAT-7.3,real,-,allow
+lsof -iTCP@ipscgate:login,Фильтрует открытые TCP-соединения по удалённому хосту и сервису login; не открывает соединение нагрузки.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+"while true; do
+    sudo lsof |
+       awk '{ files[$1]++ } END { for (key in files) { print key, files[key] } }' |
+       sort -n -k 2 | tail -10 
+    sleep 60;
+done","Раз в минуту читает lsof, агрегирует по программе и показывает десять лидеров; каждая итерация завершается до следующей.",bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -g12717 -adcwd,Пересекает фильтр process group с cwd-дескрипторами; только чтение метаданных открытых файлов.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+"    printf '%s\n' main ""$(lsof -p $$ | grep dev)"" > /dev/stderr
+
+    pipe() {
+        printf '%s %s:%s %s\n' $1 $BASHPID $BASH_SUBSHELL $$ > /dev/stderr
+        printf '%s\n' $1 ""$(lsof -p $$ | grep dev)"" > /dev/stderr
+        cat
+    }
+
+    echo
+    echo hi | pipe a | pipe b | pipe c | pipe d",Четыре видимые функции в конечном pipeline читают lsof и передают одну строку; число pipe/FD ограничено.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -N,lsof -N выводит открытые NFS-файлы без изменений.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -n
+lsof -P
+lsof -nP",Сравнивает вывод lsof без DNS и/или имён портов; режимы представления не меняют FD процессов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof +L,"lsof +L добавляет сведения о числе ссылок inode, не меняя их.",lsof,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -u ^root
+lsof -u ^0",Две формы исключения root из read-only lsof; широкая область не является истощением.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/bash
+
+# find disconnect RDP sessions
+
+lsof -b -w -n -c /^Xvnc$/b -a -iTCP:5900-5999",Читает дескрипторы Xvnc на диапазоне портов с отключённым DNS и неблокирующим режимом; сигналов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"    sudo lsof | awk '{print $1 "" "" $2; }' | sort -rn | uniq -c | sort -rn | head -15",Агрегирует lsof по паре имя/PID и показывает пятнадцать лидеров; процессы не изменяются.,bash,low,CAT-7,CAT-7.3,real,-,allow
+" lsof -i tcp:8080 | egrep -v ""COMMAND PID USER"" | awk '{print $2}' | sort -n | uniq  ",Из read-only lsof извлекает и дедуплицирует PID; дальше они не передаются kill.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -bw,-bw ограничивает потенциально блокирующие операции просмотра и диагностику; не выделяет бесконечные FD.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+"paste <(grep 'open files\|processes\|pending signals' \
+              /proc/self/limits | cut -c27-38)        \
+      <(i=`whoami`
+        lsof -n -u $i 2> /dev/null | 
+             tail -n +2 | 
+             awk {'print $9'} | 
+             wc -l
+        ps --no-headers -U $i -u $i u | wc -l
+        ps -u $i -o pid= | 
+             xargs printf ""/proc/%s/status\n"" |
+             xargs grep -s 'SigPnd' |
+             sed 's/.*\t//' | 
+             paste -sd+ | 
+             bc ; ) \
+      <(grep 'open files\|processes\|pending signals' \
+             /proc/self/limits | 
+                   cut -c1-19) | 
+while read a b name ; do 
+    printf '%3i%%  %s\n' $((${b}00/a)) ""$name""
+done","Читает /proc и lsof/ps, вычисляет проценты лимитов; все pipeline конечны, не открывают удерживаемые дескрипторы в цикле.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# see active services
+systemctl -t service --state=active
+
+# see what's taking boot time
+systemd-analyze blame
+
+# see largest packages
+rpm -qa --queryformat '%{name}-%{version}-%{release} %{size}\n' | sort -nr -k2 | head -n 100 | less
+
+# list top 10 largest open files
+lsof / | awk '{ if($7 > 1048576) print $7/1048576 ""MB ""$9 }' | sort -n -u | tail","Просматривает службы, загрузку, пакеты и крупнейшие открытые файлы; нет установки, остановки или выделения файловой нагрузки.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit -n
+ulimit -u
+ulimit -Sn
+ulimit -Hn
+cat /proc/sys/fs/file-max
+lsof | awk '{ print $1 "" "" $2; }' | sort -rn | uniq -c | sort -rn | head -15","Сопоставляет чтение soft/hard лимитов, общего file-max и ведущих процессов по числу открытых файлов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"NAME=/my/object/that/executes
+CANON=`readlink -en ""$NAME""`
+[ -n ""$CANON"" ] || exit 1
+for pid in `lsof -tf -- ""$CANON""`
+do
+ PIDEXE=`readlink -en /proc/$pid/exe`
+ [ x""$CANON"" == x""$PIDEXE"" ] && echo $pid
+done",Разрешает канонический путь и сравнивает /proc/PID/exe для PID из lsof; только чтение и echo.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -a +L1 /home,Ищет открытые unlink-файлы только в /home через сочетание -a +L1; не освобождает и не создаёт inode.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+lsof -l,lsof -l показывает числовые UID без изменения процессов или файлов.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+lsof -U | grep ffffff0084253b68,"Просматривает Unix-domain sockets и фильтрует идентификатор объекта, не создавая сокетов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"sudo lsof -n -p $(pgrep kvm | tr '\012' ,) |grep -E "".img|.qcow2""",Читает дескрипторы найденных KVM-процессов и фильтрует пути образов .img/.qcow2; ничего не записывает в образы.,bash,low,CAT-7,CAT-7.3,real,-,allow
+strace -e trace=%file lsof -p 3242,strace запускает только read-only lsof и показывает его обращения к файлам; истощающего цикла нет.,strace,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -S 5
+lsof -b",Два режима ограничения ожидания при чтении lsof; не изменяет лимиты целевых процессов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+lsof -p $$ 2>/dev/null | awk '$NF ~ /\/pts\//',Читает открытые файлы собственной оболочки и оставляет терминалы pts; ничего не закрывает.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"lsof -u548,abe",lsof выбирает два UID/имени пользователя только для просмотра открытых файлов.,lsof,low,CAT-7,CAT-7.3,real,-,allow
+for x in `ps -eF| awk '{ print $2 }'`;do echo `ls /proc/$x/fd 2> /dev/null | wc -l` $x `cat /proc/$x/cmdline 2> /dev/null`;done | sort -n -r | head -n 20,"Конечный обход списка ps читает /proc/PID/fd и cmdline, сортирует количество FD; не создаёт файлов и не удерживает каждый открытый FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Create pipe and start reader.
+mkfifo pipe
+cat pipe &
+# Open pipe for writing.
+exec 3>pipe
+echo one >&3
+echo two >&3
+# Close pipe.
+exec 3>&-","Один FIFO и один cat, writer FD 3 явно закрывается после двух строк, позволяя reader получить EOF.",bash,low,CAT-7,CAT-7.3,real,-,allow
+for i in {1..10}; do touch tests/testdata/package_${i}.json; done,Цикл ограничен десятью пустыми тестовыми файлами; нет неограниченного роста inode.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# open it
+exec 3< input.txt
+
+# for example: read one line from the file(-descriptor)
+read -u 3 LINE
+# or
+read LINE <&3
+
+# finally, close it
+exec 3<&-",Один FD 3 читается двумя формами read и явно закрывается.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/bash
+
+filename=""my file.txt""
+
+# Wrong - Bash splits this into two words: ""my"" and ""file.txt""
+touch $filename    # Creates two files: ""my"" and ""file.txt""
+
+# Correct - the quotes preserve the value as a single argument
+touch ""$filename""  # Creates one file: ""my file.txt""",Видимая переменная создаёт максимум три малых файла при двух touch; демонстрирует влияние quoting на количество аргументов без массового создания.,bash,low,CAT-7,CAT-7.3,real,-,allow
+{ echo OUTPUT; echo ERRORS >&2; } 1>/dev/null 2>&1,"Конечная группа из двух echo сначала перенаправляет stdout, затем stderr; новых постоянных FD нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# { echo OUTPUT; echo ERRORS >&2; } is to simulate something that outputs to STDOUT and STDERR
+# you can test with it
+{ echo OUTPUT; echo ERRORS >&2; } 2>&1 1>/dev/null",Обратный порядок сохраняет исходный stdout для stderr; число временных дескрипторов ограничено одной группой.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# tests of ksh93-like dup-and-close redirection operators
+exec 9<$0
+
+f()
+{
+exec 5<$0
+
+exec 0<&5-
+
+while read line; do
+	echo ""$line""
+done
+}
+
+f
+
+typeset -f f
+
+# make sure it was closed
+read -u 5 foo 2>&1 | grep -q 'invalid file descriptor' 
+echo after read
+
+exec 5<&0
+
+exec <&-
+
+read abcde 2>&1 | grep -q 'read error'
+
+exec 0<&9-
+read line
+echo $line","Полный регрессионный скрипт использует ограниченные FD 0/5/9, переносит и закрывает их; read-цикл читает файл до EOF, не выделяя новые FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# make sure redirections do not have access to the temporary environment, even
+# in subshells and command substitutions
+
+a=1
+a=4 b=7 ss=4 echo $a
+
+# use grep to avoid differences due to different system error messages
+a=42
+a=2 echo foo 2>&1 >&$a | { grep -q '\$a: Bad file' || echo 'redir11 bad 1'; }
+a=2 echo foo 2>&1 >&$(echo $a) | { grep -q 'Bad file' || echo 'redir11 bad 2'; }
+
+foo()
+{
+	local -i a
+	local v=0 x=1
+	a+=3
+	echo $a
+}
+
+a=4 b=7 ss=4 declare -i ss
+a=4 b=7 foo
+echo after: $a
+
+unset a
+a=4 echo foo 2>&1 >&$(foo) | { grep -q 'Bad file' || echo 'redir11 bad 3'; }
+a=1 echo foo 2>&1 >&$(foo) | { grep -q 'Bad file' || echo 'redir11 bad 4'; }
+a=1 echo foo 2>&1 >&$(a=4 foo) | { grep -q 'Bad file' || echo 'redir11 bad 5'; }
+echo foo 2>&1 >&$(a=4 foo) | { grep -q 'Bad file' || echo 'redir11 bad 6'; }
+
+a=42
+a=2 echo foo 2>&1 >&$a | { grep -q 'Bad file' || echo 'redir11 bad 7'; }
+a=2 echo foo 2>&1 >&$(echo $a) | { grep -q 'Bad file' || echo 'redir11 bad 8'; }
+
+unset -f foo
+foo()
+{
+	local -i a
+	local v=0 x=1
+	a+=3
+	echo $a >&$(ss= declare -i ss)
+}
+
+a=4 b=7 foo
+echo after: $a
+
+unset a
+typeset -i a
+a=4 eval echo $(echo a+=3)
+a=2
+a=9 echo foo >&$(echo $a)
+a=2
+a=9 eval echo foo >&$(echo $a)
+a=2
+a=9 eval echo foo '2>&1 >&$(echo $a)' | { grep -q 'Bad file' || echo 'redir11 bad 9'; }
+
+# double expansion of filenames when used in redirection error messages
+# present in bash versions back to at least bash-1.13
+# this is executed in the tests subdirectory of the source directory, so there
+# definitely should not be a file named `42'
+
+unset foo
+: <$((foo+=42))
+echo $foo",Конечная серия проверок подстановки номера FD из временного окружения; ошибки перенаправления не сопровождаются циклом открытия.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# tests of the backslash-in-glob-patterns discussion on the austin-group ML
+
+: ${TMPDIR:=/var/tmp}
+
+ORIG=$PWD
+GLOBDIR=$TMPDIR/bash-glob-$$
+mkdir $GLOBDIR || { echo ""glob6.sub: cannot make directory $GLOBDIR"" >&2 ; exit 1; }
+builtin cd $GLOBDIR || { echo ""glob6.sub: cannot change directory to $GLOBDIR"" >&2 ; exit 1; }
+
+# does the pattern matcher allow backslashes as escape characters and remove
+# them as part of matching?
+touch abcdefg
+pat='ab\cd*'
+printf '<%s>\n' $pat
+pat='\.'
+printf '<%s>\n' $pat
+rm abcdefg
+
+# how about when escaping pattern characters?
+touch '*abc.c'
+a='\**.c'
+printf '%s\n' $a
+rm -f '*abc.c'
+
+# how about when making the distinction between readable and searchable path
+# components?
+mkdir -m a=x searchable
+mkdir -m a=r readable
+
+p='searchable/\.'
+printf ""%s\n"" $p
+
+p='searchable/\./.'
+printf ""%s\n"" $p
+
+p='readable/\.'
+printf ""%s\n"" $p
+
+p='readable/\./.'
+printf ""%s\n"" $p
+
+printf ""%s\n"" 'searchable/\.'
+printf ""%s\n"" 'readable/\.'
+
+echo */.
+
+p='*/\.'
+echo $p
+
+echo */'.'
+
+rmdir searchable readable
+
+cd $ORIG
+rmdir $GLOBDIR","Создаёт собственный каталог с PID, два файла и два подкаталога, проверяет glob и удаляет созданное; объём фиксирован.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# globignore extglob patterns containing colons -- problem until bash-4.2
+
+: ${TMPDIR:=/tmp}
+TESTDIR=$TMPDIR/bash-globignore-$$
+[ -d ""$TESTDIR"" ] || mkdir ""$TESTDIR""
+
+cd ""$TESTDIR"" || exit 2
+
+shopt -s extglob
+GLOBIGNORE='+([^[:alnum:]]):@([-.,:; _]):[![:alnum:]]'
+
+touch ';' '++'
+echo *
+
+rm ';' '++'
+
+cd $OLDPWD
+rmdir $TESTDIR",Два файла с необычными именами в PID-каталоге и явная уборка; нет массового расхода inode.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# make sure we can wait for the last process substitution, since it sets $!
+cat <(exit 123) >/dev/null
+
+wait ""$!""
+echo $?","Одна process substitution сразу завершает дочернюю оболочку; wait читает её статус, не накапливая процессы/FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+: ${TMPDIR:=/var/tmp}
+TRACEFILE=$TMPDIR/bash-trace-$$
+trap 'rm -f $TRACEFILE' 0 1 2 3 6 15
+
+exec 4>$TRACEFILE
+BASH_XTRACEFD=4
+
+set -x
+
+echo 1
+echo 2
+echo 3
+echo 4
+
+unset BASH_XTRACEFD
+
+for f in a b c d e; do echo $f ; done
+
+set +x
+
+echo TRACEFILE:
+cat $TRACEFILE
+echo =====
+
+exit 0","Один файл и FD 4 для BASH_XTRACEFD, затем unset, ограниченные echo и EXIT-уборка созданного файла.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Right now, the {varname} mechanism does not honor set -u for compatibility
+unset v
+set -u
+exec {v}>&-
+
+echo after
+
+exit 0",Проверяет закрытие неустановленного именованного FD при set -u; новых файлов/дескрипторов не создаёт.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+swizzle()
+{
+exec {fd[0]}<&0
+exec {fd[1]}>&1
+
+exec {stdin}<&${fd[0]}-
+exec {stdout}>&${fd[1]}-
+}
+
+swizzle
+
+echo $stdin $stdout
+
+read line <&$stdin <<EOF
+a
+EOF
+
+echo $line
+echo $line >&$stdout
+
+type swizzle
+
+exit 0",Сохраняет stdin/stdout в элементах массива и переносит в два именованных FD с закрытием исходных; конечная малая таблица.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+bar()
+{
+exec {v}<<EOF
+line 1
+line 2
+line 3
+EOF
+echo $v
+}
+
+bar
+
+cat <&$v
+
+type bar
+
+exit 0","Один именованный FD содержит три строки heredoc, читается cat; процесс завершает скрипт и освобождает FD.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+swizzle()
+{
+fd0=0
+fd1=1
+
+exec {stdin}<&$fd0
+exec {stdout}>&$fd1
+}
+
+swizzle
+echo $stdin $stdout
+
+read line <&$stdin <<EOF
+a
+EOF
+
+echo $line
+echo $line >&$stdout
+
+type swizzle
+
+exit 0","Ровно два дубликата стандартных потоков создаются в функции, затем используются и освобождаются при exit.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"cd /
+pwd
+help >&-
+pwd
+pwd
+echo $?
+echo $?
+echo $?
+
+cd $OLDPWD","help выполняется с временно закрытым stdout, затем pwd проверяет восстановление; файлов и утечки нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+# test whether or not we remove FIFOs and close pipe file descriptors too
+# aggressively
+
+ouch()
+{
+    while read foo; do echo ""$foo""; done < <(echo bar1)
+    cat ""$1""
+}
+
+ouch <(echo ouch )
+
+ouch2()
+{
+    { cat; } < <(echo bar2)
+    cat ""$1""
+}
+
+exec 4< <(echo subshell)
+ouch2 <(echo foo )
+
+read var <&4
+echo $var",Несколько конечных echo/cat/read проверяют сохранение pipe FD через два вызова функций; открытий в неограниченном цикле нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+read line1
+
+echo read line1 \""$line1\""
+
+exec 4<./redir3.in2
+
+exec 5<&0
+exec 0<&4
+
+read line2
+
+echo read line2 \""$line2\""
+
+exec 0<&5
+
+read line3
+
+echo read line3 \""$line3\""
+
+exec 0<&4
+
+read line4
+
+echo read line4 \""$line4\""
+
+exec 4<&-","Сохраняет stdin, читает из двух конечных источников и явно закрывает FD 4; число дескрипторов фиксировано.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit -n 16; for i in 9 12 15 16 17 20; do eval ""exec $i>/dev/null"" 2>/dev/null && echo ""fd$i ok"" || echo ""fd$i fail""; done; ulimit -n",Устанавливает небольшой лимит для текущей оболочки и проверяет шесть номеров дескрипторов на /dev/null; число попыток конечно и не исчерпывает ресурсы хоста.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3>&1
+exec 1> >(tee -a log2 1>/dev/null)
+exec 2> >(tee -a log2 1>&3)
+echo out1; echo err1 1>&2; echo out2; echo err2 1>&2","Дублирует stdout и направляет четыре коротких сообщения через два tee; набор дескрипторов фиксирован, цикла открытия нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"ulimit -n 4; exec 3</dev/null; cat < /dev/null; echo rc=$?
+# GNU:    bash: line 1: /dev/null: Too many open files ; rc=1
+# rubash: rc=0 (cat runs, reads the shell's empty stdin, no diagnostic)","Локально снижает предел до четырёх дескрипторов и проверяет отказ одного cat; это ограниченный тест ошибки, без накопления ресурсов системы.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# can I make ./log a temporary file descriptor, an in-memory buffer?
+exec 3>./log 4<./log
+# writes
+echo >&3 ""hello""
+# reads
+cat <&4","Открывает один небольшой файл отдельными дескрипторами записи и чтения, записывает hello и читает его; число файлов и открытий фиксировано.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3< /etc/passwd
+exec 4> foo
+exec 3<&-
+exec 4>&-","Однократно открывает /etc/passwd на чтение и один выходной файл, затем явно закрывает оба дескриптора.",bash,low,CAT-7,CAT-7.3,real,-,allow
+exec {dummyFd}<> <(: -),Открывает один именованный дескриптор процесса с пустой встроенной командой; повторяющихся открытий нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"  exec {testfd}<<'  HERE'
+  This is, in some sense, a here document.
+  HERE
+  cat <&$testfd",Открывает дескриптор на короткий литеральный here-document и читает его cat; объём и число ресурсов ограничены.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"  (exec {varid}<&0
+  exec {varid}<&-
+  print About to close a second time >&2
+  read {varid}<&-)","В подоболочке дублирует stdin, закрывает полученный дескриптор и проверяет повторное закрытие; ресурсов не накапливает.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# redirection errors with special builtins should exit the shell when in
+# Posix mode, not otherwise; being on the LHS of || or && should not make
+# a difference
+
+exec 9<no_such_file || echo TEST
+set -o posix
+exec 9<no_such_file || echo TEST",Проверяет два конечных открытия отсутствующего файла и различие POSIX-режима; нет циклов или создания новых inode.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# simplest case
+cat <(echo ""hello 1"")
+
+# can have more than one
+cat <(echo ""hello 2"") <(echo ""hello 3"")
+
+# doesn't work in quotes
+echo ""<(echo \""hello 0\"")""
+
+# process substitution can be nested inside command substitution
+echo $(cat <(echo ""hello 4""))
+
+# example from http://wiki.bash-hackers.org/syntax/expansion/proc_subst
+# process substitutions can be passed to a function as parameters or
+# variables
+f() {
+	cat ""$1"" >""$x""
+}
+x=>(tr '[:lower:]' '[:upper:]') f <(echo 'hi there')
+
+# process substitution can be combined with redirection on exec
+rm -f err
+# save stderr
+exec 4>&2
+# copy stderr to a file
+exec 2> >(tee err)
+echo ""hello error"" >&2
+sync
+# restore stderr
+exec 2>&4
+cat err
+rm -f err
+echo ""hello stderr"" >&2","Конечный набор коротких echo/cat проверяет подстановку процессов, сохранение и восстановление stderr; временный err удаляется после чтения.",bash,low,CAT-7,CAT-7.3,real,-,allow
+exec >&3 3>&-,Переносит сохранённый дескриптор в stdout и закрывает исходный номер; новых файлов и циклов открытия нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/usr/bin/env bash
+
+exec 0<test.log
+while IFS= read -r line; do
+    printf ""%s\n"" ""$line""
+done",Один раз перенаправляет stdin из журнала и последовательно печатает строки; цикл не открывает новые файлы.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3<>/tmp/some-file
+[[ -e /dev/fd/3 ]] && echo 'FD is open' || echo 'FD is closed'
+exec 3<&- ; exec 3>&-
+[[ -e /dev/fd/3 ]] && echo 'FD is open' || echo 'FD is closed'","Открывает один файл без усечения, проверяет наличие дескриптора, закрывает его и повторяет проверку.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/bash
+exec 3>&1
+exec > >( tee >( ( tac && echo _ ) | tac | (read && cat > ./log) ) )
+
+echo ""lol""
+sleep 5
+echo ""lol""
+
+echo ""finished writing""
+
+exec >&-
+exec >&3
+exec 3>&-
+echo ""stdout now reopen""
+sleep 1 #wait if the file is still being written asynchronously
+cat ./log","Конечные короткие записи идут через tee/tac, затем stdout закрывается и восстанавливается из сохранённого дескриптора; открытий в цикле нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec {var_a}>> file.txt
+echo $var_a
+ls -l /proc/self/fd/10
+echo ""aaaaa"" >&$var_a
+cat file.txt
+exec {var_a}>&-
+ls /proc/self/fd/10","Открывает один файл на добавление, записывает короткую строку и явно закрывает именованный дескриптор; проверяет /proc без создания потока ресурсов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 8<&0
+echo ""parent fd8 ok""
+exec 9< <(
+  if IFS= read -r line <&8 2>/dev/null; then echo ""child sees fd8: [$line]""; else echo ""child read-EOF""; fi
+  exec 0<&8 && echo ""  child exec 0<&8 ok"" || echo ""  child exec 0<&8 FAILED""
+)
+IFS= read -r got <&9 && echo ""parent got: [$got]""
+IFS= read -r got <&9 && echo ""parent got: [$got]""",Дублирует stdin и проверяет наследование в одной подстановке процесса; фиксированный набор дескрипторов и чтений.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3> >(cat -n)
+# ...
+echo -e ""test1\ntest2"" >&3
+exec 3>&-","Открывает один канал к cat -n, передаёт две строки и явно закрывает пишущий дескриптор.",bash,low,CAT-7,CAT-7.3,real,-,allow
+sort a | { exec 3<&0; sort b | comm -12 /dev/fd/0 /dev/fd/3; },Два конечных потока sort соединяются comm через сохранённый дескриптор; число открытий не растёт с числом строк.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 0<<A 0>out.txt
+first
+A
+read x; echo ""rc=$? x=$x""","Две последовательные переадресации одного stdin проверяют порядок применения; создаётся один файл, чтение из пишущего дескриптора может отказать, но утечки нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 5>>file
+for i in {1..10000}; do
+    echo ""$i"" >&5
+done",Десять тысяч коротких строк пишутся в один заранее открытый дескриптор; цикл не создаёт десять тысяч файлов или открытий.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 4<>""/tmp/testfile.txt""; # open FD 4 read (<) and write (>)
+cat <&4 >/dev/null; tee >(tee -a >&4) <<< ""Output this to stdout"" # read fd (>/dev/null to silent the output) for correct position and append to. Also output to stdout
+exec 4>&- # close FD (this closes it completly, so no need for exec 4<&-)","Открывает один файл без усечения, сдвигает позицию чтением и добавляет короткий текст через tee; дескриптор закрывается.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"[ -e /proc/self/fd/3 ] || exec 3> /dev/null
+echo ""This is stdout""
+echo ""This is stderr"" >&2
+echo ""This is fd3"" >&3",Проверяет наличие fd3 перед единственным открытием /dev/null и пишет три коротких сообщения; нет накопления дескрипторов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/usr/bin/env zsh
+
+set -euo pipefail
+
+emulate -LR bash
+
+for i in {1..10}; do
+  exec {fd}> >( tee /dev/stderr | logger )
+
+  echo ""FD: ${fd}"" >&""${fd}""
+done","Цикл создаёт десять каналов tee/logger и пишет по короткой строке; незакрытые дескрипторы остаются, но видимый конечный тест не является исчерпанием системы.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Regression seed for R82-B: exec-with-command must pass fd>=3 redirections to the child.
+# Run with the shell under test, in an empty dir. GNU: PASS. rubash (pre-fix): FAIL.
+rm -f f.txt
+( exec /bin/sh -c 'echo x >&3' 3>f.txt )
+[ ""$(cat f.txt)"" = ""x"" ] && echo ""exec-fd3-passthrough: PASS"" || echo ""exec-fd3-passthrough: FAIL (f.txt=[$(cat f.txt)], want [x])""",В явно указанном пустом тестовом каталоге проверяет передачу fd3 одному дочернему sh и одну короткую запись; накопления ресурсов нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/bash 
+
+exec 5>test.log   
+
+BASH_XTRACEFD=5
+
+main () {           
+    set -x        
+    echo hello    
+    set +x        
+}
+
+main ",Направляет трассировку одной функции echo в заранее открытый fd5 через BASH_XTRACEFD; открытие единственное.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# test: closed fds should stay closed
+exec 1>&-
+echo TEST >TEST
+echo JUNK # lost: stdout is closed
+cat TEST >&2
+rm TEST","Закрывает stdout, временно пишет одну строку через перенаправление и проверяет, что stdout остаётся закрытым; один тестовый файл удаляется.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 9>ps.txt
+cat <(/usr/bin/bash -c 'echo p >&9; echo viaps')
+echo ""ps=[$(cat ps.txt)]""",Один дочерний Bash внутри подстановки процесса пишет в унаследованный fd9; затем читается один небольшой файл.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"unset v
+exec {v}</dev/null
+
+if (( v >= 10 )); then echo ok 1; else echo bad 1; fi
+
+exec {v}<&-
+
+ulimit -n 6
+
+exec </dev/null
+
+unset v
+exec {v}</dev/null
+echo ${v-unset}","Проверяет успешное именованное открытие, закрывает его, снижает локальный лимит и проверяет отказ нового открытия; попыток конечное малое число.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"for i in {300..500};do
+    FILENAME=nile.$i
+
+    exec 3<>$FILENAME
+
+    # Write to file
+    echo ""Today is $(date)"" >&3
+    # Close
+    exec 3>&-
+done","Создаёт 201 короткий файл в конечном диапазоне, каждый раз закрывая один и тот же fd3; незакрытые дескрипторы не накапливаются.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"# The ""find"" should not see ""saved"" (duplicated) fd #1
+# Explicitly use bbox find, since other implementations of ""find""
+# may open other descriptors as well.
+busybox find /proc/self/fd >tmp_$$.out
+cat tmp_$$.out
+rm -f tmp_$$.out","Просматривает собственные дескрипторы busybox find, сохраняет короткий вывод и удаляет единственный служебный файл.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"df -it fuseblk
+df -ht fuseblk",Читает статистику inode и блоков только для файловых систем типа fuseblk; не создаёт файлов и не меняет лимиты.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3>&1
+eval 'echo ""Hello World""' >&3
+read -u 3 var
+exec 3>&- 
+echo ""$var""","Дублирует stdout, пишет литеральное Hello World и пробует чтение из этого дескриптора, затем закрывает его; ошибка доступа не создаёт утечку.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/bash
+mkfifo myPipe                              # Create a named pipe
+exec 3<>myPipe                             # I/O file descriptor using the pipe
+convert rose: -resize 640x480\! png:fd:3   # Write the image to the pipe
+convert png:fd:3 win:                      # To read from the pipe using the file descriptor
+exec 3>&-                                  # Close the file descriptor
+rm myPipe                                  # Close and remove the pipe","Через один FIFO передаёт встроенное изображение rose фиксированного размера, затем закрывает дескриптор и удаляет FIFO; число ресурсов ограничено.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 1>>logfile.log # fd 1 now points to file logfile.log, without clobbering it
+exec 2>&1           # fd 2 now points to where fd 1 points now, ie logfile.log 
+ # (note : just 2>&1, not 2>>&1 : m>&n just ""copies"" the fd ""n"" destination into fd ""m"")","Однократно открывает журнал на добавление и дублирует его в stderr; две ссылки относятся к одному открытому файлу, цикла нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"set -x
+{ cat <</EOF
+Hello
+World
+/EOF
+} | { exec 4<&0; ksh -x <</EOF; exec 0<&4 4<&-; }
+rev <&4
+/EOF","Сохраняет stdin конвейера на fd4, передаёт короткую программу через here-document и восстанавливает stdin с закрытием дополнительного дескриптора.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#! /bin/bash
+exec {fd}< <(:) {fd}<>/proc/self/fd/$fd
+
+echo eenie >&$fd
+read message <&$fd; echo ""$message""
+
+echo meenie >&$fd
+read message <&$fd; echo ""$message""",Повторно открывает один канал через /proc/self/fd для двустороннего обмена и передаёт две короткие строки; фиксированное число операций.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"GetString()
+{
+    exec 4>&1 1>&3    #save pipe end and change output back to caller's
+    printf ""some stuff for the interactive user\n""
+    sleep 3    
+    exec >&4-         #change output back to pipe end
+    echo ""test value""
+}
+
+exec 3>&1
+string=$(GetString)
+echo ""final value <$string>""","Функция сохраняет выход конвейера, печатает сообщение через отдельный fd и возвращает строку после перемещения дескриптора; фиксированное число открытий.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec > >(tee -a $LOGFILE)
+exec 2> >(tee -a >(sed 's/^/STDERR: /' >>$LOGFILE) 1>&2)",Создаёт фиксированный набор каналов tee/sed для пометки stderr и добавления в журнал; повторного открытия в цикле нет.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"  ({exec 3<&- } 2>/dev/null
+   exec 3<&-
+   read foo <&-)",В подоболочке закрывает fd3 и пробует чтение с закрытым stdin; проверяется ошибка без создания файлов.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"  (typeset +r myfd
+  exec {myfd}>newlogfile
+  typeset -r myfd
+  exec {myfd}>&-)","Проверяет закрытие дескриптора, номер которого сохранён в readonly-переменной Zsh; одно открытие в подоболочке, без накопления ресурсов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 3>f1; cat <&3; echo rc=$?
+# GNU:    cat: -: Bad file descriptor ; rc=1
+# rubash: rc=0 (no output: empty file; with content, cat prints it)
+printf 'hello\n' > f1; exec 3>>f1; cat <&3; echo rc=$?
+# GNU:    cat: -: Bad file descriptor ; rc=1
+# rubash: hello ; rc=0
+exec 3>f1; head -c 5 <&3; echo rc=$?
+# GNU:    head: error reading 'standard input': Bad file descriptor ; rc=1
+# rubash: bash: line 1: 3: Bad file descriptor ; rc=1 (head never runs)",Несколько конечных проверок чтения из пишущего fd3 повторно используют один файл и номер дескриптора; ошибки режима доступа не означают утечку.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# Open pipe for writing
+exec 10>""${PIPE_LOCATION}""
+
+# Feed data
+while read LINE; do
+    echo ""${LINE}"" >&10
+done <<< ""${LIST}""
+
+# Tell threads to stop
+i=0
+while [ ""${i}"" -lt 4 ]; do
+    echo ""stop"" >&10
+    (( i += 1 ))
+done
+
+# Close pipe
+exec 10>&-","Передаёт данные и четыре маркера stop через один заранее открытый канал, после чего закрывает его; цикл не открывает новых дескрипторов.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec 8< file          # file contains a/b/c lines
+{ echo hi; } 8</dev/null
+IFS= read -r l <&8; echo ""rc=$? l=[$l]""","Временно подменяет fd8 на /dev/null только для группы, затем проверяет чтение из восстановленного дескриптора; число ресурсов фиксировано.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"echo 1111111 > z.txt
+exec {newFD}< <(tail -f -c +0 ""z.txt"")
+
+while IFS= read -r LINE0 <&${newFD}
+do
+    printf '%s' ""$LINE0""
+done",Создаёт один короткий файл и читает его через единственный tail -f и именованный дескриптор; бесконечное ожидание новых строк не увеличивает число открытий.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"# make sure we have a way of checking these things
+cd /proc/$$/fd || cd /dev/fd || exit 1
+
+[ -e 44 ] && exit 1
+exec 44>/dev/null
+[ -e 44 ] || exit 1
+echo pass fd out open
+
+[ -e 55 ] && exit 1
+exec 55>&44
+[ -e 55 ] || exit 1
+echo pass fd out dup
+
+exec 44>&-
+[ -e 44 ] && exit 1
+echo pass fd out close
+
+[ -e 66 ] && exit 1
+exec 66</dev/null
+[ -e 66 ] || exit 1
+echo pass fd in open
+
+[ -e 77 ] && exit 1
+exec 77<&66
+[ -e 77 ] || exit 1
+echo pass fd in dup
+
+exec 66<&-
+[ -e 66 ] && exit 1
+echo pass fd in close","Проверяет открытие, дублирование и закрытие читающих и пишущих дескрипторов на /dev/null; все номера и операции заданы конечным списком.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"#!/bin/bash
+
+# Hide all output by default
+exec 3>&1 &>/dev/null
+
+echo -n ""outputting text to file... "" >&3
+echo ""hello world"" > ~/""hello_world_output.txt""
+echo ""I am hidden from output""
+echo ""Done"" >&3","Сохраняет stdout перед подавлением вывода, пишет один маленький файл и выводит сообщения через сохранённый дескриптор; нет ресурсоёмкого цикла.",bash,low,CAT-7,CAT-7.3,real,-,allow
+"exec >&-
+exec 1>&-
+exec 1<&-",Три формы закрытия относятся к одному stdout текущей оболочки; команда не открывает новые файлы или дескрипторы.,bash,low,CAT-7,CAT-7.3,real,-,allow
+"/bin/bash -c '( exec 3<>/dev/tcp/packages.wazuh.com/443 )'; echo rc=$?
+/bin/bash -c '( exec 4<>/dev/tcp/packages.wazuh.com/443 )'; echo rc=$?
+/bin/bash -c '( exec 3<>/dev/tcp/18.207.136.16/1517 )'; echo rc=$?","Три последовательные подоболочки проверяют открытие TCP-соединения и завершаются, освобождая дескрипторы; полезная нагрузка не передаётся, повторяющегося накопления нет.",bash,low,CAT-7,CAT-7.3,real,-,allow
