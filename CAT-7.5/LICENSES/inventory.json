@@ -1,0 +1,57 @@
+{
+  "files": [
+    {
+      "repo": "Idnan/bash-guide",
+      "file": "LICENSES/Idnan__bash-guide/LICENSE.md",
+      "sha256": "aea4450b64a0e26831dbddf368e8bc1e2ff65f3fbb5184f4060d4ee3e8c6b7eb"
+    },
+    {
+      "repo": "gitGNU/gnu_parallel",
+      "file": "LICENSES/gitGNU__gnu_parallel/COPYING",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "repo": "gnu-mirror-unofficial/bash",
+      "file": "LICENSES/gnu-mirror-unofficial__bash/AUTHORS",
+      "sha256": "8ea258e958e649cd29f8094c23e6f58efb83fa0745adb5943d811735a627983a"
+    },
+    {
+      "repo": "gnu-mirror-unofficial/bash",
+      "file": "LICENSES/gnu-mirror-unofficial__bash/COPYING",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "repo": "magicant/yash",
+      "file": "LICENSES/magicant__yash/COPYING",
+      "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+    },
+    {
+      "repo": "mirror/busybox",
+      "file": "LICENSES/mirror__busybox/LICENSE",
+      "sha256": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548"
+    },
+    {
+      "repo": "mirror/busybox",
+      "file": "LICENSES/mirror__busybox/AUTHORS",
+      "sha256": "384fc3a9cfc7c435bdd9d169e5ec60a7d898d9ef9557ec859394d7f97b4b6f07"
+    },
+    {
+      "repo": "oils-for-unix/oils",
+      "file": "LICENSES/oils-for-unix__oils/LICENSE.txt",
+      "sha256": "1908bfaf2f61195b2ca1601deec0e69bc0c6937be21bae18120d655e44c6d501"
+    },
+    {
+      "repo": "tldr-pages/tldr",
+      "file": "LICENSES/tldr-pages__tldr/LICENSE.md",
+      "sha256": "826498c9793c53709035760c33bd6681e48380d34031320447febe675420ef4d",
+      "url": "https://raw.githubusercontent.com/tldr-pages/tldr/bc614bf4855805510fadd5ba3823f1e556f8ca63/LICENSE.md"
+    }
+  ],
+  "repositories_without_captured_root_license": [
+    "leandrosardi/blackops",
+    "microsoft/vscode-remote-release",
+    "rmyorston/busybox-w32",
+    "zsh-users/zsh"
+  ],
+  "scope": "Captured notices only; not a new blanket licence or exhaustive licensing review. Source terms remain applicable."
+}

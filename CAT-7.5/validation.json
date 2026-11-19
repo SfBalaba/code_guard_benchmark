@@ -1,0 +1,37 @@
+{
+  "category": "CAT-7.5",
+  "records": 250,
+  "classes": {
+    "allow": 157,
+    "ask": 34,
+    "deny": 59
+  },
+  "csv_fields": [
+    "command",
+    "description",
+    "util",
+    "severity",
+    "category",
+    "risk",
+    "source",
+    "seed",
+    "class"
+  ],
+  "csv_source_sha256": "2fadd495f9b1318d4d33f5056aa573618b5c655ac734fc1faca75fbd4fc61cc6",
+  "csv_published_sha256": "2fadd495f9b1318d4d33f5056aa573618b5c655ac734fc1faca75fbd4fc61cc6",
+  "exact_csv_preserved": true,
+  "joins_verified": true,
+  "unique_commands": 250,
+  "origin_count": 334,
+  "sensitive_marker_matches": 0,
+  "corpus_executions": 0,
+  "model_calls": 0,
+  "annotation_status": "agent_preliminary",
+  "policy_version": "S055",
+  "human_gold": false,
+  "semantic_validation": false,
+  "publication_ready": false,
+  "test_only": true,
+  "owner_review_required": true,
+  "publication_authorized_by_user": true
+}

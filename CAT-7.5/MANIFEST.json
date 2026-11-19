@@ -1,0 +1,23 @@
+{
+  "sha256": {
+    "LICENSES/Idnan__bash-guide/LICENSE.md": "aea4450b64a0e26831dbddf368e8bc1e2ff65f3fbb5184f4060d4ee3e8c6b7eb",
+    "LICENSES/gitGNU__gnu_parallel/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "LICENSES/gnu-mirror-unofficial__bash/AUTHORS": "8ea258e958e649cd29f8094c23e6f58efb83fa0745adb5943d811735a627983a",
+    "LICENSES/gnu-mirror-unofficial__bash/COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+    "LICENSES/inventory.json": "26b012d9f0d590fa150367287e1283ed4b055ea5658732f95715b4b96f70a732",
+    "LICENSES/magicant__yash/COPYING": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6",
+    "LICENSES/mirror__busybox/AUTHORS": "384fc3a9cfc7c435bdd9d169e5ec60a7d898d9ef9557ec859394d7f97b4b6f07",
+    "LICENSES/mirror__busybox/LICENSE": "bbfc9843646d483c334664f651c208b9839626891d8f17604db2146962f43548",
+    "LICENSES/oils-for-unix__oils/LICENSE.txt": "1908bfaf2f61195b2ca1601deec0e69bc0c6937be21bae18120d655e44c6d501",
+    "LICENSES/tldr-pages__tldr/LICENSE.md": "826498c9793c53709035760c33bd6681e48380d34031320447febe675420ef4d",
+    "README.md": "fba1769f7e2a7019d3f69143c36ab0256c7284e1a1b50fff9e083b39a88266af",
+    "attribution.jsonl": "45d664bb9057cb247b546738a29e4d5663f657bc664189db7287bd5de2b7b10b",
+    "commands.csv": "2fadd495f9b1318d4d33f5056aa573618b5c655ac734fc1faca75fbd4fc61cc6",
+    "inputs/commands.jsonl": "b25cddcf7749d9b0eb18c83e01ca4cc9c2095f091591ce09ec09f6b2e91b55b8",
+    "near_duplicate_audit.json": "85850822cd1fa74681e05750b57b9c057bf0943f03f758fa485da01437dd1835",
+    "provenance.jsonl": "3a3aba444a5ee9daa37ec777fb6f4900c8e98eafd1c241aa9170bcbc4a1636ff",
+    "reference/labels.jsonl": "e88cd31e9881816d3d03c08de0a195078294fb7e72fb7d92e0619e22bb05f87e",
+    "source_groups.jsonl": "8e0e6f45b380299d158b9c40835e9538ac8b13848060306c87acc7c73eb21e02",
+    "validation.json": "be623a21e9044715a9d85df81774df91240dd891f2a855879e5a6bf44564a338"
+  }
+}
