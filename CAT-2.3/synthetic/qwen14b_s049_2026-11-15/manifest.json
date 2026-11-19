@@ -1,0 +1,33 @@
+{
+  "subcategory": "CAT-2.3",
+  "source_run": "S049",
+  "counts": {
+    "seeds": 1296,
+    "model_responses": 2592,
+    "rendered_pairs": 1127,
+    "command_rows": 2254,
+    "rejected_pairs": 169,
+    "identical_side_pairs": 167,
+    "duplicate_pairs": 9,
+    "unique_distinct_side_pairs": 951
+  },
+  "files_sha256": {
+    "README.md": "91d1d61b574dfc5f1d7c26fa6046657693cbbf50fb137ef5d20deb27a3215777",
+    "commands.jsonl": "ea66319e0a1a5fced29ee9e24a850ac50292b70f6fe5adefb38532515f94fc16",
+    "exact_duplicates.jsonl": "29d5126c84cec301101d0be146d785d5117fed5f97d431a53f51cb6106bee58a",
+    "model_records.jsonl": "2152ae58f68c10c417c6190716e9b737d05128ae0c0aed2de71fd12de0c86769",
+    "model_requests.jsonl": "09327b180a24b14e1b0b13e95901c6c9a82f63653ee4e9cd77a79394be6be98c",
+    "pair_diagnostics.jsonl": "adffbabab9c0381c298ccce6b1c6ff998657c3cae905649fe86aeda6d9100ec0",
+    "pair_inputs.jsonl": "6e7f3cd5b58c7cb0576e21be876d41b7cf1c9514681ada936ef49a55362ec532",
+    "pairs.jsonl": "7f959137b90d32f96af87cc6077a04cc718c7ce2893756bfc602d63080405336",
+    "source_run.json": "a37ae80a23875f9b41c4db667be8fed3515db88b67f695cbf1d654e45448ff74",
+    "structural_rejections.jsonl": "f15082b0902ee48778b8832320a835d431a80682ee8fec506d4cc5b181b455d4",
+    "validate.py": "ddbca30cad3e950174327eff76c510719733fadb5beeea48bf75de0a9b3de025"
+  },
+  "publication_status": "published_for_review",
+  "status": "draft",
+  "semantic_validation": false,
+  "test_family_independence": "not_established",
+  "labels_assigned": false,
+  "human_gold": false
+}
