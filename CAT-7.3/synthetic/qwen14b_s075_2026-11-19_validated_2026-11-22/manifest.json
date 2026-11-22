@@ -6,20 +6,21 @@
     "side_instances": 2590,
     "model_responses": 2590,
     "copy_sides": 0,
-    "agent_read_pairs": 37,
+    "agent_read_pairs": 61,
     "accepted_command_rows": 0,
     "by_status": {
-      "needs_review": 1024,
-      "reject": 271
-    }
+      "reject": 386,
+      "needs_review": 909
+    },
+    "rule_assessed_pairs": 1024
   },
   "files_sha256": {
     "copy_tasks.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "pair_inputs.jsonl": "3c17a03c38d704902998adc383e8288d98e047ea26eaf5ab3e655c838a914269",
-    "source_run.json": "bd546dda8d4b1cdd81b61dc09bfaf844a5ea6dad9c1f5182c67bb301ade610ec",
-    "README.md": "f30f43f2d5781a0d679f5d367b0211f58d87504bcd951950f609fae555d85ddb",
+    "source_run.json": "bcbc8dee0a37b29a4f26f9f5651f04f93727886c840a398c5189cb354f9af775",
+    "README.md": "dfd608f719bf736bc4f69837e34b4d3d9f85e09b3b6d099895597707bddd0816",
     "forms.json": "66d2cc0bc8e97026429d63d38c9fff770f8b980043cbdec37a581846b0752357",
-    "validate_package.py": "60be0924034fa52952d39c8f79011f5e2661de3124a5e0f4e38e848c7a1ac811",
+    "validate_package.py": "d7951e502f9cb3b558a40c29c4363931abfc028d16af0100fb53361cb2474a9e",
     "scenarios.json": "e0ff4e1c40e1b05ad13f089395c42d04244198594d7c2951e8a7c0ab3122c144",
     "model_records.jsonl": "2fb1e5b60d96edb26aabff551565d8441e6625442b83e813361674f3cb32fb48",
     "model_raw.jsonl": "29ec84deddf7b94d0e843f8f3c7284e81d78148719b999ff0a19d69e4443c7d0",
@@ -29,19 +30,29 @@
     "accepted/commands.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "validation_tools/audit.py": "a3568e813c38359765f932d4a5034335d252419c6ff82f7cd0a90ef6ba935bbe",
     "validation_tools/requirements.txt": "603011518d0db6e9d135545cd73116d6e36471275ffd4c26cb7b1fc899548c11",
+    "validation_tools/review_rules.py": "f23a108e2ef0a5ee364dd9f09f88bb1eef638c17e2ce13456fbe82f456a616fb",
     "validation_tools/test_audit.py": "67904e55d32b78d190a1f398315b4d6ee9863f417b94da86b39cdf76d6901942",
+    "validation_tools/test_review_rules.py": "965a274b3e1854c35feccc1b3d2daa300f1c5d71b29e74a3147eebc2a44b84e6",
+    "validation_tools/test_setup_proof.py": "78953e8a7c835adff57c3d73c41d05b23cd02673af2794ca850078633cf73741",
     "validation_tools/conformance.py": "3496ae9f0f7d618c6be6d7888d72f650d7535e22c904d17eb890ead816eb74f8",
-    "review/needs_review_pairs.jsonl": "e0b86f1815ae7be24ae64846281a76d691cdaebd36488912af1003ddddf5f25e",
-    "review/rejected_pairs.jsonl": "9595b546c134cae980bfa4af5977fadd195e50a887cd921b997a16b88ce44224",
+    "validation_tools/setup_proof.py": "65dbf928024b3fb12508155676708530f83aeeac1ab3f9a4af448eb7cf2a3c84",
+    "review/needs_review_pairs.jsonl": "d75236f76a1ab88b5a5d97dcf7626ab069e21d37f4e310a18a413b65d49367ef",
+    "review/rejected_pairs.jsonl": "180fe3b8201208a42704a8603205257971b274f0ae69fc5648122145d90b185b",
+    "validation/changes_s080.jsonl": "1de9995331227e7abbd6d3c08931d4a821e8f68604137ee926bda34aab0c1be5",
     "validation/command_analysis.jsonl": "9a93cae2ee64f12708ba51dde00b1b68f8c9ba30edd9ce577ad072a5b270ef8f",
-    "validation/summary.json": "2078438cda5f6b2b76ce3206a1c0bd5e05ef1a3aa4774ae5fcf448726fd90038",
-    "validation/agent_reviews.jsonl": "1b2b31e031382814f7eb15e52f10c2ba5d2f49a287771a8303521cce6c4dca1f",
-    "validation/pairs.jsonl": "49f5d1e75af5f99bf61ef00a91eeb3988f9f3cf3196d86a837f0d6ee9c6d2b06",
+    "validation/summary.json": "0e9c0e32164f43efc5566306fe7644663dfdba40569a19c3d5aa92efb63876c4",
+    "validation/new_agent_reviews_s080.jsonl": "344218935671d42a6bb56619aa55fa3a8e77cd4bc2aaf94e6e95b2539ee148c1",
+    "validation/agent_reviews.jsonl": "848f495f80c36e86c22362fd1ddc91a9901b034b679bfd025188e86374af63ba",
+    "validation/pairs.jsonl": "df1271202a2b17a9aeeab794c3475a8a071877fa4927e6dc4f290bae57a659c7",
     "validation/exact_duplicates.json": "6833117c06c8e0eee4320fbc98e04c2e55b42ac5e0e8db82b5d2993e0fad5b33",
+    "validation/agent_reviews_s079_history.jsonl": "1b2b31e031382814f7eb15e52f10c2ba5d2f49a287771a8303521cce6c4dca1f",
     "validation/toolchain.json": "e1b93647aef3ca06f200f36cffddcc27e9339a013874e84dac0e37d82cc6811f",
-    "validation/integrity.json": "eef008d8fc1eb51602a49c3c3e1cea9b07f47a3caa2d511908ec8e9a56bb2354"
+    "validation/rule_reviews_s080.jsonl": "6e3720eb43dd567a9cb33d04da4b419a99360b1c3bb362db10deca6813ee0b38",
+    "validation/integrity.json": "eef008d8fc1eb51602a49c3c3e1cea9b07f47a3caa2d511908ec8e9a56bb2354",
+    "validation/remaining_review_queue.jsonl": "7859cb007ecd14b443af757a8e0c2588223901d0b0f93d834249fdc300815b84"
   },
   "human_gold": false,
   "semantic_validation": false,
-  "publication_scope": "user_authorized_review_only"
+  "publication_scope": "user_authorized_review_only",
+  "review_update": "S080"
 }
