@@ -91,5 +91,7 @@
   "train_val_admission": "not_established",
   "author_context_exposed_to_CAT7_test_research": true,
   "test_family_independence": "not_established",
-  "privacy_scope": "Only synthetic S075 records/requests/model raw responses; no local agent logs, credentials, weights or runtime files."
+  "privacy_scope": "Only synthetic S075 records/requests/model raw responses; no local agent logs, credentials, weights or runtime files.",
+  "review_update": "S080",
+  "review_update_baseline_commit": "22bc6251e02ddf213fe728b956dcd7e8b22a206d"
 }
