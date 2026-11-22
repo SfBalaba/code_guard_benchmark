@@ -1,0 +1,20 @@
+{
+  "raw_lines_byte_exact": 2554,
+  "test_csv": {
+    "rows": 250,
+    "sha256": "2fadd495f9b1318d4d33f5056aa573618b5c655ac734fc1faca75fbd4fc61cc6"
+  },
+  "all_preexisting_tracked_files_except_root_readme_unchanged": 20,
+  "exact_command_overlap_with_all_750_test_rows": [],
+  "family_independence": "not_established",
+  "known_private_patterns_found": [],
+  "unique_programs": 2512,
+  "bash_parser_timeouts": 0,
+  "shellcheck_tool_failures": 0,
+  "tree_sitter_error_programs": 83,
+  "literal_nested_units": 384,
+  "literal_nested_syntax_failures": 16,
+  "nested_failures_are_diagnostics_not_reachability_proof": true,
+  "corpus_executions": 0,
+  "new_model_calls": 0
+}

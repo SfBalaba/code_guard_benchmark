@@ -1,0 +1,13 @@
+{
+  "pairs": 1295,
+  "side_instances": 2590,
+  "model_responses": 2554,
+  "copy_sides": 36,
+  "agent_read_pairs": 46,
+  "accepted_command_rows": 6,
+  "by_status": {
+    "reject": 443,
+    "needs_review": 849,
+    "pass": 3
+  }
+}

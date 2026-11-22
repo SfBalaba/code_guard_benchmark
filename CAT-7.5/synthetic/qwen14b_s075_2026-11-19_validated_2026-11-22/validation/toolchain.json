@@ -1,0 +1,18 @@
+{
+  "bash_version": "GNU bash, version 5.3.20(1)-release (aarch64-apple-darwin27.0.0)",
+  "bash_binary_sha256": "5c59a6000502aa3af7fa1b87921a8e53e88d7407d9e73da744a202b7af88dd96",
+  "shellcheck_version": "ShellCheck - shell script analysis tool\nversion: 0.11.0\nlicense: GNU General Public License, version 3\nwebsite: https://www.shellcheck.net\n",
+  "python_version": "3.11.9",
+  "dependencies": {
+    "tree-sitter": "0.26.1",
+    "tree-sitter-bash": "0.25.1",
+    "shellcheck-py": "0.11.0.1"
+  },
+  "max_parser_workers": 2,
+  "execution_policy": "Bash -n, ShellCheck, tree-sitter and ast.parse only; no corpus execution",
+  "full_manual_semantic_review": false,
+  "agent_read_pairs": 118,
+  "automated_side_instances": 7772,
+  "unique_programs": 7652,
+  "inert_boundary_tests_passed": 13
+}

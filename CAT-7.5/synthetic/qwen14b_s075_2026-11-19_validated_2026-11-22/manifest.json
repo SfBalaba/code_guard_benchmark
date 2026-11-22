@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "subcategory": "CAT-7.5",
+  "counts": {
+    "pairs": 1295,
+    "side_instances": 2590,
+    "model_responses": 2554,
+    "copy_sides": 36,
+    "agent_read_pairs": 46,
+    "accepted_command_rows": 6,
+    "by_status": {
+      "reject": 443,
+      "needs_review": 849,
+      "pass": 3
+    }
+  },
+  "files_sha256": {
+    "copy_tasks.jsonl": "d76c6deb3516fb5a4cfb10afa2d7e83c3938ca10c05a73f0cb192d48c6206f2c",
+    "pair_inputs.jsonl": "c8ec169e914b1440ef03eed535fea84dbd4cb20de25efbf6f83248047d4f8f37",
+    "source_run.json": "bd546dda8d4b1cdd81b61dc09bfaf844a5ea6dad9c1f5182c67bb301ade610ec",
+    "README.md": "c6d466f3536cd53b00d150c5fe8f3acaa9e8fd87a7b7dce7c19783398d1879a3",
+    "forms.json": "66d2cc0bc8e97026429d63d38c9fff770f8b980043cbdec37a581846b0752357",
+    "validate_package.py": "60be0924034fa52952d39c8f79011f5e2661de3124a5e0f4e38e848c7a1ac811",
+    "scenarios.json": "7454285ba25c94a4db2fddcd38bd14300250539ee290557dc10db8ce433f041d",
+    "model_records.jsonl": "f44b91f1f428efe56421a5d3d5be747abfdad89dd648d1264cb849669f3904f3",
+    "model_raw.jsonl": "5a32d20ccf416e674039a8f85526b56625e11d403180badf41f27984d7d61eb5",
+    "planned_requests.jsonl": "d6e36351988ccc581b3ee671e8098ad7a2d00f937782ce0e590de6fe590d4032",
+    "model_requests.jsonl": "43db8e9b869c485e9ca534edde32d55fb400d642e270ecd55692a5daa904cb56",
+    "accepted/pairs.jsonl": "bed79257636df3221f3e026ae152d2ccb82e2f58fe67ed1a624fb95473758e6e",
+    "accepted/commands.jsonl": "3125963f28ddd394069117fbdb2482c0361ebd084d7e79261ed5e39977463f8c",
+    "validation_tools/audit.py": "a3568e813c38359765f932d4a5034335d252419c6ff82f7cd0a90ef6ba935bbe",
+    "validation_tools/requirements.txt": "603011518d0db6e9d135545cd73116d6e36471275ffd4c26cb7b1fc899548c11",
+    "validation_tools/test_audit.py": "346571751506d4b82d3181f4392a8cc4257e0eadd63105ad52bb240fd3ef43d5",
+    "validation_tools/conformance.py": "9d3f86461cba1a38f1b20bc03041a146ee1c1d59d536c930c7b2144c7e0f83a3",
+    "review/needs_review_pairs.jsonl": "0b15f7d83725381ca479f2caddc34131b9834086f28254c0fa4ca51fc083f825",
+    "review/rejected_pairs.jsonl": "652661f4efa074e061bdb5894b9277c0b449881bb36693739a0a83beaa466b21",
+    "validation/command_analysis.jsonl": "e68fac0c8e170874408a5b3ec479396aa4be8d9fa66cf3b2fb9eaa67ffc308b4",
+    "validation/summary.json": "c4c0d951179c060db42f1a3174aa07388c76af845e536d0b0d80e186fcf65f92",
+    "validation/agent_reviews.jsonl": "7eda40f89ac7f4aa7d2c6ed5a7a25ba10a363645958bb5b7c9542435c9efb3ba",
+    "validation/pairs.jsonl": "b9fb2967fa41a433a10914637a23a208544329d18ae3d8b0559b482cf09ba182",
+    "validation/exact_duplicates.json": "7959b48313137da6a10323c4468d820e64781341e2be1f78e7dfd41da47526ef",
+    "validation/toolchain.json": "a7b89b8dae244d6ad7bc1def0ac81e40cc9a88c4746e1aab44722c58b4e41c29",
+    "validation/integrity.json": "c8438443b3bcc8a81dd23ca45d27cd14ca1b622e82e6eb7e183c48c95d1253b7"
+  },
+  "human_gold": false,
+  "semantic_validation": false,
+  "publication_scope": "user_authorized_review_only"
+}
