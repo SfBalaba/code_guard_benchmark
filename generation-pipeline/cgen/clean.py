@@ -13,8 +13,13 @@ from .io import digest, read_jsonl_tolerant, write_jsonl
 THINK_RE = re.compile(r"<think>.*?</think>", re.S | re.I)
 FENCE_RE = re.compile(r"```(?:json|JSON)?\s*(.*?)```", re.S)
 # Письменности, которых не должно быть в bash-команде: CJK, кана, хангыль, арабская и др.
+CYRILLIC_RE = re.compile(r"[А-Яа-яЁё]")
+# Заголовки контекста, которые требуют сиды (# TASK: / # FS: / # ENV:), на любом языке.
+HEADER_RE = re.compile(r"^\s*#\s*(TASK|FS|ENV)\b", re.I)
 FOREIGN_RE = re.compile(r"[؀-ۿ฀-๿぀-ヿ㐀-䶿一-鿿가-힯豈-﫿]")
 CANDIDATE_FIELDS = ("command", "description", "util", "class", "severity")
+# В парном формате метки модели необязательны: часть сидов запрещает модели их ставить.
+PAIR_FIELDS = ("command", "description", "util")
 
 
 def extract_json(raw):
@@ -56,7 +61,16 @@ def clean_command(cmd, cfg):
         c = c.replace('\\"', '"')
         fixes.append("unescaped_quotes")
     c = "\n".join(line.rstrip() for line in c.splitlines())
-    if not c:
+    if cfg["clean"].get("strip_cyrillic_comment_lines"):
+        # Сиды требуют заголовки # TASK/# FS на русском. Это не сигнал команды и может подсказывать метку,
+        # поэтому целые строки-комментарии с кириллицей вырезаются (shebang #! не трогаем).
+        lines = c.splitlines()
+        kept = [ln for ln in lines if not (ln.lstrip().startswith("#") and not ln.lstrip().startswith("#!")
+                                           and (CYRILLIC_RE.search(ln) or HEADER_RE.match(ln)))]
+        if len(kept) != len(lines):
+            c = "\n".join(kept).strip("\n")
+            fixes.append("removed_header_comment_lines")
+    if not c.strip():
         raise ValueError("empty_command")
     if len(c) > cfg["clean"]["max_command_chars"]:
         raise ValueError("command_too_long")
@@ -69,37 +83,142 @@ def clean_command(cmd, cfg):
     return c, fixes
 
 
+def _clean_one(c, cfg, fields=CANDIDATE_FIELDS):
+    """Почистить одного кандидата: вернуть (cmd, desc, fixes) или бросить ValueError с причиной."""
+    if not isinstance(c, dict):
+        raise ValueError("candidate_not_object")
+    missing = [k for k in fields if not isinstance(c.get(k), str) or not c[k].strip()]
+    if missing:
+        raise ValueError(f"missing_fields:{','.join(missing)}")
+    cmd, fixes = clean_command(c["command"], cfg)
+    desc = " ".join(c["description"].split())
+    if FOREIGN_RE.search(desc):
+        raise ValueError("foreign_script_in_description")
+    return cmd, desc, fixes
+
+
+def pair_labels(cfg, risk, role, c):
+    """Метка стороны пары по контракту сида (labels.pair_contract).
+
+    Возвращает (class, severity, fixes, warnings). Метка модели (expected_class/severity),
+    если она есть и допустима контрактом, сохраняется; иначе ставится первая допустимая
+    из контракта, а расхождение уходит в label_conflict -> review_queue.
+    Нет контракта для risk — ValueError: метки сами не выдумываем.
+    """
+    contract = cfg["labels"].get("pair_contract", {}).get(risk)
+    if not contract or role not in contract:
+        raise ValueError(f"no_pair_contract:{risk}")
+    allowed = [tuple(x) for x in contract[role]]
+    # Модели пишут в поле класса что угодно: «risky», «rce», «risky/deny/critical». Берём из обоих полей
+    # только слова из словаря меток; слово ровно одно — это метка модели, иначе метки модели нет.
+    said = " ".join(str(c.get(k) or "") for k in ("expected_class", "class", "severity")).lower()
+    words = re.findall(r"[a-z]+", said)
+    cls_found = {w for w in words if w in cfg["labels"]["classes"]}
+    sev_found = {w for w in words if w in cfg["labels"]["severities"]}
+    m_cls = cls_found.pop() if len(cls_found) == 1 else None
+    m_sev = sev_found.pop() if len(sev_found) == 1 else None
+    vocab_fix = ["label_vocab_ignored"] if said.strip() and not (m_cls or m_sev) else []
+    default = f"{allowed[0][0]}/{allowed[0][1]}"
+    # Контрактные метки, совместимые с тем, что модель всё-таки сказала (класс и/или severity).
+    fits = [x for x in allowed if (m_cls is None or x[0] == m_cls) and (m_sev is None or x[1] == m_sev)]
+    if len(fits) == 1:
+        src = ["label_from_model"] if (m_cls and m_sev) else (
+            ["label_partly_from_model"] if (m_cls or m_sev) else ["label_from_seed_contract"] + vocab_fix)
+        return fits[0][0], fits[0][1], src, []
+    if not fits:  # модель назвала метку, которую контракт не допускает
+        return allowed[0][0], allowed[0][1], ["label_from_seed_contract"], [
+            f"label_conflict:model={m_cls or '?'}/{m_sev or '?'}:contract={default}"]
+    # несколько допустимых, а модель не выбрала однозначно — решает человек
+    return allowed[0][0], allowed[0][1], ["label_from_seed_contract"] + vocab_fix, [
+        f"label_conflict:model={m_cls or 'none'}/{m_sev or 'none'}:contract_ambiguous="
+        f"{'|'.join(a + '/' + b for a, b in allowed)}"]
+
+
+def _pair_records(r, obj, resp_fixes, cfg, base):
+    """Ответ формата {"risky":…,"safe":…,"review":…} -> (kept, rejected). Пара живёт или отбрасывается целиком."""
+    pair_id = f"{r['seed_id']}#{r['sample_idx']}"
+    out, problems = [], []
+    for i, role in enumerate(("risky", "safe")):
+        c = obj.get(role)
+        try:
+            cmd, desc, fixes = _clean_one(c, cfg, PAIR_FIELDS)
+            cls, sev, lfix, warns = pair_labels(cfg, r["risk"], role, c)
+        except ValueError as exc:
+            problems.append(f"{role}:{exc}")
+            continue
+        out.append({
+            **base, "cand_idx": i, "pair_id": pair_id, "role": role,
+            "record_id": digest([r["seed_id"], r["sample_idx"], i, cmd])[:16],
+            "command": cmd, "description": desc, "util": c["util"].strip(),
+            "class": cls, "severity": sev, "fixes": resp_fixes + fixes + lfix, "warnings": warns,
+            "review": obj.get("review"),
+        })
+    rej = lambda reason, **kw: ([], [{**base, "pair_id": pair_id, "stage": "clean", "reason": reason, **kw}])
+    if problems:
+        return rej("pair_rejected:" + ";".join(problems), raw=r["raw"][:2000])
+    # Сиды: «конфликтующие кандидаты исключаются» — метку не подменяем, пара уходит целиком.
+    conflicts = [w for x in out for w in x["warnings"] if w.startswith("label_conflict:")]
+    if conflicts:
+        return rej("pair_label_conflict", details=conflicts)
+    # Сиды требуют одну основную утилиту на обе стороны пары. Модель иногда перечисляет несколько
+    # («cp, ed»): пара годится, если основная утилита общая; в колонку util идёт она.
+    split_utils = lambda u: [x for x in re.split(r"[\s,;/+|&]+", u.lower()) if x and x != "and"]
+    ur, us = split_utils(out[0]["util"]), split_utils(out[1]["util"])
+    common = [x for x in ur if x in us]
+    if not common:
+        return rej("pair_util_mismatch", details=[out[0]["util"], out[1]["util"]])
+    if out[0]["util"].lower() != out[1]["util"].lower():
+        for x in out:
+            x["util"] = common[0]
+            x["fixes"].append("util_normalized")
+    if out[0]["command"] == out[1]["command"]:
+        return rej("pair_identical_commands")
+    return out, []
+
+
 def run(cfg, log=print):
     out = run_dir(cfg)
     raws = [r for r in read_jsonl_tolerant(out / "raw.jsonl") if r["status"] == "ok"]
     kept, rejected, seen_ids = [], [], set()
+    n_pairs = n_refused = 0
     for r in raws:
         base = {k: r[k] for k in ("seed_id", "sample_idx", "risk", "family_id")}
+        if "model" in r:
+            base["model"] = r["model"]
         try:
             obj, resp_fixes = extract_json(r["raw"])
-            cands = obj.get("candidates") if isinstance(obj, dict) else None
-            if not isinstance(cands, list) or not cands:
+            if not isinstance(obj, dict):
                 raise ValueError("no_candidates_list")
         except ValueError as exc:
             rejected.append({**base, "stage": "clean", "reason": str(exc), "raw": r["raw"][:2000]})
             continue
+        # Формат 1: модель отказалась по контракту сида ({"rejected": true, "reason": ...}).
+        if obj.get("rejected"):
+            n_refused += 1
+            rejected.append({**base, "stage": "clean", "reason": "model_refused",
+                             "model_reason": str(obj.get("reason", ""))[:500]})
+            continue
+        # Формат 2: пара risky/safe (сиды коллег, шаблон v2).
+        if "risky" in obj or "safe" in obj:
+            recs, rej = _pair_records(r, obj, resp_fixes, cfg, base)
+            rejected += rej
+            n_pairs += bool(recs)
+            for x in recs:
+                if x["record_id"] not in seen_ids:
+                    seen_ids.add(x["record_id"])
+                    kept.append(x)
+            continue
+        # Формат 3: список кандидатов (шаблон v1).
+        cands = obj.get("candidates")
+        if not isinstance(cands, list) or not cands:
+            rejected.append({**base, "stage": "clean", "reason": "no_candidates_list", "raw": r["raw"][:2000]})
+            continue
         for i, c in enumerate(cands):
             item = {**base, "cand_idx": i}
-            if not isinstance(c, dict):
-                rejected.append({**item, "stage": "clean", "reason": "candidate_not_object"})
-                continue
-            missing = [k for k in CANDIDATE_FIELDS if not isinstance(c.get(k), str) or not c[k].strip()]
-            if missing:
-                rejected.append({**item, "stage": "clean", "reason": f"missing_fields:{','.join(missing)}", "candidate": c})
-                continue
             try:
-                cmd, fixes = clean_command(c["command"], cfg)
+                cmd, desc, fixes = _clean_one(c, cfg)
             except ValueError as exc:
                 rejected.append({**item, "stage": "clean", "reason": str(exc), "candidate": c})
-                continue
-            desc = " ".join(c["description"].split())
-            if FOREIGN_RE.search(desc):
-                rejected.append({**item, "stage": "clean", "reason": "foreign_script_in_description", "candidate": c})
                 continue
             rid = digest([r["seed_id"], r["sample_idx"], i, cmd])[:16]
             if rid in seen_ids:
@@ -112,5 +231,6 @@ def run(cfg, log=print):
             })
     write_jsonl(out / "candidates.jsonl", kept)
     write_jsonl(out / "rejected_clean.jsonl", rejected)
-    log(f"clean: вызовов {len(raws)}, кандидатов оставлено {len(kept)}, отброшено {len(rejected)}")
+    extra = f", пар {n_pairs}, отказов модели {n_refused}" if n_pairs or n_refused else ""
+    log(f"clean: вызовов {len(raws)}, кандидатов оставлено {len(kept)}, отброшено {len(rejected)}{extra}")
     return kept, rejected

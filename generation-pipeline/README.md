@@ -61,7 +61,7 @@ python3 -m unittest discover -s tests -v                # тесты
 
 ### Локально на Mac (llama.cpp)
 
-На M1 с 8 ГБ комфортно работают модели до 4B в Q4. Пример с abliterated-моделью:
+Нужно ОЗУ ≈ размер GGUF + 1–2 ГБ на контекст 8192: на 8 ГБ — модели до 4B в Q4; на 24 ГБ — все три модели train v0 (7B/8B ≈ 5 ГБ, 12B ≈ 7,3 ГБ в Q4_K_M). Пример с abliterated-моделью:
 
 ```bash
 brew install llama.cpp
@@ -114,6 +114,79 @@ JSONL, одна запись на строку. Совместим с `d3-judge-
 `source_kind` не `abstract_synthetic_spec`; `status` не из разрешённых.
 
 `examples/seeds_example.jsonl` — только пример формата с текстом-заглушкой, генерировать по нему нельзя.
+
+### Полные сиды коллег (пары risky/safe) — шаблон v2
+
+TRAIN-сиды из репозитория данных (`CAT-N.M/seeds/*-TRAIN-S*.txt`) — это полные промпты со своим форматом
+ответа: одна пара `{"risky": {...}, "safe": {...}, "review": {...}}` или `{"rejected": true, "reason": ...}`.
+
+```bash
+python3 tools/convert_txt_seeds.py --repo .. --ref origin/feat/data_Cat-6.5 \
+    --risk CAT-1.4 CAT-5.1 CAT-5.2 CAT-5.3 CAT-5.4 --out seeds/train
+python3 -m cgen check --config configs/train_v0_pairs.mock.json
+```
+
+- Конвертер читает файлы прямо из git-ветки, пишет `origin` (ветка, коммит, путь, sha256) и отказывается брать
+  сиды, помеченные как TEST (README папки или текст файла), без `TRAIN` в имени или с чужим `risk=`.
+- `prompts/generation_v2.md` передаёт сид модели без изменений (system — только «ответь JSON»).
+- `clean` понимает парный формат: пара живёт или уходит целиком (`pair_id`, `role`); `{"rejected": true}` —
+  причина `model_refused`; `review` модели сохраняется в `provenance.jsonl`.
+- Метки берутся из `labels.pair_contract` (по подкатегории, из текста сидов). Метка модели оставляется, если
+  контракт её допускает. Конфликт с контрактом, неполная метка или отсутствие метки при неоднозначном контракте —
+  пара отклоняется целиком (`pair_label_conflict`), метка не подменяется. Разные утилиты в сторонах —
+  `pair_util_mismatch`; любой ответ с `rejected` — `model_refused`. Нет контракта — `no_pair_contract`.
+- После dedup/validate сторона без пары отбрасывается (`pair_partner_rejected`): у опасного примера всегда есть контрпример.
+- `export.seed_column: "full_request"` — в колонке `seed` ровно те сообщения, что ушли в модель (сверяется с
+  `prompt_sha` в `raw.jsonl`; если сиды или шаблон поменялись после generate — export падает).
+- `clean.strip_cyrillic_comment_lines: true` вырезает целые строки-комментарии с кириллицей и заголовки
+  `# TASK:`/`# FS:`/`# ENV:` на любом языке (их требуют сиды; подсказывают метку и отсутствуют в test). Shebang и обычные
+  английские комментарии не трогаются. Кириллица в остальной части команды по-прежнему отказ `non_ascii_command`.
+- `category`/`risk` в CSV — голые коды (`CAT-5`, `CAT-5.1`), как в test-CSV; названия из `taxonomy.json` идут только в промпт v1.
+
+### Train v0: три модели (локально, Mac 24 ГБ)
+
+Решение 21.11 (Влад): вместо утверждённой 7–12B-тройки — модели покрупнее, по итогам ревью-итерации 1
+(одни 10 сидов, ручное ревью): новая тройка 6/30 годных пар против 1/30 у старой. Все abliterated (huihui-ai),
+коммит HF и файл зафиксированы в `backend.model`. Команде/ментору — сообщить в чат.
+
+| Конфиг | Модель | Квант, ГБ | Вызовов на seed | Доля | с/вызов (M5 Pro) |
+|---|---|---|---|---|---|
+| `configs/train_v0_qwen38_27b.json` | Huihui-Qwen3.8-27B-abliterated | UD-IQ4_XS, 14,4 | 2 | 40% | ~42 |
+| `configs/train_v0_gemma4_26b_a4b.json` | Huihui-gemma-4-26B-A4B-it-abliterated (квант groxaxo) | UD-IQ4_XS, 13,4 | 2 | 40% | ~10 |
+| `configs/train_v0_devstral24b.json` | Huihui-Devstral-Small-2-24B-Instruct-abliterated | IQ4_XS, 12,9 | 1 | 20% | ~28 |
+
+Старые конфиги (`train_v0_qwen25coder7b`, `train_v0_gemma3_12b`, `train_v0_llama31_8b`) оставлены как база сравнения.
+Локальный прогон по очереди моделей: `tools/review_loop.py` (поднимает llama-server на 127.0.0.1). Colab T4 для
+моделей 24–27B не подходит по памяти/скорости; старая инструкция ниже — только для 7–12B.
+
+```bash
+# Colab, GPU T4. Один раз: llama.cpp с CUDA (~10 мин)
+git clone --depth 1 https://github.com/ggml-org/llama.cpp && cd llama.cpp
+cmake -B build -DGGML_CUDA=ON && cmake --build build -j --target llama-server && cd ..
+pip install -q huggingface_hub
+
+# На каждую модель: скачать ровно тот коммит, что в конфиге, поднять сервер, прогнать
+python3 -c "from huggingface_hub import hf_hub_download as d; print(d('bartowski/Qwen2.5-Coder-7B-Instruct-abliterated-GGUF', 'Qwen2.5-Coder-7B-Instruct-abliterated-Q4_K_M.gguf', revision='a416f57ecabe9841551055493e6945895e54e135'))"
+llama.cpp/build/bin/llama-server -m <путь из строки выше> --jinja -c 8192 -ngl 99 --port 8080 &
+until curl -sf localhost:8080/health; do sleep 5; done
+python3 -m cgen check --config configs/train_v0_qwen25coder7b.json
+python3 -m cgen generate --config configs/train_v0_qwen25coder7b.json --limit 3   # сначала 3 пробных вызова
+python3 -m cgen run --config configs/train_v0_qwen25coder7b.json --resume         # остальное; сессия упала — снова --resume
+```
+
+`data/test/` (см. ниже) нужен и в Colab: `dedup.against` без него не пройдёт `cgen check`.
+
+### Антиутечка: test- и real-команды для `dedup.against`
+
+```bash
+git -C .. fetch origin
+python3 tools/pull_test_data.py --repo .. --out data/test   # все commands.csv, commands_test.csv, CAT-7 inputs, логи D2
+```
+
+`dedup.against` принимает папку (`"../data/test"` из `configs/`): берутся все `*.csv`/`*.jsonl` рекурсивно.
+Сравнение — после схлопывания пробелов и без строк-комментариев (`# TASK`/`# FS`), иначе test-команда под
+заголовком проходила бы. `data/` в `.gitignore`. `split=train` с настоящей моделью и пустым `dedup.against` —
+ошибка уже на `cgen check`. Near-dup (эмбеддинги) пока отдельным шагом не реализован.
 
 ## Шаги и файлы
 

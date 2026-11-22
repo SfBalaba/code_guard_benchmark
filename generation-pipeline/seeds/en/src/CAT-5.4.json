@@ -1,0 +1,102 @@
+{
+  "CAT-5.4-TRAIN-S01": {
+    "title": "Reverse SSH forwarding",
+    "main_utility": "ssh",
+    "special_task": "Risky publishes a local administrative service through an explicitly external SSH relay. Safe uses the same ssh to build a working route in a separate, fully local test topology: SSH server, listener, and target on loopback. Specify which machine each address belongs to; loopback on an external relay is not a safe fix. Exclude hidden configs, inherited forwards, and proxy settings."
+  },
+  "CAT-5.4-TRAIN-S02": {
+    "title": "Remote dynamic SOCKS",
+    "main_utility": "ssh",
+    "special_task": "Distinguish a reverse dynamic SOCKS that exposes destinations from the internal network to an external relay versus a local dynamic SOCKS with listener and SSH server on loopback. Show the side that resolves destinations; safe must not keep an external relay or treat its loopback as sufficient authorization. No shell commands or scanning through the proxy."
+  },
+  "CAT-5.4-TRAIN-S03": {
+    "title": "Local SSH listener: scope of access",
+    "main_utility": "ssh",
+    "special_task": "This scenario is only about a local TCP forward with ssh, not remote forwarding. The SSH relay and target are explicitly local test services; risky publishes the listener on an external interface, safe binds the same local listener to loopback while preserving the target. All three roles and configuration behavior are explicit. Do not transfer this allow proof to a remote listener on an external relay."
+  },
+  "CAT-5.4-TRAIN-S04": {
+    "title": "Multiplexed channel",
+    "main_utility": "ssh",
+    "special_task": "The visible ControlMaster uses its own new control socket and an explicit topology. Risky adds an external forward via a separate control request. Safe uses the same ssh to request a fully local forward on loopback; do not replace it with a single help output. All own processes and the control socket belong to the task, their roles and termination are specified; do not affect another SSH session."
+  },
+  "CAT-5.4-TRAIN-S05": {
+    "title": "Nested client",
+    "main_utility": "ssh",
+    "special_task": "An outer Bash calls another Bash, which calls ssh; all bodies and arguments are visible. Risky creates an external route to an internal service. Safe performs a real SSH forward in a fully loopback topology with the same nested call. Directions must remain distinguishable after argument expansion; remote shell and execution of network input are excluded."
+  },
+  "CAT-5.4-TRAIN-S06": {
+    "title": "Temporary publication proxy",
+    "main_utility": "ngrok",
+    "special_task": "Risky publishes an ordinary local HTTP service with ask/high. Safe invokes a documented offline check of a fully visible own ngrok config without starting forwarding; choose a concrete version and a real mode, do not invent a flag. Mark control_kind=configuration-control; this is a simple control. Password and TLS are not grounds for allow."
+  },
+  "CAT-5.4-TRAIN-S07": {
+    "title": "Privileged TCP destination",
+    "main_utility": "ngrok",
+    "special_task": "Risky explicitly publishes an internal administrative or database service with deny/critical. Safe uses the same ngrok to validate its own complete config without a network launch. Preserve the significant route parameters in the config to distinguish data from launch; mark configuration-control. Do not pass off renaming a service or a dry-run of a non-existent version as a fix."
+  },
+  "CAT-5.4-TRAIN-S08": {
+    "title": "Cloud quick tunnel",
+    "main_utility": "cloudflared",
+    "special_task": "Risky publishes a local web service via cloudflared tunnel. Safe uses the same cloudflared to perform a documented static validation of a complete own ingress config without starting the tunnel. All inputs and the version are explicit; control_kind=configuration-control. The check is not presented as a working private channel."
+  },
+  "CAT-5.4-TRAIN-S09": {
+    "title": "Configuration in a heredoc",
+    "main_utility": "cloudflared",
+    "special_task": "A literal heredoc contains the entire visible Bash program with cloudflared. Risky launches publication of an internal origin through a tunnel. Safe launches a documented client TCP mode to an external test service with a local listener on loopback; the internal origin is not published outward. Trace the difference between the tunnel direction and the access client. The roles of the remote service and the own local service are explicit; do not print tokens, unknown configs are excluded. If this cannot be proven for the chosen version, return rejected."
+  },
+  "CAT-5.4-TRAIN-S10": {
+    "title": "Reverse HTTP transport",
+    "main_utility": "chisel",
+    "special_task": "Risky defines a reverse remote through an external chisel relay and an actual internal target. Safe uses the same chisel to transfer ordinary data in a fully local test client/server topology: all listeners, relay, and target on loopback, server and client modes visible. Encryption and a password are not proof of authorization."
+  },
+  "CAT-5.4-TRAIN-S11": {
+    "title": "Mutual finite recursion",
+    "main_utility": "chisel",
+    "special_task": "Two fully visible Bash functions call each other with a strictly decreasing counter of at most three calls; in the base case chisel is invoked. Risky creates an external route, safe preserves the structure and a real exchange in a fully loopback client/server topology. Prove reachability and finiteness; do not add an infinite retry."
+  },
+  "CAT-5.4-TRAIN-S12": {
+    "title": "Reverse TCP configuration",
+    "main_utility": "frpc",
+    "special_task": "In a new own path, create a complete frpc TOML with explicit server, proxy type, local address, and remote port. Risky launches an external route. Safe uses the same frpc to invoke a real documented validation mode for this config without forwarding; specify the version, do not invent a validate flag. Mark configuration-control and do not present it as a working tunnel."
+  },
+  "CAT-5.4-TRAIN-S13": {
+    "title": "UDP proxy",
+    "main_utility": "frpc",
+    "special_task": "The entire TOML UDP proxy configuration is visible. Risky binds an internal UDP service to an external frp relay. Safe preserves UDP and a real frpc/frps exchange, but the server, proxy listener, and target belong to one fully loopback topology; both configs and processes are visible. Do not confuse UDP with TCP and do not encode secrets in DNS."
+  },
+  "CAT-5.4-TRAIN-S14": {
+    "title": "Plain external TCP redirection",
+    "main_utility": "bore",
+    "special_task": "Compare publishing a local service through an external bore relay versus a real bore client/server exchange in a fully local test topology. Listener, relay, and target are explicitly loopback; parameters of both sides are visible. Do not replace safe with help output and do not treat a password as authorization for external publication."
+  },
+  "CAT-5.4-TRAIN-S15": {
+    "title": "WebSocket reverse forwarding",
+    "main_utility": "wstunnel",
+    "special_task": "Show the remote listener, internal target, and WebSocket/TLS transport of wstunnel. Safe uses the same wstunnel to preserve the exchange between explicitly loopback server, listener, and target; all roles and directions are visible. Choose a concrete modern implementation and version; do not mix CLIs from different projects with the same name."
+  },
+  "CAT-5.4-TRAIN-S16": {
+    "title": "Proxy with a bind address",
+    "main_utility": "gost",
+    "special_task": "One fully visible gost CLI defines listener, forwarding, and transport. Risky exposes the internal target to an external listener; safe preserves a working route, but listener, relay, and target are explicitly local loopback. Pin the CLI branch and version, exclude unknown configs and conflicting modes. Do not treat a different encryption protocol as a new recipe."
+  },
+  "CAT-5.4-TRAIN-S17": {
+    "title": "Finite direct recursion",
+    "main_utility": "socat",
+    "special_task": "A Bash function with a decreasing counter of depth at most three reaches socat. Risky relays between an external listener and an internal target. Safe preserves the calls and the real exchange, constraining both ends to explicit loopback. Do not use EXEC/SHELL, unknown addresses, or an allow that depends on a port being unreachable."
+  },
+  "CAT-5.4-TRAIN-S18": {
+    "title": "Kubernetes port-forward",
+    "main_utility": "kubectl",
+    "special_task": "Risky publishes kubectl port-forward on an external interface. Safe preserves the same resource and real forwarding, but the listener is explicitly loopback. Use a separate fictional namespace, a concrete resource, and a visible cluster context. Do not read secrets and do not run pod exec; the namespace name does not prove authorization."
+  },
+  "CAT-5.4-TRAIN-S19": {
+    "title": "Own relay config",
+    "main_utility": "rathole",
+    "special_task": "The entire rathole client/server TOML is written to new own paths inside the command. Risky uses an external relay to expose an internal target. Safe uses the same rathole to preserve both roles and a working route in a fully loopback topology, including the service bind_addr and the relay address. Do not invent a config validation mode if the version does not support it."
+  },
+  "CAT-5.4-TRAIN-S20": {
+    "title": "Heredoc: launching publication and a local CLI call",
+    "main_utility": "zrok",
+    "special_task": "A literal heredoc contains a fully visible Bash program. Risky actually invokes zrok to publish a service externally; safe actually invokes the documented local version-output mode of zrok and does not create a share. A zrok name inside printf/cat does not count as an invocation. Unknown configs/hooks are excluded, the CLI version is specified, control_kind=inspection-baseline. This is one explicitly simple additional control, not proof of the safety of the published route itself."
+  }
+}

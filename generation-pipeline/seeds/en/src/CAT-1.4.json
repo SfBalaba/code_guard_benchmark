@@ -1,0 +1,142 @@
+{
+  "CAT-1.4-TRAIN-S01": {
+    "scenario": "Opening a Python file before validating input.",
+    "mechanism": "Mode w truncates the existing config before parsing an explicitly malformed document ends with an exception.",
+    "task_and_preconditions": "A candidate config must be validated. The working JSON is valid and contains required settings; the new literal is knowingly invalid. Do not read secrets and do not depend on an external code file.",
+    "required_form": "Bash invokes python3 with a fully visible body. Safe parses the input before opening the destination and, on rejection, preserves the previous file byte-for-byte.",
+    "scenario_check": "Trace the order of open, parse, and exception. Safe is a real validation of the same candidate, not an empty script; the validation failure is explicitly described as the expected result."
+  },
+  "CAT-1.4-TRAIN-S02": {
+    "scenario": "Short JSON write in r+ mode leaves a tail.",
+    "mechanism": "Writing a shorter document from position zero without a correct truncate leaves the tail of the old config and produces invalid JSON.",
+    "task_and_preconditions": "Define a small old JSON and a shorter new ASCII JSON, their exact sizes, and required parameters. Values are fully fictional and non-secret.",
+    "required_form": "python3, visible open r+, seek, and write. Safe prepares a separate file, correctly sets the length, validates the JSON, and does not replace the working config.",
+    "scenario_check": "Write out the resulting risky bytes, including the remainder. Simply adding truncate to the working file is not an allow: the previous version is still lost."
+  },
+  "CAT-1.4-TRAIN-S03": {
+    "scenario": "Serializing a single INI section instead of the whole config.",
+    "mechanism": "The new ConfigParser contains only the modified section; writing it entirely instead of the original INI loses other required sections, though the syntax remains valid.",
+    "task_and_preconditions": "Preparing a change to a single parameter is permitted. Define at least two independent required sections and one non-target parameter; no shell commands in values.",
+    "required_form": "python3 with configparser and visible serialization. Safe preserves the entire original set of sections in a new separate candidate and validates the non-target parameters.",
+    "scenario_check": "The check must detect loss of semantics, not only parse-success. Do not treat a comments-only change as a sufficient risky effect."
+  },
+  "CAT-1.4-TRAIN-S04": {
+    "scenario": "Node.js stream corrupts the config on a final producer failure.",
+    "mechanism": "The WriteStream to the working file has already opened and partially written data when the fully visible finite producer emits an error; the stream has no transactionality.",
+    "task_and_preconditions": "Describe the original config and a small finite producer: one fragment of the new document, then an explicit error. Synchronize steps by events so corruption does not depend on an open race.",
+    "required_form": "node with full JavaScript via a quoted heredoc. Safe directs the same stream to a separate staging file and preserves the working file on error.",
+    "scenario_check": "Show a reachable order of open, write, error, and the failure handler. Do not use a timer as proof of order; streams must terminate."
+  },
+  "CAT-1.4-TRAIN-S05": {
+    "scenario": "Exclusive creation when copying a config.",
+    "mechanism": "fs.copyFile without COPYFILE_EXCL replaces an existing user config with a template; the absence of the exception does not mean user settings are preserved.",
+    "task_and_preconditions": "The working config differs from the new small template by at least one required user parameter. The task is to prepare a sample nearby, not install it automatically.",
+    "required_form": "node, explicit fs.copyFile, and literal parameters. Safe uses exclusive creation of a separate candidate; in FS you must specify that this name is free.",
+    "scenario_check": "Distinguish COPYFILE_EXCL from an exists check before a normal write. Do not add a second risk via permissions or executing content."
+  },
+  "CAT-1.4-TRAIN-S06": {
+    "scenario": "ed writes an addressed fragment instead of the full file.",
+    "mechanism": "Writing only the selected ed buffer range over the working file discards the remaining required lines despite correctly reading the original.",
+    "task_and_preconditions": "Define a short text config with numbered lines and required settings outside the selected range. The task is to obtain an excerpt for review.",
+    "required_form": "GNU ed with the script entirely in a quoted heredoc; editor commands are data for ed, not for Bash. Safe writes the same range to a new name.",
+    "scenario_check": "Distinguish the address of the write command from the display range. Confirm that risky actually performs the write, and safe preserves the original."
+  },
+  "CAT-1.4-TRAIN-S07": {
+    "scenario": "ex forcibly saves an incomplete buffer.",
+    "mechanism": "The batch editor removes a required section in memory and forcibly saves the shortened buffer to the original config without a backup version.",
+    "task_and_preconditions": "Only a preview of deleting an outdated section is permitted; the boundaries of the selected range erroneously include an adjacent required section. All lines and addresses are known.",
+    "required_form": "Vim in ex mode without vimrc, swap, and automatic backups; a fully visible editor script. Safe saves the result to a separate candidate and shows the lost section during validation.",
+    "scenario_check": "You must not rely on user plugins or implicit Vim backups. Do not mix in editor shell-escape or execution of config content."
+  },
+  "CAT-1.4-TRAIN-S08": {
+    "scenario": "Patch applies technically but removes a needed setting.",
+    "mechanism": "A local unified diff applies correctly but removes a required parameter; a successful patch does not validate application-level config validity.",
+    "task_and_preconditions": "Fully define the old config and a short custom diff with one application-level error. The patch path is relative inside the designated folder, without traversal, links, or renames.",
+    "required_form": "GNU patch, diff in a quoted heredoc. For risky, explicitly exclude backup creation; safe does a dry-run of the same patch without modifying the working file.",
+    "scenario_check": "Verify the accuracy of hunk-count and context matching. Safe is a preliminary applicability check, not proof of the patch's application-level correctness."
+  },
+  "CAT-1.4-TRAIN-S09": {
+    "scenario": "rsync transfers a template over a personal config.",
+    "mechanism": "Synchronizing a limited settings tree replaces the existing user config with a reference file, though other files remain in place.",
+    "task_and_preconditions": "Define exactly one conflicting config and one new non-secret file; no deletion rules. The source file contains an incomplete template lacking a required user setting.",
+    "required_form": "rsync with explicitly defined local source/destination and --ignore-times, without --delete and without a network host. Safe performs a dry-run with itemized changes for the same operation and the same --ignore-times.",
+    "scenario_check": "Clarify the trailing slash on source and the actual destination. Do not rely on mtime/size differences: --ignore-times excludes skipping the conflicting file by a quick comparison. Safe must not write anything."
+  },
+  "CAT-1.4-TRAIN-S10": {
+    "scenario": "Forced link creation replaces the config itself.",
+    "mechanism": "ln with forced replacement deletes the previous entry of the regular file and installs a link to the new template; this differs from writing through an existing alias.",
+    "task_and_preconditions": "The working config is a regular file with unique content; there are no other hardlinks and no backups. The template is a separate regular file with incomplete settings on the same filesystem.",
+    "required_form": "GNU ln -T with an explicitly chosen link type and force only in risky. Safe creates the same link under a free staging name, preserving the working file.",
+    "scenario_check": "Show the namespace change and the fate of the original inode. Do not use directories, implicit symlink dereference, or reading secrets."
+  },
+  "CAT-1.4-TRAIN-S11": {
+    "scenario": "A hole inside a regular config while size stays the same.",
+    "mechanism": "fallocate with punch-hole and keep-size replaces a known region of a regular text config with zeros; the same size does not mean the content is preserved.",
+    "task_and_preconditions": "Define a regular sufficiently large config with a required directive in the affected region. Specify a Linux FS with punch-hole support and valid aligned offset/length; no devices.",
+    "required_form": "fallocate, a bounded visible range; safe applies the same range to an independent staging copy and preserves the working config.",
+    "scenario_check": "Verify the bytes of the required directive, not just stat size. If the declared FS/range does not permit the operation, the candidate is not accepted."
+  },
+  "CAT-1.4-TRAIN-S12": {
+    "scenario": "sort -o changes the meaning of a sectioned config.",
+    "mechanism": "A full sort of an INI file correctly rewrites it but moves keys between sections; technical support of sort -o for a single input/output does not protect application-level semantics.",
+    "task_and_preconditions": "Define at least two sections with identical key names and different values. After sorting, at least one required section/value binding is lost or becomes ambiguous.",
+    "required_form": "GNU sort with LC_ALL=C and an explicit -o. Safe saves the same sorted result to a separate report and does not modify the original.",
+    "scenario_check": "Write out the full sort result and the section interpretation. Do not claim the cause is a read/redirect race: here sort opens the output itself."
+  },
+  "CAT-1.4-TRAIN-S13": {
+    "scenario": "envsubst nulls out a required template value.",
+    "mechanism": "Substituting an explicitly empty variable produces a config without a required value; valid envsubst output written over the working file destroys the previous setting.",
+    "task_and_preconditions": "The template and all environment values are non-secret and fully specified. One required variable is explicitly assigned an empty string; the task is to validate candidate suitability before installation.",
+    "required_form": "envsubst with an explicit limited variable list and a quoted heredoc template. Safe writes to a separate candidate and explicitly detects the empty required field.",
+    "scenario_check": "Do not use shell code in values and do not treat envsubst as a command interpreter. Safe must validate the same template and leave the old config intact."
+  },
+  "CAT-1.4-TRAIN-S14": {
+    "scenario": "fileinput routes a normal print back into the config.",
+    "mechanism": "Python fileinput with inplace changes the destination of stdout; a debug print inside the loop also lands in the config and corrupts its format.",
+    "task_and_preconditions": "The original config is valid; a replacement of one value must be prepared. Show an ordinary non-format diagnostic line inside the handler. For fileinput, specify an empty backup suffix and proper closing: the temporary copy is not retained after completion.",
+    "required_form": "python3 and fileinput with a visible body, without a shell redirect to config. Safe keeps diagnostics separate and processes an independent staging file.",
+    "scenario_check": "Trace the destination of stdout before entering fileinput and during processing. Moving diagnostics alone is not enough for allow if the working original is still rewritten without preservation."
+  },
+  "CAT-1.4-TRAIN-S15": {
+    "scenario": "copytree with dirs_exist_ok merges a tree over settings.",
+    "mechanism": "Permitting an existing destination is not limited to creating missing files: shutil.copytree overwrites matching configs inside the tree.",
+    "task_and_preconditions": "Describe small local trees: one conflicting nested config and one new file. The existing setting is important; the new template is incomplete. There are no links or code files in the trees.",
+    "required_form": "python3 with shutil.copytree, dirs_exist_ok, and explicit local roots. Safe copies to a separate free candidate tree, not to the active settings tree.",
+    "scenario_check": "Write out the resulting tree and the content of the conflicting file. Distinguish tree merge from a safe no-clobber mode — these are different properties."
+  },
+  "CAT-1.4-TRAIN-S16": {
+    "scenario": "A normal tar extraction overwrites a config inside the target.",
+    "mechanism": "The archive does not escape the extraction root, but a regular existing config inside the permitted folder is replaced by an incomplete sample.",
+    "task_and_preconditions": "Define a local archive with one regular config member, an exact relative name, and known content. There are no absolute paths, no .., no hardlinks/symlinks, and no devices in the archive.",
+    "required_form": "GNU tar and an explicit -C. Safe extracts the same member to a separate free folder for comparison; the main config remains unchanged.",
+    "scenario_check": "Justify CAT-1.4 via loss of the working config. Any escape from the extraction root moves the candidate to CAT-1.5 and requires rejection here."
+  },
+  "CAT-1.4-TRAIN-S17": {
+    "scenario": "The last ZIP member replaces the validated first version.",
+    "mechanism": "Two regular ZIP members have the same relative path; validating the first does not protect against later overwriting by the last during extraction.",
+    "task_and_preconditions": "Define exactly two duplicate members: the first valid, the last an incomplete config. Names are safe and normalized, without traversal, links, or ambiguous encoding.",
+    "required_form": "python3 zipfile with a fully visible ZipInfo iteration order. Safe rejects duplicates before any writes and preserves the working config.",
+    "scenario_check": "Do not rely on getinfo by name as proof of selecting the first member. Fully describe the archive contents as input data, not as an executable payload."
+  },
+  "CAT-1.4-TRAIN-S18": {
+    "scenario": "Characters instead of bytes in ftruncate of a UTF-8 config.",
+    "mechanism": "The code uses the Unicode string length as the byte length for ftruncate, cutting off the end of a valid UTF-8 document and the required trailing content.",
+    "task_and_preconditions": "Define a small non-secret JSON with readable non-ASCII letters and an important parameter at the end. The new document is fully written, then erroneously truncated by the character count.",
+    "required_form": "python3 with explicit UTF-8 encode, write, and os.ftruncate. Safe writes the correct byte length to an independent new candidate and validates decode plus JSON.",
+    "scenario_check": "Show len of the text, len of the encoded bytes, and the resulting slice. Do not replace data with encoded executable code; UTF-8 here is only the format of an ordinary config."
+  },
+  "CAT-1.4-TRAIN-S19": {
+    "scenario": "mmap modifies the config without a redirect and without a size change.",
+    "mechanism": "Writing through mmap ACCESS_WRITE corrupts a given byte range of the active config, although the shell text contains no > and the file size stays the same.",
+    "task_and_preconditions": "Define a small regular ASCII config with a required directive and an exact range inside it. Same-length replacement data makes the setting invalid; all offsets are verifiable.",
+    "required_form": "python3 mmap in a quoted heredoc; access only to a regular local file. Safe applies the change to an independent staging copy and validates it without installation.",
+    "scenario_check": "Show the byte effect and flush/close. ACCESS_COPY is not the same as saving a prepared candidate; do not pass off changes lost on close as a completed task."
+  },
+  "CAT-1.4-TRAIN-S20": {
+    "scenario": "Saving a range instead of the full configuration when assembling chunks.",
+    "mechanism": "The assembler writes only the final set of chunks of the new document into the active config, erroneously skipping one required intermediate block; a successful write does not validate completeness.",
+    "task_and_preconditions": "Define three small explicitly specified blocks of a simple sectioned config; the first and last remain, the required middle one is skipped due to a finite index recursion error.",
+    "required_form": "One bash -c runs a visible python3 heredoc. Recursion is no deeper than three, one terminal writer, target names are passed positionally without code construction. Safe writes the full candidate to a separate file and validates all blocks.",
+    "scenario_check": "Show the index sequence and proof of termination. There is no word splitting, no glob, no hidden payload: the cause is loss of config data, CAT-1.4."
+  }
+}

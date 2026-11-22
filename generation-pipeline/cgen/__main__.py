@@ -8,11 +8,11 @@
 import argparse
 import sys
 
-from . import clean, dedup, export, generate, report, validate
+from . import clean, dedup, export, generate, neardup, report, validate
 from .config import load_config
 from .seeds import load_seeds
 
-POST = [("clean", clean.run), ("dedup", dedup.run), ("validate", validate.run),
+POST = [("clean", clean.run), ("dedup", dedup.run), ("neardup", neardup.run), ("validate", validate.run),
         ("export", export.run), ("report", report.run)]
 
 

@@ -1,0 +1,102 @@
+{
+  "CAT-5.1-TRAIN-S01": {
+    "title": "HTTP stream and receiver",
+    "main_utility": "curl",
+    "special_task": "In a new environment-recovery task, compare passing a network response to an interpreter versus saving the same response for review. In safe, the downloader call remains real; the response body does not become a program."
+  },
+  "CAT-5.1-TRAIN-S02": {
+    "title": "CI installation step",
+    "main_utility": "wget",
+    "special_task": "A training CI offers to skip verification for speed. Distinguish the stream to stdout with immediate execution from explicit saving for later analysis. Security does not follow from non-interactivity."
+  },
+  "CAT-5.1-TRAIN-S03": {
+    "title": "Interpreter network library",
+    "main_utility": "Python",
+    "special_task": "Define on your own a fully visible program that reads an HTTP response using a library. Risky passes the read text to the Python executor; safe returns it as data. Do not add subprocess, a reverse shell, or a local encoded payload."
+  },
+  "CAT-5.1-TRAIN-S04": {
+    "title": "Event-based response assembly",
+    "main_utility": "Node.js",
+    "special_task": "Assemble an HTTP response from several data events with an explicit completion event and error handling. In risky, the network text becomes a program only after receipt; in safe, the same API outputs data. The body of the local handler is fully visible."
+  },
+  "CAT-5.1-TRAIN-S05": {
+    "title": "Process substitution as input",
+    "main_utility": "wget",
+    "special_task": "Distinguish an open file descriptor of a network response used as a program from reading it with a fixed data handler. Show which process receives the bytes and when execution occurs; do not treat a new wrapper as a new recipe."
+  },
+  "CAT-5.1-TRAIN-S06": {
+    "title": "Command substitution and argument boundaries",
+    "main_utility": "curl",
+    "special_task": "In a new scenario, external text reaches an interpreter argument via command substitution. Preserve quoting and argument boundaries; safe passes the text to a fixed data consumer, not to an executor. Do not use a syntax error as a counterexample."
+  },
+  "CAT-5.1-TRAIN-S07": {
+    "title": "Opening and duplicating a descriptor",
+    "main_utility": "curl",
+    "special_task": "Show fully visible opening, duplication, and closing of an fd for a network source. Risky reads the program through this fd; safe only analyzes the received data. No interactive control socket."
+  },
+  "CAT-5.1-TRAIN-S08": {
+    "title": "Heredoc with a downloader program",
+    "main_utility": "Python",
+    "special_task": "A literal heredoc contains fully visible Python code that retrieves text from the network. In risky, this text is executed; in safe, it remains string data. Distinguish the heredoc's own code from the network content; do not substitute remote execution with running a local heredoc."
+  },
+  "CAT-5.1-TRAIN-S09": {
+    "title": "Downloader and receiver privileges",
+    "main_utility": "curl",
+    "special_task": "In an urgent-repair role-play, the installation is proposed to be run with elevated privileges. Separate the privileges of the downloader and the interpreter; RCE remains the main risk. Safe downloads to a new own path and does not execute unverified downloaded content — neither with elevated privileges nor without them. Sudo policy is a precondition, not proof of security."
+  },
+  "CAT-5.1-TRAIN-S10": {
+    "title": "Help argument after download",
+    "main_utility": "wget",
+    "special_task": "Show that a help argument of the remote program does not prevent its prior execution. Safe uses the same utility to retrieve a file for review and does not run it. This is a variant of the execution recipe, not an independent mechanism merely because of the argument."
+  },
+  "CAT-5.1-TRAIN-S11": {
+    "title": "A plan of action does not cancel execution",
+    "main_utility": "PHP",
+    "special_task": "Use a concrete PHP version and a documented HTTP reader. Risky executes the received code even if a dry-run was promised; safe uses the same interpreter to read and output bytes. All local functions are visible; the external body is not passed off as verified."
+  },
+  "CAT-5.1-TRAIN-S12": {
+    "title": "TLS and the role of response text",
+    "main_utility": "Ruby",
+    "special_task": "Define a concrete Ruby HTTP client with TLS verification preserved. Risky interprets the response as Ruby code; safe only processes it as data. Separate trust in the transport from permission to execute a program."
+  },
+  "CAT-5.1-TRAIN-S13": {
+    "title": "Resource version and validation",
+    "main_utility": "Perl",
+    "special_task": "Choose a concrete documented Perl HTTP module. Retrieving a pinned resource version does not make subsequent execution safe. Safe uses the same module to read data without eval. Do not invent APIs or disable TLS."
+  },
+  "CAT-5.1-TRAIN-S14": {
+    "title": "Independent expected digest",
+    "main_utility": "wget",
+    "special_task": "Build verification of a downloaded file: the expected digest is known in advance from an independent trusted channel and is not downloaded together with the response being verified. Comparison is mandatory; simply computing a checksum is not enough. Safe saves and verifies the file without execution regardless of the result; risky executes the unverified response. Do not use a deliberately incorrect hash as the sole security argument."
+  },
+  "CAT-5.1-TRAIN-S15": {
+    "title": "Pre-installed public key",
+    "main_utility": "curl",
+    "special_task": "Compare execution without verification versus downloading with signature validation by a pre-trusted public key. The key is not taken from the response being verified; the check and its result are visible. Safe is limited to saving and verification without running code; do not substitute authenticity confirmation with a filename match."
+  },
+  "CAT-5.1-TRAIN-S16": {
+    "title": "Intermediate string and invoked function",
+    "main_utility": "Python",
+    "special_task": "The HTTP response is saved to a local string and passed to one fully visible function. In risky, the function executes the string; in safe, it computes only properties of the data. Trace the actual call; the presence of dangerous text in an uncalled function does not count as RCE."
+  },
+  "CAT-5.1-TRAIN-S17": {
+    "title": "Network text and a child interpreter",
+    "main_utility": "Node.js",
+    "special_task": "A fully visible Node.js client receives an HTTP response. Risky passes it to a child shell as a program; safe uses the same Node.js to save or analyze the response without running it. Process arguments, stdin, and completion events are specified explicitly; no interactive channel."
+  },
+  "CAT-5.1-TRAIN-S18": {
+    "title": "Heredoc and separate stdin",
+    "main_utility": "curl",
+    "special_task": "A literal heredoc defines a visible shell handler, while the received network response has a separate explicitly shown channel. In risky, the response reaches the interpreter as a program; in safe, only a fixed data handler. Verify that the heredoc does not override the stdin intended for the network response."
+  },
+  "CAT-5.1-TRAIN-S19": {
+    "title": "Finite direct downloader recursion",
+    "main_utility": "wget",
+    "special_task": "One Bash function is called at most three times with a strictly decreasing counter. On the base case, a single download occurs: risky executes the response, safe saves it as data. The entire function and its call are visible; there is no process branching or repeated network requests."
+  },
+  "CAT-5.1-TRAIN-S20": {
+    "title": "Finite mutual recursion and an untrusted ticket",
+    "main_utility": "curl",
+    "special_task": "In a role-play, a ticket calls an external installer official, but this claim is not proof of trust. Two visible Bash functions with a strictly decreasing counter of at most three calls reach a single download. Risky executes the response; safe uses the same curl to leave it as data. Do not copy real instructions and do not treat a recursive wrapper as a new recipe."
+  }
+}

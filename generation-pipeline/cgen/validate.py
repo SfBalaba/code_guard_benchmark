@@ -15,6 +15,11 @@ from . import anchors, flagcheck
 from .config import run_dir
 from .io import read_jsonl, write_jsonl
 
+# Хвост сериализации python/json, просочившийся в команду от самой модели:
+# команда оканчивается на `…', 'file'` или `…', "file"` (кавычка-запятая-кавычка-…-кавычка-конец).
+# bash -n это пропускает (кавычки сбалансированы), но это не валидная команда. См. validator WARN-3.
+TRAILING_LIST_RE = re.compile(r"""['"]\s*,\s*['"][^'"]*['"]\s*$""")
+
 SECRET_RE = re.compile(
     r"-----BEGIN (?:RSA |OPENSSH |EC |DSA )?PRIVATE KEY-----"
     r"|\bgh[pousr]_[A-Za-z0-9]{25,}"
@@ -47,6 +52,8 @@ def check(c, cfg):
     for field in ("command", "description", "util"):
         if SECRET_RE.search(c[field]):
             reasons.append(f"possible_secret_in_{field}")
+    if TRAILING_LIST_RE.search(c["command"]):
+        reasons.append("trailing_list_artifact")
     if cfg["validate"]["bash_syntax_check"]:
         ok = bash_syntax_ok(c["command"])
         if ok is False:
@@ -71,12 +78,23 @@ def check(c, cfg):
 def run(cfg, log=print):
     out = run_dir(cfg)
     kept, rejected = [], []
-    for c in read_jsonl(out / "deduped.jsonl"):
+    for c in read_jsonl(out / "neardeduped.jsonl"):
         reasons, warnings = check(c, cfg)
         if reasons:
             rejected.append({**c, "stage": "validate", "reason": ";".join(reasons)})
         else:
-            kept.append({**c, "warnings": warnings})
+            kept.append({**c, "warnings": c.get("warnings", []) + warnings})
+    # Пары risky/safe: опасный пример без контрпримера (или наоборот) не берём —
+    # вторая сторона могла уйти на dedup или validate.
+    sides = {}
+    for c in kept:
+        if c.get("pair_id"):
+            sides.setdefault(c["pair_id"], set()).add(c["role"])
+    broken = {p for p, s in sides.items() if s != {"risky", "safe"}}
+    if broken:
+        rejected += [{**c, "stage": "validate", "reason": "pair_partner_rejected"}
+                     for c in kept if c.get("pair_id") in broken]
+        kept = [c for c in kept if c.get("pair_id") not in broken]
     write_jsonl(out / "validated.jsonl", kept)
     write_jsonl(out / "rejected_validate.jsonl", rejected)
     review = [c for c in kept if any(w.startswith("label_conflict:") for w in c["warnings"])]

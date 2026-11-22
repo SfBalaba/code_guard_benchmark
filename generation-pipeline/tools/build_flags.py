@@ -116,8 +116,10 @@ OVERRIDES = {
     # словарь из netcat-openbsd, но в датасетах nc -e/-c (netcat-traditional, reverse shell) встречается
     # постоянно — это настоящий флаг другой реализации, а не выдумка модели
     "nc": {"short_extra": "ec"},
-    # wget -nv/-np/-nc и в склейке: -mnp = -m -np
-    "wget": {"short_kind": {"n": "optional"}},
+    # wget -nv/-np/-nc и в склейке: -mnp = -m -np.
+    # Флаги с аргументом из man wget (GNU Wget 1.21): парсер man их не распознаёт, без этого
+    # -qO- (самая частая форма curl|sh) давал ложный unknown_flag:wget:--
+    "wget": {"short_kind": {"n": "optional", **{c: "required" for c in "oaeiBtOTwQPUlARDIX"}}},
 }
 
 BASH_DOC = "https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html"
@@ -179,7 +181,8 @@ SHORT_RE = re.compile(
 )
 # двух-четырёхбуквенные опции с одним дефисом: wget -nv/-np, ausearch -ui/-ts
 WORD_RE = re.compile(r"(?<![\w-])-([A-Za-z][A-Za-z0-9]{1,3})(?![\w-])")
-LONG_RE = re.compile(r"(?<![\w-])--([A-Za-z0-9][\w-]*)(\[=|=|\s+[A-Z<][\w>]*)?")
+# точка внутри имени только перед цифрой: --tlsv1.2, --http1.1 (точка в конце предложения не захватывается)
+LONG_RE = re.compile(r"(?<![\w-])--([A-Za-z0-9][\w-]*(?:\.\d[\w-]*)*)(\[=|=|\s+[A-Z<][\w>]*)?")
 
 
 def _plain(line):

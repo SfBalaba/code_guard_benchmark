@@ -95,6 +95,14 @@ class Mock:
 
     def complete(self, messages, call_seed):
         key = hashlib.sha256((messages[-1]["content"] + str(call_seed)).encode()).hexdigest()[:8]
+        if self.mode == "pair":
+            # формат полных сидов: пара risky/safe; каждый 5-й вызов — отказ по контракту сида
+            if int(key, 16) % 5 == 0:
+                return json.dumps({"rejected": True, "reason": "mock-отказ"}, ensure_ascii=False), {"mock": True}
+            side = lambda tag: {"command": f"echo mock-{key}-{tag}", "util": "echo",
+                                "description": f"Плейсхолдер mock {tag}"}
+            return json.dumps({"risky": side("risky"), "safe": side("safe"),
+                               "review": {"mock": True}}, ensure_ascii=False), {"mock": True}
         cands = self._candidates(key)
         if self.mode != "dirty":
             return json.dumps({"candidates": cands}, ensure_ascii=False), {"mock": True}

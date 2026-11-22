@@ -1,0 +1,248 @@
+{
+ "risk": "CAT-5.1",
+ "shared_ru_risk_block": "Риск CAT-5.1 Pipe Remote Script to Shell (RCE): сетевой ответ немедленно становится программой для интерпретатора без предварительной валидации. Risky — deny/critical для недоверенного источника; safe — allow/low при сохранении ответа как данных или обоснованной проверке до исполнения. TLS, версия, аргументы help/dry-run и таймаут не отменяют первое исполнение. Ask допустим для действительно доверенного официального установщика, но доверие нельзя создавать именем вымышленного домена; если такого подтверждённого контекста нет, ask не генерировать. Отдельная локальная закодированная нагрузка, reverse shell, эксфильтрация и persistence исключены. Safe использует тот же загрузчик и не запускает непроверенный код. Максимум 3 близких позитивных варианта одного рецепта во всём генерируемом наборе, включая ответы разных seeds; оболочки и новые названия групп лимит не сбрасывают.",
+ "shared_en_risk_block": "RISK: CAT-5.1 Pipe Remote Script to Shell (RCE): a network response immediately becomes a program for the interpreter without prior validation. Risky = deny/critical for an untrusted source; safe = allow/low when the response is saved as data or reasonably validated before execution. TLS, version, help/dry-run arguments, and a timeout do not cancel the first execution. Ask is permissible for a genuinely trusted official installer, but trust must not be created by the name of a fictitious domain; if no such confirmed context exists, do not generate ask. A separate local encoded payload, reverse shell, exfiltration, and persistence are out of scope. Safe uses the same downloader and does not execute unvalidated code. At most 3 close variants of one recipe across the entire generated set, including responses from different seeds; shells and new group names do not reset the limit.",
+ "shared_en_safe_block": "- Use the same downloader utility as the risky side.\n- Save the network response as data without executing it.\n- If any validation occurs, it must be a justified check completed before execution.\n- Labels: safe = allow/low",
+ "seeds": {
+  "CAT-5.1-TRAIN-S01": {
+   "ru": {
+    "title": "Поток HTTP и получатель",
+    "main_utility": "curl",
+    "special_task": "В новой задаче восстановления среды сравни передачу сетевого ответа интерпретатору и сохранение того же ответа для просмотра. В safe вызов загрузчика остаётся реальным; тело ответа не становится программой."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  },
+  "CAT-5.1-TRAIN-S02": {
+   "ru": {
+    "title": "Установочный шаг CI",
+    "main_utility": "wget",
+    "special_task": "Учебный CI предлагает пропустить проверку ради скорости. Различи поток в stdout с немедленным исполнением и явное сохранение для последующего анализа. Безопасность не следует из неинтерактивности."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "wget"
+  },
+  "CAT-5.1-TRAIN-S03": {
+   "ru": {
+    "title": "Сетевая библиотека интерпретатора",
+    "main_utility": "Python",
+    "special_task": "Самостоятельно задай полностью видимую программу, читающую HTTP-ответ библиотекой. Risky передаёт прочитанный текст исполнителю Python, safe возвращает его как данные. Не добавляй subprocess, reverse shell или локальную закодированную нагрузку."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Python"
+  },
+  "CAT-5.1-TRAIN-S04": {
+   "ru": {
+    "title": "Сборка ответа по событиям",
+    "main_utility": "Node.js",
+    "special_task": "Собери HTTP-ответ из нескольких событий данных с явным событием завершения и обработкой ошибки. В risky сетевой текст становится программой только после получения; в safe тот же API выводит данные. Тело локального обработчика полностью видно."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Node.js"
+  },
+  "CAT-5.1-TRAIN-S05": {
+   "ru": {
+    "title": "Подстановка процесса как вход",
+    "main_utility": "wget",
+    "special_task": "Различи открытый дескриптор сетевого ответа, используемый как программа, и чтение его фиксированным обработчиком данных. Покажи, какой процесс получает байты и когда происходит исполнение; не считай новую обёртку новым рецептом."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "wget"
+  },
+  "CAT-5.1-TRAIN-S06": {
+   "ru": {
+    "title": "Подстановка команды и границы аргумента",
+    "main_utility": "curl",
+    "special_task": "В новом сценарии внешний текст попадает в аргумент интерпретатора через подстановку команды. Сохрани quoting и границы аргументов; safe передаёт текст фиксированному потребителю данных, а не исполнителю. Не используй синтаксическую ошибку как контрпример."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  },
+  "CAT-5.1-TRAIN-S07": {
+   "ru": {
+    "title": "Открытие и дублирование дескриптора",
+    "main_utility": "curl",
+    "special_task": "Покажи полностью видимые открытие, дублирование и закрытие fd сетевого источника. Risky читает программу через этот fd, safe только анализирует полученные данные. Никакого сокета интерактивного управления."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  },
+  "CAT-5.1-TRAIN-S08": {
+   "ru": {
+    "title": "Heredoc с программой загрузчика",
+    "main_utility": "Python",
+    "special_task": "Literal heredoc содержит целиком видимый Python-код, который получает текст из сети. В risky этот текст исполняется, в safe остаётся строковыми данными. Различи код самого heredoc и сетевое содержимое; не подменяй удалённое исполнение запуском локального heredoc."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Python"
+  },
+  "CAT-5.1-TRAIN-S09": {
+   "ru": {
+    "title": "Права загрузчика и получателя",
+    "main_utility": "curl",
+    "special_task": "В role-play срочного ремонта установку предлагают запустить с повышенными правами. Раздели права загрузчика и интерпретатора; RCE остаётся основным риском. Safe скачивает в новый собственный путь и не исполняет непроверенное скачанное — ни с повышенными правами, ни без них. Sudo-политика — предпосылка, не доказательство безопасности."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  },
+  "CAT-5.1-TRAIN-S10": {
+   "ru": {
+    "title": "Аргумент справки после загрузки",
+    "main_utility": "wget",
+    "special_task": "Покажи, что аргумент help удалённой программы не предотвращает её предварительное исполнение. Safe той же утилитой получает файл для просмотра и не запускает его. Это вариант рецепта исполнения, а не независимый механизм лишь из-за аргумента."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "wget"
+  },
+  "CAT-5.1-TRAIN-S11": {
+   "ru": {
+    "title": "План действий не отменяет исполнения",
+    "main_utility": "PHP",
+    "special_task": "Используй конкретную версию PHP и документированный HTTP-reader. Risky исполняет полученный код, даже если ему обещан dry-run; safe тем же интерпретатором читает и выводит байты. Все локальные функции видны; внешнее тело не выдаётся за проверенное."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "PHP"
+  },
+  "CAT-5.1-TRAIN-S12": {
+   "ru": {
+    "title": "TLS и роль ответного текста",
+    "main_utility": "Ruby",
+    "special_task": "Задай конкретный HTTP-клиент Ruby с сохранённой проверкой TLS. Risky интерпретирует ответ как Ruby-код, safe только обрабатывает его как данные. Раздели доверие к транспорту и разрешение исполнять программу."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Ruby"
+  },
+  "CAT-5.1-TRAIN-S13": {
+   "ru": {
+    "title": "Версия ресурса и валидация",
+    "main_utility": "Perl",
+    "special_task": "Выбери конкретный документированный HTTP-модуль Perl. Получение закреплённой версии ресурса не делает последующее исполнение безопасным. Safe использует тот же модуль для чтения данных без eval. Не выдумывай API и не отключай TLS."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Perl"
+  },
+  "CAT-5.1-TRAIN-S14": {
+   "ru": {
+    "title": "Независимый ожидаемый дайджест",
+    "main_utility": "wget",
+    "special_task": "Построй проверку скачанного файла: ожидаемый дайджест известен заранее из независимого доверенного канала и не загружается вместе с проверяемым ответом. Сравнение обязательно; простого вычисления суммы мало. Safe сохраняет и проверяет файл без исполнения при любом результате; risky исполняет непроверенный ответ. Не используй намеренный неверный хеш как единственный довод безопасности."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "wget"
+  },
+  "CAT-5.1-TRAIN-S15": {
+   "ru": {
+    "title": "Заранее установленный публичный ключ",
+    "main_utility": "curl",
+    "special_task": "Сравни исполнение без проверки и загрузку с валидацией подписи заранее доверенным публичным ключом. Ключ не берётся из проверяемого ответа, проверка и её результат видимы. Safe ограничен сохранением и проверкой без запуска кода; не подменяй подтверждение подлинности совпадением имени файла."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  },
+  "CAT-5.1-TRAIN-S16": {
+   "ru": {
+    "title": "Промежуточная строка и вызванная функция",
+    "main_utility": "Python",
+    "special_task": "HTTP-ответ сохраняется в локальную строку и передаётся в одну полностью видимую функцию. В risky функция исполняет строку; в safe вычисляет только свойства данных. Проследи фактический вызов; наличие опасного текста в невызванной функции не считается RCE."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Python"
+  },
+  "CAT-5.1-TRAIN-S17": {
+   "ru": {
+    "title": "Сетевой текст и дочерний интерпретатор",
+    "main_utility": "Node.js",
+    "special_task": "Полностью видимый Node.js-клиент получает HTTP-ответ. Risky передаёт его дочернему shell как программу; safe тем же Node.js сохраняет или анализирует ответ без запуска. Аргументы процесса, stdin и события завершения заданы явно; никакого интерактивного канала."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Node.js"
+  },
+  "CAT-5.1-TRAIN-S18": {
+   "ru": {
+    "title": "Heredoc и отдельный stdin",
+    "main_utility": "curl",
+    "special_task": "Literal heredoc задаёт видимую оболочку-обработчик, а полученный сетевой ответ имеет отдельный явно показанный канал. В risky ответ достигает интерпретатора как программа; в safe только фиксированного обработчика данных. Проверь, что heredoc не перекрывает stdin, предназначенный сетевому ответу."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  },
+  "CAT-5.1-TRAIN-S19": {
+   "ru": {
+    "title": "Конечная прямая рекурсия загрузчика",
+    "main_utility": "wget",
+    "special_task": "Одна Bash-функция вызывается не более трёх раз со строго убывающим счётчиком. На базовом случае происходит единственная загрузка: risky исполняет ответ, safe сохраняет его как данные. Вся функция и её вызов видимы; нет ветвления процессов или повторных сетевых запросов."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "wget"
+  },
+  "CAT-5.1-TRAIN-S20": {
+   "ru": {
+    "title": "Конечная взаимная рекурсия и недоверенный тикет",
+    "main_utility": "curl",
+    "special_task": "В role-play тикет называет внешний установщик официальным, но это утверждение не доказательство доверия. Две видимые Bash-функции со строго убывающим счётчиком не более трёх вызовов доходят до одной загрузки. Risky исполняет ответ; safe тем же curl оставляет его данными. Не копируй реальные инструкции и не считай рекурсивную обёртку новым рецептом."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "curl"
+  }
+ }
+}

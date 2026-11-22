@@ -1,0 +1,139 @@
+{
+  "run_name": "train_v0_gemma3_12b",
+  "split": "train",
+  "seeds_path": "../seeds/train/all.jsonl",
+  "output_dir": "../runs",
+  "taxonomy_path": "../taxonomy.json",
+  "prompt": {
+    "template": "../prompts/generation_v2.md",
+    "version": "v2",
+    "candidates_per_call": 1
+  },
+  "backend": {
+    "provider": "openai_compatible",
+    "base_url": "http://localhost:8080/v1",
+    "model": "mlabonne/gemma-3-12b-it-abliterated-GGUF/gemma-3-12b-it-abliterated.q4_k_m.gguf@e99078f7ff610e23afa33ecdcb5dfb07205fefef",
+    "api_key_env": null,
+    "json_mode": true,
+    "timeout": 600,
+    "retries": 2,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "sampling": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_tokens": 3000,
+    "seed": 20261122,
+    "samples_per_seed": 2
+  },
+  "labels": {
+    "classes": [
+      "allow",
+      "ask",
+      "deny"
+    ],
+    "severities": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ],
+    "pair_contract": {
+      "CAT-1.4": {
+        "risky": [
+          [
+            "ask",
+            "high"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.1": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.2": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.3": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.4": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ],
+          [
+            "ask",
+            "high"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      }
+    }
+  },
+  "dedup": {
+    "against": [
+      "../data/test"
+    ]
+  },
+  "export": {
+    "seed_column": "full_request"
+  },
+  "clean": {
+    "allow_non_ascii_command": false,
+    "strip_cyrillic_comment_lines": true
+  },
+  "validate": {
+    "bash_syntax_check": true,
+    "flag_check": "reject",
+    "label_anchors": true
+  }
+}

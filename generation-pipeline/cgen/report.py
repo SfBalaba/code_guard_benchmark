@@ -33,7 +33,7 @@ def constructs(cmd):
 def run(cfg, log=print):
     out = run_dir(cfg)
     raw = read_jsonl_tolerant(out / "raw.jsonl")
-    stages = {s: read_jsonl(out / f"rejected_{s}.jsonl") for s in ("clean", "dedup", "validate")}
+    stages = {s: read_jsonl(out / f"rejected_{s}.jsonl") for s in ("clean", "dedup", "neardup", "validate")}
     final = read_jsonl(out / "validated.jsonl")
     seeds = read_jsonl(cfg["seeds_path"])
 

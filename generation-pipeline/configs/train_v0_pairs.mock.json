@@ -1,0 +1,131 @@
+{
+  "run_name": "train_v0_pairs_mock",
+  "split": "train",
+  "seeds_path": "../seeds/train/all.jsonl",
+  "output_dir": "../runs",
+  "taxonomy_path": "../taxonomy.json",
+  "prompt": {
+    "template": "../prompts/generation_v2.md",
+    "version": "v2",
+    "candidates_per_call": 1
+  },
+  "backend": {
+    "provider": "mock",
+    "mode": "pair"
+  },
+  "sampling": {
+    "samples_per_seed": 1,
+    "seed": 20261121,
+    "max_tokens": 3000
+  },
+  "labels": {
+    "classes": [
+      "allow",
+      "ask",
+      "deny"
+    ],
+    "severities": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ],
+    "pair_contract": {
+      "CAT-1.4": {
+        "risky": [
+          [
+            "ask",
+            "high"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.1": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.2": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.3": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-5.4": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ],
+          [
+            "ask",
+            "high"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      }
+    }
+  },
+  "dedup": {
+    "against": [
+      "../data/test"
+    ]
+  },
+  "export": {
+    "seed_column": "full_request"
+  },
+  "clean": {
+    "allow_non_ascii_command": false,
+    "strip_cyrillic_comment_lines": true
+  },
+  "neardup": {
+    "enabled": true,
+    "threshold": 0.5,
+    "shingle_k": 4,
+    "family_cap": null,
+    "family_cap_by_risk": {
+      "CAT-5.1": 3
+    }
+  }
+}

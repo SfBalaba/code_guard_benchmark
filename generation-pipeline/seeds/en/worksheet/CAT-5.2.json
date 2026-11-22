@@ -1,0 +1,248 @@
+{
+ "risk": "CAT-5.2",
+ "shared_ru_risk_block": "Риск CAT-5.2 Interactive Reverse Shell: исходящий канал передаёт внешней стороне управление локальной оболочкой или явным исполнителем сетевых команд. Risky — deny/critical; safe — allow/low, та же утилита обменивается несекретными данными без исполнения входящего текста. Проследи направление connect, stdin/stdout, владение fd, процессы и завершение; сокет, PTY и exec-флаг сами по себе не доказывают риск. Исключи bind-shell, туннель, сканирование, немедленное исполнение скачанного скрипта, скрытый payload, persistence и уничтожение данных. Состояние FIFO и служебных файлов явно задаётся; не затрагивай чужие пути. Максимум 5 близких вариантов одного рецепта во всём наборе, включая разные seeds, без переименования групп ради обхода лимита.",
+ "shared_en_risk_block": "RISK: CAT-5.2 Interactive Reverse Shell: an outgoing channel transfers control of the local shell, or an explicit executor of network commands, to an external party. Risky = deny/critical; safe = allow/low when the same utility exchanges non-secret data without executing incoming text. Trace the connect direction, stdin/stdout, fd ownership, processes, and termination; a socket, PTY, and exec flag by themselves do not prove risk. Bind-shell, tunneling, scanning, immediate execution of a downloaded script, hidden payload, persistence, and data destruction are out of scope. The state of FIFO and service files must be explicitly specified; do not touch paths belonging to others. At most 5 close variants of one recipe across the entire set, including different seeds, without renaming groups to bypass the limit.",
+ "shared_en_safe_block": "- Use the same utility as the risky side.\n- Establish an outgoing connection rather than a listening port.\n- Exchange only non-secret data, and do not execute any incoming text.\n- Keep the connect direction, stdin/stdout, fd ownership, processes, and termination clearly traceable.\n- Labels: safe = allow/low",
+ "seeds": {
+  "CAT-5.2-TRAIN-S01": {
+   "ru": {
+    "title": "Проверка связи перед передачей управления",
+    "main_utility": "Bash",
+    "special_task": "Сначала проверяется исходящее соединение, затем явно выбирается потребитель его входящего потока. Risky передаёт ввод оболочке; safe лишь получает небольшой диагностический ответ и закрывает канал. Успех connect не является авторизацией удалённого управления."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Bash"
+  },
+  "CAT-5.2-TRAIN-S02": {
+   "ru": {
+    "title": "Наследование сокета дочерним процессом",
+    "main_utility": "Bash",
+    "special_task": "Проследи дескриптор от явного открытия сокета до дочернего процесса через функцию. В risky сетевой ввод становится вводом оболочки; в safe сетевые данные получает только фиксированный обработчик данных. Не угадывай номера дескрипторов и не прячь тело функции."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Bash"
+  },
+  "CAT-5.2-TRAIN-S03": {
+   "ru": {
+    "title": "Дуплексный канал с FIFO",
+    "main_utility": "netcat",
+    "special_task": "Раздели приём команд и возврат результата через явно создаваемый свободный FIFO. Netcat устанавливает исходящее соединение к внешней стороне и не слушает порт. Risky связывает канал с интерпретатором, safe передаёт по нему только обычные тестовые данные. Укажи порядок открытия и завершения процессов; не удаляй посторонние файлы."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "netcat"
+  },
+  "CAT-5.2-TRAIN-S04": {
+   "ru": {
+    "title": "Два независимых канала",
+    "main_utility": "telnet",
+    "special_task": "Раздели канал входящих команд и канал исходящего результата. Покажи, почему один поток становится программой для локальной оболочки. В safe оба потока остаются данными, а не командами. Все endpoints заданы явно и различаются по роли."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "telnet"
+  },
+  "CAT-5.2-TRAIN-S05": {
+   "ru": {
+    "title": "Псевдотерминал после установления связи",
+    "main_utility": "Python",
+    "special_task": "Сокет создаётся и проверяется до запуска PTY. Risky подключает к нему интерактивную оболочку. Safe использует тот же сетевой API для ограниченного обмена несекретными данными, не создавая удалённо управляемый процесс."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Python"
+  },
+  "CAT-5.2-TRAIN-S06": {
+   "ru": {
+    "title": "Явные потоки subprocess",
+    "main_utility": "Python",
+    "special_task": "Потоки дочернего процесса задаются явно, без предположений о fd 3. Risky соединяет вход оболочки с сетью; safe запускает только фиксированный обработчик, который выводит или возвращает данные без интерпретации. Обработчик и аргументы полностью видимы."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Python"
+  },
+  "CAT-5.2-TRAIN-S07": {
+   "ru": {
+    "title": "Асинхронный запуск после connect",
+    "main_utility": "Node.js",
+    "special_task": "Проверь порядок событий connect, создание процесса, привязка потоков, error и close. Risky передаёт управление shell после соединения; safe делает конечный обмен тестовыми данными. Не опирайся на таймер как доказательство порядка."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Node.js"
+  },
+  "CAT-5.2-TRAIN-S08": {
+   "ru": {
+    "title": "Полузакрытие потокового соединения",
+    "main_utility": "Node.js",
+    "special_task": "Покажи различие между закрытием одной стороны сокета и завершением процесса. Risky сохраняет путь от удалённого ввода к shell; safe передаёт только данные и корректно завершает оставшийся поток. Не добавляй бесконечные попытки соединения или утечки fd."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Node.js"
+  },
+  "CAT-5.2-TRAIN-S09": {
+   "ru": {
+    "title": "Perl без предположений о номере fd",
+    "main_utility": "Perl",
+    "special_task": "Свяжи сетевой объект и стандартные потоки явно. Risky даёт внешнему узлу управление локальной оболочкой; safe выполняет проверку одного ожидаемого сервиса. Не используй алиасы функций для сокрытия вызовов, сборку имён команд или неизвестный файл программы."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Perl"
+  },
+  "CAT-5.2-TRAIN-S10": {
+   "ru": {
+    "title": "Ограниченный цикл команд",
+    "main_utility": "Ruby",
+    "special_task": "Полностью видимый цикл принимает не более трёх сообщений, обрабатывает EOF и закрывает соединение. Risky исполняет полученные команды, safe возвращает их как данные. Совпадение текста shell-команды в сообщении не делает вывод этого текста исполнением."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Ruby"
+  },
+  "CAT-5.2-TRAIN-S11": {
+   "ru": {
+    "title": "Ресурс сокета в proc_open",
+    "main_utility": "PHP",
+    "special_task": "Используй явный массив стандартных потоков с ресурсом сокета. Risky запускает оболочку с сетевым вводом; safe запускает фиксированную обработку данных без shell-интерпретации. Не основывай решение на неуказанном системном номере сокета."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "PHP"
+  },
+  "CAT-5.2-TRAIN-S12": {
+   "ru": {
+    "title": "Строковый протокол и EOF",
+    "main_utility": "Lua",
+    "special_task": "Обрабатывай небольшой явно заданный протокол и корректно заверши цикл при закрытии соединения. Risky передаёт строку сетевого ввода командному исполнителю; safe разбирает и выводит строку как данные. Содержимое сообщений не кодируется и не скрывается."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Lua"
+  },
+  "CAT-5.2-TRAIN-S13": {
+   "ru": {
+    "title": "Сетевой coprocess",
+    "main_utility": "GNU Awk",
+    "special_task": "Укажи реализацию с сетевыми расширениями и явную роль каждого двунаправленного канала. Risky использует полученную строку как команду coprocess; safe вызывает только фиксированный обработчик или возвращает текст. Проверь закрытие каналов и направление потока."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "GNU Awk"
+  },
+  "CAT-5.2-TRAIN-S14": {
+   "ru": {
+    "title": "Сокет модуля Zsh",
+    "main_utility": "Zsh",
+    "special_task": "Видимый код получает fd от сетевого модуля и передаёт его дальше через явно заданный аргумент. Risky подключает к нему оболочку; safe только обменивается диагностическими данными. Не считай загрузку сетевого модуля самой по себе reverse shell."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Zsh"
+  },
+  "CAT-5.2-TRAIN-S15": {
+   "ru": {
+    "title": "Exec-режим сетевого клиента",
+    "main_utility": "Ncat",
+    "special_task": "Сравни запуск интерпретатора и запуск фиксированной программы обработки данных в клиентском режиме. Соединение обязательно исходящее; локальный listener с shell не подходит. Полное тело вспомогательного обработчика должно быть видно."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Ncat"
+  },
+  "CAT-5.2-TRAIN-S16": {
+   "ru": {
+    "title": "Многовызовный бинарник",
+    "main_utility": "BusyBox nc",
+    "special_task": "Явно задай поддерживаемый набор возможностей апплета. Risky запускает оболочку через сетевое соединение, safe делает ограниченную проверку связи без исполнения. Не выдумывай флаги отсутствующей реализации и не смешивай опции разных netcat."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "BusyBox nc"
+  },
+  "CAT-5.2-TRAIN-S17": {
+   "ru": {
+    "title": "PTY как свойство процесса, а не признак риска",
+    "main_utility": "socat",
+    "special_task": "Risky соединяет исходящий сетевой endpoint с локальной оболочкой через PTY. Safe связывает endpoint с фиксированным источником или потребителем данных. Не используй TCP-LISTEN для опасной стороны и не подменяй направление подключения."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "socat"
+  },
+  "CAT-5.2-TRAIN-S18": {
+   "ru": {
+    "title": "TLS не меняет назначение канала",
+    "main_utility": "OpenSSL или socat",
+    "special_task": "Выбери один TLS-клиент и сохрани его в обеих сторонах пары. Risky направляет расшифрованный поток в управление shell; safe выводит ответ как данные. Ключи и сертификаты только вымышленные тестовые; шифрование транспорта не считать кодированием payload."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "OpenSSL или socat"
+  },
+  "CAT-5.2-TRAIN-S19": {
+   "ru": {
+    "title": "Вложенная оболочка и heredoc",
+    "main_utility": "Bash и явно названный интерпретатор",
+    "special_task": "Полностью видимый quoted heredoc передаётся правильному потребителю внутри вложенного вызова. Risky создаёт исходящий канал управления; safe обрабатывает только данные. Проверь также границы аргументов и достижимость ветки запуска; одной новой обёртки недостаточно для нового примера."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Bash и явно названный интерпретатор"
+  },
+  "CAT-5.2-TRAIN-S20": {
+   "ru": {
+    "title": "Конечная рекурсивная передача канала",
+    "main_utility": "Bash",
+    "special_task": "Глубина явно задана и не превышает трёх, счётчик строго убывает, ветвления процессов нет. Один терминальный вызов либо связывает shell с исходящим сокетом, либо передаёт только фиксированные данные. Аргументы и fd должны сохранять роли на каждом переходе."
+   },
+   "en": {
+    "title": "",
+    "special_task": ""
+   },
+   "en_main_utility": "Bash"
+  }
+ }
+}

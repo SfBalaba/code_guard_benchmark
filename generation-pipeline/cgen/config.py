@@ -17,6 +17,7 @@ DEFAULTS = {
         "max_tokens": 1024,
         "seed": 20261103,              # числовой random seed модели (не путать с seed-промптом)
         "samples_per_seed": 1,         # сколько вызовов модели на один seed
+        "samples_per_seed_by_risk": {},  # переопределение числа семплов по risk (двухуровневый сэмплинг)
     },
     "seeds": {"allowed_statuses": ["approved_for_generation"]},
     "labels": {
@@ -26,8 +27,18 @@ DEFAULTS = {
     "clean": {
         "max_command_chars": 2000,
         "allow_non_ascii_command": False,
+        "strip_cyrillic_comment_lines": False,  # вырезать строки-комментарии с кириллицей (# TASK/# FS из сидов)
     },
     "dedup": {"against": []},          # пути к CSV/JSONL, команды из которых нельзя повторять (например, test)
+    "neardup": {                       # лексический near-dup (шаг 4b); эмбеддинги можно добавить позже
+        "enabled": False,
+        "threshold": 0.5,              # Jaccard по символьным k-граммам; >= порога -> near-dup (0.5 разделяет близнецов и разные рецепты)
+        "shingle_k": 4,
+        "family_cap": None,            # максимум оставленных пар с одним family_id (None — без лимита)
+        "family_cap_by_risk": {},      # переопределение cap по risk, напр. {"CAT-5.1": 3}
+        "against_test": False,         # near-dup ПРОТИВ команд из dedup.against (не только точные совпадения)
+        "test_threshold": 0.5,         # порог Jaccard для near-leak train↔test
+    },
     "validate": {
         "bash_syntax_check": True,
         "flag_check": "reject",        # "off" | "warn" | "reject": выдуманные флаги по словарю flags/
@@ -83,8 +94,21 @@ def check_config(cfg):
         errors.append("labels.classes пуст")
     if cfg["validate"]["flag_check"] not in ("off", "warn", "reject"):
         errors.append("validate.flag_check: 'off', 'warn' или 'reject'")
-    if cfg["export"]["seed_column"] not in ("prompt", "seed_id"):
-        errors.append("export.seed_column: 'prompt' или 'seed_id'")
+    if cfg["export"]["seed_column"] not in ("prompt", "seed_id", "full_request"):
+        errors.append("export.seed_column: 'prompt', 'seed_id' или 'full_request'")
+    for risk, sides in cfg["labels"].get("pair_contract", {}).items():
+        for role in ("risky", "safe"):
+            pairs = sides.get(role) or []
+            if not pairs:
+                errors.append(f"labels.pair_contract.{risk}.{role}: пусто")
+            for cls, sev in pairs:
+                if cls not in cfg["labels"]["classes"] or sev not in cfg["labels"]["severities"]:
+                    errors.append(f"labels.pair_contract.{risk}.{role}: {cls}/{sev} вне labels.classes/severities")
+    if cfg["split"] == "train" and cfg["backend"].get("provider") != "mock" and not cfg["dedup"]["against"]:
+        errors.append("split=train с настоящей моделью: dedup.against пуст — укажи все test-CSV (антиутечка)")
+    missing = [p for p in cfg["dedup"]["against"] if not Path(p).exists()]
+    if missing:
+        errors.append(f"dedup.against: нет файлов/папок {missing} (выгрузи test: tools/pull_test_data.py)")
     if errors:
         raise ValueError("Ошибки конфига:\n  - " + "\n  - ".join(errors))
 

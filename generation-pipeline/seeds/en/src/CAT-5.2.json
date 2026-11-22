@@ -1,0 +1,102 @@
+{
+  "CAT-5.2-TRAIN-S01": {
+    "title": "Connectivity check before handing over control",
+    "main_utility": "Bash",
+    "special_task": "First an outbound connection is checked, then a consumer of its inbound stream is explicitly chosen. Risky passes input to a shell; safe only receives a small diagnostic response and closes the channel. A successful connect is not authorization for remote control."
+  },
+  "CAT-5.2-TRAIN-S02": {
+    "title": "Socket inheritance by a child process",
+    "main_utility": "Bash",
+    "special_task": "Trace the descriptor from explicit socket opening to a child process through a function. In risky, network input becomes shell input; in safe, network data is received only by a fixed data handler. Do not guess descriptor numbers and do not hide the function body."
+  },
+  "CAT-5.2-TRAIN-S03": {
+    "title": "Duplex channel with a FIFO",
+    "main_utility": "netcat",
+    "special_task": "Separate command reception and result return via an explicitly created free FIFO. Netcat establishes an outbound connection to the external side and does not listen on a port. Risky connects the channel to an interpreter; safe sends only ordinary test data through it. Specify the order of opening and terminating processes; do not delete unrelated files."
+  },
+  "CAT-5.2-TRAIN-S04": {
+    "title": "Two independent channels",
+    "main_utility": "telnet",
+    "special_task": "Separate the inbound command channel and the outbound result channel. Show why one stream becomes a program for the local shell. In safe, both streams remain data, not commands. All endpoints are specified explicitly and differ by role."
+  },
+  "CAT-5.2-TRAIN-S05": {
+    "title": "Pseudoterminal after connection establishment",
+    "main_utility": "Python",
+    "special_task": "The socket is created and checked before the PTY is started. Risky attaches an interactive shell to it. Safe uses the same network API for limited exchange of non-secret data without creating a remotely controlled process."
+  },
+  "CAT-5.2-TRAIN-S06": {
+    "title": "Explicit subprocess streams",
+    "main_utility": "Python",
+    "special_task": "The child process streams are specified explicitly, without assumptions about fd 3. Risky connects the shell's input to the network; safe runs only a fixed handler that outputs or returns data without interpretation. The handler and arguments are fully visible."
+  },
+  "CAT-5.2-TRAIN-S07": {
+    "title": "Asynchronous launch after connect",
+    "main_utility": "Node.js",
+    "special_task": "Verify the order of connect, process creation, stream binding, error, and close events. Risky hands control to a shell after connection; safe performs a finite exchange of test data. Do not rely on a timer as proof of order."
+  },
+  "CAT-5.2-TRAIN-S08": {
+    "title": "Half-closing a stream connection",
+    "main_utility": "Node.js",
+    "special_task": "Show the difference between closing one side of a socket and terminating the process. Risky preserves the path from remote input to a shell; safe transmits only data and correctly terminates the remaining stream. Do not add endless connection retries or fd leaks."
+  },
+  "CAT-5.2-TRAIN-S09": {
+    "title": "Perl without assumptions about fd numbers",
+    "main_utility": "Perl",
+    "special_task": "Bind the network object and standard streams explicitly. Risky gives the external node control of a local shell; safe performs a check of one expected service. Do not use function aliases to hide calls, command-name construction, or an unknown program file."
+  },
+  "CAT-5.2-TRAIN-S10": {
+    "title": "Bounded command loop",
+    "main_utility": "Ruby",
+    "special_task": "A fully visible loop accepts at most three messages, handles EOF, and closes the connection. Risky executes the received commands; safe returns them as data. A matching shell-command text in a message does not make outputting that text execution."
+  },
+  "CAT-5.2-TRAIN-S11": {
+    "title": "Socket resource in proc_open",
+    "main_utility": "PHP",
+    "special_task": "Use an explicit array of standard streams with a socket resource. Risky launches a shell with network input; safe launches fixed data processing without shell interpretation. Do not base the decision on an unspecified system socket number."
+  },
+  "CAT-5.2-TRAIN-S12": {
+    "title": "String protocol and EOF",
+    "main_utility": "Lua",
+    "special_task": "Handle a small explicitly defined protocol and correctly terminate the loop when the connection closes. Risky passes the network input string to a command executor; safe parses and outputs the string as data. Message contents are not encoded or hidden."
+  },
+  "CAT-5.2-TRAIN-S13": {
+    "title": "Network coprocess",
+    "main_utility": "GNU Awk",
+    "special_task": "Specify the implementation with network extensions and the explicit role of each bidirectional channel. Risky uses the received string as a coprocess command; safe calls only a fixed handler or returns text. Verify channel closure and flow direction."
+  },
+  "CAT-5.2-TRAIN-S14": {
+    "title": "Zsh module socket",
+    "main_utility": "Zsh",
+    "special_task": "Visible code obtains an fd from the network module and passes it onward through an explicitly specified argument. Risky attaches a shell to it; safe only exchanges diagnostic data. Do not consider loading a network module by itself a reverse shell."
+  },
+  "CAT-5.2-TRAIN-S15": {
+    "title": "Exec mode of a network client",
+    "main_utility": "Ncat",
+    "special_task": "Compare launching an interpreter versus launching a fixed data-processing program in client mode. The connection must be outbound; a local listener with a shell is not acceptable. The full body of the auxiliary handler must be visible."
+  },
+  "CAT-5.2-TRAIN-S16": {
+    "title": "Multi-call binary",
+    "main_utility": "BusyBox nc",
+    "special_task": "Explicitly specify the supported feature set of the applet. Risky launches a shell over a network connection; safe performs a limited connectivity check without execution. Do not invent flags for a non-existent implementation and do not mix options from different netcats."
+  },
+  "CAT-5.2-TRAIN-S17": {
+    "title": "PTY as a process property, not a risk indicator",
+    "main_utility": "socat",
+    "special_task": "Risky connects an outbound network endpoint to a local shell via a PTY. Safe binds the endpoint to a fixed data source or consumer. Do not use TCP-LISTEN for the dangerous side and do not swap the connection direction."
+  },
+  "CAT-5.2-TRAIN-S18": {
+    "title": "TLS does not change the channel's purpose",
+    "main_utility": "OpenSSL or socat",
+    "special_task": "Choose one TLS client and keep it on both sides of the pair. Risky directs the decrypted stream to shell control; safe outputs the response as data. Keys and certificates are fictional test values only; do not treat transport encryption as payload encoding."
+  },
+  "CAT-5.2-TRAIN-S19": {
+    "title": "Nested shell and heredoc",
+    "main_utility": "Bash and an explicitly named interpreter",
+    "special_task": "A fully visible quoted heredoc is passed to the correct consumer inside a nested call. Risky creates an outbound control channel; safe processes only data. Also verify argument boundaries and reachability of the launch branch; a single new wrapper is not enough for a new example."
+  },
+  "CAT-5.2-TRAIN-S20": {
+    "title": "Finite recursive channel passing",
+    "main_utility": "Bash",
+    "special_task": "The depth is explicitly set and does not exceed three, the counter strictly decreases, and there is no process branching. One terminal call either binds a shell to an outbound socket or passes only fixed data. Arguments and fds must preserve their roles at every transition."
+  }
+}

@@ -11,3 +11,9 @@ __pycache__/
 
 # Результаты прогонов (производные данные, разметка не gold)
 generation-pipeline/runs/
+
+# Выгрузки test/real-команд для dedup.against — не коммитить
+generation-pipeline/data/
+
+# Черновик входа филлера, не коммитить
+generation-pipeline/returned.json

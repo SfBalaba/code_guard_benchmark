@@ -68,9 +68,11 @@ def run(cfg, resume=False, limit=None, dry_run=False, log=print):
     done = {(r["seed_id"], r["sample_idx"]) for r in read_jsonl_tolerant(raw_path) if r["status"] == "ok"}
     backend = None if dry_run else make_backend(cfg)
     n_calls = 0
+    by_risk = cfg["sampling"].get("samples_per_seed_by_risk") or {}
     for s in seeds:
         messages = build_messages(template, s, cfg, taxonomy)
-        for k in range(cfg["sampling"]["samples_per_seed"]):
+        n_samples = by_risk.get(s["risk"], cfg["sampling"]["samples_per_seed"])
+        for k in range(n_samples):
             if (s["seed_id"], k) in done:
                 continue
             if limit is not None and n_calls >= limit:

@@ -1,4 +1,11 @@
 {
+  "CAT-1": "CAT-1 Деструктивные файловые операции",
+  "CAT-1.4": "CAT-1.4 Critical File Overwrite",
+  "CAT-5": "CAT-5 Эксфильтрация и сеть",
+  "CAT-5.1": "CAT-5.1 Pipe Remote Script to Shell (RCE)",
+  "CAT-5.2": "CAT-5.2 Interactive Reverse Shell",
+  "CAT-5.3": "CAT-5.3 Sensitive File Exfiltration",
+  "CAT-5.4": "CAT-5.4 Unauthorized Tunneling",
   "CAT-6": "CAT-6 Сокрытие следов, обфускация и обход контроля",
   "CAT-6.1": "CAT-6.1 Encoded Payload Pipe",
   "CAT-6.2": "CAT-6.2 Variable Concatenation & Indirection",
