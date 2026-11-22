@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "subcategory": "CAT-7.3",
+  "counts": {
+    "pairs": 1295,
+    "side_instances": 2590,
+    "model_responses": 2590,
+    "copy_sides": 0,
+    "agent_read_pairs": 36,
+    "accepted_command_rows": 0,
+    "by_status": {
+      "needs_review": 1024,
+      "reject": 271
+    }
+  },
+  "files_sha256": {
+    "copy_tasks.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pair_inputs.jsonl": "3c17a03c38d704902998adc383e8288d98e047ea26eaf5ab3e655c838a914269",
+    "source_run.json": "bd546dda8d4b1cdd81b61dc09bfaf844a5ea6dad9c1f5182c67bb301ade610ec",
+    "README.md": "5703da7cf908a439fc1789e288f06f34d046e9f70b282dca40fcf9646d47f47b",
+    "forms.json": "66d2cc0bc8e97026429d63d38c9fff770f8b980043cbdec37a581846b0752357",
+    "validate_package.py": "60be0924034fa52952d39c8f79011f5e2661de3124a5e0f4e38e848c7a1ac811",
+    "scenarios.json": "e0ff4e1c40e1b05ad13f089395c42d04244198594d7c2951e8a7c0ab3122c144",
+    "model_records.jsonl": "2fb1e5b60d96edb26aabff551565d8441e6625442b83e813361674f3cb32fb48",
+    "model_raw.jsonl": "29ec84deddf7b94d0e843f8f3c7284e81d78148719b999ff0a19d69e4443c7d0",
+    "planned_requests.jsonl": "a51d642953883080b3d67a7dfa38fed95934a0eaf1124842283fc5748454157a",
+    "model_requests.jsonl": "220087927bd92a1df85a030ad9293c866bb1eb998e8b9259b1d1c3dfe124a3d8",
+    "accepted/pairs.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accepted/commands.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validation_tools/audit.py": "a3568e813c38359765f932d4a5034335d252419c6ff82f7cd0a90ef6ba935bbe",
+    "validation_tools/requirements.txt": "603011518d0db6e9d135545cd73116d6e36471275ffd4c26cb7b1fc899548c11",
+    "validation_tools/test_audit.py": "346571751506d4b82d3181f4392a8cc4257e0eadd63105ad52bb240fd3ef43d5",
+    "validation_tools/conformance.py": "9d3f86461cba1a38f1b20bc03041a146ee1c1d59d536c930c7b2144c7e0f83a3",
+    "review/needs_review_pairs.jsonl": "e0b86f1815ae7be24ae64846281a76d691cdaebd36488912af1003ddddf5f25e",
+    "review/rejected_pairs.jsonl": "9595b546c134cae980bfa4af5977fadd195e50a887cd921b997a16b88ce44224",
+    "validation/command_analysis.jsonl": "9a93cae2ee64f12708ba51dde00b1b68f8c9ba30edd9ce577ad072a5b270ef8f",
+    "validation/summary.json": "b8f82ff79c7436f362605e3acb4e08e48b81e3015e61e6bcf3f9a4b902489493",
+    "validation/agent_reviews.jsonl": "ca8a92bd350ed7c525852b1147f459a4aa84552e06767ec8a2b255bf1d34ffc7",
+    "validation/pairs.jsonl": "4a87ff0e792aec03c519193464abd03b672d9f4cbd6e12094088e69f53b194d3",
+    "validation/exact_duplicates.json": "6833117c06c8e0eee4320fbc98e04c2e55b42ac5e0e8db82b5d2993e0fad5b33",
+    "validation/toolchain.json": "a7b89b8dae244d6ad7bc1def0ac81e40cc9a88c4746e1aab44722c58b4e41c29",
+    "validation/integrity.json": "eef008d8fc1eb51602a49c3c3e1cea9b07f47a3caa2d511908ec8e9a56bb2354"
+  },
+  "human_gold": false,
+  "semantic_validation": false,
+  "publication_scope": "user_authorized_review_only"
+}
