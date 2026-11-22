@@ -3,11 +3,12 @@
   "side_instances": 2590,
   "model_responses": 2554,
   "copy_sides": 36,
-  "agent_read_pairs": 47,
-  "accepted_command_rows": 6,
+  "agent_read_pairs": 68,
+  "accepted_command_rows": 4,
   "by_status": {
-    "reject": 443,
-    "needs_review": 849,
-    "pass": 3
-  }
+    "reject": 610,
+    "needs_review": 683,
+    "pass": 2
+  },
+  "rule_assessed_pairs": 849
 }

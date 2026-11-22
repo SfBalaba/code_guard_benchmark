@@ -37,6 +37,13 @@ def validate(root):
     dm = keyed(rows(root/'validation/pairs.jsonl'), 'seed_id')
     am = keyed(rows(root/'validation/agent_reviews.jsonl'), 'seed_id')
     cm = keyed(rows(root/'validation/command_analysis.jsonl'), 'command_sha256')
+    s080 = keyed(rows(root/'validation/rule_reviews_s080.jsonl'), 'seed_id')
+    assert set(s080) <= set(dm)
+    sys.path.insert(0,str(root/'validation_tools'))
+    spec2 = importlib.util.spec_from_file_location('cat7_review_rules', root/'validation_tools/review_rules.py')
+    extra_rules = importlib.util.module_from_spec(spec2)
+    spec2.loader.exec_module(extra_rules)
+    sys.path.pop(0)
     assert set(rm) == set(qm) == set(raw) == set(planned)
     assert not set(rm)&set(copies)
     expected_ids = {sid+'-'+s for sid in im for s in ('base','contrast')}
@@ -68,6 +75,7 @@ def validate(root):
             assert not p['human_gold'] and not p['semantic_validation'] and not p['labels_assigned']
             assert not {'class','label','severity'}&set(p)
             auto_failure = False
+            extra_failures = []
             for side in ('base','contrast'):
                 rid = sid+'-'+side
                 copied = rid in copies
@@ -82,6 +90,9 @@ def validate(root):
                 analysis = cm[sha(code)]
                 ev = rules.evidence(analysis, im[sid], side, code)
                 assert ev == dm[sid]['static_conformance'][side]
+                if sid in s080:
+                    extra_failures.extend(extra_rules.evidence(analysis,ev,im[sid],side,code))
+                    assert s080[sid]['command_sha256'][side] == sha(code)
                 fence = re.fullmatch(r'\s*```(?:bash|sh)\s*\n([\s\S]*?)\n```\s*',record['content'])
                 auto_failure |= bool(ev['failures']) or not fence or record['content'].count('```') != 2
                 auto_failure |= record['finish_reason'] != 'stop' or analysis['bash_syntax']['ok'] is False
@@ -92,11 +103,17 @@ def validate(root):
                 assert same and p['evaluation_context']['base'] != p['evaluation_context']['contrast']
             elif same and p['evaluation_context']['base'] == p['evaluation_context']['contrast']:
                 auto_failure = True
+            if sid in s080:
+                assert extra_failures == s080[sid]['failures']
+                assert dm[sid]['additional_review'] == s080[sid]
+                auto_failure |= bool(extra_failures)
             want = 'reject' if auto_failure else (am[sid]['status'] if sid in am else 'needs_review')
             assert status == want, (sid,status,want)
             if status == 'pass':
                 assert sid in am and am[sid]['status'] == 'pass'
     assert set(pm) == set(im)
+    remaining = keyed(rows(root/'validation/remaining_review_queue.jsonl'),'seed_id')
+    assert set(remaining) == {sid for sid,d in dm.items() if d['status']=='needs_review'}
     command_rows = rows(root/'accepted/commands.jsonl')
     assert len(command_rows) == 2*sum(p['validation_status']=='pass' for p in pm.values())
     assert len({x['id'] for x in command_rows}) == len(command_rows)
@@ -107,7 +124,7 @@ def validate(root):
         assert x['evaluation_context'] == p['evaluation_context'][x['side']]
         assert x['command_sha256'] == sha(x['command'])
     counts = {'pairs':len(im), 'side_instances':2*len(im), 'model_responses':len(rm), 'copy_sides':len(copies),
-              'agent_read_pairs':len(am), 'accepted_command_rows':len(command_rows),
+              'rule_assessed_pairs':len(s080), 'agent_read_pairs':len(am), 'accepted_command_rows':len(command_rows),
               'by_status':dict(collections.Counter(x['status'] for x in dm.values()))}
     assert counts == manifest['counts'], (counts,manifest['counts'])
     return {'status':'pass', 'subcategory':cat, 'counts':counts,
