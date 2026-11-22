@@ -11,8 +11,8 @@
   "max_parser_workers": 2,
   "execution_policy": "Bash -n, ShellCheck, tree-sitter and ast.parse only; no corpus execution",
   "full_manual_semantic_review": false,
-  "agent_read_pairs": 118,
+  "agent_read_pairs": 121,
   "automated_side_instances": 7772,
   "unique_programs": 7652,
-  "inert_boundary_tests_passed": 13
+  "inert_boundary_tests_passed": 14
 }

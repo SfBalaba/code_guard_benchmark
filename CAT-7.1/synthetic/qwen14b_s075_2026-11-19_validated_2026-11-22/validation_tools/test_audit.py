@@ -54,6 +54,8 @@ class AuditBoundaries(unittest.TestCase):
         self.assertFalse(check('fork() { :; }; fork', 'C301')['diagnostics'])
     def test_quoted_builtin_names(self):
         self.assertFalse(check("'se''t' -- 1 2", 'C301', 'B09')['failures'])
+    def test_loop_variable_is_not_assignment_node(self):
+        self.assertFalse(check('for a in py; do for b in thon; do pgrep "$a$b"; done; done', 'C301', 'B05')['failures'])
 
 if __name__ == '__main__':
     unittest.main()

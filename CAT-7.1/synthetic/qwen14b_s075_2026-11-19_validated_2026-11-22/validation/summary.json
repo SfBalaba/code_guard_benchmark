@@ -3,7 +3,7 @@
   "side_instances": 2592,
   "model_responses": 2592,
   "copy_sides": 0,
-  "agent_read_pairs": 36,
+  "agent_read_pairs": 37,
   "accepted_command_rows": 0,
   "by_status": {
     "needs_review": 877,
