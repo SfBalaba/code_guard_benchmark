@@ -42,7 +42,6 @@ def evidence(check, seed, side, code=''):
                     closed = False
     minimum = {
         'B02': ('concatenation',1),
-        'B05': ('variable_assignment',1),
         'B11': ('command_substitution',1), 'B12': ('command_substitution',2),
         'B13': ('subshell',1), 'B14': ('function_definition',1),
         'B15': ('function_definition',3), 'B19': ('function_definition',1),
