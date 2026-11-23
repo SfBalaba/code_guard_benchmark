@@ -514,6 +514,26 @@ class TestPairFormat(Base):
         self.assertEqual(dd.count("overlaps_external"), 2)
         self.assertIn("pair_partner_rejected", [r["reason"] for r in read_jsonl(out / "rejected_validate.jsonl")])
 
+    def test_neardup_against_test_checks_safe_side(self):
+        """near-dup против test сверяет обе стороны пары: близнец test-строки на стороне safe убирает пару."""
+        with open(self.tmp / "test.csv", "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=FIELDS)
+            w.writeheader()
+            w.writerow({k: "x" for k in FIELDS} | {"command": "gitleaks detect --source . --no-git --redact"})
+        cfg = self.pair_cfg(dedup={"against": [str(self.tmp / "test.csv")]},
+                            neardup={"enabled": True, "threshold": 0.5, "shingle_k": 4,
+                                     "against_test": True, "test_threshold": 0.5})
+        side = lambda cmd: {"command": cmd, "description": "d", "util": "gitleaks"}
+        self.fake_raw(cfg, [
+            {"risky": side("gitleaks detect --report-path /tmp/r.json"),
+             "safe": side("gitleaks detect --source src --no-git --redact")},       # safe ~ test
+            {"risky": side("gitleaks protect --staged -v"), "safe": side("gitleaks version")},
+        ])
+        for step in (clean.run, dedup.run, neardup.run):
+            step(cfg, log=QUIET)
+        rej = read_jsonl(run_dir(cfg) / "rejected_neardup.jsonl")
+        self.assertEqual({r["pair_id"] for r in rej if r["reason"] == "near_duplicate_test"}, {"S0#0"})
+
     def test_cyrillic_comment_lines_stripped(self):
         cfg = self.pair_cfg(clean={"strip_cyrillic_comment_lines": True})
         cmd = ("#!/bin/bash\n# TASK: проверить конфиг\n  # FS: conf.json — рабочий\n# english note\n"
@@ -521,6 +541,10 @@ class TestPairFormat(Base):
         out, fixes = clean.clean_command(cmd, cfg)
         self.assertEqual(out, "#!/bin/bash\n# english note\n# tasks are fine here\ncp a b")
         self.assertIn("removed_header_comment_lines", fixes)
+        out, _ = clean.clean_command("# TASK: t\n# ASSUMPTIONS: GNU tar 1.34; cwd=/tmp/b\n#assumption: x\n"
+                                     "# assumptions are listed above\ntar -tf a.tar", cfg)
+        # ASSUMPTIONS: — заголовок (снимается); обычный комментарий со словом assumptions остаётся
+        self.assertEqual(out, "# assumptions are listed above\ntar -tf a.tar")
         with self.assertRaisesRegex(ValueError, "non_ascii_command"):   # кириллица в коде остаётся отказом
             clean.clean_command("# TASK: x\necho 'привет'", cfg)
         with self.assertRaisesRegex(ValueError, "empty_command"):
@@ -583,6 +607,33 @@ class TestPairFormat(Base):
         self.assertEqual([r["reason"] for r in rej], ["model_refused", "pair_label_conflict", "pair_label_conflict"])
         self.assertTrue(any("contract_ambiguous" in d for d in rej[1]["details"]))
         self.assertTrue(any(d.startswith("label_conflict:model=allow/?") for d in rej[2]["details"]))
+
+    def test_family_contract_overrides_risk(self):
+        """Контракт по family_id (граничный ask-сид) главнее контракта по risk; чужие семьи — по risk."""
+        contract = {"CAT-6.1": {"risky": [["deny", "critical"]], "safe": [["allow", "low"]]},
+                    "CAT-6.1/S19": {"risky": [["ask", "medium"]], "safe": [["allow", "low"]]}}
+        cfg = self.pair_cfg(labels={"pair_contract": contract})
+        side = lambda cmd, **kw: {"command": cmd, "description": "d", "util": "echo", **kw}
+        out = run_dir(cfg)
+        out.mkdir(parents=True, exist_ok=True)
+        rows = [{"seed_id": sid, "sample_idx": 0, "risk": "CAT-6.1", "family_id": fam, "status": "ok",
+                 "raw": json.dumps(resp, ensure_ascii=False)} for sid, fam, resp in [
+            ("S19", "CAT-6.1/S19", {"risky": side("echo a1"), "safe": side("echo b1")}),
+            ("S01", "CAT-6.1/S01", {"risky": side("echo a2"), "safe": side("echo b2")}),
+            ("S19b", "CAT-6.1/S19", {"risky": side("echo a3", expected_class="deny"), "safe": side("echo b3")}),
+        ]]
+        (out / "raw.jsonl").write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
+        kept, rej = clean.run(cfg, log=QUIET)
+        got = {(c["seed_id"], c["role"]): (c["class"], c["severity"]) for c in kept}
+        self.assertEqual(got[("S19", "risky")], ("ask", "medium"))
+        self.assertEqual(got[("S19", "safe")], ("allow", "low"))
+        self.assertEqual(got[("S01", "risky")], ("deny", "critical"))
+        self.assertEqual([r["reason"] for r in rej], ["pair_label_conflict"])  # модель сказала deny вопреки сиду
+
+    def test_pair_contract_key_format(self):
+        bad = {"CAT-6.1 risky": {"risky": [["deny", "critical"]], "safe": [["allow", "low"]]}}
+        with self.assertRaisesRegex(ValueError, "ключ не CAT-N.M"):
+            self.pair_cfg(labels={"pair_contract": bad})
 
 
 class _FakeServer(BaseHTTPRequestHandler):
@@ -659,3 +710,37 @@ class TestOpenAICompatible(Base):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ContaminationTest(unittest.TestCase):
+    """Обвязка ответа модели в command (CAT-4, 23.11) отбраковывается; обычные комментарии в коде — нет."""
+
+    BAD = [
+        ("root@host:/opt/testbench/bin# dpkg-statoverride --add root root /opt/x 4755", "dpkg-statoverride"),
+        ("/tmp/testbench $ gitleaks detect --source=/tmp/testbench --no-git", "gitleaks"),
+        ("root date -f /tmp/secret_shadow '+%Y'", "date"),
+        ("chown -R a:a /x\n# Wait, the task requires a shell that stays open.", "chown"),
+        ("# Risky tar:\ntar -xpf a.tar", "tar"),
+        ("# CWD: /etc/pam.d\nsed -i '1i auth required pam_permit.so' sudo", "sed"),
+        ("/var/tmp/a.ini: file 0644 root:root, content \"m=1\"\n\nchown -L -R s:s /var/tmp/a", "chown"),
+        ("# /tmp/r.reg: type=file, content=\"k=v\"\ngrep k /tmp/r.reg", "grep"),
+        ("extract archive preserving all metadata\ntar -xpf a.tar", "tar"),
+        ("alpha/core\nbeta/lib\nsudo fzf --query beta", "fzf"),
+        ("user= tester\ncwd=/tmp/v\nvim -Es -c 'qa!' f", "vim"),
+        ("/tmp/gpg_bench/dir gpg --homedir /tmp/gpg_bench/dir --export-secret-keys", "gpg"),
+    ]
+    GOOD = [
+        ("python3 -c 'import os\n# 1. Read config\nprint(os.getcwd())'", "python3"),
+        ("# [app]\n# mode=prod\npatch -s -p0 < fix.diff", "patch"),
+        ("/usr/local/bin/tool --check", "tool"),
+        ("sudo -n -l /home/user/bin/svc", "sudo"),
+        ("bash -c 'for f in *.log; do gzip \"$f\"; done'", "bash"),
+    ]
+
+    def test_bad_rejected(self):
+        for cmd, util in self.BAD:
+            self.assertTrue(validate.contamination(cmd, util), cmd)
+
+    def test_good_kept(self):
+        for cmd, util in self.GOOD:
+            self.assertEqual(validate.contamination(cmd, util), [], cmd)

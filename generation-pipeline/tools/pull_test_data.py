@@ -12,6 +12,12 @@
 Одинаковые файлы в разных ветках (один blob) сохраняются один раз. Пишет <out>/<ветка>/<путь>
 и <out>/MANIFEST.json (ветка, путь, blob, число команд). Папка data/ в .gitignore — в git не попадает.
 Сначала сделай `git fetch origin`, чтобы взять свежие ветки.
+
+EXTRA_COMMITS: test-строки, убранные с вершины ветки, всё равно должны остаться в антиутечке. В feat/data_CAT-4
+коммит 2efa9ea (22.11, «seeds») сократил CAT-4/commands_test.csv с 1250 до 1050 строк (убраны 200 строк
+modify/defer; остаток — подмножество старого) и удалил commands_train.csv. Без закрепа повторная выгрузка
+потеряла бы эти 200 test-команд. Для таких веток читаются и вершина, и закреплённые коммиты (объединение);
+файлы закреплённого коммита пишутся в <out>/<ветка>@<коммит7>/<путь>, чтобы не затереть версию с вершины.
 """
 import argparse
 import json
@@ -26,6 +32,12 @@ from cgen.io import read_commands  # noqa: E402
 INCLUDE = re.compile(
     r"(^|/)commands\.csv$|(^|/)commands_test\.csv$|^CAT-7\.\d+/inputs/commands\.jsonl$|^D2-local[^/]*/commands\.jsonl$"
 )
+
+
+# ветка -> коммиты, которые читаются В ДОПОЛНЕНИЕ к вершине (test, удалённый позже)
+EXTRA_COMMITS = {
+    "origin/feat/data_CAT-4": ["208e9a07d46311adb80d6e5b3156bae6710be1e4"],  # последний с commands_test.csv
+}
 
 
 def git(repo, *args, binary=False):
@@ -43,21 +55,25 @@ def main(argv=None):
     branches = [b.strip() for b in git(repo, "branch", "-r", "--format=%(refname:short)").splitlines()
                 if b.strip().startswith("origin/feat/") and "generation-pipeline" not in b]
     seen, manifest = {}, []
-    for br in sorted(branches):
-        for line in git(repo, "ls-tree", "-r", br).splitlines():
+    sources = [(br, br) for br in sorted(branches)]
+    sources += [(br, c) for br in sorted(branches) for c in EXTRA_COMMITS.get(br, [])]
+    for br, rev in sources:
+        for line in git(repo, "ls-tree", "-r", rev).splitlines():
             meta, path = line.split("\t", 1)
             blob = meta.split()[2]
             if not INCLUDE.search(path) or "generation-pipeline/" in path:
                 continue
             if blob in seen:
                 continue
-            dest = out / br.removeprefix("origin/") / path
+            sub = br.removeprefix("origin/") + ("" if rev == br else f"@{rev[:7]}")
+            dest = out / sub / path
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(git(repo, "cat-file", "blob", blob, binary=True))
             n = len(read_commands(dest))
             seen[blob] = str(dest)
             manifest.append({"branch": br, "path": path, "blob": blob, "commands": n,
-                             "file": str(dest.relative_to(out))})
+                             "file": str(dest.relative_to(out)),
+                             **({"pinned_commit": rev} if rev != br else {})})
             if n == 0:
                 print(f"ВНИМАНИЕ: {br}:{path} — 0 команд (нет колонки/поля command?)", file=sys.stderr)
     commit_of = {br: git(repo, "rev-parse", br).strip() for br in branches}

@@ -1,5 +1,6 @@
 """Загрузка конфига запуска. Пути в конфиге считаются от папки, где лежит сам конфиг."""
 import json
+import re
 from copy import deepcopy
 from pathlib import Path
 
@@ -97,6 +98,9 @@ def check_config(cfg):
     if cfg["export"]["seed_column"] not in ("prompt", "seed_id", "full_request"):
         errors.append("export.seed_column: 'prompt', 'seed_id' или 'full_request'")
     for risk, sides in cfg["labels"].get("pair_contract", {}).items():
+        # ключ — risk (CAT-N.M) или family_id сида (CAT-N.M/SNN), который главнее записи по risk
+        if not re.match(r"^CAT-\d+\.\d+(?:/S\d+)?$", risk):
+            errors.append(f"labels.pair_contract.{risk}: ключ не CAT-N.M и не CAT-N.M/SNN")
         for role in ("risky", "safe"):
             pairs = sides.get(role) or []
             if not pairs:

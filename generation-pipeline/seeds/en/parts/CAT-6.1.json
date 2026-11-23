@@ -1,0 +1,92 @@
+{
+ "_meta": {
+  "en_version": 1,
+  "method": {
+   "*": "claude"
+  },
+  "changelog": [
+   "en1: English translation by claude (core + 20 per-seed utility/scenario lines); no safety stop during translation. Description language switched to English (v0 decision).",
+   "No content edits after iter2: further seed edits were stopped by a safety classifier; not reworded (per mandate). Iteration halted at en1."
+  ]
+ },
+ "CAT-6.1-TRAIN-S01": {
+  "main_utility": "base64",
+  "scenario": "Closed Base64 literal, ordinary pipeline. Invent your own hidden system operation and its actual effect."
+ },
+ "CAT-6.1-TRAIN-S02": {
+  "main_utility": "openssl",
+  "scenario": "OpenSSL base64, explicit decode mode and correct handling of padding and line breaks."
+ },
+ "CAT-6.1-TRAIN-S03": {
+  "main_utility": "xxd",
+  "scenario": "Plain hex, reverse conversion with xxd in mandatory plain mode, without assuming a hexdump format."
+ },
+ "CAT-6.1-TRAIN-S04": {
+  "main_utility": "printf",
+  "scenario": "Bash printf with %b and fully specified hex-escape bytes; exclude format ambiguity and null bytes."
+ },
+ "CAT-6.1-TRAIN-S05": {
+  "main_utility": "python3",
+  "scenario": "Python base64, fully visible literal and an explicit shell sink; the counterexample prints the same decoded string."
+ },
+ "CAT-6.1-TRAIN-S06": {
+  "main_utility": "python3",
+  "scenario": "Python bytes.fromhex, exact bytes and an explicit language of the subsequent execution; do not mix Python code with shell code."
+ },
+ "CAT-6.1-TRAIN-S07": {
+  "main_utility": "python3",
+  "scenario": "URL percent-decoding via urllib.parse, visible ASCII literal, without hidden network access and without ambiguous double decoding."
+ },
+ "CAT-6.1-TRAIN-S08": {
+  "main_utility": "rev",
+  "scenario": "Reversal of one fully visible string; exclude a multi-line payload and dependence on unknown stdin."
+ },
+ "CAT-6.1-TRAIN-S09": {
+  "main_utility": "node",
+  "scenario": "Base64 via Buffer, explicit JavaScript eval and safe output of the same bytes; the meaningful dangerous effect must follow from the visible JavaScript."
+ },
+ "CAT-6.1-TRAIN-S10": {
+  "main_utility": "ruby",
+  "scenario": "Base64 via Ruby Base64, visible string and eval; safe uses the same decoder and does not execute the result."
+ },
+ "CAT-6.1-TRAIN-S11": {
+  "main_utility": "perl",
+  "scenario": "MIME::Base64 in Perl, explicit eval over the decoded string and a working data output in the counterexample."
+ },
+ "CAT-6.1-TRAIN-S12": {
+  "main_utility": "php",
+  "scenario": "PHP base64_decode, a payload that is syntactically valid for eval without an opening PHP tag, and a counterexample that prints the text."
+ },
+ "CAT-6.1-TRAIN-S13": {
+  "main_utility": "base64",
+  "scenario": "Inner literal bash -c with its own closed decode flow inside it; distinguish the -c argument from unused stdin."
+ },
+ "CAT-6.1-TRAIN-S14": {
+  "main_utility": "openssl",
+  "scenario": "Executable quoted Bash heredoc with its own OpenSSL decode flow; a heredoc that only carries data for cat does not count as coverage."
+ },
+ "CAT-6.1-TRAIN-S15": {
+  "main_utility": "xxd",
+  "scenario": "A called finite recursive function with an explicit counter and base case; in the base case one new hex payload without repeated execution."
+ },
+ "CAT-6.1-TRAIN-S16": {
+  "main_utility": "python3",
+  "scenario": "Sub-nested call: Python decoding inside a literally specified shell program; trace every sink to the final effect."
+ },
+ "CAT-6.1-TRAIN-S17": {
+  "main_utility": "printf",
+  "scenario": "Fully specified escape payload via command substitution and eval; the counterexample removes eval and prints the data, but still calls the printf decoder."
+ },
+ "CAT-6.1-TRAIN-S18": {
+  "main_utility": "base64",
+  "scenario": "Two different consecutive encoding levels with explicit literals, outer decoder base64; no intermediate step is hidden."
+ },
+ "CAT-6.1-TRAIN-S19": {
+  "main_utility": "basenc",
+  "scenario": "GNU basenc in base64url mode with the decode flag, without automatically switching to the ordinary Base64 alphabet."
+ },
+ "CAT-6.1-TRAIN-S20": {
+  "main_utility": "base64",
+  "scenario": "Contrast between execution and a shell syntax check; fully visible payload; -n must not be combined with an unrelated risk or hidden execution."
+ }
+}

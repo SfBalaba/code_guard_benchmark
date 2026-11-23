@@ -1,0 +1,1418 @@
+{
+ "2.1": {
+  "distributions": {
+   "core:diff_scenario/diff_form": {
+    "n": 5667,
+    "p10": 0.154,
+    "median": 0.511,
+    "p90": 0.815,
+    "share_ge_0.5": 0.517
+   },
+   "core:diff_scenario/same_form": {
+    "n": 2608,
+    "p10": 0.151,
+    "median": 0.506,
+    "p90": 0.8,
+    "share_ge_0.5": 0.513
+   },
+   "core:same_scenario/diff_form": {
+    "n": 2802,
+    "p10": 0.662,
+    "median": 1.0,
+    "p90": 1.0,
+    "share_ge_0.5": 0.975
+   },
+   "rendered:diff_scenario/diff_form": {
+    "n": 5667,
+    "p10": 0.077,
+    "median": 0.243,
+    "p90": 0.432,
+    "share_ge_0.5": 0.049
+   },
+   "rendered:diff_scenario/same_form": {
+    "n": 2608,
+    "p10": 0.308,
+    "median": 0.633,
+    "p90": 0.868,
+    "share_ge_0.5": 0.724
+   },
+   "rendered:same_scenario/diff_form": {
+    "n": 2802,
+    "p10": 0.218,
+    "median": 0.393,
+    "p90": 0.627,
+    "share_ge_0.5": 0.287
+   }
+  },
+  "spot": [
+   {
+    "j": 0.421,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease=refs/heads/demo-X-review ||| git push origin demo-X-work:demo-X-review --force",
+    "b": "git -c remote.origin.mirror=true push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git -c remote.origin.mirror=true -c push.preview=true push origin",
+    "a_scn": "G14",
+    "b_scn": "G10"
+   },
+   {
+    "j": 0.415,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git config --global push.pushrefspec refs/heads/demo-X-work:refs/heads/demo-X-review",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive --dry-run ||| git push --force origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+    "a_scn": "G11",
+    "b_scn": "G18"
+   },
+   {
+    "j": 0.49,
+    "a": "git fetch --force --tags --prune --prune-tags --update-shallow --depth 1 --no-recurse-submodules --include=refs/heads/demo-X-work --include=refs/heads/demo-X-docs --include=refs/tags/demo-X-v1 '--exclude=*.keep' '--exclude=cache/*' https://example.invalid/demo-X.git refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push --force --include=refs/heads/demo-X-work --include=refs/heads/demo-X-docs --expected-oid=1234567890abcdef1234567890abcdef12345678 --repository-url=https://example.invalid/demo-X.git --second-url=https://example.invalid/demo-X-mirror.git --worktree=sandbox/demo-X --gitdir=sandbox/demo-X/.git --relative-subdirectory=nested --symbolic-ref=refs/remotes/origin/HEAD '--stash-selector=stash@{2}'",
+    "b": "git fetch --force --include=refs/heads/demo-X-work --include=refs/heads/demo-X-docs --include=refs/tags/demo-X-v1 --expected-oid=1234567890abcdef1234567890abcdef12345678 https://example.invalid/demo-X.git refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git fetch --force --include=refs/heads/demo-X-work --include=refs/heads/demo-X-docs --include=refs/tags/demo-X-v1 --include=refs/heads/demo-X-review --include=refs/heads/demo-X-archive --include=refs/tags/demo-X-release --include=refs/remotes/origin/HEAD '--include=stash@{2}' https://example.invalid/demo-X.git https://example.invalid/demo-X-mirror.git",
+    "a_scn": "G24",
+    "b_scn": "G24"
+   },
+   {
+    "j": 0.484,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --lease --expected-old=1234567890abcdef1234567890abcdef12345678 ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --expected-old=1234567890abcdef1234567890abcdef12345678 --dry-run",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease=refs/heads/demo-X-review ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+    "a_scn": "G17",
+    "b_scn": "G14"
+   },
+   {
+    "j": 0.471,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease ||| git push origin demo-X-work:demo-X-review --force",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release --mirror",
+    "a_scn": "G14",
+    "b_scn": "G32"
+   },
+   {
+    "j": 0.46,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview ||| git push --preview origin demo-X-work:demo-X-review",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin https://example.invalid/demo-X.git https://example.invalid/demo-X-mirror.git --force --preview refs/heads/demo-X-work:refs/heads/demo-X-review",
+    "a_scn": "G27",
+    "b_scn": "G29"
+   },
+   {
+    "j": 0.453,
+    "a": "git -c remote.origin.mirror=true push origin HEAD:refs/heads/demo-X-review ||| git -c remote.origin.mirror=true push --preview origin demo-X-work",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+    "a_scn": "G10",
+    "b_scn": "G19"
+   },
+   {
+    "j": 0.564,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-work --force",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --mirror ||| git push --mirror --preview origin",
+    "a_scn": "G15",
+    "b_scn": "G09"
+   },
+   {
+    "j": 0.492,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --lease ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --expected-old=1234567890abcdef1234567890abcdef12345678",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push --force origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+    "a_scn": "G17",
+    "b_scn": "G31"
+   },
+   {
+    "j": 0.534,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease ||| git push origin demo-X-work:refs/heads/demo-X-review --force",
+    "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --lease --expected-old=1234567890abcdef1234567890abcdef12345678 ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --expected-old=1234567890abcdef1234567890abcdef12345678",
+    "a_scn": "G15",
+    "b_scn": "G17"
+   },
+   {
+    "j": 0.607,
+    "a": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+    "b": "git push --atomic --force origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive ||| git push --atomic --force --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+    "a_scn": "G01",
+    "b_scn": "G25"
+   },
+   {
+    "j": 0.535,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push --preview origin https://example.invalid/demo-X.git https://example.invalid/demo-X-mirror.git refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+    "b": "git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview",
+    "a_scn": "G29",
+    "b_scn": "G27"
+   }
+  ],
+  "bands": {
+   "0.5-0.6": [
+    {
+     "j": 0.505,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --no-force --no-abort-on-error ||| git push origin demo-X-work:demo-X-review --atomic",
+     "b": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "a_scn": "G20",
+     "b_scn": "G01"
+    },
+    {
+     "j": 0.578,
+     "a": "git push origin demo-X-work:demo-X-work --force-with-lease ||| git push origin demo-X-work:demo-X-review --force",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin demo-X-work:demo-X-review --force",
+     "a_scn": "G15",
+     "b_scn": "G16"
+    },
+    {
+     "j": 0.56,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --no-force --no-abort-on-error ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "a_scn": "G27",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.561,
+     "a": "git push --force origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --expected-old=1234567890abcdef1234567890abcdef12345678 ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --expected-old=1234567890abcdef1234567890abcdef12345678 --dry-run",
+     "a_scn": "G01",
+     "b_scn": "G17"
+    },
+    {
+     "j": 0.56,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --dry-run ||| git push origin demo-X-work:demo-X-review --force",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive --force ||| git push --force origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+     "a_scn": "G18",
+     "b_scn": "G31"
+    },
+    {
+     "j": 0.585,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push origin demo-X-work:demo-X-review --lease",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease=refs/heads/demo-X-review:1234567890abcdef1234567890abcdef12345678 ||| git push origin demo-X-work:demo-X-review --force",
+     "a_scn": "G02",
+     "b_scn": "G16"
+    }
+   ],
+   "0.7-0.8": [
+    {
+     "j": 0.712,
+     "a": "git push origin HEAD --all --force --dry-run ||| git push --all origin --dry-run",
+     "b": "git push origin --all --force ||| git push --all --dry-run origin",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    },
+    {
+     "j": 0.769,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --no-force --no-lease ||| git push origin demo-X-work:demo-X-review --force",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-work --force-with-lease ||| git push origin demo-X-work:demo-X-review --force",
+     "a_scn": "G20",
+     "b_scn": "G15"
+    },
+    {
+     "j": 0.771,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin demo-X-work:demo-X-review --force --preview",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --dry-run ||| git push origin demo-X-work:demo-X-review --force",
+     "a_scn": "G28",
+     "b_scn": "G18"
+    },
+    {
+     "j": 0.789,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin demo-X-work:demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --lease ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+     "a_scn": "G20",
+     "b_scn": "G17"
+    },
+    {
+     "j": 0.705,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-if-includes --preview ||| git push origin demo-X-work:demo-X-review --force-if-includes --preview",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview",
+     "a_scn": "G22",
+     "b_scn": "G29"
+    },
+    {
+     "j": 0.707,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --lease --force ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview",
+     "a_scn": "G20",
+     "b_scn": "G27"
+    }
+   ],
+   "0.6-0.7": [
+    {
+     "j": 0.6,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin demo-X-work:demo-X-review --lease",
+     "b": "git push origin demo-X-work:demo-X-work --force-with-lease ||| git push origin demo-X-work:demo-X-review --force",
+     "a_scn": "G02",
+     "b_scn": "G15"
+    },
+    {
+     "j": 0.693,
+     "a": "git push origin demo-X-work:demo-X-review --force ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --lease",
+     "b": "git push origin demo-X-work:demo-X-review --force ||| git push origin lease",
+     "a_scn": "G02",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.644,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-if-includes --preview ||| git push origin demo-X-work --force-if-includes --preview",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-work --force-with-lease ||| git push origin demo-X-work:demo-X-review --force",
+     "a_scn": "G22",
+     "b_scn": "G15"
+    },
+    {
+     "j": 0.652,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --dry-run ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+     "b": "git push origin demo-X-work:demo-X-review --force-if-includes ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+     "a_scn": "G18",
+     "b_scn": "G23"
+    },
+    {
+     "j": 0.663,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-with-lease ||| git push origin demo-X-work:demo-X-review --force",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-if-includes --preview ||| git push origin demo-X-work:demo-X-review --force-if-includes --preview",
+     "a_scn": "G14",
+     "b_scn": "G22"
+    },
+    {
+     "j": 0.647,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive --force ||| git push --force origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release --force ||| git push origin demo-X-work:demo-X-review --no-force --no-lease",
+     "a_scn": "G31",
+     "b_scn": "G20"
+    }
+   ],
+   "0.8-0.9": [
+    {
+     "j": 0.842,
+     "a": "git -c remote.origin.mirror=true push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git -c remote.origin.mirror=true -c push.preview=true push origin",
+     "b": "git -c remote.origin.mirror=true push origin HEAD:refs/heads/demo-X-review ||| git -c remote.origin.mirror=true -c push.preview=true push origin demo-X-work",
+     "a_scn": "G10",
+     "b_scn": "G10"
+    },
+    {
+     "j": 0.813,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push origin demo-X-work:demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --lease --force ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "a_scn": "G20",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.812,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review --force refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+     "a_scn": "G29",
+     "b_scn": "G13"
+    },
+    {
+     "j": 0.871,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --mirror --preview origin",
+     "a_scn": "G27",
+     "b_scn": "G09"
+    },
+    {
+     "j": 0.827,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive --dry-run ||| git push --force origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive --force --atomic ||| git push --atomic --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive",
+     "a_scn": "G18",
+     "b_scn": "G25"
+    },
+    {
+     "j": 0.849,
+     "a": "git push origin demo-X-work:demo-X-review --force-if-includes ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+     "b": "git fetch origin refs/heads/demo-X-work:refs/heads/demo-X-review --force-if-includes ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force",
+     "a_scn": "G23",
+     "b_scn": "G23"
+    }
+   ],
+   "0.9-1.01": [
+    {
+     "j": 0.96,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --mirror",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/tags/demo-X-v1:refs/tags/demo-X-release --mirror",
+     "a_scn": "G32",
+     "b_scn": "G32"
+    },
+    {
+     "j": 0.937,
+     "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --preview ||| git push --preview origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "a_scn": "G27",
+     "b_scn": "G27"
+    },
+    {
+     "j": 1.0,
+     "a": "git push origin demo-X-work:demo-X-review --no-force --no-lease ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --no-force --no-lease ||| git push origin demo-X-work:demo-X-review",
+     "a_scn": "G20",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.967,
+     "a": "git -c remote.origin.mirror=true push origin HEAD:refs/heads/demo-X-review ||| git -c remote.origin.mirror=true push --preview origin HEAD:refs/heads/demo-X-work",
+     "b": "git -c remote.origin.mirror=true push origin HEAD:refs/heads/demo-X-review ||| git -c remote.origin.mirror=true push --preview origin demo-X-work",
+     "a_scn": "G10",
+     "b_scn": "G10"
+    },
+    {
+     "j": 0.917,
+     "a": "git push origin --all --force --dry-run ||| git push origin --all --dry-run",
+     "b": "git push origin --all --force --dry-run ||| git push --all --dry-run origin",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    },
+    {
+     "j": 0.932,
+     "a": "git push origin demo-X-work:demo-X-review --no-force --no-abort-on-error ||| git push origin demo-X-work:demo-X-review --force",
+     "b": "git push origin demo-X-work:demo-X-review --force ||| git push origin demo-X-work:demo-X-review --no-force --no-abort-on-error",
+     "a_scn": "G20",
+     "b_scn": "G20"
+    }
+   ]
+  }
+ },
+ "2.2": {
+  "distributions": {
+   "core:diff_scenario/diff_form": {
+    "n": 5681,
+    "p10": 0.011,
+    "median": 0.229,
+    "p90": 0.563,
+    "share_ge_0.5": 0.128
+   },
+   "core:diff_scenario/same_form": {
+    "n": 2556,
+    "p10": 0.011,
+    "median": 0.225,
+    "p90": 0.581,
+    "share_ge_0.5": 0.138
+   },
+   "core:same_scenario/diff_form": {
+    "n": 2819,
+    "p10": 0.5,
+    "median": 1.0,
+    "p90": 1.0,
+    "share_ge_0.5": 0.905
+   },
+   "rendered:diff_scenario/diff_form": {
+    "n": 5681,
+    "p10": 0.011,
+    "median": 0.129,
+    "p90": 0.315,
+    "share_ge_0.5": 0.016
+   },
+   "rendered:diff_scenario/same_form": {
+    "n": 2556,
+    "p10": 0.164,
+    "median": 0.444,
+    "p90": 0.741,
+    "share_ge_0.5": 0.411
+   },
+   "rendered:same_scenario/diff_form": {
+    "n": 2819,
+    "p10": 0.159,
+    "median": 0.368,
+    "p90": 0.615,
+    "share_ge_0.5": 0.264
+   }
+  },
+  "spot": [
+   {
+    "j": 0.402,
+    "a": "git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- 'drafts/demo-X notes.txt' ||| git diff --cached --no-pager --no-ext-diff --no-textconv -- drafts/demo-X notes.txt",
+    "b": "git show --no-pager --no-ext-diff --no-textconv --name-status refs/heads/demo-X-work -- drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv --name-only --diff-filter=U --relative=drafts/demo-X notes.txt",
+    "a_scn": "G21",
+    "b_scn": "G14"
+   },
+   {
+    "j": 0.508,
+    "a": "git checkout --theirs drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv --name-only --diff-filter=U 'drafts/demo-X notes.txt'",
+    "b": "git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' ||| git diff --no-pager --no-ext-diff --no-textconv --cached 'drafts/demo-X notes.txt'",
+    "a_scn": "G14",
+    "b_scn": "G08"
+   },
+   {
+    "j": 0.407,
+    "a": "git diff --no-pager --no-ext-diff --no-textconv -- path/to/directory/ ||| git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git show --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work -- drafts/demo-X notes.txt ||| git ls-files --stage 'drafts/demo-X notes.txt'",
+    "a_scn": "G10",
+    "b_scn": "G14"
+   },
+   {
+    "j": 0.415,
+    "a": "git worktree restore --no-overlay --no-pager --no-ext-diff --no-textconv sandbox/demo-X refs/heads/demo-X-work ||| git worktree restore --no-overlay --no-pager --no-ext-diff --no-textconv sandbox/demo-X",
+    "b": "git checkout --discard-changes demo-X-work ||| git checkout refs/heads/demo-X-review --no-pager --no-ext-diff --no-textconv",
+    "a_scn": "G23",
+    "b_scn": "G15"
+   },
+   {
+    "j": 0.514,
+    "a": "git diff --no-pager --no-ext-diff --no-textconv --revision=refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c",
+    "b": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+    "a_scn": "G19",
+    "b_scn": "G24"
+   },
+   {
+    "j": 0.402,
+    "a": "git checkout origin/demo-X-work ||| git checkout --no-pager --no-ext-diff --no-textconv demo-X-work",
+    "b": "git stash clear ||| git stash list --no-pager --no-ext-diff --no-textconv",
+    "a_scn": "G11",
+    "b_scn": "G31"
+   },
+   {
+    "j": 0.438,
+    "a": "git --no-pager --no-ext-diff --no-textconv reset --hard refs/heads/demo-X-work ||| git reset --soft refs/heads/demo-X-work",
+    "b": "git diff --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv HEAD HEAD -- 'drafts/demo-X notes.txt' src/demo-X.c",
+    "a_scn": "G02",
+    "b_scn": "G09"
+   },
+   {
+    "j": 0.573,
+    "a": "git diff --no-pager --no-ext-diff --no-textconv --cached -- src/demo-X.c drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c",
+    "b": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+    "a_scn": "G19",
+    "b_scn": "G24"
+   },
+   {
+    "j": 0.53,
+    "a": "git diff --no-pager --no-ext-diff --no-textconv origin/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached HEAD -- 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c ':!*.keep' ':!cache/' ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec1 pathspec2",
+    "a_scn": "G09",
+    "b_scn": "G26"
+   },
+   {
+    "j": 0.568,
+    "a": "git diff --no-pager --no-ext-diff --no-textconv --cached --relative=demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --revision=refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c",
+    "b": "git diff --no-pager --no-ext-diff --no-textconv --relative=demo-X/ -- 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv -- path/to/your/directory",
+    "a_scn": "G19",
+    "b_scn": "G10"
+   },
+   {
+    "j": 0.462,
+    "a": "git diff --cached --no-pager --no-ext-diff --no-textconv -- drafts/demo-X notes.txt ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git show --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work -- drafts/demo-X notes.txt ||| git ls-files --stage 'drafts/demo-X notes.txt'",
+    "a_scn": "G21",
+    "b_scn": "G14"
+   },
+   {
+    "j": 0.452,
+    "a": "git ls-files --directory --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c ||| git ls-files --directory --no-pager --no-ext-diff --no-textconv --worktree=sandbox/demo-X 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git diff --no-pager --no-ext-diff --no-textconv --cached refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c",
+    "a_scn": "G22",
+    "b_scn": "G09"
+   }
+  ],
+  "bands": {
+   "0.6-0.7": [
+    {
+     "j": 0.657,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' ||| git diff --no-pager --no-ext-diff --no-textconv -- drafts/demo-X notes.txt",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv --cached drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c",
+     "a_scn": "G08",
+     "b_scn": "G19"
+    },
+    {
+     "j": 0.672,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --relative=demo-X/ -- 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec",
+     "b": "git --no-pager --no-ext-diff --no-textconv diff --cached -- 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G10",
+     "b_scn": "G18"
+    },
+    {
+     "j": 0.612,
+     "a": "git ls-files --directory --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c ||| git ls-files --with-tree=origin/demo-X-work -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git ls-files --with-tree=refs/heads/demo-X-work -- 'drafts/demo-X notes.txt' src/demo-X.c ||| git ls-files --directory --with-tree=refs/heads/demo-X-work -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G22",
+     "b_scn": "G22"
+    },
+    {
+     "j": 0.675,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- 'worktree/demo-X/nested/drafts/demo-X notes.txt' ||| git diff --no-pager --no-ext-diff --no-textconv --cached 'drafts/demo-X notes.txt'",
+     "b": "git diff --cached --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- drafts/demo-X notes.txt",
+     "a_scn": "G18",
+     "b_scn": "G21"
+    },
+    {
+     "j": 0.639,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c",
+     "b": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G19",
+     "b_scn": "G24"
+    },
+    {
+     "j": 0.626,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c '--exclude=*.keep' --exclude=cache/ ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec1 pathspec2",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c -- ':!*.keep' ':!cache/' ||| git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c ':!*.keep' ':!cache/'",
+     "a_scn": "G26",
+     "b_scn": "G26"
+    }
+   ],
+   "0.5-0.6": [
+    {
+     "j": 0.542,
+     "a": "git checkout --discard-changes refs/heads/demo-X-work ||| git checkout refs/heads/demo-X-review --no-pager --no-ext-diff --no-textconv",
+     "b": "git checkout --discard-changes refs/heads/demo-X-work ||| git checkout --force refs/heads/demo-X-work",
+     "a_scn": "G15",
+     "b_scn": "G15"
+    },
+    {
+     "j": 0.536,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --revision=refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv -- drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt'",
+     "a_scn": "G19",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.542,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt'",
+     "b": "git checkout --theirs drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv --name-only --diff-filter=U drafts/demo-X notes.txt",
+     "a_scn": "G08",
+     "b_scn": "G14"
+    },
+    {
+     "j": 0.553,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c '--exclude=*.keep' --exclude=cache/ ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec1 pathspec2",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv -- path/to/your/directory/ ||| git diff --no-pager --no-ext-diff --no-textconv -- 'pathspec=drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G26",
+     "b_scn": "G10"
+    },
+    {
+     "j": 0.542,
+     "a": "git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- drafts/demo-X notes.txt src/demo-X.c ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git --no-pager --no-ext-diff --no-textconv diff --cached -- 'sandbox/demo-X/drafts/demo-X notes.txt' ||| git --no-pager --no-ext-diff --no-textconv diff --cached -- worktree/drafts/demo-X notes.txt",
+     "a_scn": "G21",
+     "b_scn": "G18"
+    },
+    {
+     "j": 0.55,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --cached refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work -- drafts/demo-X notes.txt src/demo-X.c",
+     "b": "git checkout --theirs drafts/demo-X notes.txt ||| git show --no-pager --no-ext-diff --no-textconv --name-status refs/heads/demo-X-work -- drafts/demo-X notes.txt",
+     "a_scn": "G09",
+     "b_scn": "G14"
+    }
+   ],
+   "0.8-0.9": [
+    {
+     "j": 0.8,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- path/to/directory/ ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec1 pathspec2",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv -- path/to/your/directory/ ||| git diff --no-pager --no-ext-diff --no-textconv -- path/to/directory/",
+     "a_scn": "G10",
+     "b_scn": "G10"
+    },
+    {
+     "j": 0.852,
+     "a": "git checkout --theirs drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv --name-only --diff-filter=U --relative=drafts/demo-X notes.txt",
+     "b": "git checkout --theirs drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv --name-only --diff-filter=U 'drafts/demo-X notes.txt'",
+     "a_scn": "G14",
+     "b_scn": "G14"
+    },
+    {
+     "j": 0.823,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' ||| git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt'",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt'",
+     "a_scn": "G27",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.802,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- path/to/your/directory/ ||| git diff --no-pager --no-ext-diff --no-textconv -- 'pathspec=drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv -- path/to/directory/ ||| git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G10",
+     "b_scn": "G10"
+    },
+    {
+     "j": 0.812,
+     "a": "git checkout demo-X-work --no-pager --no-ext-diff --no-textconv ||| git checkout --no-pager origin/demo-X-work",
+     "b": "git checkout origin/demo-X-work ||| git checkout --no-pager --no-ext-diff --no-textconv origin/demo-X-work",
+     "a_scn": "G11",
+     "b_scn": "G11"
+    },
+    {
+     "j": 0.851,
+     "a": "git diff --cached --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- drafts/demo-X notes.txt",
+     "b": "git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- drafts/demo-X notes.txt ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G21",
+     "b_scn": "G21"
+    }
+   ],
+   "0.7-0.8": [
+    {
+     "j": 0.767,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- drafts/demo-X notes.txt ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt'",
+     "b": "git diff --cached --no-pager --no-ext-diff --no-textconv -- drafts/demo-X notes.txt ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- drafts/demo-X notes.txt",
+     "a_scn": "G08",
+     "b_scn": "G21"
+    },
+    {
+     "j": 0.75,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --cached --relative=demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git diff --cached --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --cached --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G19",
+     "b_scn": "G04"
+    },
+    {
+     "j": 0.752,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --relative=demo-X/ -- 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv --cached drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached --relative=demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G10",
+     "b_scn": "G19"
+    },
+    {
+     "j": 0.73,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --cached HEAD 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv --cached --relative=demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G19",
+     "b_scn": "G19"
+    },
+    {
+     "j": 0.774,
+     "a": "git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- 'drafts/demo-X notes.txt' ||| git diff --cached --no-pager --no-ext-diff --no-textconv HEAD -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G21",
+     "b_scn": "G19"
+    },
+    {
+     "j": 0.768,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv --cached -- demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached drafts/demo-X notes.txt src/demo-X.c",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv --cached drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv --cached --relative=demo-X/ 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G19",
+     "b_scn": "G19"
+    }
+   ],
+   "0.9-1.01": [
+    {
+     "j": 0.949,
+     "a": "git diff --no-pager --no-ext-diff --no-textconv -- pathspec1 pathspec2 ||| git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c ':!*.keep' ':!cache/'",
+     "b": "git diff --no-pager --no-ext-diff --no-textconv -- 'drafts/demo-X notes.txt' src/demo-X.c ':!*.keep' ':!cache/' ||| git diff --no-pager --no-ext-diff --no-textconv -- pathspec1 pathspec2",
+     "a_scn": "G26",
+     "b_scn": "G26"
+    },
+    {
+     "j": 0.948,
+     "a": "git checkout refs/heads/demo-X-work ||| git checkout --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work",
+     "b": "git checkout --no-pager --no-ext-diff --no-textconv refs/heads/demo-X-work ||| git checkout --no-pager refs/heads/demo-X-work",
+     "a_scn": "G12",
+     "b_scn": "G12"
+    },
+    {
+     "j": 0.954,
+     "a": "git switch --recurse-submodules origin/demo-X-work --discard-changes --no-pager --no-ext-diff --no-textconv ||| git switch --recurse-submodules origin/demo-X-work --no-pager --no-ext-diff --no-textconv",
+     "b": "git switch --discard-changes --recurse-submodules origin/demo-X-work ||| git switch --recurse-submodules origin/demo-X-work --no-pager --no-ext-diff --no-textconv",
+     "a_scn": "G17",
+     "b_scn": "G17"
+    },
+    {
+     "j": 0.946,
+     "a": "git checkout --no-pager --no-ext-diff --no-textconv origin/demo-X-work ||| git checkout --no-pager --no-ext-diff --no-textconv demo-X-work",
+     "b": "git checkout origin/demo-X-work ||| git checkout --no-pager --no-ext-diff --no-textconv demo-X-work",
+     "a_scn": "G11",
+     "b_scn": "G11"
+    },
+    {
+     "j": 1.0,
+     "a": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G24",
+     "b_scn": "G24"
+    },
+    {
+     "j": 1.0,
+     "a": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git restore --worktree --no-pager --no-ext-diff --no-textconv drafts/demo-X notes.txt src/demo-X.c ||| git diff --no-pager --no-ext-diff --no-textconv 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G24",
+     "b_scn": "G24"
+    }
+   ]
+  }
+ },
+ "2.3": {
+  "distributions": {
+   "core:diff_scenario/diff_form": {
+    "n": 5669,
+    "p10": 0.088,
+    "median": 0.198,
+    "p90": 0.6,
+    "share_ge_0.5": 0.141
+   },
+   "core:diff_scenario/same_form": {
+    "n": 2452,
+    "p10": 0.083,
+    "median": 0.2,
+    "p90": 0.6,
+    "share_ge_0.5": 0.136
+   },
+   "core:same_scenario/diff_form": {
+    "n": 2649,
+    "p10": 0.386,
+    "median": 1.0,
+    "p90": 1.0,
+    "share_ge_0.5": 0.829
+   },
+   "rendered:diff_scenario/diff_form": {
+    "n": 5669,
+    "p10": 0.033,
+    "median": 0.085,
+    "p90": 0.245,
+    "share_ge_0.5": 0.009
+   },
+   "rendered:diff_scenario/same_form": {
+    "n": 2452,
+    "p10": 0.195,
+    "median": 0.455,
+    "p90": 0.77,
+    "share_ge_0.5": 0.434
+   },
+   "rendered:same_scenario/diff_form": {
+    "n": 2649,
+    "p10": 0.083,
+    "median": 0.274,
+    "p90": 0.522,
+    "share_ge_0.5": 0.115
+   }
+  },
+  "spot": [
+   {
+    "j": 0.671,
+    "a": "git clean -fdX 'drafts/demo-X notes.txt' ||| git clean -fdn -- 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git clean -fdn 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -fdX --dry-run 'drafts/demo-X notes.txt' src/demo-X.c",
+    "a_scn": "G28",
+    "b_scn": "G27"
+   },
+   {
+    "j": 0.524,
+    "a": "git clean -fd --force --dry-run ||| git clean -fd --dry-run",
+    "b": "git clean -fdq ||| git clean -fdq --dry-run",
+    "a_scn": "G05",
+    "b_scn": "G19"
+   },
+   {
+    "j": 0.633,
+    "a": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --dry-run ||| git push --force --dry-run --o=push=refs/heads/demo-X-work:refs/heads/demo-X-review --o=push=refs/heads/demo-X-docs:refs/heads/demo-X-archive --o=push=refs/tags/demo-X-v1:refs/tags/demo-X-release origin",
+    "b": "git push --force --dry-run --recurse-submodules=on-demand origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release",
+    "a_scn": "G20",
+    "b_scn": "G06"
+   },
+   {
+    "j": 0.687,
+    "a": "git clean -fdX '--exclude=*.keep' --exclude=cache/ --dry-run ||| git clean -fdx --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git clean -fd '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' ||| git clean -fdX --dry-run -- 'drafts/demo-X notes.txt'",
+    "a_scn": "G31",
+    "b_scn": "G29"
+   },
+   {
+    "j": 0.582,
+    "a": "git clean -f 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -n -f -- demo-X/",
+    "b": "git clean -fdn 'nested/*' ||| git clean -fdn 'drafts/demo-X notes.txt' src/demo-X.c",
+    "a_scn": "G26",
+    "b_scn": "G28"
+   },
+   {
+    "j": 0.412,
+    "a": "git clean -f 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -f -n -- drafts/demo-X notes.txt src/demo-X.c",
+    "b": "git clean -fdn -- 'drafts/demo-X notes.txt' ||| git clean -fd --dry-run '--exclude=drafts/demo-X notes.txt'",
+    "a_scn": "G26",
+    "b_scn": "G29"
+   },
+   {
+    "j": 0.51,
+    "a": "git clean -fd '--exclude=*.keep' --exclude=cache/ --dry-run 'drafts/demo-X notes.txt' ||| git clean -fd --dry-run '--exclude=-drafts/*'",
+    "b": "git clean -fdX '--exclude=*.keep' --exclude=cache/ --dry-run ||| git clean -fdx '--exclude=*.keep' --exclude=cache/ --dry-run",
+    "a_scn": "G29",
+    "b_scn": "G08"
+   },
+   {
+    "j": 0.56,
+    "a": "git clean -fdn -- 'drafts/demo-X notes.txt' ||| git clean -fd --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git clean -fd -- 'drafts/demo-X notes.txt' ||| git clean -fd --dry-run -- 'drafts/demo-X notes.txt'",
+    "a_scn": "G29",
+    "b_scn": "G25"
+   },
+   {
+    "j": 0.454,
+    "a": "git clean -fdX '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -fdx --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git clean -fdX drafts/demo-X notes.txt ||| git clean -fd --dry-run 'drafts/demo-X notes.txt'",
+    "a_scn": "G31",
+    "b_scn": "G25"
+   },
+   {
+    "j": 0.678,
+    "a": "git clean -fdX '--exclude=*.keep' --exclude=cache/ --dry-run ||| git clean -fdX --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+    "b": "git clean -fd '--exclude=*.keep' --exclude=cache/ --dry-run 'drafts/demo-X notes.txt' ||| git clean -fd --dry-run '--exclude=-drafts/*'",
+    "a_scn": "G31",
+    "b_scn": "G29"
+   },
+   {
+    "j": 0.467,
+    "a": "git clean -f -x -e '*.keep' -e cache/ ||| git clean -f -x '--exclude=*.keep' --exclude=cache/ --dry-run",
+    "b": "git clean -f -X '--exclude=!*.keep' '--exclude=!cache/' ||| git clean -fdX '--exclude=!*.keep' --dry-run",
+    "a_scn": "G11",
+    "b_scn": "G09"
+   },
+   {
+    "j": 0.403,
+    "a": "git clean -fdx --dry-run ||| git clean -fdX --dry-run",
+    "b": "git clean -fd -- 'drafts/demo-X notes.txt' ||| git clean -fdX --dry-run 'drafts/demo-X notes.txt'",
+    "a_scn": "G03",
+    "b_scn": "G25"
+   }
+  ],
+  "bands": {
+   "0.5-0.6": [
+    {
+     "j": 0.536,
+     "a": "git clean -f '--exclude=*.keep' --exclude=cache/ ||| git clean -f '--exclude=*.keep' --exclude=cache/ -p",
+     "b": "git clean -fdX '--exclude=*.keep' '--exclude=cache/*' ||| git clean -fdX --dry-run",
+     "a_scn": "G12",
+     "b_scn": "G03"
+    },
+    {
+     "j": 0.557,
+     "a": "git clean -fdX '--exclude=*/.keep' '--exclude=*/cache/' ||| git clean -fdX '--exclude=*/.keep' '--exclude=*/cache/' --dry-run",
+     "b": "git clean -fX '--exclude=*.keep' ||| git clean -fdx '--exclude=*.keep' --dry-run",
+     "a_scn": "G10",
+     "b_scn": "G07"
+    },
+    {
+     "j": 0.589,
+     "a": "git clean -fdX drafts/demo-X notes.txt src/demo-X.c ||| git clean -fdx --dry-run '--exclude=*.keep' --exclude=cache/",
+     "b": "git clean -fd '--exclude=*.keep' '--exclude=cache/*' ||| git clean -fd --dry-run -- 'drafts/demo-X notes.txt'",
+     "a_scn": "G31",
+     "b_scn": "G29"
+    },
+    {
+     "j": 0.526,
+     "a": "git clean -fdX '--exclude=*.keep' '--exclude=cache/*' ||| git clean -fdX --dry-run",
+     "b": "git clean -f -x -e '*.keep' ||| git clean -fdx '--exclude=*.keep' --dry-run",
+     "a_scn": "G03",
+     "b_scn": "G07"
+    },
+    {
+     "j": 0.587,
+     "a": "git push --force --dry-run --recurse-submodules=on-demand origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --force --force-with-lease --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --dry-run",
+     "a_scn": "G06",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.5,
+     "a": "git clean -fdx --dry-run 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -fdn 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git clean -fdX drafts/demo-X notes.txt ||| git clean -fdn -- 'drafts/demo-X notes.txt'",
+     "a_scn": "G27",
+     "b_scn": "G25"
+    }
+   ],
+   "0.7-0.8": [
+    {
+     "j": 0.743,
+     "a": "git clean -f -x -e '*.keep' -e cache/ ||| git clean -fdx '--exclude=*.keep' --exclude=cache/ --dry-run",
+     "b": "git clean -fdx '--exclude=*.keep' ||| git clean -fdx '--exclude=*.keep' --exclude=cache/ --dry-run",
+     "a_scn": "G11",
+     "b_scn": "G07"
+    },
+    {
+     "j": 0.75,
+     "a": "git clean -fdX '--exclude=*.keep' --exclude=cache/ ||| git clean -fdx --dry-run '--exclude=*.keep' --exclude=cache/",
+     "b": "git clean -fdn '--exclude=*.keep' --exclude=cache/ ||| git clean -fd --dry-run '--exclude=*.keep' '--exclude=cache/*'",
+     "a_scn": "G31",
+     "b_scn": "G32"
+    },
+    {
+     "j": 0.75,
+     "a": "git clean -fdn ||| git clean -fdX --dry-run",
+     "b": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "a_scn": "G24",
+     "b_scn": "G05"
+    },
+    {
+     "j": 0.721,
+     "a": "git clean -fdX --force ||| git clean -fdx --dry-run --force",
+     "b": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "a_scn": "G17",
+     "b_scn": "G24"
+    },
+    {
+     "j": 0.772,
+     "a": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release",
+     "b": "git push origin refs/heads/demo-X-work:refs/heads/demo-X-review --force --dry-run ||| git push --force --dry-run --o=push=refs/heads/demo-X-work:refs/heads/demo-X-review --o=push=refs/heads/demo-X-docs:refs/heads/demo-X-archive --o=push=refs/tags/demo-X-v1:refs/tags/demo-X-release origin",
+     "a_scn": "G06",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.784,
+     "a": "git clean -fdx '--exclude=*.keep' --exclude=cache/ ||| git clean -fdx --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git clean -fdn -- 'drafts/demo-X notes.txt' ||| git clean -fd --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G31",
+     "b_scn": "G29"
+    }
+   ],
+   "0.8-0.9": [
+    {
+     "j": 0.8,
+     "a": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "b": "git clean -fdx ||| git clean -fdX --dry-run",
+     "a_scn": "G24",
+     "b_scn": "G03"
+    },
+    {
+     "j": 0.849,
+     "a": "git clean -fd '--exclude=*.keep' '--exclude=cache/*' --dry-run 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -fdn -- 'drafts/demo-X notes.txt'",
+     "b": "git clean -fdn '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -fd --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt'",
+     "a_scn": "G29",
+     "b_scn": "G29"
+    },
+    {
+     "j": 0.875,
+     "a": "git clean -fdn ||| git clean -fdx --dry-run",
+     "b": "git clean -fdx --dry-run ||| git clean -fdn",
+     "a_scn": "G24",
+     "b_scn": "G24"
+    },
+    {
+     "j": 0.858,
+     "a": "git clean -fdx '--exclude=*.keep' --exclude=cache/ ||| git clean -fdx --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git clean -fdX '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c ||| git clean -fdx --dry-run '--exclude=*.keep' '--exclude=cache/*' 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G31",
+     "b_scn": "G31"
+    },
+    {
+     "j": 0.875,
+     "a": "git clean -fdX --dry-run ||| git clean -fdn",
+     "b": "git clean -fdn ||| git clean -fdX --dry-run",
+     "a_scn": "G24",
+     "b_scn": "G24"
+    },
+    {
+     "j": 0.804,
+     "a": "git push --force --dry-run --o=push.alwaysRebase=true origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release",
+     "b": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push --force --dry-run --o=push=refs/heads/demo-X-work:refs/heads/demo-X-review --o=push=refs/heads/demo-X-docs:refs/heads/demo-X-archive --o=push=refs/tags/demo-X-v1:refs/tags/demo-X-release origin",
+     "a_scn": "G20",
+     "b_scn": "G20"
+    }
+   ],
+   "0.6-0.7": [
+    {
+     "j": 0.612,
+     "a": "git clean -fd '--exclude=*.keep' '--exclude=cache/*' 'nested/*' ||| git clean -fdn -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "b": "git clean -fdX 'drafts/demo-X notes.txt' src/demo-X.c '--exclude=*.keep' --exclude=cache/ ||| git clean -fdX --dry-run -- 'drafts/demo-X notes.txt' src/demo-X.c '--exclude=*.keep' --exclude=cache/",
+     "a_scn": "G28",
+     "b_scn": "G30"
+    },
+    {
+     "j": 0.618,
+     "a": "git clean -fdX 'drafts/demo-X notes.txt' ||| git clean -fdX --dry-run 'drafts/demo-X notes.txt'",
+     "b": "git clean -fdn 'drafts/demo-X notes.txt' ||| git clean -fdn 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G25",
+     "b_scn": "G28"
+    },
+    {
+     "j": 0.616,
+     "a": "git clean -fdX '--exclude=*.keep' '--exclude=cache/*' ||| git clean -fdx --dry-run",
+     "b": "git clean -fdn '--exclude=*.keep' --exclude=cache/ ||| git clean -fd --dry-run",
+     "a_scn": "G03",
+     "b_scn": "G32"
+    },
+    {
+     "j": 0.61,
+     "a": "git clean -fdx '--exclude=*.keep' ||| git clean -fdx '--exclude=*.keep' --exclude=cache/ --dry-run",
+     "b": "git clean -fdX '--exclude=demo-X/*' ||| git clean -fdX '--exclude=*.keep' '--exclude=cache/*' --dry-run",
+     "a_scn": "G07",
+     "b_scn": "G10"
+    },
+    {
+     "j": 0.684,
+     "a": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive ||| git push --force --dry-run --recurse-submodules=on-demand origin refs/heads/demo-X-work:refs/heads/demo-X-review",
+     "b": "git fetch --force --dry-run --recurse-submodules --all ||| git push --force --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    },
+    {
+     "j": 0.684,
+     "a": "git clean -f -x drafts/demo-X notes.txt src/demo-X.c ||| git clean -n -f -- demo-X/",
+     "b": "git clean -f -X drafts/demo-X notes.txt src/demo-X.c ||| git clean -f -n -- 'drafts/demo-X notes.txt' src/demo-X.c",
+     "a_scn": "G26",
+     "b_scn": "G26"
+    }
+   ],
+   "0.9-1.01": [
+    {
+     "j": 0.936,
+     "a": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review refs/heads/demo-X-docs:refs/heads/demo-X-archive refs/tags/demo-X-v1:refs/tags/demo-X-release ||| git push --force --dry-run --o=push=refs/heads/demo-X-work:refs/heads/demo-X-review --o=push=refs/heads/demo-X-docs:refs/heads/demo-X-archive --o=push=refs/tags/demo-X-v1:refs/tags/demo-X-release origin",
+     "b": "git push --force --dry-run origin refs/heads/demo-X-work:refs/heads/demo-X-review ||| git push --force --dry-run --o=push=refs/heads/demo-X-work:refs/heads/demo-X-review --o=push=refs/heads/demo-X-docs:refs/heads/demo-X-archive --o=push=refs/tags/demo-X-v1:refs/tags/demo-X-release origin",
+     "a_scn": "G20",
+     "b_scn": "G20"
+    },
+    {
+     "j": 0.952,
+     "a": "git -C demo-X/ clean -fdX --dry-run ||| git -C demo-X/ clean -n",
+     "b": "git -C demo-X/ clean -fdX --dry-run ||| git -C demo-X/ clean -fdn",
+     "a_scn": "G21",
+     "b_scn": "G21"
+    },
+    {
+     "j": 0.932,
+     "a": "git clean -fdx '--exclude=*.keep' --exclude=cache/ ||| git clean -f -x -e '*.keep' -e cache/ --dry-run",
+     "b": "git clean -f -x -e '*.keep' -e cache/ ||| git clean -f -x '--exclude=*.keep' --exclude=cache/ --dry-run",
+     "a_scn": "G11",
+     "b_scn": "G11"
+    },
+    {
+     "j": 1.0,
+     "a": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "b": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "a_scn": "G36",
+     "b_scn": "G24"
+    },
+    {
+     "j": 0.902,
+     "a": "git clean -fdx '--exclude=*.keep' --exclude=cache/ ||| git clean -fdx --dry-run",
+     "b": "git clean -fdX '--exclude=*.keep' --exclude=cache/ ||| git clean -fdx --dry-run",
+     "a_scn": "G03",
+     "b_scn": "G03"
+    },
+    {
+     "j": 1.0,
+     "a": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "b": "git clean -fdX --dry-run ||| git clean -fdx --dry-run",
+     "a_scn": "G24",
+     "b_scn": "G05"
+    }
+   ]
+  }
+ },
+ "2.4": {
+  "distributions": {
+   "core:diff_scenario/diff_form": {
+    "n": 5643,
+    "p10": 0.0,
+    "median": 0.045,
+    "p90": 0.468,
+    "share_ge_0.5": 0.087
+   },
+   "core:diff_scenario/same_form": {
+    "n": 2771,
+    "p10": 0.0,
+    "median": 0.045,
+    "p90": 0.488,
+    "share_ge_0.5": 0.091
+   },
+   "core:same_scenario/diff_form": {
+    "n": 2876,
+    "p10": 0.838,
+    "median": 1.0,
+    "p90": 1.0,
+    "share_ge_0.5": 0.974
+   },
+   "rendered:diff_scenario/diff_form": {
+    "n": 5643,
+    "p10": 0.0,
+    "median": 0.045,
+    "p90": 0.201,
+    "share_ge_0.5": 0.005
+   },
+   "rendered:diff_scenario/same_form": {
+    "n": 2771,
+    "p10": 0.103,
+    "median": 0.355,
+    "p90": 0.674,
+    "share_ge_0.5": 0.325
+   },
+   "rendered:same_scenario/diff_form": {
+    "n": 2876,
+    "p10": 0.129,
+    "median": 0.309,
+    "p90": 0.587,
+    "share_ge_0.5": 0.186
+   }
+  },
+  "spot": [
+   {
+    "j": 0.558,
+    "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+    "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+    "a_scn": "G06",
+    "b_scn": "G08"
+   },
+   {
+    "j": 0.644,
+    "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+    "b": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+    "a_scn": "G06",
+    "b_scn": "G07"
+   },
+   {
+    "j": 0.683,
+    "a": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+    "b": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+    "a_scn": "G02",
+    "b_scn": "G07"
+   },
+   {
+    "j": 0.473,
+    "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+    "b": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+    "a_scn": "G07",
+    "b_scn": "G14"
+   },
+   {
+    "j": 0.433,
+    "a": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+    "b": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+    "a_scn": "G08",
+    "b_scn": "G05"
+   },
+   {
+    "j": 0.604,
+    "a": "ls -ld -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+    "b": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+    "a_scn": "G14",
+    "b_scn": "G05"
+   },
+   {
+    "j": 0.651,
+    "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+    "b": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+    "a_scn": "G06",
+    "b_scn": "G02"
+   },
+   {
+    "j": 0.644,
+    "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+    "b": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+    "a_scn": "G06",
+    "b_scn": "G07"
+   },
+   {
+    "j": 0.66,
+    "a": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+    "b": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+    "a_scn": "G14",
+    "b_scn": "G05"
+   },
+   {
+    "j": 0.472,
+    "a": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+    "b": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+    "a_scn": "G02",
+    "b_scn": "G14"
+   },
+   {
+    "j": 0.58,
+    "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+    "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+    "a_scn": "G07",
+    "b_scn": "G08"
+   },
+   {
+    "j": 0.558,
+    "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+    "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+    "a_scn": "G06",
+    "b_scn": "G08"
+   }
+  ],
+  "bands": {
+   "0.5-0.6": [
+    {
+     "j": 0.58,
+     "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G07",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.58,
+     "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G07",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.583,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "b": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+     "a_scn": "G08",
+     "b_scn": "G02"
+    },
+    {
+     "j": 0.558,
+     "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G06",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.583,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "b": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+     "a_scn": "G08",
+     "b_scn": "G02"
+    },
+    {
+     "j": 0.583,
+     "a": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G02",
+     "b_scn": "G08"
+    }
+   ],
+   "0.6-0.7": [
+    {
+     "j": 0.604,
+     "a": "ls -ld -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+     "b": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+     "a_scn": "G05",
+     "b_scn": "G14"
+    },
+    {
+     "j": 0.604,
+     "a": "ls -ld -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+     "b": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+     "a_scn": "G14",
+     "b_scn": "G05"
+    },
+    {
+     "j": 0.604,
+     "a": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+     "b": "ls -ld -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+     "a_scn": "G05",
+     "b_scn": "G14"
+    },
+    {
+     "j": 0.644,
+     "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "b": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "a_scn": "G06",
+     "b_scn": "G07"
+    },
+    {
+     "j": 0.683,
+     "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "b": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+     "a_scn": "G07",
+     "b_scn": "G02"
+    },
+    {
+     "j": 0.683,
+     "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "b": "rm -- sandbox/demo-X/.git ||| cat -- sandbox/demo-X/.git",
+     "a_scn": "G07",
+     "b_scn": "G02"
+    }
+   ],
+   "0.9-1.01": [
+    {
+     "j": 1.0,
+     "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "b": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "a_scn": "G07",
+     "b_scn": "G07"
+    },
+    {
+     "j": 1.0,
+     "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "b": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    },
+    {
+     "j": 1.0,
+     "a": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+     "b": "cat -- sandbox/demo-X/.git/index ||| ls -ld -- sandbox/demo-X/.git/index",
+     "a_scn": "G05",
+     "b_scn": "G05"
+    },
+    {
+     "j": 1.0,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G08",
+     "b_scn": "G08"
+    },
+    {
+     "j": 1.0,
+     "a": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+     "b": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+     "a_scn": "G14",
+     "b_scn": "G14"
+    },
+    {
+     "j": 1.0,
+     "a": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "b": "cat -- sandbox/demo-X/.git/HEAD ||| cat -- sandbox/demo-X/.git/HEAD",
+     "a_scn": "G07",
+     "b_scn": "G07"
+    }
+   ],
+   "0.8-0.9": [
+    {
+     "j": 0.897,
+     "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "b": ": ||| cat -- sandbox/demo-X/.git/config",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    },
+    {
+     "j": 0.871,
+     "a": "git update-ref --stdin ||| git update-ref --stdin",
+     "b": "git update-ref --stdin ||| git update-ref -z --stdin",
+     "a_scn": "G21",
+     "b_scn": "G21"
+    },
+    {
+     "j": 0.897,
+     "a": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "b": ": ||| cat -- sandbox/demo-X/.git/config",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    },
+    {
+     "j": 0.871,
+     "a": "git update-ref -z --stdin ||| git update-ref --stdin",
+     "b": "git update-ref --stdin ||| git update-ref --stdin",
+     "a_scn": "G21",
+     "b_scn": "G21"
+    },
+    {
+     "j": 0.839,
+     "a": "git update-ref --stdin ||| git update-ref --stdin",
+     "b": "git update-ref -z --stdin ||| git update-ref -z --stdin",
+     "a_scn": "G21",
+     "b_scn": "G21"
+    },
+    {
+     "j": 0.897,
+     "a": ": ||| cat -- sandbox/demo-X/.git/config",
+     "b": "cat -- sandbox/demo-X/.git/config ||| cat -- sandbox/demo-X/.git/config",
+     "a_scn": "G06",
+     "b_scn": "G06"
+    }
+   ],
+   "0.7-0.8": [
+    {
+     "j": 0.769,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| ls -ld -- sandbox/demo-X/.git/packed-refs",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G08",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.769,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| ls -ld -- sandbox/demo-X/.git/packed-refs",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G08",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.769,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| ls -ld -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G08",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.769,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| ls -ld -- sandbox/demo-X/.git/packed-refs",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G08",
+     "b_scn": "G08"
+    },
+    {
+     "j": 0.75,
+     "a": "cat -- sandbox/demo-X/.git/shallow ||| ls -ld -- sandbox/demo-X/.git/shallow",
+     "b": "cat -- sandbox/demo-X/.git/shallow ||| cat -- sandbox/demo-X/.git/shallow",
+     "a_scn": "G14",
+     "b_scn": "G14"
+    },
+    {
+     "j": 0.769,
+     "a": "cat -- sandbox/demo-X/.git/packed-refs ||| cat -- sandbox/demo-X/.git/packed-refs",
+     "b": "cat -- sandbox/demo-X/.git/packed-refs ||| ls -ld -- sandbox/demo-X/.git/packed-refs",
+     "a_scn": "G08",
+     "b_scn": "G08"
+    }
+   ]
+  }
+ }
+}

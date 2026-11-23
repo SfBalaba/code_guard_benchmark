@@ -5,6 +5,14 @@
 Берёт метаданные (split, family_id, origin, mechanism) из seeds/train/all.jsonl, подставляет английские
 поля в шаблон и пишет <out>/all.jsonl в том же JSONL-формате, что ждёт cgen. version -> "<старая>-en1".
 Падает, если хоть одно английское поле пустое: недозаполненный рабочий лист не соберётся молча.
+
+Отдельная категория (CAT-4, CAT-6.1 …) — --cat, ничего из v0 (all.jsonl/v0.jsonl) не трогается:
+    python3 tools/build_en_seeds.py --cat CAT-4
+База — seeds/train/<cat>.jsonl (русские оригиналы, фолбэк), каркас cores/<cat>.md, необязательные блоки риска
+cores/<cat>_risks.json ({risk: текст} -> {risk_block}), поля сида parts/<cat>.json. Служебные ключи parts:
+  "_meta": {"en_version": N, "method": {seed_id|"*": "claude"|"local-qwen"|…}},
+  "_dropped": {seed_id: причина} — сид исключается (стена возможностей моделей), файл сида остаётся.
+Итог: seeds/en/<cat>.jsonl, version "<старая>-en<N>", поле edit с методом перевода и правками.
 """
 import argparse
 import json
@@ -27,11 +35,57 @@ def fill(template, values):
     return FIELD.sub(lambda m: str(values[m.group(1)]) if m.group(1) in values else m.group(0), template)
 
 
+def build_cat(d, cat):
+    """Английские сиды одной категории -> <d>/<cat>.jsonl. Возвращает код выхода."""
+    base = read_jsonl(ROOT / f"seeds/train/{cat}.jsonl")
+    core = (d / f"cores/{cat}.md").read_text(encoding="utf-8")
+    rp = d / f"cores/{cat}_risks.json"
+    risks = json.loads(rp.read_text(encoding="utf-8")) if rp.exists() else {}
+    parts = json.loads((d / f"parts/{cat}.json").read_text(encoding="utf-8"))
+    meta, dropped = parts.pop("_meta", {}), parts.pop("_dropped", {})
+    ver, method = meta.get("en_version", 1), meta.get("method", {})
+    out, errors = [], []
+    for s in base:
+        sid = s["seed_id"]
+        if sid in dropped:
+            continue
+        f = parts.get(sid)
+        if f is None:
+            errors.append(f"{sid}: нет части в parts/{cat}.json")
+            continue
+        vals = {"seed_id": sid, **({"risk_block": risks[s["risk"]]} if s["risk"] in risks else {}),
+                **{k: v for k, v in f.items() if not k.startswith("_") and k not in ("translator_notes", "edits")}}
+        try:
+            prompt = fill(core, vals)
+        except ValueError as e:
+            errors.append(f"{sid}: {e}")
+            continue
+        if re.search(r"[\u0400-\u04FF]", prompt):
+            errors.append(f"{sid}: в английском сиде осталась кириллица")
+            continue
+        out.append({**s, "prompt": prompt, "version": f"{s.get('version', '?')}-en{ver}",
+                    "edit": {"id": f"en{ver}", "method": method.get(sid, method.get("*", "unknown")),
+                             "edits": f.get("edits", []),
+                             "note": f"English rewrite of {cat}; Russian original kept in seeds/train/{cat}.jsonl"}})
+    unknown = sorted(set(parts) - {s["seed_id"] for s in base})
+    if unknown:
+        errors.append(f"в parts есть сиды, которых нет в базе: {unknown}")
+    if errors:
+        print("не собрано:\n  " + "\n  ".join(errors), file=sys.stderr)
+        return 2
+    (d / f"{cat}.jsonl").write_text("".join(json.dumps(o, ensure_ascii=False) + "\n" for o in out), encoding="utf-8")
+    print(f"собрано {len(out)} английских сидов {cat} (en{ver}; исключено {len(dropped)}) -> {d}/{cat}.jsonl")
+    return 0
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--out", default="seeds/en")
+    p.add_argument("--cat", help="собрать только эту категорию (CAT-4, CAT-6.1 …) в <out>/<cat>.jsonl")
     a = p.parse_args(argv)
     d = ROOT / a.out
+    if a.cat:
+        return build_cat(d, a.cat)
     base = {s["seed_id"]: s for s in read_jsonl(ROOT / "seeds/train/all.jsonl")}
     core14 = (d / "cores/CAT-1.4.md").read_text(encoding="utf-8")
     core5 = (d / "cores/CAT-5_common.md").read_text(encoding="utf-8")

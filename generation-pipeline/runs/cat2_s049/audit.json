@@ -1,0 +1,823 @@
+{
+ "thr_vs_test": 0.5,
+ "core_thr_within_train": 0.8,
+ "k": 4,
+ "family_cap": 5,
+ "test_unique": 10893,
+ "cat2_test_unique": 175,
+ "cat2_pool_unique": 2726,
+ "refs": {
+  "2.1": "bbe6d8bc12402f9f4943ed66538007df7621d2c3",
+  "2.2": "4aa5f838eb4a5f88ed792adc9211a164aa1cebb0",
+  "2.3": "a21ef48e6ddf287b8f51db2ee0237ad92f2b3809",
+  "2.4": "3ac5bdc7f922b35c1208d92a857355230a5546b9"
+ },
+ "model": {
+  "model": {
+   "key": "qwen14b",
+   "repo": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+   "revision": "5b379ec4bf71bafecb5f9081ad28b19939128988",
+   "filename": "Qwen2.5-Coder-14B-Instruct-Q4_K_M.gguf",
+   "sha256": "2946d28c9e1bb2bcae6d42e8678863a31775df6f740315c7d7e6d6b6411f5937",
+   "bytes": 8988111072,
+   "url": "https://huggingface.co/bartowski/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/5b379ec4bf71bafecb5f9081ad28b19939128988/Qwen2.5-Coder-14B-Instruct-Q4_K_M.gguf",
+   "base_model": "Qwen/Qwen2.5-Coder-14B-Instruct",
+   "abliterated": false
+  },
+  "input_manifest_sha256": "25991e33344404693704c51b5845dbe3771244f6d0b695cf363c2c6f0d5b000f",
+  "engine_sha256": {
+   "runtime.py": "80c26cc7250c9d0b1658f2abc5b6e3f280db9f0c28d1a1e4de32a86c8df08a90",
+   "run_full.py": "78ebc36f38e3345819c1509e48d42804212e795b780bba2b398526fd1d2e9ec8",
+   "checks.py": "fe024bca8474f784a66382b7c9c75cb311f0a55b901f6cb973f128bd87ee1cf6",
+   "compiler.py": "083ea95db3e6efc59d853bad6cd9ec1a81c76d915bec22526a7211e69274779b",
+   "prepare.py": "753145af9badf5d1d1a4161d26679f5af5085290cd1c7d992bc31caaba0e7d3d"
+  },
+  "temperature": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 256,
+  "thinking": false,
+  "concurrency": 4
+ },
+ "subs": {
+  "CAT-2.1": {
+   "seeds": 1152,
+   "structural_rejections": 108,
+   "rendered_pairs": 1044,
+   "scenario_max_jaccard_vs_test": {
+    "G01": 0.377,
+    "G02": 0.481,
+    "G03": 0.266,
+    "G04": 0.481,
+    "G05": 0.377,
+    "G06": 0.68,
+    "G07": 0.704,
+    "G08": 0.33,
+    "G09": 0.481,
+    "G10": 0.287,
+    "G11": 0.857,
+    "G12": 0.362,
+    "G13": 0.424,
+    "G14": 0.435,
+    "G15": 0.482,
+    "G16": 0.417,
+    "G17": 0.417,
+    "G18": 0.417,
+    "G19": 0.424,
+    "G20": 0.684,
+    "G21": 0.417,
+    "G22": 0.316,
+    "G23": 0.417,
+    "G24": 0.241,
+    "G25": 0.217,
+    "G26": 0.249,
+    "G27": 0.481,
+    "G28": 0.452,
+    "G29": 0.424,
+    "G30": 0.857,
+    "G31": 0.417,
+    "G32": 0.41
+   },
+   "identical_rendered": 242,
+   "identical_core_only": 0,
+   "after_identical": 802,
+   "unique_core_pairs": 199,
+   "forms_per_core_pair_median": 1,
+   "core_neardup_sweep": {
+    "0.5": 18,
+    "0.6": 27,
+    "0.7": 44,
+    "0.8": 72,
+    "0.9": 106
+   },
+   "core_pairs_after_neardup": 72,
+   "core_neardup_dropped": 127,
+   "rendered_pairs_leaking_test": 98,
+   "rendered_pairs_leaking_test_core_level": 98,
+   "rendered_pairs_leaking_cat2_pools": 116,
+   "yield": {
+    "all/cap_by_scenario": {
+     "pairs": 45,
+     "rows": 90,
+     "scenarios": 23,
+     "forms": 16,
+     "utils": {
+      "git": 90
+     }
+    },
+    "all/cap_by_split_group": {
+     "pairs": 39,
+     "rows": 78,
+     "scenarios": 23,
+     "forms": 16,
+     "utils": {
+      "git": 78
+     }
+    },
+    "excl_S/cap_by_scenario": {
+     "pairs": 36,
+     "rows": 72,
+     "scenarios": 18,
+     "forms": 15,
+     "utils": {
+      "git": 72
+     }
+    },
+    "excl_S/cap_by_split_group": {
+     "pairs": 33,
+     "rows": 66,
+     "scenarios": 18,
+     "forms": 16,
+     "utils": {
+      "git": 66
+     }
+    },
+    "G_N/cap_by_scenario": {
+     "pairs": 16,
+     "rows": 32,
+     "scenarios": 8,
+     "forms": 9,
+     "utils": {
+      "git": 32
+     }
+    },
+    "G_N/cap_by_split_group": {
+     "pairs": 16,
+     "rows": 32,
+     "scenarios": 8,
+     "forms": 9,
+     "utils": {
+      "git": 32
+     }
+    },
+    "N_only/cap_by_scenario": {
+     "pairs": 10,
+     "rows": 20,
+     "scenarios": 5,
+     "forms": 7,
+     "utils": {
+      "git": 20
+     }
+    },
+    "N_only/cap_by_split_group": {
+     "pairs": 10,
+     "rows": 20,
+     "scenarios": 5,
+     "forms": 7,
+     "utils": {
+      "git": 20
+     }
+    }
+   },
+   "artifacts": {
+    "rows": 2088,
+    "outer_subshell_wrapper": 2088,
+    "cgb_identifier": 1567,
+    "demo_hex": 1861,
+    "example_invalid": 48
+   },
+   "suspicious_core_flags": {
+    "push --preview": 489,
+    "--lease (not a git flag)": 128,
+    "--expected-old": 62,
+    "clean --ignored-only": 0,
+    "diff/show --no-pager (global opt misplaced)": 0,
+    "config --global write": 4
+   },
+   "utils_all_rows": {
+    "git": 2088
+   },
+   "label_contract": {
+    "pair_inputs_nonempty_source_or_contrast": 0,
+    "pair_inputs_keys": [
+     "context",
+     "contrast",
+     "contrast_task",
+     "coverage_tags",
+     "filesystem",
+     "form_id",
+     "notes",
+     "pair_id",
+     "scenario_id",
+     "seed_id",
+     "seed_record_sha256",
+     "source",
+     "source_task",
+     "split_group_id",
+     "subcategory"
+    ],
+    "safety_labels_assigned": false,
+    "semantic_validation": false,
+    "test_family_independence": "not_established"
+   }
+  },
+  "CAT-2.2": {
+   "seeds": 1296,
+   "structural_rejections": 229,
+   "rendered_pairs": 1067,
+   "scenario_max_jaccard_vs_test": {
+    "G01": 0.263,
+    "G02": 0.359,
+    "G03": 1.0,
+    "G04": 0.232,
+    "G05": 0.247,
+    "G06": 0.35,
+    "G07": 0.23,
+    "G08": 0.25,
+    "G09": 0.253,
+    "G10": 0.254,
+    "G11": 0.381,
+    "G12": 0.404,
+    "G13": 0.268,
+    "G14": 0.263,
+    "G15": 0.381,
+    "G16": 0.234,
+    "G17": 0.295,
+    "G18": 0.241,
+    "G19": 0.242,
+    "G20": 0.238,
+    "G21": 0.245,
+    "G22": 0.13,
+    "G23": 0.25,
+    "G24": 0.238,
+    "G25": 0.193,
+    "G26": 0.257,
+    "G27": 0.25,
+    "G28": 0.241,
+    "G31": 1.0,
+    "G33": 0.838,
+    "G34": 0.259,
+    "G35": 0.738,
+    "G36": 0.235
+   },
+   "identical_rendered": 371,
+   "identical_core_only": 0,
+   "after_identical": 696,
+   "unique_core_pairs": 209,
+   "forms_per_core_pair_median": 1,
+   "core_neardup_sweep": {
+    "0.5": 23,
+    "0.6": 34,
+    "0.7": 52,
+    "0.8": 85,
+    "0.9": 134
+   },
+   "core_pairs_after_neardup": 85,
+   "core_neardup_dropped": 124,
+   "rendered_pairs_leaking_test": 95,
+   "rendered_pairs_leaking_test_core_level": 95,
+   "rendered_pairs_leaking_cat2_pools": 179,
+   "yield": {
+    "all/cap_by_scenario": {
+     "pairs": 72,
+     "rows": 144,
+     "scenarios": 26,
+     "forms": 25,
+     "utils": {
+      "git": 144
+     }
+    },
+    "all/cap_by_split_group": {
+     "pairs": 45,
+     "rows": 90,
+     "scenarios": 21,
+     "forms": 19,
+     "utils": {
+      "git": 90
+     }
+    },
+    "excl_S/cap_by_scenario": {
+     "pairs": 51,
+     "rows": 102,
+     "scenarios": 18,
+     "forms": 21,
+     "utils": {
+      "git": 102
+     }
+    },
+    "excl_S/cap_by_split_group": {
+     "pairs": 39,
+     "rows": 78,
+     "scenarios": 16,
+     "forms": 19,
+     "utils": {
+      "git": 78
+     }
+    },
+    "G_N/cap_by_scenario": {
+     "pairs": 35,
+     "rows": 70,
+     "scenarios": 13,
+     "forms": 15,
+     "utils": {
+      "git": 70
+     }
+    },
+    "G_N/cap_by_split_group": {
+     "pairs": 29,
+     "rows": 58,
+     "scenarios": 12,
+     "forms": 14,
+     "utils": {
+      "git": 58
+     }
+    },
+    "N_only/cap_by_scenario": {
+     "pairs": 23,
+     "rows": 46,
+     "scenarios": 9,
+     "forms": 12,
+     "utils": {
+      "git": 46
+     }
+    },
+    "N_only/cap_by_split_group": {
+     "pairs": 17,
+     "rows": 34,
+     "scenarios": 8,
+     "forms": 8,
+     "utils": {
+      "git": 34
+     }
+    }
+   },
+   "artifacts": {
+    "rows": 2134,
+    "outer_subshell_wrapper": 2134,
+    "cgb_identifier": 1599,
+    "demo_hex": 1344,
+    "example_invalid": 7
+   },
+   "suspicious_core_flags": {
+    "push --preview": 0,
+    "--lease (not a git flag)": 0,
+    "--expected-old": 0,
+    "clean --ignored-only": 0,
+    "diff/show --no-pager (global opt misplaced)": 961,
+    "config --global write": 0
+   },
+   "utils_all_rows": {
+    "git": 2134
+   },
+   "label_contract": {
+    "pair_inputs_nonempty_source_or_contrast": 72,
+    "pair_inputs_keys": [
+     "context",
+     "contrast",
+     "contrast_task",
+     "coverage_tags",
+     "filesystem",
+     "form_id",
+     "notes",
+     "pair_id",
+     "scenario_id",
+     "seed_id",
+     "seed_record_sha256",
+     "source",
+     "source_task",
+     "split_group_id",
+     "subcategory"
+    ],
+    "safety_labels_assigned": false,
+    "semantic_validation": false,
+    "test_family_independence": "not_established"
+   }
+  },
+  "CAT-2.3": {
+   "seeds": 1296,
+   "structural_rejections": 169,
+   "rendered_pairs": 1127,
+   "scenario_max_jaccard_vs_test": {
+    "G01": 1.0,
+    "G02": 1.0,
+    "G03": 1.0,
+    "G04": 1.0,
+    "G05": 0.577,
+    "G06": 0.319,
+    "G07": 0.375,
+    "G08": 0.241,
+    "G09": 0.375,
+    "G10": 0.349,
+    "G11": 0.32,
+    "G12": 0.385,
+    "G13": 0.293,
+    "G14": 0.282,
+    "G15": 1.0,
+    "G16": 1.0,
+    "G17": 0.6,
+    "G18": 0.333,
+    "G19": 0.909,
+    "G20": 0.403,
+    "G21": 0.333,
+    "G22": 0.271,
+    "G23": 0.231,
+    "G24": 0.909,
+    "G25": 0.275,
+    "G26": 0.529,
+    "G27": 0.25,
+    "G28": 0.455,
+    "G29": 0.312,
+    "G30": 0.232,
+    "G31": 0.32,
+    "G32": 0.577,
+    "G33": 1.0,
+    "G34": 1.0,
+    "G35": 1.0,
+    "G36": 0.909
+   },
+   "identical_rendered": 167,
+   "identical_core_only": 0,
+   "after_identical": 960,
+   "unique_core_pairs": 353,
+   "forms_per_core_pair_median": 1,
+   "core_neardup_sweep": {
+    "0.5": 32,
+    "0.6": 52,
+    "0.7": 81,
+    "0.8": 127,
+    "0.9": 220
+   },
+   "core_pairs_after_neardup": 127,
+   "core_neardup_dropped": 226,
+   "rendered_pairs_leaking_test": 478,
+   "rendered_pairs_leaking_test_core_level": 478,
+   "rendered_pairs_leaking_cat2_pools": 509,
+   "yield": {
+    "all/cap_by_scenario": {
+     "pairs": 65,
+     "rows": 130,
+     "scenarios": 21,
+     "forms": 25,
+     "utils": {
+      "git": 130
+     }
+    },
+    "all/cap_by_split_group": {
+     "pairs": 32,
+     "rows": 64,
+     "scenarios": 12,
+     "forms": 13,
+     "utils": {
+      "git": 64
+     }
+    },
+    "excl_S/cap_by_scenario": {
+     "pairs": 28,
+     "rows": 56,
+     "scenarios": 11,
+     "forms": 17,
+     "utils": {
+      "git": 56
+     }
+    },
+    "excl_S/cap_by_split_group": {
+     "pairs": 14,
+     "rows": 28,
+     "scenarios": 6,
+     "forms": 10,
+     "utils": {
+      "git": 28
+     }
+    },
+    "G_N/cap_by_scenario": {
+     "pairs": 10,
+     "rows": 20,
+     "scenarios": 3,
+     "forms": 8,
+     "utils": {
+      "git": 20
+     }
+    },
+    "G_N/cap_by_split_group": {
+     "pairs": 5,
+     "rows": 10,
+     "scenarios": 2,
+     "forms": 4,
+     "utils": {
+      "git": 10
+     }
+    },
+    "N_only/cap_by_scenario": {
+     "pairs": 6,
+     "rows": 12,
+     "scenarios": 2,
+     "forms": 6,
+     "utils": {
+      "git": 12
+     }
+    },
+    "N_only/cap_by_split_group": {
+     "pairs": 5,
+     "rows": 10,
+     "scenarios": 1,
+     "forms": 5,
+     "utils": {
+      "git": 10
+     }
+    }
+   },
+   "artifacts": {
+    "rows": 2254,
+    "outer_subshell_wrapper": 2254,
+    "cgb_identifier": 1685,
+    "demo_hex": 894,
+    "example_invalid": 2
+   },
+   "suspicious_core_flags": {
+    "push --preview": 0,
+    "--lease (not a git flag)": 0,
+    "--expected-old": 0,
+    "clean --ignored-only": 13,
+    "diff/show --no-pager (global opt misplaced)": 0,
+    "config --global write": 0
+   },
+   "utils_all_rows": {
+    "git": 2254
+   },
+   "label_contract": {
+    "pair_inputs_nonempty_source_or_contrast": 180,
+    "pair_inputs_keys": [
+     "context",
+     "contrast",
+     "contrast_task",
+     "coverage_tags",
+     "filesystem",
+     "form_id",
+     "notes",
+     "pair_id",
+     "scenario_id",
+     "seed_id",
+     "seed_record_sha256",
+     "source",
+     "source_task",
+     "split_group_id",
+     "subcategory"
+    ],
+    "safety_labels_assigned": false,
+    "semantic_validation": false,
+    "test_family_independence": "not_established"
+   }
+  },
+  "CAT-2.4": {
+   "seeds": 1280,
+   "structural_rejections": 116,
+   "rendered_pairs": 1164,
+   "scenario_max_jaccard_vs_test": {
+    "G01": 0.28,
+    "G02": 0.282,
+    "G03": 0.272,
+    "G04": 0.095,
+    "G05": 0.273,
+    "G06": 0.275,
+    "G07": 0.277,
+    "G08": 0.268,
+    "G09": 0.271,
+    "G10": 0.269,
+    "G11": 0.233,
+    "G12": 0.242,
+    "G13": 0.266,
+    "G14": 0.269,
+    "G15": 0.265,
+    "G16": 0.263,
+    "G17": 0.634,
+    "G18": 0.455,
+    "G19": 0.634,
+    "G20": 0.258,
+    "G21": 0.361,
+    "G22": 0.361,
+    "G23": 0.73,
+    "G24": 0.573,
+    "G25": 0.268,
+    "G26": 0.404,
+    "G27": 0.524,
+    "G28": 0.367,
+    "G29": 0.485,
+    "G30": 0.293,
+    "G31": 1.0,
+    "G32": 0.557,
+    "G33": 0.391,
+    "G34": 0.293,
+    "G35": 0.282
+   },
+   "identical_rendered": 438,
+   "identical_core_only": 0,
+   "after_identical": 726,
+   "unique_core_pairs": 278,
+   "forms_per_core_pair_median": 1,
+   "core_neardup_sweep": {
+    "0.5": 17,
+    "0.6": 22,
+    "0.7": 29,
+    "0.8": 38,
+    "0.9": 47
+   },
+   "core_pairs_after_neardup": 38,
+   "core_neardup_dropped": 240,
+   "rendered_pairs_leaking_test": 121,
+   "rendered_pairs_leaking_test_core_level": 119,
+   "rendered_pairs_leaking_cat2_pools": 248,
+   "yield": {
+    "all/cap_by_scenario": {
+     "pairs": 27,
+     "rows": 54,
+     "scenarios": 17,
+     "forms": 10,
+     "utils": {
+      "rm": 4,
+      "cat": 13,
+      "ls": 5,
+      "git": 32
+     }
+    },
+    "all/cap_by_split_group": {
+     "pairs": 23,
+     "rows": 46,
+     "scenarios": 16,
+     "forms": 9,
+     "utils": {
+      "rm": 4,
+      "cat": 13,
+      "ls": 5,
+      "git": 24
+     }
+    },
+    "excl_S/cap_by_scenario": {
+     "pairs": 23,
+     "rows": 46,
+     "scenarios": 14,
+     "forms": 10,
+     "utils": {
+      "cat": 12,
+      "ls": 5,
+      "rm": 3,
+      "git": 26
+     }
+    },
+    "excl_S/cap_by_split_group": {
+     "pairs": 19,
+     "rows": 38,
+     "scenarios": 13,
+     "forms": 9,
+     "utils": {
+      "cat": 12,
+      "ls": 5,
+      "rm": 3,
+      "git": 18
+     }
+    },
+    "G_N/cap_by_scenario": {
+     "pairs": 15,
+     "rows": 30,
+     "scenarios": 10,
+     "forms": 7,
+     "utils": {
+      "cat": 12,
+      "ls": 4,
+      "rm": 2,
+      "git": 12
+     }
+    },
+    "G_N/cap_by_split_group": {
+     "pairs": 15,
+     "rows": 30,
+     "scenarios": 10,
+     "forms": 8,
+     "utils": {
+      "cat": 12,
+      "ls": 4,
+      "rm": 2,
+      "git": 12
+     }
+    },
+    "N_only/cap_by_scenario": {
+     "pairs": 10,
+     "rows": 20,
+     "scenarios": 8,
+     "forms": 3,
+     "utils": {
+      "cat": 12,
+      "ls": 3,
+      "rm": 1,
+      "git": 4
+     }
+    },
+    "N_only/cap_by_split_group": {
+     "pairs": 10,
+     "rows": 20,
+     "scenarios": 8,
+     "forms": 3,
+     "utils": {
+      "cat": 12,
+      "ls": 3,
+      "rm": 1,
+      "git": 4
+     }
+    }
+   },
+   "artifacts": {
+    "rows": 2328,
+    "outer_subshell_wrapper": 2328,
+    "cgb_identifier": 1748,
+    "demo_hex": 1642,
+    "example_invalid": 0
+   },
+   "suspicious_core_flags": {
+    "push --preview": 0,
+    "--lease (not a git flag)": 0,
+    "--expected-old": 0,
+    "clean --ignored-only": 0,
+    "diff/show --no-pager (global opt misplaced)": 0,
+    "config --global write": 0
+   },
+   "utils_all_rows": {
+    "ls": 640,
+    "rm": 104,
+    "cat": 349,
+    ":": 3,
+    "git": 1232
+   },
+   "label_contract": {
+    "pair_inputs_nonempty_source_or_contrast": 317,
+    "pair_inputs_keys": [
+     "context",
+     "contrast",
+     "contrast_task",
+     "coverage_tags",
+     "filesystem",
+     "form_id",
+     "notes",
+     "pair_id",
+     "scenario_id",
+     "seed_id",
+     "seed_record_sha256",
+     "source",
+     "source_task",
+     "split_group_id",
+     "subcategory"
+    ],
+    "safety_labels_assigned": false,
+    "semantic_validation": false,
+    "test_family_independence": "not_established"
+   }
+  }
+ },
+ "scenario_levels": {
+  "CAT-2.1": {
+   "G": 3,
+   "S": 11,
+   "N": 6,
+   "P": 12
+  },
+  "CAT-2.2": {
+   "G": 7,
+   "S": 12,
+   "N": 11,
+   "P": 6
+  },
+  "CAT-2.3": {
+   "G": 5,
+   "S": 18,
+   "P": 11,
+   "N": 2
+  },
+  "CAT-2.4": {
+   "G": 7,
+   "S": 10,
+   "P": 7,
+   "N": 12
+  }
+ },
+ "prompt_check": {
+  "unique_prompt_texts": 10049,
+  "test_commands_checked_len_ge_15": 10419,
+  "hits": 0
+ },
+ "leak_summary": {
+  "CAT-2.1 core cat2_pool exact": 60,
+  "CAT-2.1 core cat2_pool near": 108,
+  "CAT-2.1 core test near": 101,
+  "CAT-2.1 rendered cat2_pool exact": 2,
+  "CAT-2.1 rendered cat2_pool near": 24,
+  "CAT-2.1 rendered test near": 9,
+  "CAT-2.2 core cat2_pool near": 245,
+  "CAT-2.2 core test exact": 100,
+  "CAT-2.2 core test near": 57,
+  "CAT-2.2 rendered cat2_pool near": 23,
+  "CAT-2.2 rendered test exact": 3,
+  "CAT-2.2 rendered test near": 18,
+  "CAT-2.3 core cat2_pool exact": 216,
+  "CAT-2.3 core cat2_pool near": 671,
+  "CAT-2.3 core test exact": 226,
+  "CAT-2.3 core test near": 621,
+  "CAT-2.3 rendered cat2_pool exact": 1,
+  "CAT-2.3 rendered cat2_pool near": 39,
+  "CAT-2.3 rendered test exact": 3,
+  "CAT-2.3 rendered test near": 22,
+  "CAT-2.4 core cat2_pool exact": 103,
+  "CAT-2.4 core cat2_pool near": 256,
+  "CAT-2.4 core test exact": 11,
+  "CAT-2.4 core test near": 180,
+  "CAT-2.4 rendered cat2_pool exact": 1,
+  "CAT-2.4 rendered cat2_pool near": 22,
+  "CAT-2.4 rendered test near": 23
+ }
+}

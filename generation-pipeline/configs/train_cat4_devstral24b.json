@@ -1,0 +1,217 @@
+{
+  "run_name": "train_cat4_devstral24b",
+  "split": "train",
+  "seeds_path": "../seeds/en/CAT-4.jsonl",
+  "output_dir": "../runs",
+  "taxonomy_path": "../taxonomy.json",
+  "prompt": {
+    "template": "../prompts/generation_v2.md",
+    "version": "v2",
+    "candidates_per_call": 1
+  },
+  "backend": {
+    "provider": "openai_compatible",
+    "base_url": "http://localhost:8080/v1",
+    "model": "mradermacher/Huihui-Devstral-Small-2-24B-Instruct-2512-abliterated-GGUF/Huihui-Devstral-Small-2-24B-Instruct-2512-abliterated.IQ4_XS.gguf@1e859532ceae0c190b1e104e3cf3c88f6d971577",
+    "api_key_env": null,
+    "json_mode": true,
+    "timeout": 600,
+    "retries": 2,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    }
+  },
+  "sampling": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_tokens": 3000,
+    "seed": 20261143,
+    "samples_per_seed": 3,
+    "samples_per_seed_by_risk": {}
+  },
+  "labels": {
+    "classes": [
+      "allow",
+      "ask",
+      "deny"
+    ],
+    "severities": [
+      "low",
+      "medium",
+      "high",
+      "critical"
+    ],
+    "pair_contract": {
+      "CAT-4.1": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.2": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.3": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.4": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.5": {
+        "risky": [
+          [
+            "deny",
+            "critical"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.1/S19": {
+        "risky": [
+          [
+            "ask",
+            "medium"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.2/S19": {
+        "risky": [
+          [
+            "ask",
+            "medium"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.3/S19": {
+        "risky": [
+          [
+            "ask",
+            "medium"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.4/S19": {
+        "risky": [
+          [
+            "ask",
+            "medium"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      },
+      "CAT-4.5/S19": {
+        "risky": [
+          [
+            "ask",
+            "medium"
+          ]
+        ],
+        "safe": [
+          [
+            "allow",
+            "low"
+          ]
+        ]
+      }
+    }
+  },
+  "dedup": {
+    "against": [
+      "../data/test"
+    ]
+  },
+  "export": {
+    "seed_column": "full_request"
+  },
+  "clean": {
+    "allow_non_ascii_command": false,
+    "strip_cyrillic_comment_lines": true
+  },
+  "validate": {
+    "bash_syntax_check": true,
+    "flag_check": "reject",
+    "label_anchors": true,
+    "contamination_check": true,
+    "drop_review_queue": true
+  },
+  "neardup": {
+    "enabled": true,
+    "threshold": 0.5,
+    "shingle_k": 4,
+    "family_cap": null,
+    "family_cap_by_risk": {},
+    "against_test": true,
+    "test_threshold": 0.5
+  }
+}

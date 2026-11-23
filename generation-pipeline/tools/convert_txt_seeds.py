@@ -8,6 +8,14 @@
 
 Пишет <out>/<risk>.jsonl на подкатегорию и <out>/all.jsonl со всеми вместе.
 
+Сиды CAT-4 (a.kirillov) — файлы .md в ОДНОЙ общей папке на все подкатегории (CAT-4/seeds/CAT-4.1-TRAIN-S01.md …):
+
+    python3 tools/convert_txt_seeds.py --repo .. --ref 2efa9ea --ref-name feat/data_CAT-4 --folder CAT-4/seeds \
+        --risk CAT-4.1 CAT-4.2 CAT-4.3 CAT-4.4 CAT-4.5 --expect-per-risk 20 --combined CAT-4.jsonl --out seeds/train
+
+--folder — общая папка вместо <risk>/seeds; --combined — имя общего файла вместо all.jsonl
+(all.jsonl — база build_en_seeds.py для v0, его нельзя переписывать сидами других категорий).
+
 Защита от утечки test → train: файл берётся только если в имени есть TRAIN, а в тексте файла
 и README папки нет пометок TEST-only («never TRAIN», «Только TEST» …). Иначе — ошибка, ничего не пишется.
 Текст промпта переносится как есть (только нормализуются концы строк), чтобы в seed был полный фактический промпт.
@@ -26,7 +34,8 @@ TEST_MARKERS = [
         r"Не\s+использовать\s+в\s+train",
     )
 ]
-NAME_RE = re.compile(r"^(CAT-\d+\.\d+)-TRAIN-S(\d+)\.txt$")
+NAME_RE = re.compile(r"^(CAT-\d+\.\d+)-TRAIN-S(\d+)\.(?:txt|md)$")
+SEED_EXT = (".txt", ".md")
 VERSION_RE = re.compile(r"\bv(\d+(?:\.\d+)*)\b")
 
 
@@ -38,8 +47,8 @@ def git(repo, *args):
     return git_bytes(repo, *args).decode("utf-8")
 
 
-# Объявленный в тексте сида код риска: «risk=CAT-1.4 …» или «Риск CAT-5.1 …».
-DECLARED_RISK_RE = re.compile(r"(?:\brisk=|^Риск\s+)(CAT-\d+\.\d+)", re.M)
+# Объявленный в тексте сида код риска: «risk=CAT-1.4 …», «Риск CAT-5.1 …» или «risk CAT-6.1 …» (сиды CAT-6.1).
+DECLARED_RISK_RE = re.compile(r"(?:\brisk=|\brisk\s+|^Риск\s+)(CAT-\d+\.\d+)", re.M)
 
 
 def mechanism_of(text, seed_id):
@@ -47,14 +56,16 @@ def mechanism_of(text, seed_id):
     first = text.splitlines()[0].lstrip("# ").strip()
     if "—" in first:
         return first.split("—", 1)[1].strip()
-    m = re.search(r"^Сценарий:\s*(.+)$", text, re.M)
+    m = re.search(r"^(?:Сценарий|Сценарное задание):\s*(.+)$", text, re.M)
     if m:
         return m.group(1).strip().rstrip(".")
     raise ValueError(f"{seed_id}: не нашёл заголовок/сценарий для mechanism")
 
 
-def convert_risk(repo, ref, commit, risk, author):
-    folder = f"{risk}/seeds"
+def convert_risk(repo, ref, commit, risk, author, folder=None, ref_name=None):
+    """folder=None — своя папка <risk>/seeds; иначе общая папка, из которой берутся только файлы <risk>-TRAIN-*."""
+    shared = folder is not None
+    folder = folder or f"{risk}/seeds"
     names = git(repo, "ls-tree", "--name-only", f"{ref}:{folder}").splitlines()
     if "README.md" not in names:
         raise ValueError(f"{folder}: нет README.md — не понять, TRAIN это или TEST")
@@ -66,19 +77,22 @@ def convert_risk(repo, ref, commit, risk, author):
     vm = VERSION_RE.search(readme)
     version = vm.group(1) if vm else "unversioned"
 
-    txts = sorted(n for n in names if n.endswith(".txt"))
+    # Всё, кроме README.md, обязано быть TRAIN-сидом с правильным именем — иначе ошибка, а не пропуск.
+    others = [n for n in names if n != "README.md"]
+    for name in others:
+        if not name.endswith(SEED_EXT) or not NAME_RE.match(name):
+            raise ValueError(f"{folder}/{name}: имя не вида CAT-N.M-TRAIN-SNN.(txt|md) — не TRAIN-сид?")
+    txts = sorted(n for n in others if NAME_RE.match(n).group(1) == risk or not shared)
     if not txts:
-        raise ValueError(f"{folder}: нет .txt")
+        raise ValueError(f"{folder}: нет сидов {risk}")
     out = []
     for name in txts:
         m = NAME_RE.match(name)
-        if not m:
-            raise ValueError(f"{folder}/{name}: имя не вида {risk}-TRAIN-SNN.txt — не TRAIN-сид?")
         if m.group(1) != risk:
             raise ValueError(f"{folder}/{name}: код в имени {m.group(1)} ≠ папке {risk}")
         raw = git_bytes(repo, "show", f"{ref}:{folder}/{name}")
         text = raw.decode("utf-8").replace("\r\n", "\n").strip() + "\n"
-        seed_id = name[:-4]
+        seed_id = Path(name).stem
         if any(p.search(text) for p in TEST_MARKERS):
             raise ValueError(f"{seed_id}: в тексте пометка TEST-only")
         if seed_id not in text.splitlines()[0]:
@@ -101,7 +115,7 @@ def convert_risk(repo, ref, commit, risk, author):
             "author": author,
             "origin": {
                 "repo": "SfBalaba/code_guard_benchmark",
-                "ref": ref.removeprefix("origin/"),
+                "ref": ref_name or ref.removeprefix("origin/"),
                 "commit": commit,
                 "path": f"{folder}/{name}",
                 "sha256": hashlib.sha256(raw).hexdigest(),  # байты blob, как `git show | sha256sum`
@@ -116,6 +130,10 @@ def main(argv=None):
     p.add_argument("--ref", required=True, help="ветка/коммит с папками CAT-N.M/seeds")
     p.add_argument("--risk", nargs="+", required=True, help="подкатегории, например CAT-1.4 CAT-5.1")
     p.add_argument("--out", required=True, help="папка для JSONL")
+    p.add_argument("--folder", help="общая папка сидов для всех --risk (по умолчанию <risk>/seeds)")
+    p.add_argument("--ref-name", help="имя ветки для origin.ref, если --ref — коммит")
+    p.add_argument("--combined", default="all.jsonl", help="имя общего файла (по умолчанию all.jsonl)")
+    p.add_argument("--expect-per-risk", type=int, help="ошибка, если сидов на подкатегорию не столько")
     a = p.parse_args(argv)
 
     repo = Path(a.repo)
@@ -123,8 +141,10 @@ def main(argv=None):
     try:
         groups = {}
         for risk in a.risk:
-            author = git(repo, "log", "-1", "--format=%an", a.ref, "--", f"{risk}/seeds").strip() or "unknown"
-            groups[risk] = convert_risk(repo, a.ref, commit, risk, author)
+            author = git(repo, "log", "-1", "--format=%an", a.ref, "--", a.folder or f"{risk}/seeds").strip() or "unknown"
+            groups[risk] = convert_risk(repo, a.ref, commit, risk, author, a.folder, a.ref_name)
+            if a.expect_per_risk is not None and len(groups[risk]) != a.expect_per_risk:
+                raise ValueError(f"{risk}: {len(groups[risk])} сидов, ожидалось {a.expect_per_risk}")
     except (ValueError, subprocess.CalledProcessError) as exc:
         print(f"ошибка: {getattr(exc, 'stderr', '') or exc}", file=sys.stderr)
         return 2
@@ -137,9 +157,9 @@ def main(argv=None):
             "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8")
         every += rows
         print(f"{risk}: {len(rows)} seed")
-    (out / "all.jsonl").write_text(
+    (out / a.combined).write_text(
         "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in every), encoding="utf-8")
-    print(f"всего {len(every)} seed → {out}/ (commit {commit[:7]})")
+    print(f"всего {len(every)} seed → {out}/{a.combined} (commit {commit[:7]})")
     return 0
 
 

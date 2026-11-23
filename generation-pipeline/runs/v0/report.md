@@ -1,12 +1,12 @@
 # Отчёт: v0
-Вызовов модели: 690 (ok: 690). Итоговых строк: **908**.
+Вызовов модели: 690 (ok: 690). Итоговых строк: **886**.
 ## Отсев по шагам
 | шаг | отброшено |
 |---|---|
 | `clean` | 43 |
 | `dedup` | 12 |
 | `neardup` | 297 |
-| `validate` | 77 |
+| `validate` | 99 |
 
 **Причины, clean:**
 
@@ -37,19 +37,22 @@
 
 | причина | кол-во |
 |---|---|
-| `near_duplicate` | 143 |
+| `near_duplicate` | 141 |
 | `family_cap:3` | 64 |
 | `family_cap:5` | 47 |
-| `near_duplicate_test` | 43 |
+| `near_duplicate_test` | 45 |
 
 **Причины, validate:**
 
 | причина | кол-во |
 |---|---|
-| `bash_syntax_error` | 33 |
-| `pair_partner_rejected` | 24 |
+| `pair_partner_rejected` | 32 |
+| `bash_syntax_error` | 30 |
+| `contamination:model_reasoning` | 12 |
 | `possible_secret_in_command` | 9 |
 | `trailing_list_artifact` | 4 |
+| `contamination:model_reasoning;bash_syntax_error` | 3 |
+| `contamination:fs_listing` | 2 |
 | `unknown_flag:rsync:--itemized-changes` | 2 |
 | `unknown_flag:cat:-c` | 2 |
 | `unknown_flag:cat:-X;unknown_flag:cat:-H;unknown_flag:cat:-d` | 1 |
@@ -62,40 +65,40 @@
 
 | значение | кол-во |
 |---|---|
-| `allow` | 454 |
-| `deny` | 275 |
-| `ask` | 179 |
+| `allow` | 443 |
+| `deny` | 272 |
+| `ask` | 171 |
 
 **severity**
 
 | значение | кол-во |
 |---|---|
-| `low` | 454 |
-| `critical` | 275 |
-| `high` | 179 |
+| `low` | 443 |
+| `critical` | 272 |
+| `high` | 171 |
 
 **risk**
 
 | значение | кол-во |
 |---|---|
-| `CAT-1.4` | 288 |
-| `CAT-5.3` | 174 |
-| `CAT-5.2` | 166 |
-| `CAT-5.4` | 162 |
+| `CAT-1.4` | 274 |
+| `CAT-5.3` | 172 |
+| `CAT-5.2` | 162 |
+| `CAT-5.4` | 160 |
 | `CAT-5.1` | 118 |
 
 ## Разнообразие утилит
 
-Уникальных утилит: 83.
+Уникальных утилит: 84.
 
 | util | кол-во |
 |---|---|
-| `python3` | 118 |
+| `python3` | 110 |
 | `curl` | 108 |
 | `node` | 56 |
-| `bash` | 42 |
+| `bash` | 38 |
 | `socat` | 34 |
-| `ssh` | 34 |
+| `ssh` | 32 |
 | `wget` | 28 |
 | `tar` | 24 |
 | `patch` | 20 |
@@ -112,25 +115,25 @@
 
 | конструкция | команд |
 |---|---|
-| `pipeline` | 147 |
-| `chain` | 403 |
-| `nested_shell_c` | 127 |
-| `command_substitution` | 94 |
-| `variable_expansion` | 154 |
-| `heredoc` | 139 |
-| `process_substitution` | 44 |
-| `loop` | 17 |
-| `function_def` | 46 |
+| `pipeline` | 145 |
+| `chain` | 393 |
+| `nested_shell_c` | 123 |
+| `command_substitution` | 88 |
+| `variable_expansion` | 146 |
+| `heredoc` | 135 |
+| `process_substitution` | 42 |
+| `loop` | 15 |
+| `function_def` | 42 |
 | `xargs_or_exec` | 6 |
-| `eval` | 9 |
+| `eval` | 7 |
 
 ## Выход по seed
 
 | seed_id | строк |
 |---|---|
-| `CAT-1.4-TRAIN-S01` | 20 |
+| `CAT-1.4-TRAIN-S01` | 18 |
 | `CAT-1.4-TRAIN-S02` | 18 |
-| `CAT-1.4-TRAIN-S03` | 14 |
+| `CAT-1.4-TRAIN-S03` | 10 |
 | `CAT-1.4-TRAIN-S04` | 18 |
 | `CAT-1.4-TRAIN-S05` | 14 |
 | `CAT-1.4-TRAIN-S07` | 20 |
@@ -141,11 +144,11 @@
 | `CAT-1.4-TRAIN-S12` | 16 |
 | `CAT-1.4-TRAIN-S13` | 20 |
 | `CAT-1.4-TRAIN-S14` | 12 |
-| `CAT-1.4-TRAIN-S15` | 12 |
+| `CAT-1.4-TRAIN-S15` | 8 |
 | `CAT-1.4-TRAIN-S16` | 20 |
 | `CAT-1.4-TRAIN-S17` | 16 |
-| `CAT-1.4-TRAIN-S18` | 8 |
-| `CAT-1.4-TRAIN-S20` | 18 |
+| `CAT-1.4-TRAIN-S18` | 6 |
+| `CAT-1.4-TRAIN-S20` | 16 |
 | `CAT-5.1-TRAIN-S01` | 6 |
 | `CAT-5.1-TRAIN-S02` | 6 |
 | `CAT-5.1-TRAIN-S03` | 6 |
@@ -168,7 +171,7 @@
 | `CAT-5.1-TRAIN-S20` | 4 |
 | `CAT-5.2-TRAIN-S01` | 10 |
 | `CAT-5.2-TRAIN-S02` | 10 |
-| `CAT-5.2-TRAIN-S03` | 10 |
+| `CAT-5.2-TRAIN-S03` | 8 |
 | `CAT-5.2-TRAIN-S04` | 8 |
 | `CAT-5.2-TRAIN-S05` | 8 |
 | `CAT-5.2-TRAIN-S06` | 8 |
@@ -185,7 +188,7 @@
 | `CAT-5.2-TRAIN-S17` | 10 |
 | `CAT-5.2-TRAIN-S18` | 8 |
 | `CAT-5.2-TRAIN-S19` | 8 |
-| `CAT-5.2-TRAIN-S20` | 6 |
+| `CAT-5.2-TRAIN-S20` | 4 |
 | `CAT-5.3-TRAIN-S01` | 8 |
 | `CAT-5.3-TRAIN-S02` | 10 |
 | `CAT-5.3-TRAIN-S03` | 6 |
@@ -203,11 +206,11 @@
 | `CAT-5.3-TRAIN-S15` | 10 |
 | `CAT-5.3-TRAIN-S16` | 10 |
 | `CAT-5.3-TRAIN-S17` | 10 |
-| `CAT-5.3-TRAIN-S18` | 10 |
+| `CAT-5.3-TRAIN-S18` | 8 |
 | `CAT-5.3-TRAIN-S19` | 10 |
 | `CAT-5.3-TRAIN-S20` | 8 |
 | `CAT-5.4-TRAIN-S01` | 8 |
-| `CAT-5.4-TRAIN-S02` | 10 |
+| `CAT-5.4-TRAIN-S02` | 8 |
 | `CAT-5.4-TRAIN-S03` | 6 |
 | `CAT-5.4-TRAIN-S04` | 10 |
 | `CAT-5.4-TRAIN-S05` | 8 |
@@ -250,42 +253,42 @@
 
 | util | команд |
 |---|---|
-| `#` | 79 |
-| `ssh` | 42 |
+| `#` | 67 |
+| `ssh` | 40 |
 | `socat` | 36 |
 | `chisel` | 20 |
 | `envsubst` | 19 |
 | `fallocate` | 16 |
-| `depth` | 16 |
 | `patch` | 14 |
+| `depth` | 14 |
 | `frpc` | 13 |
 | `vim` | 12 |
 | `php` | 12 |
 | `import` | 12 |
 | `as` | 11 |
-| `mkfifo` | 10 |
 | `ncat` | 10 |
-| `
-
-` | 10 |
 | `ngrok` | 10 |
 | `gost` | 10 |
 | `with` | 10 |
+| `mkfifo` | 8 |
 | `telnet` | 8 |
 | `aws` | 8 |
 | `bore` | 8 |
 | `wstunnel` | 8 |
+| `
+
+` | 7 |
 | `f.write` | 7 |
 | `lua` | 6 |
 | `sftp` | 6 |
 | `rclone` | 6 |
 | `mailx` | 6 |
-| `dig` | 6 |
 | `cloudflared` | 6 |
 | `rathole` | 6 |
 | `n` | 6 |
 | `unzip` | 6 |
 | `gpg` | 5 |
+| `dig` | 5 |
 | `blocks` | 5 |
 | `.read` | 5 |
 | `gcloud` | 4 |
@@ -295,14 +298,11 @@
 | `chisel_client` | 4 |
 | `frps` | 4 |
 | `zrok` | 4 |
-| `func_assemble` | 4 |
 | `f` | 4 |
 | `;
 ` | 4 |
 | `f_rec` | 4 |
 | `ex` | 4 |
-| `)
-` | 3 |
 | `simulated` | 3 |
 | `,` | 3 |
 | `ss` | 3 |
@@ -314,7 +314,6 @@
 | `download_rec` | 2 |
 | `fetch_installer` | 2 |
 | `zmodload` | 2 |
-| `the` | 2 |
 | `lftp` | 2 |
 | `send_layer` | 2 |
 | `no` | 2 |
@@ -329,6 +328,7 @@
 )` | 2 |
 | `f,` | 2 |
 | `-exec` | 2 |
+| `func_assemble` | 2 |
 | `def` | 2 |
 | `idx,` | 2 |
 | `idx` | 2 |
@@ -367,12 +367,7 @@
 | `9001` | 1 |
 | `recv_shell` | 1 |
 | `recv_data` | 1 |
-| `exec_cmd` | 1 |
-| `acknowledgment` | 1 |
-| `but` | 1 |
-| `send_data` | 1 |
 | `profile` | 1 |
-| `fold` | 1 |
 | `()
 ` | 1 |
 | `i` | 1 |
@@ -395,8 +390,8 @@
 | `}n, end=)
     else:
         print(line, end=)` | 1 |
+| `the` | 1 |
 | `is` | 1 |
-| `skipping` | 1 |
 | `len` | 1 |
 | `==` | 1 |
 | `run_socket_exec` | 1 |
@@ -404,9 +399,9 @@
 | `bash,` | 1 |
 | `here` | 1 |
 | `SECRET_enc` | 1 |
+| `)
+` | 1 |
 | `target` | 1 |
-| `Assumes` | 1 |
-| `Specifically,` | 1 |
 | `using` | 1 |
 | `10.0.0.55:5432` | 1 |
 | `0.0.0.0:8080` | 1 |
@@ -458,13 +453,13 @@
 
 | исправление | кол-во |
 |---|---|
-| `removed_header_comment_lines` | 427 |
-| `label_from_seed_contract` | 288 |
-| `label_from_model` | 620 |
+| `removed_header_comment_lines` | 407 |
+| `label_from_seed_contract` | 274 |
+| `label_from_model` | 612 |
 
 ## Прочие предупреждения
 
 | предупреждение | кол-во |
 |---|---|
-| `flags_parse_failed` | 22 |
-| `util_not_literal_in_command` | 103 |
+| `flags_parse_failed` | 21 |
+| `util_not_literal_in_command` | 101 |

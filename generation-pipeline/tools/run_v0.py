@@ -10,6 +10,10 @@
 
 Итог: runs/v0/dataset.csv (9 колонок), provenance.jsonl (модель/seed/версия на строку), report.md.
 Резюмируемо: повторный запуск продолжает генерацию каждой модели и пересобирает слияние.
+
+Другой набор конфигов (та же тройка моделей, свои сиды и контракт меток) — --prefix:
+    python3 tools/run_v0.py --prefix train_cat4     # configs/train_cat4_<m>.json -> runs/train_cat4_<m>/, слияние в runs/cat4/
+Имя слияния = prefix без «train_» (train_v0 -> v0, как раньше). --limit N — не больше N вызовов на модель (смоук).
 """
 import argparse
 import json
@@ -43,8 +47,8 @@ def wait_health(timeout=400):
     return False
 
 
-def generate_model(m, models_dir, log_file, log):
-    cfg = load_config(ROOT / f"configs/train_v0_{m}.json")
+def generate_model(m, models_dir, log_file, log, prefix="train_v0", limit=None):
+    cfg = load_config(ROOT / f"configs/{prefix}_{m}.json")
     gguf = Path(models_dir).expanduser() / cfg["backend"]["model"].split("/")[-1].split("@")[0]
     if not gguf.exists():
         raise FileNotFoundError(f"нет модели {gguf}")
@@ -55,7 +59,7 @@ def generate_model(m, models_dir, log_file, log):
         if not wait_health():
             raise RuntimeError(f"{m}: llama-server не поднялся, см. {log_file.name}")
         log(f"[{time.strftime('%H:%M:%S')}] {m}: генерация (resume)…")
-        generate.run(cfg, resume=True, log=lambda *a: None)
+        generate.run(cfg, resume=True, limit=limit, log=lambda *a: None)
     finally:
         srv.terminate()
         try:
@@ -70,23 +74,26 @@ def main(argv=None):
     p.add_argument("--models", default=",".join(MODELS))
     p.add_argument("--models-dir", default="~/models/codeguard")
     p.add_argument("--skip-generate", action="store_true", help="только пересобрать слияние из готовых raw")
+    p.add_argument("--prefix", default="train_v0", help="конфиги configs/<prefix>_<model>.json")
+    p.add_argument("--limit", type=int, help="не больше N новых вызовов на модель (смоук)")
     a = p.parse_args(argv)
     models = a.models.split(",")
     log = print
+    name = a.prefix.removeprefix("train_")   # train_v0 -> v0 (пути v0 не меняются)
 
     cfgs = {}
-    with open(ROOT / "runs/v0_llama-server.log", "a") as lf:
+    with open(ROOT / f"runs/{name}_llama-server.log", "a") as lf:
         for m in models:
             if a.skip_generate:
-                cfgs[m] = load_config(ROOT / f"configs/train_v0_{m}.json")
+                cfgs[m] = load_config(ROOT / f"configs/{a.prefix}_{m}.json")
                 continue
-            cfgs[m] = generate_model(m, a.models_dir, lf, log)
+            cfgs[m] = generate_model(m, a.models_dir, lf, log, a.prefix, a.limit)
             raws = read_jsonl_tolerant(run_dir(cfgs[m]) / "raw.jsonl")
             ok = sum(r["status"] == "ok" for r in raws)
             log(f"[{time.strftime('%H:%M:%S')}] {m}: raw {len(raws)}, ok {ok}")
 
     # --- merge raw of all models into runs/v0 ---
-    v0 = ROOT / "runs/v0"
+    v0 = ROOT / "runs" / name
     v0.mkdir(parents=True, exist_ok=True)
     merged = v0 / "raw.jsonl"
     merged.unlink(missing_ok=True)
@@ -100,21 +107,21 @@ def main(argv=None):
             append_jsonl(merged, r)
 
     # merged config = базовый (qwen) с общими seeds/labels/neardup/dedup, run_name=v0
-    base = json.loads((ROOT / f"configs/train_v0_{models[0]}.json").read_text(encoding="utf-8"))
-    base.update(run_name="v0", output_dir="../runs")
+    base = json.loads((ROOT / f"configs/{a.prefix}_{models[0]}.json").read_text(encoding="utf-8"))
+    base.update(run_name=name, output_dir="../runs")
     # пишем в configs/, чтобы относительные пути (seeds, data/test, template) резолвились как у обычных конфигов
-    mcfg_path = ROOT / "configs" / "_v0_merged.config.json"
+    mcfg_path = ROOT / "configs" / f"_{name}_merged.config.json"
     mcfg_path.write_text(json.dumps(base, ensure_ascii=False, indent=2), encoding="utf-8")
     mcfg = load_config(mcfg_path)
     write_json(v0 / "manifest.json", {
         "backend": backends, "models": models, "seeds_sha": digest(sorted(TAG)),
-        "note": "v0 merged across models; near-dup & recipe caps applied across the merged set",
+        "note": f"{name} merged across models; near-dup & recipe caps applied across the merged set",
         "merged_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "gold": False})
 
     for step in (clean.run, dedup.run, neardup.run, validate.run, export.run, report.run):
         step(mcfg, log=log)
-    log(f"\nv0 готов: {v0/'dataset.csv'}  (provenance.jsonl, report.md рядом)")
-    log("НЕ gold и НЕ human-reviewed; дальше — judge Дарины + ручное ревью. Модели — на согласовании (см. docs/DRAFT_model_approval_chat.md).")
+    log(f"\n{name} готов: {v0/'dataset.csv'}  (provenance.jsonl, report.md рядом)")
+    log("НЕ gold и НЕ human-reviewed; дальше — judge Дарины + ручное ревью. Модели (24-27B) согласованы командой 22.11.")
     return 0
 
 

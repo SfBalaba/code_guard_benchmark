@@ -99,7 +99,9 @@ def run(cfg, log=print):
                                  "similarity": round(dup[1], 3)})
             continue
         if test_sigs:
-            jt = near_test(sig, len(normalize(cmd)))
+            # против test сверяется КАЖДАЯ сторона пары (safe тоже может быть близнецом test-строки allow)
+            jt = next((j for j in (near_test(shingles(r["command"], k), len(normalize(r["command"])))
+                                   for r in recs) if j is not None), None)
             if jt is not None:
                 for r in recs:
                     rejected.append({**r, "stage": "neardup", "reason": "near_duplicate_test",

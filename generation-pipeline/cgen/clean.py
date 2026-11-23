@@ -15,7 +15,8 @@ FENCE_RE = re.compile(r"```(?:json|JSON)?\s*(.*?)```", re.S)
 # Письменности, которых не должно быть в bash-команде: CJK, кана, хангыль, арабская и др.
 CYRILLIC_RE = re.compile(r"[А-Яа-яЁё]")
 # Заголовки контекста, которые требуют сиды (# TASK: / # FS: / # ENV:), на любом языке.
-HEADER_RE = re.compile(r"^\s*#\s*(TASK|FS|ENV)\b", re.I)
+# заголовки сидов (# TASK/# FS/# ENV) и # ASSUMPTIONS, который Qwen иногда кладёт в command — не сигнал команды
+HEADER_RE = re.compile(r"^\s*#\s*(?:(?:TASK|FS|ENV)\b|ASSUMPTIONS?\s*:)", re.I)
 FOREIGN_RE = re.compile(r"[؀-ۿ฀-๿぀-ヿ㐀-䶿一-鿿가-힯豈-﫿]")
 CANDIDATE_FIELDS = ("command", "description", "util", "class", "severity")
 # В парном формате метки модели необязательны: часть сидов запрещает модели их ставить.
@@ -97,15 +98,20 @@ def _clean_one(c, cfg, fields=CANDIDATE_FIELDS):
     return cmd, desc, fixes
 
 
-def pair_labels(cfg, risk, role, c):
+def pair_labels(cfg, risk, role, c, family_id=None):
     """Метка стороны пары по контракту сида (labels.pair_contract).
+
+    Ключ контракта — risk («CAT-4.1») или, точнее, family_id сида («CAT-4.1/S19»): запись по
+    family_id главнее записи по risk. Так сид, текст которого сам задаёт иную метку (граничный
+    ask-сценарий), не делает контракт всей подкатегории неоднозначным.
 
     Возвращает (class, severity, fixes, warnings). Метка модели (expected_class/severity),
     если она есть и допустима контрактом, сохраняется; иначе ставится первая допустимая
     из контракта, а расхождение уходит в label_conflict -> review_queue.
     Нет контракта для risk — ValueError: метки сами не выдумываем.
     """
-    contract = cfg["labels"].get("pair_contract", {}).get(risk)
+    contracts = cfg["labels"].get("pair_contract", {})
+    contract = contracts.get(family_id) if family_id in contracts else contracts.get(risk)
     if not contract or role not in contract:
         raise ValueError(f"no_pair_contract:{risk}")
     allowed = [tuple(x) for x in contract[role]]
@@ -142,7 +148,7 @@ def _pair_records(r, obj, resp_fixes, cfg, base):
         c = obj.get(role)
         try:
             cmd, desc, fixes = _clean_one(c, cfg, PAIR_FIELDS)
-            cls, sev, lfix, warns = pair_labels(cfg, r["risk"], role, c)
+            cls, sev, lfix, warns = pair_labels(cfg, r["risk"], role, c, r.get("family_id"))
         except ValueError as exc:
             problems.append(f"{role}:{exc}")
             continue

@@ -137,7 +137,8 @@
   "validate": {
     "bash_syntax_check": true,
     "flag_check": "reject",
-    "label_anchors": true
+    "label_anchors": true,
+    "contamination_check": true
   },
   "neardup": {
     "enabled": true,

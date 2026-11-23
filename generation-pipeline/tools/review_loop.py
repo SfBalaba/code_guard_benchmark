@@ -11,6 +11,11 @@ summary.md (метрики по моделям и подкатегориям) и
 Выборка: --per-risk seed на подкатегорию (random_state = --random-state), либо те же seed_id, что
 в итерации --ids-from, плюс --extra новых на подкатегорию — чтобы сиды не подгонялись под одну выборку.
 Команды из ответов модели не исполняются (cgen проверяет только bash -n).
+
+Другая категория со своими конфигами (контракт меток, сиды) — --config-prefix и отдельный --review-dir:
+    python3 tools/review_loop.py --iter 1 --seeds seeds/train/CAT-4.jsonl --per-risk 1 \
+        --ids CAT-4.1-TRAIN-S19 --config-prefix train_cat4 --review-dir runs/review_cat4 \
+        --models qwen38_27b,gemma4_26b_a4b,devstral24b
 """
 import argparse
 import collections
@@ -48,6 +53,9 @@ def sha256_file(path, cache):
     return cache[key]
 
 
+REVIEW_DIR = ROOT / "runs/review"   # переопределяется --review-dir
+
+
 def pick_seeds(all_seeds, args, out):
     by_risk = collections.defaultdict(list)
     for s in all_seeds:
@@ -55,7 +63,7 @@ def pick_seeds(all_seeds, args, out):
     rnd = random.Random(args.random_state)
     chosen = []
     if args.ids_from:
-        prev = {s["seed_id"] for s in read_jsonl(ROOT / f"runs/review/iter{args.ids_from}/seeds.jsonl")}
+        prev = {s["seed_id"] for s in read_jsonl(REVIEW_DIR / f"iter{args.ids_from}/seeds.jsonl")}
         chosen = [s for s in all_seeds if s["seed_id"] in prev]
         for risk, ss in sorted(by_risk.items()):
             rest = [s for s in ss if s["seed_id"] not in prev and s["seed_id"] not in used_before(args.iter)]
@@ -67,6 +75,13 @@ def pick_seeds(all_seeds, args, out):
             if args.fresh and len(pool) < args.per_risk:
                 print(f"предупреждение: {risk} — свежих сидов {len(pool)} < per-risk {args.per_risk}", file=sys.stderr)
             chosen += rnd.sample(pool, min(args.per_risk, len(pool)))
+    if args.ids:  # явно добавленные seed (например, граничный ask-сценарий)
+        want = [x for x in args.ids.split(",") if x]
+        known = {s["seed_id"]: s for s in all_seeds}
+        missing = [x for x in want if x not in known]
+        if missing:
+            raise SystemExit(f"ошибка: --ids не найдены в seeds: {missing}")
+        chosen += [known[x] for x in want if x not in {c["seed_id"] for c in chosen}]
     out.write_text("".join(json.dumps(s, ensure_ascii=False) + "\n" for s in chosen), encoding="utf-8")
     return chosen
 
@@ -74,7 +89,7 @@ def pick_seeds(all_seeds, args, out):
 def used_before(it):
     ids = set()
     for k in range(1, it):
-        p = ROOT / f"runs/review/iter{k}/seeds.jsonl"
+        p = REVIEW_DIR / f"iter{k}/seeds.jsonl"
         if p.exists():
             ids |= {s["seed_id"] for s in read_jsonl(p)}
     return ids
@@ -93,8 +108,8 @@ def wait_health(timeout=300):
     return False
 
 
-def run_model(model, seeds_path, it_dir, models_dir, log_file, hashes):
-    base = json.loads((ROOT / f"configs/train_v0_{model}.json").read_text(encoding="utf-8"))
+def run_model(model, seeds_path, it_dir, models_dir, log_file, hashes, prefix="train_v0"):
+    base = json.loads((ROOT / f"configs/{prefix}_{model}.json").read_text(encoding="utf-8"))
     gguf = Path(models_dir).expanduser() / base["backend"]["model"].split("/")[-1].split("@")[0]
     if not gguf.exists():
         raise FileNotFoundError(f"нет файла модели {gguf}")
@@ -142,6 +157,8 @@ def summarize(it_dir, models, meta):
         raw = read_jsonl(d / "raw.jsonl")
         rej = read_jsonl(d / "rejected_clean.jsonl") + read_jsonl(d / "rejected_dedup.jsonl") + \
             read_jsonl(d / "rejected_validate.jsonl")
+        if (d / "rejected_neardup.jsonl").exists():   # near-dup (в т.ч. против test) — тоже отсев
+            rej += read_jsonl(d / "rejected_neardup.jsonl")
         kept = read_jsonl(d / "validated.jsonl")
         pairs = {c["pair_id"] for c in kept if c.get("pair_id")}
         refused = sum(r["reason"] == "model_refused" for r in rej)
@@ -214,9 +231,14 @@ def main(argv=None):
     p.add_argument("--models", default=",".join(MODELS))
     p.add_argument("--models-dir", default="~/models/codeguard")
     p.add_argument("--add", action="store_true", help="добавить модели в существующую итерацию (те же seed)")
+    p.add_argument("--ids", help="через запятую: seed_id, которые добавить к выборке")
+    p.add_argument("--config-prefix", default="train_v0", help="базовые конфиги configs/<prefix>_<model>.json")
+    p.add_argument("--review-dir", default="runs/review", help="папка итераций (от корня пайплайна)")
     a = p.parse_args(argv)
 
-    it_dir = ROOT / f"runs/review/iter{a.iter}"
+    global REVIEW_DIR
+    REVIEW_DIR = ROOT / a.review_dir
+    it_dir = REVIEW_DIR / f"iter{a.iter}"
     models = a.models.split(",")
     meta_path = it_dir / "meta.json"
     if it_dir.exists() and not a.add:
@@ -246,7 +268,7 @@ def main(argv=None):
     with open(it_dir / "llama-server.log", "a") as log_file:
         for m in models:
             print(f"[{time.strftime('%H:%M:%S')}] {m} …", flush=True)
-            meta[m] = run_model(m, it_dir / "seeds.jsonl", it_dir, a.models_dir, log_file, hashes)
+            meta[m] = run_model(m, it_dir / "seeds.jsonl", it_dir, a.models_dir, log_file, hashes, a.config_prefix)
             hashes_path.write_text(json.dumps(hashes))
             print(f"[{time.strftime('%H:%M:%S')}] {m} готово за {meta[m]['wall_s']} c", flush=True)
             meta_path.write_text(json.dumps({"seeds": a.seeds, "models": meta}, ensure_ascii=False, indent=1))
